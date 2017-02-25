@@ -1,0 +1,16 @@
+<table class = "heroes">
+  <tr>
+    <th>Login</th>
+  <th>Imię i nazwisko</th>
+    <th>Poziom</th>
+    <th>Punkty</th>
+    <th>Opis</th>
+  </tr>
+  <tr *ngFor="let guser of gusers" (click)="onSelect(guser)" class = "guser" [class.selected]="guser === selectedGuser">
+    <th>{{guser.login}}</th>
+    <th>{{guser.firstName}} {{guser.lastName}} </th>
+    <th>{{guser.lvl}} </th>
+    <th>{{guser.exp}} </th>
+    <th>{{guser.description}} </th>
+  </tr>
+</table>

@@ -1,0 +1,21 @@
+<div *ngIf="guser">
+<p>{{guser.login}}</p>
+<p>Imię: {{guser.firstName}} </p>
+<p>Nazwisko: {{guser.lastName}}
+<p>O nim: {{guser.description}} </p>
+<p>Poziom: {{guser.lvl}} Punkty: {{guser.exp}}</p>
+  <table>
+    <tr>
+      <th>Opis</th>
+      <th>Punkty</th>
+    </tr>
+    <tr *ngFor="let gquest of gquest">
+      <th>{{gquest.description}}</th>
+      <th>{{gquest.exp}}</th>
+    </tr>
+  </table>
+
+
+</div>
+
+
