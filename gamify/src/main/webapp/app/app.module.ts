@@ -13,10 +13,12 @@ import {LoginComponent} from "./login.component";
 import {QuestLogComponent} from "./quest-log.component";
 import {GoQuestComponent} from "./go-quest.component";
 
+import {GuserSearchPipe} from "./guser-search.pipe";
+
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpModule,JsonpModule ],
-  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent ],
+  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe ],
   providers: [GuserService],
   bootstrap:    [ AppComponent ]
 })

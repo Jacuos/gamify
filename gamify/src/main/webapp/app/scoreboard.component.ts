@@ -14,6 +14,11 @@ import { Router }            from '@angular/router';
 })
 export class ScoreboardComponent  {
 
+  search: string;
+  order = {
+  column: "",
+  asc: false
+};
   gusers: Guser[];
   selectedGuser: Guser;
   constructor(private guserService: GuserService, private router: Router) { }
@@ -25,5 +30,12 @@ export class ScoreboardComponent  {
   onSelect(user: Guser): void {
     this.selectedGuser = user;
     this.router.navigate(['/guser', this.selectedGuser.id]);
+  }
+  setOrder(value: string): void{
+    if(value != this.order.column)
+      this.order.asc = true;
+    else
+      this.order.asc = !this.order.asc;
+    this.order.column = value;
   }
 }

@@ -20,13 +20,14 @@ var guser_service_1 = require('./guser.service');
 var login_component_1 = require("./login.component");
 var quest_log_component_1 = require("./quest-log.component");
 var go_quest_component_1 = require("./go-quest.component");
+var guser_search_pipe_1 = require("./guser-search.pipe");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_module_1.AppRoutingModule, http_1.HttpModule, http_1.JsonpModule],
-            declarations: [app_component_1.AppComponent, scoreboard_component_1.ScoreboardComponent, guser_detail_component_1.GuserDetailComponent, login_component_1.LoginComponent, quest_log_component_1.QuestLogComponent, go_quest_component_1.GoQuestComponent],
+            declarations: [app_component_1.AppComponent, scoreboard_component_1.ScoreboardComponent, guser_detail_component_1.GuserDetailComponent, login_component_1.LoginComponent, quest_log_component_1.QuestLogComponent, go_quest_component_1.GoQuestComponent, guser_search_pipe_1.GuserSearchPipe],
             providers: [guser_service_1.GuserService],
             bootstrap: [app_component_1.AppComponent]
         }), 

@@ -18,6 +18,10 @@ var ScoreboardComponent = (function () {
     function ScoreboardComponent(guserService, router) {
         this.guserService = guserService;
         this.router = router;
+        this.order = {
+            column: "",
+            asc: false
+        };
     }
     ScoreboardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -27,6 +31,13 @@ var ScoreboardComponent = (function () {
     ScoreboardComponent.prototype.onSelect = function (user) {
         this.selectedGuser = user;
         this.router.navigate(['/guser', this.selectedGuser.id]);
+    };
+    ScoreboardComponent.prototype.setOrder = function (value) {
+        if (value != this.order.column)
+            this.order.asc = true;
+        else
+            this.order.asc = !this.order.asc;
+        this.order.column = value;
     };
     ScoreboardComponent = __decorate([
         core_1.Component({
