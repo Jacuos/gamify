@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 
 @Component({
@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: [ 'app.component.css' ]
 })
 export class AppComponent  {
-  title = 'GAMIFY';
-  desc = 'Witamy w aplikacji grywalizacyjnej!';
+  logged: boolean;
+  constructor(){
+  }
+  ngOnInit(): void {
+    this.logged = false;
+    //this.logcomp.logged.subscribe(value => this.logged = value);
+  }
 }

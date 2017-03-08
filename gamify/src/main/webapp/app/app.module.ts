@@ -9,17 +9,20 @@ import { AppComponent }  from './app.component';
 import { ScoreboardComponent }     from './scoreboard.component';
 import {GuserDetailComponent} from "./guser-detail.component";
 import { GuserService }         from './guser.service';
-import {LoginComponent} from "./login.component";
+import {AuthService} from "./glogin/auth.service";
+import {AuthGuard} from "./glogin/auth.guard";
+import {LoginComponent} from "./glogin/login.component";
 import {QuestLogComponent} from "./quest-log.component";
 import {GoQuestComponent} from "./go-quest.component";
 
 import {GuserSearchPipe} from "./guser-search.pipe";
+import {HomeComponent} from "./home/home.component";
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpModule,JsonpModule ],
-  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe ],
-  providers: [GuserService],
+  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe, LoginComponent, HomeComponent ],
+  providers: [GuserService, AuthService, AuthGuard],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {

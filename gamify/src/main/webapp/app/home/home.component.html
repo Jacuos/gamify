@@ -1,0 +1,9 @@
+<div *ngIf="logged">
+  <h1>{{title}}</h1>{{desc}}
+  <nav>
+    <a routerLink="/scoreboard" routerLinkActive="active">Ranking</a>
+    <a  routerLink="/questlog" routerLinkActive="active">Dziennik zadań</a>
+    <a  routerLink="/goquest" routerLinkActive="active">Wykonanie zadania</a>
+  </nav>
+</div>
+<router-outlet ></router-outlet>

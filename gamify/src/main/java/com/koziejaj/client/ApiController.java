@@ -2,6 +2,7 @@ package com.koziejaj.client;
 /**
  * Created by Jacek on 21-01-2017.
  */
+import com.koziejaj.client.GLogin.GLoginRepository;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -26,6 +27,8 @@ public class ApiController {
     private GUserQRepository gUserQRep;
     @Autowired
     private GQuestRepository gQuestRep;
+    @Autowired
+    private GLoginRepository gLoginRep;
 
     @RequestMapping(value = "/api/hello", method = RequestMethod.GET)
     public Map<String,String> hello() {

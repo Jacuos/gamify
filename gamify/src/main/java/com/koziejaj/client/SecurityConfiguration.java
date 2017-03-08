@@ -35,10 +35,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/test/**");
     }
 
-   /* @Override
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.csrf().disable();
+        /*http.csrf().disable();
         http
                 .authorizeRequests()
                 .anyRequest().authenticated()
@@ -48,10 +48,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .httpBasic().disable();
         http
                 .authorizeRequests()
-                .anyRequest().permitAll();
+                .anyRequest().permitAll();*/
+        http.httpBasic().disable();
 
 
-    }*/
+    }
 
 
 
