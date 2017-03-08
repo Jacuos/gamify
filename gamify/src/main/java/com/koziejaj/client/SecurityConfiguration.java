@@ -14,9 +14,25 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.filter.OncePerRequestFilter;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfFilter;
+
 
 
 import javax.inject.Inject;
+import java.io.IOException;
 
 
 @Configuration
@@ -49,11 +65,37 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .anyRequest().permitAll();*/
-        http.httpBasic().disable();
+        http
+                .httpBasic().disable();
+        http
+                .csrf().csrfTokenRepository(csrfTokenRepository())
+                .and()
+                    .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
 
 
     }
-
+    private Filter csrfHeaderFilter() {
+        return new OncePerRequestFilter() {
+            @Override
+            protected void doFilterInternal(HttpServletRequest request,
+                                            HttpServletResponse response, FilterChain filterChain)
+                    throws ServletException, IOException {
+                CsrfToken csrf = (CsrfToken) request.getAttribute(CsrfToken.class
+                        .getName());
+                if (csrf != null) {
+                    Cookie cookie = new Cookie("XSRF-TOKEN", csrf.getToken());
+                    cookie.setPath("/");
+                    response.addCookie(cookie);
+                }
+                filterChain.doFilter(request, response);
+            }
+        };
+    }
+    		private CsrfTokenRepository csrfTokenRepository() {
+        			HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
+        			repository.setHeaderName("X-XSRF-TOKEN");
+        			return repository;
+        		}
 
 
 }

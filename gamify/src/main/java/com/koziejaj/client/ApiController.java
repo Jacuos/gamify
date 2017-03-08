@@ -27,8 +27,6 @@ public class ApiController {
     private GUserQRepository gUserQRep;
     @Autowired
     private GQuestRepository gQuestRep;
-    @Autowired
-    private GLoginRepository gLoginRep;
 
     @RequestMapping(value = "/api/hello", method = RequestMethod.GET)
     public Map<String,String> hello() {
