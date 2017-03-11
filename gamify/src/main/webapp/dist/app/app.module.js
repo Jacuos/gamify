@@ -24,13 +24,15 @@ var quest_log_component_1 = require("./quest-log.component");
 var go_quest_component_1 = require("./go-quest.component");
 var guser_search_pipe_1 = require("./guser-search.pipe");
 var home_component_1 = require("./home/home.component");
+var register_component_1 = require("./glogin/register.component");
+var not_found_component_1 = require("./not-found.component");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_module_1.AppRoutingModule, http_1.HttpModule, http_1.JsonpModule],
-            declarations: [app_component_1.AppComponent, scoreboard_component_1.ScoreboardComponent, guser_detail_component_1.GuserDetailComponent, login_component_1.LoginComponent, quest_log_component_1.QuestLogComponent, go_quest_component_1.GoQuestComponent, guser_search_pipe_1.GuserSearchPipe, login_component_1.LoginComponent, home_component_1.HomeComponent],
+            declarations: [app_component_1.AppComponent, scoreboard_component_1.ScoreboardComponent, guser_detail_component_1.GuserDetailComponent, login_component_1.LoginComponent, quest_log_component_1.QuestLogComponent, go_quest_component_1.GoQuestComponent, guser_search_pipe_1.GuserSearchPipe, login_component_1.LoginComponent, home_component_1.HomeComponent, register_component_1.RegisterComponent, not_found_component_1.NotFoundComponent],
             providers: [guser_service_1.GuserService, auth_service_1.AuthService, auth_guard_1.AuthGuard],
             bootstrap: [app_component_1.AppComponent]
         }), 

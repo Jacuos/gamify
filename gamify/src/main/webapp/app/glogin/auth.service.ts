@@ -9,7 +9,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class AuthService {
-  logged = new BehaviorSubject<boolean>(true);
+  logged = new BehaviorSubject<boolean>(false);
   logged$ = this.logged.asObservable();
   constructor(private http: Http) {}
 
