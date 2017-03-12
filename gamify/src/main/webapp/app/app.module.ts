@@ -19,11 +19,12 @@ import {GuserSearchPipe} from "./guser-search.pipe";
 import {HomeComponent} from "./home/home.component";
 import {RegisterComponent} from "./glogin/register.component";
 import {NotFoundComponent} from "./not-found.component";
+import {PasswordValidator} from "./glogin/password.validator";
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpModule,JsonpModule ],
-  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe, LoginComponent, HomeComponent, RegisterComponent, NotFoundComponent ],
+  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe, LoginComponent, HomeComponent, RegisterComponent, NotFoundComponent, PasswordValidator ],
   providers: [GuserService, AuthService, AuthGuard],
   bootstrap:    [ AppComponent ]
 })
