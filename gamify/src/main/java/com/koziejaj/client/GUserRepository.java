@@ -12,6 +12,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "GUsers", path = "GUsers")
 public interface GUserRepository extends CrudRepository<GUser, Long> {
 
+    GUser findByLogin(@Param("login") String login);
+
     GUser findByFirstName(@Param("firstName") String firstName);
 
     List<GUser> findByLastName(@Param("lastName") String lastName);

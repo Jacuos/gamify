@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 
 import{Gquest} from './gquest';
 import{Guser} from './guser';
+import {Observable} from "rxjs";
 
 @Injectable()
 export class GuserService {
@@ -24,6 +25,11 @@ export class GuserService {
       .then(response => response.json() as Guser)
       .catch(this.handleError);
 
+  }
+  getGuserExists(mode: String): Observable<boolean> {
+    return this.http.get(this.guserUrl+"exists/?id="+mode)
+      .map(response => response.json() as boolean)
+      .catch(this.handleError);
   }
 
   getGuserQuests(mode: String): Promise<Gquest[]> {

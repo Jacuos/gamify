@@ -45,6 +45,14 @@ public class ApiController {
         GUser model = repository.findOne(Long.parseLong(id, 10));
         return model;
     }
+    @RequestMapping("/api/guserexists")
+    public boolean guserlogin(@RequestParam(value="id", defaultValue="") String login) {
+        GUser model = repository.findByLogin(login);
+        if (model == null)
+            return true;
+        else
+            return false;
+    }
     @RequestMapping("/api/guserquests")
     public ArrayList<GQuest> guserQuests(@RequestParam(value="id", defaultValue="0") String id) {
 

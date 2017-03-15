@@ -28,6 +28,11 @@ var GuserService = (function () {
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    GuserService.prototype.getGuserExists = function (mode) {
+        return this.http.get(this.guserUrl + "exists/?id=" + mode)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     GuserService.prototype.getGuserQuests = function (mode) {
         return this.http.get(this.gquestsUrl + "/?id=" + mode)
             .toPromise()
