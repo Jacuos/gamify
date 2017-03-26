@@ -15,7 +15,12 @@ public class GLogin {
     private String email;
     private String token;
 
-    public GLogin() {}
+    public GLogin(){}
+    public GLogin(String lo, String pa, String em) {
+        login = lo;
+        password = pa;
+        email = em;
+    }
 
     public String getLogin() {
         return login;

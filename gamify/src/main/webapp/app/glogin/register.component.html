@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Rejestracja</h1>
-  <form (ngSubmit)="onSubmit()" #heroForm="ngForm" novalidate>
+  <form (ngSubmit)="onSubmit(heroForm.value)" #heroForm="ngForm" novalidate>
     <div class="form-group">
       <label for="login">Login</label>
       <input type="text" class="form-control" id="login" required minlength="3" maxlength="20" (keyup)="checkDuplicate(login.value)" pattern = "^[a-zA-Z0-9-]+"[(ngModel)]="rglogin.login" name="login"   #login="ngModel">

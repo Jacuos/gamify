@@ -56,8 +56,14 @@ export class RegisterComponent {
   }
 
 
-  onSubmit() {
-    console.log('Poszło!');
+  onSubmit(form : string) {
+
+    this.authService.createGuser(form)
+      .then(res => {
+        console.log('Poszło!');
+        this.router.navigate(["/"]);
+      });
+
     /*this.loading = true;
     this.authenticationService.login(this.model.username, this.model.password)
       .subscribe(

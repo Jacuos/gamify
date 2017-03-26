@@ -12,7 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import com.koziejaj.client.GUserRepository;
+import com.koziejaj.client.GUser;
+
+import java.io.IOException;
 import java.util.*;
 
 
@@ -20,6 +25,8 @@ import java.util.*;
 public class GLoginController {
     @Autowired
     private GLoginRepository gLoginRep;
+    @Autowired
+    private GUserRepository gUserRep;
 
     @RequestMapping(value="/api/glogin", method = RequestMethod.POST)
     public GLogin login(@RequestBody GLogin postData) {
@@ -29,5 +36,19 @@ public class GLoginController {
             return model;
         }
         else return null;
+    }
+
+    @RequestMapping(value="/api/addguser", method = RequestMethod.POST)
+    public boolean guserRegister(@RequestBody String postData) throws IOException {
+        postData = postData.substring(9,postData.length()-1);
+        HashMap<String,String> result = new ObjectMapper().readValue(postData, HashMap.class);
+        String newLogin = result.get("login");
+        if(gLoginRep.findByLogin(newLogin)==null) {
+            gLoginRep.save(new GLogin(newLogin, result.get("password"), result.get("email")));
+            gUserRep.save(new GUser(newLogin, result.get("firstName"), result.get("lastName"), result.get("description")));
+            return true;
+        }
+        else
+            return false;
     }
 }
