@@ -14,5 +14,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  */
 @RepositoryRestResource(collectionResourceRel = "GQuests", path = "GQuests")
 public interface GQuestRepository extends CrudRepository<GQuest, Long> {
-    //GQuest findById(@Param("id") String id);
+    GQuest findById(Long id);
 }

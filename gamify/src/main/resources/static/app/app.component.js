@@ -13,8 +13,6 @@ var AppComponent = (function () {
     function AppComponent() {
     }
     AppComponent.prototype.ngOnInit = function () {
-        this.logged = false;
-        //this.logcomp.logged.subscribe(value => this.logged = value);
     };
     AppComponent = __decorate([
         core_1.Component({

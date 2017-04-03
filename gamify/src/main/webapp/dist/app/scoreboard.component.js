@@ -30,7 +30,7 @@ var ScoreboardComponent = (function () {
     };
     ScoreboardComponent.prototype.onSelect = function (user) {
         this.selectedGuser = user;
-        this.router.navigate(['/guser', this.selectedGuser.id]);
+        this.router.navigate(['/guser', { id: this.selectedGuser.id }]);
     };
     ScoreboardComponent.prototype.setOrder = function (value) {
         if (value != this.order.column)

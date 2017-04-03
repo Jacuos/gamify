@@ -33,7 +33,12 @@ export class LoginComponent {
     this.authenticationService.login(this.model.username, this.model.password)
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          this.authenticationService.fetchAdditionalData(this.model.username)
+          .subscribe(
+              data2 =>{
+                this.router.navigate([this.returnUrl]);
+              }
+          )
         },
         error => {
           this.loading = false;

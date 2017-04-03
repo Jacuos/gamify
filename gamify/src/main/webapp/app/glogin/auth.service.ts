@@ -6,6 +6,9 @@ import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Glogin} from "./glogin";
+import {GuserService} from "../guser.service";
+import {Guser} from "../guser";
 
 
 @Injectable()
@@ -15,26 +18,43 @@ export class AuthService {
 
   logged = new BehaviorSubject<boolean>(false);
   logged$ = this.logged.asObservable();
+
+  guser = new BehaviorSubject<Guser>(new Guser(0,"","","","",0,0));
+  guser$ = this.guser.asObservable();
   constructor(private http: Http) {}
 
   login(username: string, password: string) {
     let headers = new Headers({ 'content-type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post('/api/glogin', JSON.stringify({ login: username, password: password }), options)
+    return this.http.post('http://localhost:7000/api/glogin', JSON.stringify({ login: username, password: password }), options)
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
         let user = response.json();
         if (user) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
+          localStorage.setItem('currentLogin', JSON.stringify(user));
+          console.log(JSON.parse(localStorage.getItem('currentLogin')) as Glogin);
           this.logged.next(true);
         }
       });
   }
+  fetchAdditionalData(username : string){
+    return this.http.get("http://localhost:7000/api/guser"+"?log="+username)
+      .map((response: Response) => {
+        // login successful if there's a jwt token in the response
+        let data = response.json();
+        if (data) {
+          localStorage.setItem('currentUser', JSON.stringify(data));
+          console.log(JSON.parse(localStorage.getItem('currentUser')) as Guser);
+          this.guser.next(JSON.parse(localStorage.getItem('currentUser')) as Guser);
+        }
+      });
+
+  }
 
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('currentLogin');
     this.logged.next(false);
   }
   createGuser(guser: string): Promise<string>{

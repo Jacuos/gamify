@@ -11,14 +11,12 @@ import org.springframework.ui.Model;
 
 
 
-
 @Controller
+//@RequestMapping(value = "/{path:^(?!api)[^\\.]*}")
 public class MainController {
 
-    @RequestMapping(value = "/{[path:^(?!api)[^\\.]*}")
-    public String redirect() {
-        return "forward:/";
-    }
+    @RequestMapping(value = "/{path:^(?!api)[^\\.]*}")
+    public String redirect() { return "forward:/"; }
 
 
 

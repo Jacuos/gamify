@@ -25,7 +25,7 @@ var routes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
     { path: 'scoreboard', component: scoreboard_component_1.ScoreboardComponent, canActivate: [auth_guard_1.AuthGuard] },
-    { path: 'guser/:id', component: guser_detail_component_1.GuserDetailComponent, canActivate: [auth_guard_1.AuthGuard] },
+    { path: 'guser', component: guser_detail_component_1.GuserDetailComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'questlog', component: quest_log_component_1.QuestLogComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'goquest', component: go_quest_component_1.GoQuestComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: '', redirectTo: '/scoreboard', pathMatch: 'full', canActivate: [auth_guard_1.AuthGuard] },

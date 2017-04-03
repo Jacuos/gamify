@@ -16,4 +16,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface GUserQRepository extends CrudRepository<GUserQ, Long> {
 
     List<GUserQ> findByGuserId(@Param("guserId") Long guserId);
+    GUserQ findByGuserIdAndGquestId(Long guserId, Long gquestId);
 }

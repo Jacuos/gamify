@@ -29,7 +29,7 @@ export class ScoreboardComponent  {
   }
   onSelect(user: Guser): void {
     this.selectedGuser = user;
-    this.router.navigate(['/guser', this.selectedGuser.id]);
+    this.router.navigate(['/guser',{id: this.selectedGuser.id}]);
   }
   setOrder(value: string): void{
     if(value != this.order.column)

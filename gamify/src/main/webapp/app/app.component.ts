@@ -8,11 +8,8 @@ import {Component, Input} from '@angular/core';
   styleUrls: [ 'app.component.css' ]
 })
 export class AppComponent  {
-  logged: boolean;
   constructor(){
   }
   ngOnInit(): void {
-    this.logged = false;
-    //this.logcomp.logged.subscribe(value => this.logged = value);
   }
 }

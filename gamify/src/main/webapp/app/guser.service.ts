@@ -2,7 +2,7 @@
  * Created by Jacek on 21-01-2017.
  */
 import { Injectable }    from '@angular/core';
-import {Headers, Http , Response,  } from '@angular/http';
+import {Headers, Http, Response, RequestOptions,} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import{Gquest} from './gquest';
@@ -16,6 +16,7 @@ export class GuserService {
   private guserUrl = 'http://localhost:7000/api/guser';
   private gusersUrl = 'http://localhost:7000/api/gusers';
   private gquestsUrl = 'http://localhost:7000/api/guserquests';
+  private addquestUrl = 'http://localhost:7000/api/addmequest';
 
   constructor(private http: Http) { }
 
@@ -44,6 +45,15 @@ export class GuserService {
     return this.http.get(this.gusersUrl)
       .toPromise()
       .then(response => response.json() as Guser[])
+      .catch(this.handleError);
+  }
+
+  addQuest(iid: number, qqid: number): Promise<string>{
+    let headers = new Headers({ 'content-type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.addquestUrl, JSON.stringify({ guserId: iid, gquestId:  qqid}), options)
+      .toPromise()
+      .then(response => response.json() as string)
       .catch(this.handleError);
   }
 

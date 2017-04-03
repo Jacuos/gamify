@@ -1,4 +1,6 @@
-<form action="">
-  Podaj kod zadania: <input type="text" name="fname"><br>
+{{response}}
+<form (ngSubmit)="sendRequest()">
+  Podaj kod zadania: <input type="number" name="qid" required [(ngModel)]="qid"><br>
   <input type="submit" value="Submit">
 </form>
+{{qid}}

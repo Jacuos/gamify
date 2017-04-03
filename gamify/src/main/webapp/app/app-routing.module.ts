@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'scoreboard', component: ScoreboardComponent, canActivate: [AuthGuard]},
-  {path: 'guser/:id', component: GuserDetailComponent, canActivate: [AuthGuard]},
+  {path: 'guser', component: GuserDetailComponent, canActivate: [AuthGuard]},
   {path: 'questlog', component: QuestLogComponent, canActivate: [AuthGuard]},
   {path: 'goquest', component: GoQuestComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: '/scoreboard', pathMatch: 'full', canActivate: [AuthGuard]},

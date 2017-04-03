@@ -21,6 +21,7 @@ var GuserService = (function () {
         this.guserUrl = 'http://localhost:7000/api/guser';
         this.gusersUrl = 'http://localhost:7000/api/gusers';
         this.gquestsUrl = 'http://localhost:7000/api/guserquests';
+        this.addquestUrl = 'http://localhost:7000/api/addmequest';
     }
     GuserService.prototype.getGuser = function (mode) {
         return this.http.get(this.guserUrl + "/?id=" + mode)
@@ -41,6 +42,14 @@ var GuserService = (function () {
     };
     GuserService.prototype.getGusers = function () {
         return this.http.get(this.gusersUrl)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    GuserService.prototype.addQuest = function (iid, qqid) {
+        var headers = new http_1.Headers({ 'content-type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post(this.addquestUrl, JSON.stringify({ guserId: iid, gquestId: qqid }), options)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
