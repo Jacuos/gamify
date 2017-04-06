@@ -21,8 +21,19 @@ var go_quest_component_1 = require("./go-quest.component");
 var auth_guard_1 = require("./glogin/auth.guard");
 var register_component_1 = require("./glogin/register.component");
 var not_found_component_1 = require("./not-found.component");
+var admin_login_component_1 = require("./gadmin/admin-login.component");
+var admin_dashboard_component_1 = require("./gadmin/admin-dashboard.component");
+var gadmin_component_1 = require("./gadmin/gadmin.component");
+var admin_guard_1 = require("./gadmin/admin.guard");
 var routes = [
     { path: 'login', component: login_component_1.LoginComponent },
+    { path: 'gadmin', redirectTo: '/gadmin/dashboard', pathMatch: 'full' },
+    { path: 'gadmin', component: gadmin_component_1.GadminComponent, children: [
+            { path: 'login', component: admin_login_component_1.AdminLoginComponent },
+            { path: 'dashboard', component: admin_dashboard_component_1.AdminDashboardComponent, canActivate: [admin_guard_1.AdminGuard] },
+            { path: '**', redirectTo: 'gadmin/dashboard', pathMatch: 'full' },
+        ]
+    },
     { path: 'register', component: register_component_1.RegisterComponent },
     { path: 'scoreboard', component: scoreboard_component_1.ScoreboardComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'guser', component: guser_detail_component_1.GuserDetailComponent, canActivate: [auth_guard_1.AuthGuard] },

@@ -14,9 +14,10 @@ import org.springframework.ui.Model;
 @Controller
 //@RequestMapping(value = "/{path:^(?!api)[^\\.]*}")
 public class MainController {
-
     @RequestMapping(value = "/{path:^(?!api)[^\\.]*}")
     public String redirect() { return "forward:/"; }
+    @RequestMapping(value = "/gadmin/**")
+    public String redirect2() { return "forward:/"; }
 
 
 

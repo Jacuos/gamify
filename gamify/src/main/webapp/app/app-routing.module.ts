@@ -12,9 +12,21 @@ import {GoQuestComponent} from "./go-quest.component";
 import {AuthGuard} from "./glogin/auth.guard";
 import {RegisterComponent} from "./glogin/register.component";
 import {NotFoundComponent} from "./not-found.component";
+import {AdminLoginComponent} from "./gadmin/admin-login.component";
+import {AdminDashboardComponent} from "./gadmin/admin-dashboard.component";
+import {GadminComponent} from "./gadmin/gadmin.component";
+import {AdminGuard} from "./gadmin/admin.guard";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'gadmin', redirectTo: '/gadmin/dashboard', pathMatch: 'full'},
+  {path: 'gadmin', component: GadminComponent, children:
+    [
+      {path: 'login', component: AdminLoginComponent},
+      {path: 'dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard]},
+      {path: '**', redirectTo: 'gadmin/dashboard', pathMatch: 'full'},
+    ]
+  },
   {path: 'register', component: RegisterComponent},
   {path: 'scoreboard', component: ScoreboardComponent, canActivate: [AuthGuard]},
   {path: 'guser', component: GuserDetailComponent, canActivate: [AuthGuard]},

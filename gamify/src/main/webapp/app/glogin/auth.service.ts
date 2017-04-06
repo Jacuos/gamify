@@ -21,9 +21,11 @@ export class AuthService {
 
   guser = new BehaviorSubject<Guser>(new Guser(0,"","","","",0,0));
   guser$ = this.guser.asObservable();
-  constructor(private http: Http) {}
 
-  login(username: string, password: string) {
+  isAdmin: boolean;
+  constructor(private http: Http) {this.isAdmin = false;}
+
+  login(username: string, password: string, notAdmin: boolean = true) {
     let headers = new Headers({ 'content-type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this.http.post('http://localhost:7000/api/glogin', JSON.stringify({ login: username, password: password }), options)
@@ -31,10 +33,11 @@ export class AuthService {
         // login successful if there's a jwt token in the response
         let user = response.json();
         if (user) {
+          this.isAdmin = user.isAdmin;
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentLogin', JSON.stringify(user));
           console.log(JSON.parse(localStorage.getItem('currentLogin')) as Glogin);
-          this.logged.next(true);
+          this.logged.next(notAdmin);
         }
       });
   }
@@ -55,6 +58,8 @@ export class AuthService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentLogin');
+    localStorage.removeItem('currentUser');
+    this.isAdmin = false;
     this.logged.next(false);
   }
   createGuser(guser: string): Promise<string>{

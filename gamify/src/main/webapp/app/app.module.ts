@@ -20,12 +20,17 @@ import {HomeComponent} from "./home/home.component";
 import {RegisterComponent} from "./glogin/register.component";
 import {NotFoundComponent} from "./not-found.component";
 import {PasswordValidator} from "./glogin/password.validator";
+import {AdminLoginComponent} from "./gadmin/admin-login.component";
+import {AdminDashboardComponent} from "./gadmin/admin-dashboard.component";
+import {GadminComponent} from "./gadmin/gadmin.component";
+
+import {AdminGuard} from "./gadmin/admin.guard";
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpModule,JsonpModule ],
-  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe, LoginComponent, HomeComponent, RegisterComponent, NotFoundComponent, PasswordValidator ],
-  providers: [GuserService, AuthService, AuthGuard],
+  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe, LoginComponent, HomeComponent, RegisterComponent, NotFoundComponent, PasswordValidator,GadminComponent,  AdminLoginComponent, AdminDashboardComponent ],
+  providers: [GuserService, AuthService, AuthGuard, AdminGuard],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {
