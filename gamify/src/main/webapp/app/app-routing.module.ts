@@ -16,6 +16,9 @@ import {AdminLoginComponent} from "./gadmin/admin-login.component";
 import {AdminDashboardComponent} from "./gadmin/admin-dashboard.component";
 import {GadminComponent} from "./gadmin/gadmin.component";
 import {AdminGuard} from "./gadmin/admin.guard";
+import {AdminQuestsComponent} from "./gadmin/admin-quests.component";
+import {AdminUsersComponent} from "./gadmin/admin-users.component";
+import {AdminLayoutComponent} from "./gadmin/admin-layout.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -23,7 +26,13 @@ const routes: Routes = [
   {path: 'gadmin', component: GadminComponent, children:
     [
       {path: 'login', component: AdminLoginComponent},
-      {path: 'dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard]},
+      {path: 'dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard], children:
+        [
+          {path: 'quests', component: AdminQuestsComponent},
+          {path: 'users', component: AdminUsersComponent},
+          {path: 'layout', component: AdminLayoutComponent},
+        ]
+      },
       {path: '**', redirectTo: 'gadmin/dashboard', pathMatch: 'full'},
     ]
   },

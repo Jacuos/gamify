@@ -31,13 +31,16 @@ var admin_login_component_1 = require("./gadmin/admin-login.component");
 var admin_dashboard_component_1 = require("./gadmin/admin-dashboard.component");
 var gadmin_component_1 = require("./gadmin/gadmin.component");
 var admin_guard_1 = require("./gadmin/admin.guard");
+var admin_quests_component_1 = require("./gadmin/admin-quests.component");
+var admin_users_component_1 = require("./gadmin/admin-users.component");
+var admin_layout_component_1 = require("./gadmin/admin-layout.component");
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routing_module_1.AppRoutingModule, http_1.HttpModule, http_1.JsonpModule],
-            declarations: [app_component_1.AppComponent, scoreboard_component_1.ScoreboardComponent, guser_detail_component_1.GuserDetailComponent, login_component_1.LoginComponent, quest_log_component_1.QuestLogComponent, go_quest_component_1.GoQuestComponent, guser_search_pipe_1.GuserSearchPipe, login_component_1.LoginComponent, home_component_1.HomeComponent, register_component_1.RegisterComponent, not_found_component_1.NotFoundComponent, password_validator_1.PasswordValidator, gadmin_component_1.GadminComponent, admin_login_component_1.AdminLoginComponent, admin_dashboard_component_1.AdminDashboardComponent],
+            declarations: [app_component_1.AppComponent, scoreboard_component_1.ScoreboardComponent, guser_detail_component_1.GuserDetailComponent, login_component_1.LoginComponent, quest_log_component_1.QuestLogComponent, go_quest_component_1.GoQuestComponent, guser_search_pipe_1.GuserSearchPipe, login_component_1.LoginComponent, home_component_1.HomeComponent, register_component_1.RegisterComponent, not_found_component_1.NotFoundComponent, password_validator_1.PasswordValidator, gadmin_component_1.GadminComponent, admin_login_component_1.AdminLoginComponent, admin_dashboard_component_1.AdminDashboardComponent, admin_quests_component_1.AdminQuestsComponent, admin_users_component_1.AdminUsersComponent, admin_layout_component_1.AdminLayoutComponent],
             providers: [guser_service_1.GuserService, auth_service_1.AuthService, auth_guard_1.AuthGuard, admin_guard_1.AdminGuard],
             bootstrap: [app_component_1.AppComponent]
         }), 

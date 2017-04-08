@@ -23,7 +23,14 @@ export class AuthService {
   guser$ = this.guser.asObservable();
 
   isAdmin: boolean;
-  constructor(private http: Http) {this.isAdmin = false;}
+  constructor(private http: Http) {
+    if(localStorage.getItem('currentLogin')) {
+      var test = JSON.parse(localStorage.getItem('currentLogin')) as Glogin;
+      if(test.isAdmin)
+        this.isAdmin = true;
+    }
+    else
+      this.isAdmin = false;}
 
   login(username: string, password: string, notAdmin: boolean = true) {
     let headers = new Headers({ 'content-type': 'application/json' });
