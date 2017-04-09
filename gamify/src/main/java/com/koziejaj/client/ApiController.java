@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.io.IOException;
 
@@ -79,7 +80,7 @@ public class ApiController {
             response = "Już posiadasz zadanie "+qid+" !";
         else if(gQuestRep.findById(qid) == null)//Quest nie istnieje
             response = "Zadanie "+qid+" nie istnieje!";
-        else if(gQuestRep.findById(qid).getEndOf().before(new Date()))//Quest po czasie
+        else if(gQuestRep.findById(qid).getEndOf().isBefore(LocalDateTime.now()))//Quest po czasie
             response = "Skończyła się ważność zadania: "+qid;
         else{
             GUser guser = repository.findOne(id);

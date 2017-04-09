@@ -1,8 +1,9 @@
 package com.koziejaj.client;
 
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
+
 /**
  * Created by Jacek on 2017-02-24.
  */
@@ -12,12 +13,12 @@ public class GQuest {
     private Long id;
     private String description;
     private int exp;
-    private Date endOf;
+    private LocalDateTime endOf;
 
     public GQuest(){
 
     }
-    public GQuest(Long i, String d, int ex, Date en){
+    public GQuest(Long i, String d, int ex, LocalDateTime en){
         id =i;
         description = d;
         exp = ex;
@@ -48,11 +49,11 @@ public class GQuest {
         this.exp = exp;
     }
 
-    public Date getEndOf() {
+    public LocalDateTime getEndOf() {
         return endOf;
     }
 
-    public void setEndOf(Date endOf) {
+    public void setEndOf(LocalDateTime endOf) {
         this.endOf = endOf;
     }
 }

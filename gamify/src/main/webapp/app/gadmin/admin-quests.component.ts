@@ -3,6 +3,7 @@
  */
 
 import {Component, Input} from '@angular/core';
+import {GadminService} from "./gadmin.service";
 
 
 @Component({
@@ -13,12 +14,15 @@ import {Component, Input} from '@angular/core';
 })
 export class AdminQuestsComponent  {
   model: any = {};
-  constructor(){
-  }
+  response: number;
+
+  constructor(private gadminService: GadminService){}
+
   ngOnInit(): void {
   }
 
-  generate(): void{
-
+  generate(form: string): void{
+    this.gadminService.newQuest(form)
+      .then(response => this.response = response)
   }
 }
