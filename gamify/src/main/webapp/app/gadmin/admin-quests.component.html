@@ -1,16 +1,24 @@
 DODAJ QUESTA
+<div *ngIf="name">
+Zadanie "{{name}}" zostało dodane!
+  Odbiór punktów poprzez adres: {{responseAddress}}
+  <div>
+    <qr-code [value]="responseAddress" [size]="300"></qr-code>
+  </div>
+</div>
+
 <form name="form" (ngSubmit)="f.form.valid && generate(f.form.value)" #f="ngForm" novalidate>
-  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !exp.valid }">
+  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !description.valid && !name}">
     <label for="description">Opis</label>
     <input type="text" class="form-control" name="description" [(ngModel)]="model.description" #description="ngModel" required />
-    <div *ngIf="f.submitted && !description.valid" class="help-block">Opis jest wymagany</div>
+    <div *ngIf="f.submitted && !description.valid && !name" class="help-block">Opis jest wymagany</div>
   </div>
-  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !exp.valid }">
+  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !exp.valid && !name}">
     <label for="exp">Doświadczenie</label>
     <input type="number" class="form-control" name="exp" [(ngModel)]="model.exp" #exp="ngModel" required />
-    <div *ngIf="f.submitted && !exp.valid" class="help-block">Liczba doświadczenia jest wymagana</div>
+    <div *ngIf="f.submitted && !exp.valid && !name" class="help-block">Liczba doświadczenia jest wymagana</div>
   </div>
-  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !endOf.valid }">
+  <div class="form-group">
     <label for="endOf">Do kiedy</label>
     <input type="datetime-local" class="form-control" name="endOf" [(ngModel)]="model.endOf" #endOf="ngModel" />
   </div>
