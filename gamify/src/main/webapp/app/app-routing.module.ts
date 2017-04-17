@@ -16,9 +16,11 @@ import {AdminLoginComponent} from "./gadmin/admin-login.component";
 import {AdminDashboardComponent} from "./gadmin/admin-dashboard.component";
 import {GadminComponent} from "./gadmin/gadmin.component";
 import {AdminGuard} from "./gadmin/admin.guard";
-import {AdminQuestsComponent} from "./gadmin/admin-quests.component";
+import {AdminQuestsComponent} from "./gadmin/quests/admin-quests.component";
 import {AdminUsersComponent} from "./gadmin/admin-users.component";
 import {AdminLayoutComponent} from "./gadmin/admin-layout.component";
+import {AdminAllQuestsComponent} from "./gadmin/quests/admin-allquests.component";
+import {AdminNewQuestComponent} from "./gadmin/quests/admin-newquest.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -28,7 +30,7 @@ const routes: Routes = [
       {path: 'login', component: AdminLoginComponent},
       {path: 'dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard], children:
         [
-          {path: 'quests', component: AdminQuestsComponent},
+          {path: 'quests',  component: AdminQuestsComponent,  children: [{path: 'new', component: AdminNewQuestComponent},{path: 'all', component: AdminAllQuestsComponent}] },
           {path: 'users', component: AdminUsersComponent},
           {path: 'layout', component: AdminLayoutComponent},
         ]

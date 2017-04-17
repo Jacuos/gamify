@@ -1,0 +1,5 @@
+<ul class="quests">
+  <li *ngFor="let quest of quests">
+    <span class="badge">{{quest.id}}</span> {{quest.description}} | {{quest.exp}} | {{quest.endOf.toLocaleString()}}
+  </li>
+</ul>

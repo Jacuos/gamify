@@ -52,4 +52,10 @@ public class GAdminController {
         //return -1l;
     }
 
+    @RequestMapping("/api/gadmin/allquests")
+    public Iterable<GQuest> gusers() {
+        Iterable<GQuest> model = gQuestRep.findAll();
+        return model;
+    }
+
 }

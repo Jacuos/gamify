@@ -3,18 +3,18 @@
  */
 
 import {Component, Input, ElementRef} from '@angular/core';
-import {GadminService} from "./gadmin.service";
+import {GadminService} from "../gadmin.service";
 import {QRCodeComponent} from 'angular2-qrcode';
 
 
 @Component({
   moduleId: module.id,
-  selector: 'admin-quests',
-  templateUrl: 'admin-quests.component.html',
+  selector: 'admin-newquest',
+  templateUrl: 'admin-newquest.component.html',
   //styleUrls: [ 'app.component.css' ]
 })
 
-export class AdminQuestsComponent  {
+export class AdminNewQuestComponent  {
   model: any = {};
   name: string;
   response: number;
