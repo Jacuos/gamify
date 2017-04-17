@@ -1,1 +1,23 @@
 USUN USERA
+<div id="search-component">
+  <input [(ngModel)]="search" placeholder="Szukaj..."/>
+</div>
+<table class = "heroes">
+  <tr>
+    <th>Login <button (click)="setOrder('login')">^</button></th>
+    <th>Imię <button (click)="setOrder('firstName')">^</button></th>
+    <th>Nazwisko <button (click)="setOrder('lastName')">^</button></th>
+    <th>Poziom <button (click)="setOrder('lvl')">^</button></th>
+    <th>Punkty <button (click)="setOrder('exp')">^</button></th>
+    <th>Opis <button (click)="setOrder('desciption')">^</button></th>
+  </tr>
+  <tr *ngFor="let guser of gusers  | gusersearch:search:order" class = "guser" [class.selected]="guser === selectedGuser">
+    <th>{{guser.login}}</th>
+    <th>{{guser.firstName}}</th>
+    <th> {{guser.lastName}}</th>
+    <th>{{guser.lvl}} </th>
+    <th>{{guser.exp}} </th>
+    <th>{{guser.description}} </th>
+    <button class="delete" (click)="delete(guser); $event.stopPropagation()">Usuń</button>
+  </tr>
+</table>

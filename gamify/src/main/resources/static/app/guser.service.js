@@ -54,6 +54,12 @@ var GuserService = (function () {
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    GuserService.prototype.removeGuser = function (id) {
+        return this.http.get(this.guserUrl + "x/?id=" + id)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     GuserService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);

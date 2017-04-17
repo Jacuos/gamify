@@ -3,6 +3,7 @@ package com.koziejaj.client.GLogin;
  * Created by Jacek on 21-01-2017.
  */
 import com.koziejaj.client.GLogin.GLoginRepository;
+import com.koziejaj.client.GUserQRepository;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -27,6 +28,8 @@ public class GLoginController {
     private GLoginRepository gLoginRep;
     @Autowired
     private GUserRepository gUserRep;
+    @Autowired
+    private GUserQRepository guserQRep;
 
     @RequestMapping(value="/api/glogin", method = RequestMethod.POST)
     public GLogin login(@RequestBody GLogin postData) {
@@ -50,5 +53,13 @@ public class GLoginController {
         }
         else
             return false;
+    }
+    @RequestMapping("/api/guserx")
+    public boolean guserRemove(@RequestParam(value="id") Long id) {
+        String login = gUserRep.findOne(id).getLogin();
+        gUserRep.delete(id);
+        gLoginRep.delete(login);
+        guserQRep.removeByGuserId(id);
+        return true;
     }
 }
