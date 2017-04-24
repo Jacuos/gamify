@@ -22,13 +22,14 @@ export class HomeComponent  {
   subscription:Subscription;
   guser: Guser;
   logged: boolean;
+  url: string;
 
   constructor(private authService: AuthService, private guserService: GuserService,   @Inject(DOCUMENT) private document: any){}
   ngOnInit(): void {
     this.subscription = this.authService.logged$
       .subscribe(logged => this.logged = logged);
     this.subscription = this.authService.guser$
-      .subscribe(guser => this.guser = guser);
+      .subscribe(guser => {this.guser = guser; this.url = "http://localhost:7000/api/photo?id="+this.guser.id});
 
     console.log(this.document.location.href);
     if (localStorage.getItem('currentLogin') && this.document.location.href.search("\/gadmin") == -1 ) {
@@ -40,7 +41,8 @@ export class HomeComponent  {
     if (localStorage.getItem('currentUser')) {
       this.guser = JSON.parse(localStorage.getItem('currentUser')) as Guser;
       this.guserService.getGuser(this.guser.id.toString())
-        .then(response => this.guser = response);
+        .then(response => this.guser = response)
+        .then(response => this.url = "http://localhost:7000/api/photo?id="+this.guser.id);
     }
   }
 

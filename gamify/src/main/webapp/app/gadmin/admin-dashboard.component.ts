@@ -13,10 +13,13 @@ import {Guser} from "../guser";
 })
 export class AdminDashboardComponent  {
   guser: Guser;
+  url: string;
   constructor(){
   }
   ngOnInit(): void {
-    if (localStorage.getItem('currentUser'))
+    if (localStorage.getItem('currentUser')) {
       this.guser = JSON.parse(localStorage.getItem('currentUser')) as Guser;
+      this.url = "http://localhost:7000/api/photo?id="+this.guser.id;
+    }
   }
 }

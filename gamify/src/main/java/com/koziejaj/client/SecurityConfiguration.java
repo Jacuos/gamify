@@ -28,7 +28,7 @@ import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfFilter;
-
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
 import javax.inject.Inject;

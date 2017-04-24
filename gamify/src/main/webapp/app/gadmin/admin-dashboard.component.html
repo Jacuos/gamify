@@ -1,6 +1,8 @@
 [DASHBOARD]
 <div *ngIf="guser">
-<p>{{guser.login}}<br>|LVL:{{guser.lvl}}|EXP:{{guser.exp}}</p>
+<p><img src={{url}} alt="Smiley face" height="100" width="100"><br>
+  {{guser.login}}<br>|LVL:{{guser.lvl}}|EXP:{{guser.exp}}
+</p>
 </div>
 <nav>
   <a routerLink="/gadmin/dashboard/quests/new" routerLinkActive="active">Zadania</a>

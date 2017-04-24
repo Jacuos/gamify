@@ -3,24 +3,31 @@ package com.koziejaj.client;
  * Created by Jacek on 21-01-2017.
  */
 import com.koziejaj.client.GLogin.GLoginRepository;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.servlet.*;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.beans.beancontext.BeanContextSupport;
+import java.io.File;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.io.IOException;
+import org.apache.commons.io.IOUtils;
 
 
 @RestController
-public class ApiController {
+public class ApiController extends HttpServlet {
 
     @Autowired
     private GUserRepository repository;
@@ -109,6 +116,21 @@ public class ApiController {
         if(g.getExp()>=threshold.get(g.getLvl())){
             g.setLvl(g.getLvl()+1);
         }
+    }
+    @ResponseBody
+    @RequestMapping(value = "api/photo", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] testphoto(@RequestParam(value="id", defaultValue="0") String id) throws IOException {
+        //File f = new File("src/main/resources/static/images/portal-cake.jpg");
+        /*if(f.exists() && !f.isDirectory()) {
+            System.out.println("PLIK ISTNIEJE!!!!!!!!!!!!!!!!!!!");
+            System.out.println(f.getAbsolutePath());
+            System.out.println(f.getCanonicalPath());
+            System.out.println(f.getPath());
+        }*/
+        InputStream in = ApiController.class.getResourceAsStream("/static/images/"+id+".jpg");
+        return IOUtils.toByteArray(in);
+        //byte[] b = new byte[10];
+        //return b;
     }
 
 }
