@@ -6,6 +6,7 @@ import {Component, Input} from '@angular/core';
 import {Guser} from "../guser";
 import {GuserService} from "../guser.service";
 import {Router} from "@angular/router";
+import {GadminService} from "./gadmin.service";
 
 
 @Component({
@@ -23,7 +24,7 @@ export class AdminUsersComponent  {
   };
   gusers: Guser[];
   selectedGuser: Guser;
-  constructor(private guserService: GuserService, private router: Router) { }
+  constructor(private guserService: GuserService, private router: Router, private adminService: GadminService) { }
 
   ngOnInit(): void {
     this.guserService.getGusers()
@@ -44,7 +45,7 @@ export class AdminUsersComponent  {
      var r = confirm('Na pewno chcesz usunąć użytkownika '+user.login+"?");
      if(r == true) {
        console.log("USUWAM");
-       this.guserService.removeGuser(user.id)
+       this.adminService.removeGuser(user.id)
          .then(() => {
            this.gusers = this.gusers.filter(h => h !== user);
            if (this.selectedGuser === user) { this.selectedGuser = null; }

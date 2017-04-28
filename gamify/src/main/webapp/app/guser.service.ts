@@ -56,12 +56,6 @@ export class GuserService {
       .then(response => response.json() as string)
       .catch(this.handleError);
   }
-  removeGuser(id: number): Promise<boolean>{
-    return this.http.get(this.guserUrl+"x/?id="+id)
-      .toPromise()
-      .then(response => response.json() as boolean)
-      .catch(this.handleError);
-  }
 
 
   private handleError(error: any): Promise<any> {

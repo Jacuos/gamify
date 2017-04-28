@@ -54,12 +54,4 @@ public class GLoginController {
         else
             return false;
     }
-    @RequestMapping("/api/guserx")
-    public boolean guserRemove(@RequestParam(value="id") Long id) {
-        String login = gUserRep.findOne(id).getLogin();
-        gUserRep.delete(id);
-        gLoginRep.delete(login);
-        guserQRep.removeByGuserId(id);
-        return true;
-    }
 }

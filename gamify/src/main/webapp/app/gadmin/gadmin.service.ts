@@ -13,6 +13,7 @@ export class GadminService {
 
   private newquest = 'http://localhost:7000/api/gadmin/newquest';
   private allquests = 'http://localhost:7000/api/gadmin/allquests';
+  private rmguser = 'http://localhost:7000/api/gadmin/rmguser';
 
   constructor(private http: Http) { }
 
@@ -28,6 +29,12 @@ export class GadminService {
     return this.http.get(this.allquests)
       .toPromise()
       .then(response => response.json() as Gquest[])
+      .catch(this.handleError);
+  }
+  removeGuser(id: number): Promise<boolean>{
+    return this.http.get(this.rmguser+"?id="+id)
+      .toPromise()
+      .then(response => response.json() as boolean)
       .catch(this.handleError);
   }
 

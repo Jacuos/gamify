@@ -4,6 +4,8 @@ package com.koziejaj.client.GAdmin;
  */
 import com.koziejaj.client.GLogin.GLoginRepository;
 import com.koziejaj.client.GQuestRepository;
+import com.koziejaj.client.GUserQRepository;
+import com.koziejaj.client.GUserRepository;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -27,6 +29,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GAdminController {
     @Autowired
     private GQuestRepository gQuestRep;
+    @Autowired
+    private GUserRepository gUserRep;
+    @Autowired
+    private GLoginRepository gLoginRep;
+    @Autowired
+    private GUserQRepository guserQRep;
 
     @RequestMapping(value="/api/gadmin/newquest", method = RequestMethod.POST)
     public Long newQuest(@RequestBody String postData) throws IOException {
@@ -56,6 +64,15 @@ public class GAdminController {
     public Iterable<GQuest> gusers() {
         Iterable<GQuest> model = gQuestRep.findAll();
         return model;
+    }
+
+    @RequestMapping("/api/gadmin/rmguser")
+    public boolean rmGuser(@RequestParam(value="id") Long id) {
+        String login = gUserRep.findOne(id).getLogin();
+        gUserRep.delete(id);
+        gLoginRep.delete(login);
+        guserQRep.removeByGuserId(id);
+        return true;
     }
 
 }
