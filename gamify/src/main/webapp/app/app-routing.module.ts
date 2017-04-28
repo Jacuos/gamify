@@ -21,6 +21,7 @@ import {AdminUsersComponent} from "./gadmin/admin-users.component";
 import {AdminLayoutComponent} from "./gadmin/admin-layout.component";
 import {AdminAllQuestsComponent} from "./gadmin/quests/admin-allquests.component";
 import {AdminNewQuestComponent} from "./gadmin/quests/admin-newquest.component";
+import {SettingsComponent} from "./gsettings/settings.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path: 'guser', component: GuserDetailComponent, canActivate: [AuthGuard]},
   {path: 'questlog', component: QuestLogComponent, canActivate: [AuthGuard]},
   {path: 'goquest', component: GoQuestComponent, canActivate: [AuthGuard]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: '/scoreboard', pathMatch: 'full', canActivate: [AuthGuard]},
   { path: '**', component: NotFoundComponent }
 ];

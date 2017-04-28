@@ -33,12 +33,14 @@ import { QRCodeModule } from 'angular2-qrcode';
 import {AdminQuestsComponent} from "./gadmin/quests/admin-quests.component";
 import {AdminAllQuestsComponent} from "./gadmin/quests/admin-allquests.component";
 import {AdminNewQuestComponent} from "./gadmin/quests/admin-newquest.component";
+import {SettingsComponent} from "./gsettings/settings.component";
+import {SettingsService} from "./gsettings/settings.service";
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpModule,JsonpModule, QRCodeModule],
-  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe, LoginComponent, HomeComponent, RegisterComponent, NotFoundComponent, PasswordValidator,GadminComponent,  AdminLoginComponent, AdminDashboardComponent, AdminQuestsComponent, AdminUsersComponent, AdminLayoutComponent, AdminAllQuestsComponent, AdminNewQuestComponent],
-  providers: [GuserService, AuthService, AuthGuard, AdminGuard, GadminService],
+  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe, LoginComponent, HomeComponent, RegisterComponent, NotFoundComponent, PasswordValidator,GadminComponent,  AdminLoginComponent, AdminDashboardComponent, AdminQuestsComponent, AdminUsersComponent, AdminLayoutComponent, AdminAllQuestsComponent, AdminNewQuestComponent, SettingsComponent],
+  providers: [GuserService, AuthService, AuthGuard, AdminGuard, GadminService, SettingsService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {

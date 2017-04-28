@@ -2,7 +2,7 @@
  * Created by Jacek on 2017-03-02.
  */
 
-import {Component, Input, Inject} from '@angular/core';
+import {Component, Input, Inject, Injectable} from '@angular/core';
 import {Router, ActivatedRoute, RouterState}            from '@angular/router';
 import {AuthService} from "../glogin/auth.service";
 import {Subscription, Observable} from "rxjs";
@@ -16,6 +16,7 @@ import {DOCUMENT} from "@angular/platform-browser";
   templateUrl: 'home.component.html',
   //styleUrls: [ 'home.component.css' ]
 })
+@Injectable()
 export class HomeComponent  {
   title = 'GAMIFY';
   desc = 'Witamy w aplikacji grywalizacyjnej!';

@@ -30,6 +30,7 @@ var admin_users_component_1 = require("./gadmin/admin-users.component");
 var admin_layout_component_1 = require("./gadmin/admin-layout.component");
 var admin_allquests_component_1 = require("./gadmin/quests/admin-allquests.component");
 var admin_newquest_component_1 = require("./gadmin/quests/admin-newquest.component");
+var settings_component_1 = require("./gsettings/settings.component");
 var routes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'gadmin', redirectTo: '/gadmin/dashboard', pathMatch: 'full' },
@@ -49,6 +50,7 @@ var routes = [
     { path: 'guser', component: guser_detail_component_1.GuserDetailComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'questlog', component: quest_log_component_1.QuestLogComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'goquest', component: go_quest_component_1.GoQuestComponent, canActivate: [auth_guard_1.AuthGuard] },
+    { path: 'settings', component: settings_component_1.SettingsComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: '', redirectTo: '/scoreboard', pathMatch: 'full', canActivate: [auth_guard_1.AuthGuard] },
     { path: '**', component: not_found_component_1.NotFoundComponent }
 ];

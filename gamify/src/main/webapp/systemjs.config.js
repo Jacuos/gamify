@@ -15,6 +15,9 @@
       'angular2-qrcode': 'npm:angular2-qrcode/lib/angular2-qrcode.umd.js',
       'qrious': 'npm:qrious/dist/umd/qrious.min.js',
 
+
+
+
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
       '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
@@ -37,7 +40,7 @@
       },
       rxjs: {
         defaultExtension: 'js'
-      }
+      },
     }
   });
 })(this);
