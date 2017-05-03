@@ -1,5 +1,10 @@
 <div *ngIf="gquests">
-<li *ngFor="let gquest of gquests">
-  <span class="badge">{{gquest.description}}</span><span class="badge"> {{gquest.exp}} EXP</span>
-</li>
+<table class = "heroes">
+  <tr>
+    <th>Opis</th><th>{{exp}}</th>
+  </tr>
+  <tr *ngFor="let gquest of gquests">
+    <th>{{gquest.description}}</th><th>{{gquest.exp}}</th>
+  </tr>
+</table>
 </div>

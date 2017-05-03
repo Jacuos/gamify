@@ -3,11 +3,11 @@
 <p>Imię: {{guser.firstName}} </p>
 <p>Nazwisko: {{guser.lastName}}
 <p>O nim: {{guser.description}} </p>
-<p>Poziom: {{guser.lvl}} Punkty: {{guser.exp}}</p>
+<p>{{lvl}}: {{guser.lvl}} {{exp}}: {{guser.exp}}</p>
   <table>
     <tr>
       <th>Opis</th>
-      <th>Punkty</th>
+      <th>{{exp}}</th>
     </tr>
     <tr *ngFor="let gquest of gquest">
       <th>{{gquest.description}}</th>

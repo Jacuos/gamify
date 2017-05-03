@@ -36,7 +36,10 @@ export class LoginComponent {
           this.authenticationService.fetchAdditionalData(this.model.username)
           .subscribe(
               data2 =>{
-                this.router.navigate([this.returnUrl]);
+                this.authenticationService.fetchEvenMore()
+                  .subscribe(data3 =>{
+                this.router.navigate([this.returnUrl]);}
+                )
               }
           )
         },

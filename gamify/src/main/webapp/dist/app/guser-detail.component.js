@@ -22,6 +22,9 @@ var GuserDetailComponent = (function () {
     }
     GuserDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var temp = JSON.parse(localStorage.getItem('layout'));
+        this.lvl = temp[1].value;
+        this.exp = temp[0].value;
         this.sub = this.route
             .params
             .subscribe(function (params) {

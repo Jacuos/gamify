@@ -19,11 +19,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.koziejaj.client.GQuest;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-
 
 @RestController
 public class GAdminController {
@@ -35,6 +39,8 @@ public class GAdminController {
     private GLoginRepository gLoginRep;
     @Autowired
     private GUserQRepository guserQRep;
+    @Autowired
+    private GLayoutRepository gLayoutRep;
 
     @RequestMapping(value="/api/gadmin/newquest", method = RequestMethod.POST)
     public Long newQuest(@RequestBody String postData) throws IOException {
@@ -73,6 +79,49 @@ public class GAdminController {
         gLoginRep.delete(login);
         guserQRep.removeByGuserId(id);
         return true;
+    }
+
+    @RequestMapping("/api/gadmin/setparam")
+    public boolean setParam(@RequestParam(value="id") String id, @RequestParam(value="value") String value) {
+        GLayout gl = gLayoutRep.findOne(id);
+        gl.setValue(value);
+        gLayoutRep.save(gl);
+        return true;
+    }
+    @RequestMapping("/api/gadmin/getparams")
+    public Iterable<GLayout> getParam() {
+        Iterable<GLayout> model = gLayoutRep.findAll();
+        return model;
+    }
+    @RequestMapping("/api/gadmin/getcss")
+    public String getCss() throws IOException {
+        byte[] encoded = Files.readAllBytes(Paths.get("src/main/webapp/styles.css"));
+        String model =  new String(encoded, Charset.defaultCharset());
+        model = model.replace("\r\n","%D%A");
+        model = model.replace("\"","%22");
+        model = model.replace("\\","%5C");
+        model = model.replace("{","%7B");
+        model = model.replace("}","%7D");
+        model = "\""+ model+"\"";
+        return model;
+    }
+    @RequestMapping("/api/gadmin/setparams")
+    public String setParams(@RequestBody ArrayList<GLayout> postData) throws IOException {
+        gLayoutRep.save(postData);
+        return new ObjectMapper().writeValueAsString("Zmiany zostały zapisane");
+    }
+    @RequestMapping("/api/gadmin/setcss")
+    public String setCss(@RequestBody String model) throws IOException {
+        model = model.substring(1,model.length()-1);
+        model = model.replace("%D%A","\r\n");
+        model = model.replace("%22","\"");
+        model = model.replace("%5C","\\");
+        model = model.replace("%7B","{");
+        model = model.replace("%7D","}");
+        PrintWriter out = new PrintWriter("src/main/webapp/styles.css");
+        out.print(model);
+        out.close();
+        return new ObjectMapper().writeValueAsString("Zmiany zostały zapisane");
     }
 
 }

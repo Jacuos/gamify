@@ -6,8 +6,8 @@
     <th>Login <button (click)="setOrder('login')">^</button></th>
   <th>Imię <button (click)="setOrder('firstName')">^</button></th>
     <th>Nazwisko <button (click)="setOrder('lastName')">^</button></th>
-    <th>Poziom <button (click)="setOrder('lvl')">^</button></th>
-    <th>Punkty <button (click)="setOrder('exp')">^</button></th>
+    <th>{{lvl}} <button (click)="setOrder('lvl')">^</button></th>
+    <th>{{exp}} <button (click)="setOrder('exp')">^</button></th>
     <th>Opis <button (click)="setOrder('desciption')">^</button></th>
   </tr>
   <tr *ngFor="let guser of gusers  | gusersearch:search:order" (click)="onSelect(guser)" class = "guser" [class.selected]="guser === selectedGuser">

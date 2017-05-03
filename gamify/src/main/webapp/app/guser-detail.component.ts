@@ -8,6 +8,7 @@ import './rxjs-operators';
 import {Gquest} from "./gquest";
 import {Guser} from "./guser";
 import {ActivatedRoute, Params} from "@angular/router";
+import {Layout} from "./gadmin/layout";
 
 @Component({
   moduleId: module.id,
@@ -19,9 +20,14 @@ export class GuserDetailComponent  {
   public gquest: Gquest[];
   private sub: any;
   private mode: string;
+  lvl: string;
+  exp: string;
   constructor(private guserService: GuserService, private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
+    var temp = JSON.parse(localStorage.getItem('layout')) as Layout[];
+    this.lvl = temp[1].value;
+    this.exp = temp[0].value;
     this.sub = this.route
       .params
       .subscribe(params => {

@@ -9,6 +9,7 @@ import {Subscription, Observable} from "rxjs";
 import {Guser} from "../guser";
 import {GuserService} from "../guser.service";
 import {DOCUMENT} from "@angular/platform-browser";
+import {Layout} from "../gadmin/layout";
 
 @Component({
   moduleId: module.id,
@@ -18,8 +19,9 @@ import {DOCUMENT} from "@angular/platform-browser";
 })
 @Injectable()
 export class HomeComponent  {
-  title = 'GAMIFY';
   desc = 'Witamy w aplikacji grywalizacyjnej!';
+  lvl = "Poziom";
+  exp = "Doświadczenie";
   subscription:Subscription;
   guser: Guser;
   logged: boolean;
@@ -27,6 +29,10 @@ export class HomeComponent  {
 
   constructor(private authService: AuthService, private guserService: GuserService,   @Inject(DOCUMENT) private document: any){}
   ngOnInit(): void {
+    var temp = JSON.parse(localStorage.getItem('layout')) as Layout[];
+    this.desc = temp[2].value;
+    this.lvl = temp[1].value;
+    this.exp = temp[0].value;
     this.subscription = this.authService.logged$
       .subscribe(logged => this.logged = logged);
     this.subscription = this.authService.guser$

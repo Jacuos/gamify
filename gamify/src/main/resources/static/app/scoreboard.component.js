@@ -25,6 +25,9 @@ var ScoreboardComponent = (function () {
     }
     ScoreboardComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var temp = JSON.parse(localStorage.getItem('layout'));
+        this.lvl = temp[1].value;
+        this.exp = temp[0].value;
         this.guserService.getGusers()
             .then(function (gusers) { return _this.gusers = gusers; });
     };

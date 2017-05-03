@@ -61,6 +61,15 @@ export class AuthService {
       });
 
   }
+  fetchEvenMore(){
+    return this.http.get("http://localhost:7000/api/gadmin/getparams")
+      .map((response: Response) => {
+        let data = response.json();
+        if (data) {
+          localStorage.setItem('layout', JSON.stringify(data));
+        }
+      });
+  }
 
   logout() {
     // remove user from local storage to log user out

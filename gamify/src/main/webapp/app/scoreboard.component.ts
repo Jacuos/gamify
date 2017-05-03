@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import {GuserService} from "./guser.service";
 import {Guser} from "./guser";
 import { Router }            from '@angular/router';
+import {Layout} from "./gadmin/layout";
 
 @Component({
   moduleId: module.id,
@@ -21,9 +22,14 @@ export class ScoreboardComponent  {
 };
   gusers: Guser[];
   selectedGuser: Guser;
+  lvl: string;
+  exp: string;
   constructor(private guserService: GuserService, private router: Router) { }
 
   ngOnInit(): void {
+    var temp = JSON.parse(localStorage.getItem('layout')) as Layout[];
+    this.lvl = temp[1].value;
+    this.exp = temp[0].value;
     this.guserService.getGusers()
       .then(gusers => this.gusers = gusers);
   }

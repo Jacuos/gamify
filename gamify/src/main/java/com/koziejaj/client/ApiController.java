@@ -2,6 +2,7 @@ package com.koziejaj.client;
 /**
  * Created by Jacek on 21-01-2017.
  */
+import com.koziejaj.client.GAdmin.GLayoutRepository;
 import com.koziejaj.client.GLogin.GLoginRepository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,10 @@ import java.util.*;
 import java.io.IOException;
 import org.apache.commons.io.IOUtils;
 
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+
 
 @RestController
 public class ApiController extends HttpServlet {
@@ -35,6 +40,8 @@ public class ApiController extends HttpServlet {
     private GUserQRepository gUserQRep;
     @Autowired
     private GQuestRepository gQuestRep;
+    @Autowired
+    private GLayoutRepository gLayoutRep;
 
     @RequestMapping(value = "/api/hello", method = RequestMethod.GET)
     public Map<String,String> hello() {
@@ -79,7 +86,7 @@ public class ApiController extends HttpServlet {
     }
 
     @RequestMapping(value="/api/addmequest", method = RequestMethod.POST)
-    public String addMeQuest(@RequestBody GUserQ postData) throws IOException {
+    public String addMeQuest(@RequestBody GUserQ postData) throws IOException, ScriptException {
         String response;
         Long id = postData.getGUserId();
         Long qid = postData.getGQuestId();
@@ -108,13 +115,20 @@ public class ApiController extends HttpServlet {
         else
             return false;*/
     }
-    void levelUp(GUser g){
+    void levelUp(GUser g)throws ScriptException{
         HashMap<Integer,Integer> threshold = new HashMap<Integer,Integer>();
+        String formula = gLayoutRep.findOne("formula").getValue();
+
+        ScriptEngineManager mgr = new ScriptEngineManager();
+        ScriptEngine engine = mgr.getEngineByName("JavaScript");
+
         for(int i = 0;i<10;i++) {
-            threshold.put(i,i*i*20);
+            String temp = formula.replace("x",Integer.toString(i));
+            threshold.put(i,(int) engine.eval(temp));
         }
         if(g.getExp()>=threshold.get(g.getLvl())){
             g.setLvl(g.getLvl()+1);
+            levelUp(g);
         }
     }
     @ResponseBody

@@ -19,6 +19,8 @@ var QuestLogComponent = (function () {
     }
     QuestLogComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var temp = JSON.parse(localStorage.getItem('layout'));
+        this.exp = temp[0].value;
         this.guser = JSON.parse(localStorage.getItem('currentUser'));
         this.guserService.getGuserQuests(this.guser.id.toString())
             .then(function (gquest) { return _this.gquests = gquest; });
