@@ -13,4 +13,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface GLoginRepository extends CrudRepository<GLogin, String> {
     List<GLogin> findByLoginAndPassword(String login, String password);
     GLogin findByLogin(String login);
+    List<GLogin> findByEmail(String email);
 }

@@ -31,6 +31,8 @@ var admin_layout_component_1 = require("./gadmin/admin-layout.component");
 var admin_allquests_component_1 = require("./gadmin/quests/admin-allquests.component");
 var admin_newquest_component_1 = require("./gadmin/quests/admin-newquest.component");
 var settings_component_1 = require("./gsettings/settings.component");
+var gforgot_component_1 = require("./gforgot/gforgot.component");
+var gsetpass_component_1 = require("./gforgot/gsetpass.component");
 var routes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'gadmin', redirectTo: '/gadmin/dashboard', pathMatch: 'full' },
@@ -46,6 +48,8 @@ var routes = [
         ]
     },
     { path: 'register', component: register_component_1.RegisterComponent },
+    { path: 'forgot', component: gforgot_component_1.GforgotComponent },
+    { path: 'setpass', component: gsetpass_component_1.GsetpassComponent },
     { path: 'scoreboard', component: scoreboard_component_1.ScoreboardComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'guser', component: guser_detail_component_1.GuserDetailComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'questlog', component: quest_log_component_1.QuestLogComponent, canActivate: [auth_guard_1.AuthGuard] },

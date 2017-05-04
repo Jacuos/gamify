@@ -3,8 +3,10 @@ package com.koziejaj.client;
 /**
  * Created by Jacek on 17-12-2016.
  */
+import java.net.InetAddress;
 import java.util.Arrays;
 
+import it.ozimov.springboot.mail.configuration.EnableEmailTools;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,6 +19,7 @@ import oracle.jdbc.pool.OracleDataSource;
 
 
 @SpringBootApplication
+@EnableEmailTools
 public class Application {
 
     public static void main(String[] args) {
@@ -26,6 +29,7 @@ public class Application {
 
     @Resource
     Environment environment;
+
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx, GUserRepository repository) {
 

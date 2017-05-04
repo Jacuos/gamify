@@ -35,12 +35,15 @@ import {AdminAllQuestsComponent} from "./gadmin/quests/admin-allquests.component
 import {AdminNewQuestComponent} from "./gadmin/quests/admin-newquest.component";
 import {SettingsComponent} from "./gsettings/settings.component";
 import {SettingsService} from "./gsettings/settings.service";
+import {GforgotComponent} from "./gforgot/gforgot.component";
+import {GforgotService} from "./gforgot/gforgot.service";
+import {GsetpassComponent} from "./gforgot/gsetpass.component";
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpModule,JsonpModule, QRCodeModule],
-  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe, LoginComponent, HomeComponent, RegisterComponent, NotFoundComponent, PasswordValidator,GadminComponent,  AdminLoginComponent, AdminDashboardComponent, AdminQuestsComponent, AdminUsersComponent, AdminLayoutComponent, AdminAllQuestsComponent, AdminNewQuestComponent, SettingsComponent],
-  providers: [GuserService, AuthService, AuthGuard, AdminGuard, GadminService, SettingsService],
+  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe, LoginComponent, HomeComponent, RegisterComponent, NotFoundComponent, PasswordValidator,GadminComponent,  AdminLoginComponent, AdminDashboardComponent, AdminQuestsComponent, AdminUsersComponent, AdminLayoutComponent, AdminAllQuestsComponent, AdminNewQuestComponent, SettingsComponent, GforgotComponent, GsetpassComponent],
+  providers: [GuserService, AuthService, AuthGuard, AdminGuard, GadminService, SettingsService, GforgotService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {

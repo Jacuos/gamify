@@ -29,10 +29,12 @@ export class HomeComponent  {
 
   constructor(private authService: AuthService, private guserService: GuserService,   @Inject(DOCUMENT) private document: any){}
   ngOnInit(): void {
-    var temp = JSON.parse(localStorage.getItem('layout')) as Layout[];
-    this.desc = temp[2].value;
-    this.lvl = temp[1].value;
-    this.exp = temp[0].value;
+    if(localStorage.getItem('layout')) {
+      var temp = JSON.parse(localStorage.getItem('layout')) as Layout[];
+      this.desc = temp[2].value;
+      this.lvl = temp[1].value;
+      this.exp = temp[0].value;
+    }
     this.subscription = this.authService.logged$
       .subscribe(logged => this.logged = logged);
     this.subscription = this.authService.guser$
