@@ -33,6 +33,9 @@ var admin_newquest_component_1 = require("./gadmin/quests/admin-newquest.compone
 var settings_component_1 = require("./gsettings/settings.component");
 var gforgot_component_1 = require("./gforgot/gforgot.component");
 var gsetpass_component_1 = require("./gforgot/gsetpass.component");
+var admin_badges_component_1 = require("./gadmin/badges/admin-badges.component");
+var admin_edit_badges_component_1 = require("./gadmin/badges/admin-edit-badges.component");
+var admin_give_badges_component_1 = require("./gadmin/badges/admin-give-badges.component");
 var routes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'gadmin', redirectTo: '/gadmin/dashboard', pathMatch: 'full' },
@@ -40,6 +43,7 @@ var routes = [
             { path: 'login', component: admin_login_component_1.AdminLoginComponent },
             { path: 'dashboard', component: admin_dashboard_component_1.AdminDashboardComponent, canActivate: [admin_guard_1.AdminGuard], children: [
                     { path: 'quests', component: admin_quests_component_1.AdminQuestsComponent, children: [{ path: 'new', component: admin_newquest_component_1.AdminNewQuestComponent }, { path: 'all', component: admin_allquests_component_1.AdminAllQuestsComponent }] },
+                    { path: 'badges', component: admin_badges_component_1.AdminBadgesComponent, children: [{ path: 'edit', component: admin_edit_badges_component_1.AdminEditBadgesComponent }, { path: 'give', component: admin_give_badges_component_1.AdminGiveBadgesComponent }] },
                     { path: 'users', component: admin_users_component_1.AdminUsersComponent },
                     { path: 'layout', component: admin_layout_component_1.AdminLayoutComponent },
                 ]

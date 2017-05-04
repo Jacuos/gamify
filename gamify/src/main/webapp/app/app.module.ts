@@ -38,11 +38,14 @@ import {SettingsService} from "./gsettings/settings.service";
 import {GforgotComponent} from "./gforgot/gforgot.component";
 import {GforgotService} from "./gforgot/gforgot.service";
 import {GsetpassComponent} from "./gforgot/gsetpass.component";
+import {AdminBadgesComponent} from "./gadmin/badges/admin-badges.component";
+import {AdminEditBadgesComponent} from "./gadmin/badges/admin-edit-badges.component";
+import {AdminGiveBadgesComponent} from "./gadmin/badges/admin-give-badges.component";
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, AppRoutingModule, HttpModule,JsonpModule, QRCodeModule],
-  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe, LoginComponent, HomeComponent, RegisterComponent, NotFoundComponent, PasswordValidator,GadminComponent,  AdminLoginComponent, AdminDashboardComponent, AdminQuestsComponent, AdminUsersComponent, AdminLayoutComponent, AdminAllQuestsComponent, AdminNewQuestComponent, SettingsComponent, GforgotComponent, GsetpassComponent],
+  declarations: [ AppComponent, ScoreboardComponent, GuserDetailComponent, LoginComponent, QuestLogComponent,GoQuestComponent, GuserSearchPipe, LoginComponent, HomeComponent, RegisterComponent, NotFoundComponent, PasswordValidator,GadminComponent,  AdminLoginComponent, AdminDashboardComponent, AdminQuestsComponent, AdminUsersComponent, AdminLayoutComponent, AdminAllQuestsComponent, AdminNewQuestComponent, SettingsComponent, GforgotComponent, GsetpassComponent, AdminBadgesComponent, AdminEditBadgesComponent, AdminGiveBadgesComponent],
   providers: [GuserService, AuthService, AuthGuard, AdminGuard, GadminService, SettingsService, GforgotService],
   bootstrap:    [ AppComponent ]
 })

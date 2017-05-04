@@ -1,9 +1,7 @@
 /**
  * Created by Jacek on 2017-04-17.
  */
-/**
- * Created by Jacek on 2017-04-08.
- */
+
 
 import {Component, Input, ElementRef} from '@angular/core';
 import {GadminService} from "../gadmin.service";

@@ -24,6 +24,9 @@ import {AdminNewQuestComponent} from "./gadmin/quests/admin-newquest.component";
 import {SettingsComponent} from "./gsettings/settings.component";
 import {GforgotComponent} from "./gforgot/gforgot.component";
 import {GsetpassComponent} from "./gforgot/gsetpass.component";
+import {AdminBadgesComponent} from "./gadmin/badges/admin-badges.component";
+import {AdminEditBadgesComponent} from "./gadmin/badges/admin-edit-badges.component";
+import {AdminGiveBadgesComponent} from "./gadmin/badges/admin-give-badges.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -34,6 +37,7 @@ const routes: Routes = [
       {path: 'dashboard', component: AdminDashboardComponent, canActivate: [AdminGuard], children:
         [
           {path: 'quests',  component: AdminQuestsComponent,  children: [{path: 'new', component: AdminNewQuestComponent},{path: 'all', component: AdminAllQuestsComponent}] },
+          {path: 'badges',  component: AdminBadgesComponent,  children: [{path: 'edit', component: AdminEditBadgesComponent},{path: 'give', component: AdminGiveBadgesComponent}] },
           {path: 'users', component: AdminUsersComponent},
           {path: 'layout', component: AdminLayoutComponent},
         ]
