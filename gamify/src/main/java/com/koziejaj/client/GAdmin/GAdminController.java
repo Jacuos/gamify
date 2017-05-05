@@ -141,6 +141,7 @@ public class GAdminController {
     public boolean rmBadge(@RequestParam(value="id") String id) {
         File file = new File("target/classes/static/images/badges/"+id);
         file.delete();
+        gBadRep.removeByBadge(id);
         return true;
     }
     @RequestMapping("/api/gadmin/givebadge")
