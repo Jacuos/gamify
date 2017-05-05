@@ -12,5 +12,9 @@
   <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" required>
   <button type="submit" class="btn btn-success" [disabled]="!badgeForm.form.valid">Zapisz</button><div *ngIf="response">Odznaka została dodana.</div>
 </form>
+<div *ngIf="ready">
 
-ADD AND REMOVE BADGES
+    <div *ngFor="let badge of badges" style="display: inline-block">
+      <div style="display: inline-block">{{badge}}<br><img src={{urls[badge]}} alt="Smiley face" height="100" width="100"><br><button class="delete" (click)="delete(badge); $event.stopPropagation()">Usuń</button></div>
+    </div>
+</div>

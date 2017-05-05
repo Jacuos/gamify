@@ -17,6 +17,8 @@ export class QuestLogComponent  {
   guser: Guser;
   gquests: Gquest[];
   exp: string;
+  badges: string[];
+  urls: string[] = new Array();
 
   constructor(private guserService: GuserService) { }
 
@@ -26,5 +28,12 @@ export class QuestLogComponent  {
     this.guser = JSON.parse(localStorage.getItem('currentUser')) as Guser;
     this.guserService.getGuserQuests(this.guser.id.toString())
       .then(gquest => this.gquests = gquest);
+    this.guserService.getBadges(this.guser.login)
+      .then(response => {this.badges = response;this.urlify();});
+  }
+  urlify(){
+    for(let badge of this.badges){
+      this.urls.push("http://localhost:7000/api/badge?name="+badge);
+    }
   }
 }

@@ -17,6 +17,7 @@ export class GuserService {
   private gusersUrl = 'http://localhost:7000/api/gusers';
   private gquestsUrl = 'http://localhost:7000/api/guserquests';
   private addquestUrl = 'http://localhost:7000/api/addmequest';
+  private getbadgesUrl = 'http://localhost:7000/api/mybadges';
 
   constructor(private http: Http) { }
 
@@ -55,6 +56,13 @@ export class GuserService {
       .toPromise()
       .then(response => response.json() as string)
       .catch(this.handleError);
+  }
+  getBadges(login: String): Promise<string[]> {
+    return this.http.get(this.getbadgesUrl+"/?login="+login)
+      .toPromise()
+      .then(response => response.json() as string[])
+      .catch(this.handleError);
+
   }
 
 

@@ -19,6 +19,9 @@ export class GadminService {
   private css = 'http://localhost:7000/api/gadmin/getcss';
   private slayout = 'http://localhost:7000/api/gadmin/setparams';
   private scss = 'http://localhost:7000/api/gadmin/setcss';
+  private allbadges = 'http://localhost:7000/api/gadmin/allbadges';
+  private rmbadge = 'http://localhost:7000/api/gadmin/rmbadge';
+  private gvbadge = 'http://localhost:7000/api/gadmin/givebadge';
 
   constructor(private http: Http) { }
 
@@ -66,6 +69,26 @@ export class GadminService {
     let headers = new Headers({ 'content-type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.scss, JSON.stringify(model), options)
+      .toPromise()
+      .then(response => response.json() as string)
+      .catch(this.handleError);
+  }
+  getAllBadges(){
+    return this.http.get(this.allbadges)
+      .toPromise()
+      .then(response => response.json() as string[])
+      .catch(this.handleError);
+  }
+  removeBadge(id: string): Promise<boolean>{
+    return this.http.get(this.rmbadge+"?id="+id)
+      .toPromise()
+      .then(response => response.json() as boolean)
+      .catch(this.handleError);
+  }
+  giveBadge(model: any, badge: string):Promise<string>{
+    let headers = new Headers({ 'content-type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.gvbadge+"?badge="+badge, JSON.stringify(model), options)
       .toPromise()
       .then(response => response.json() as string)
       .catch(this.handleError);

@@ -1,1 +1,30 @@
-GIVE BADGES TO PPL
+<div *ngIf="!chosenOne">
+<div *ngFor="let badge of badges" style="display: inline-block">
+  <div style="display: inline-block">{{badge}}<br><button (click)="chooseBadge($event, badge)"><img src={{urls[badge]}} alt="Smiley face" height="100" width="100"></button></div>
+</div>
+</div>
+<div *ngIf="chosenOne">
+  <div id="search-component">
+    <input [(ngModel)]="search" placeholder="Szukaj..."/>
+  </div>
+  <table class = "heroes">
+    <tr>
+      <th>Login <button (click)="setOrder('login')">^</button></th>
+      <th>Imię <button (click)="setOrder('firstName')">^</button></th>
+      <th>Nazwisko <button (click)="setOrder('lastName')">^</button></th>
+      <th>Poziom <button (click)="setOrder('lvl')">^</button></th>
+      <th>Punkty <button (click)="setOrder('exp')">^</button></th>
+      <th>Opis <button (click)="setOrder('desciption')">^</button></th>
+    </tr>
+    <tr *ngFor="let guser of gusers  | gusersearch:search:order" class = "guser" [class.selected]="guser === selectedGuser">
+      <th>{{guser.login}}</th>
+      <th>{{guser.firstName}}</th>
+      <th> {{guser.lastName}}</th>
+      <th>{{guser.lvl}} </th>
+      <th>{{guser.exp}} </th>
+      <th>{{guser.description}} </th>
+      <input type="checkbox" name="gender"  (change)="checkUser($event, guser.login)" >
+    </tr>
+  </table>
+  <button (click)="giveBadges($event)">Przyznaj</button>{{response}}
+</div>

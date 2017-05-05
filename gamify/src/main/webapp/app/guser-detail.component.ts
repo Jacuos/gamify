@@ -22,6 +22,8 @@ export class GuserDetailComponent  {
   private mode: string;
   lvl: string;
   exp: string;
+  badges: string[];
+  urls: string[] = new Array();
   constructor(private guserService: GuserService, private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
@@ -35,10 +37,19 @@ export class GuserDetailComponent  {
       });
 
      this.guserService.getGuser(this.mode)
-      .then(guser => this.guser = guser);
+      .then(guser => {this.guser = guser;this.getBadges()});
 
     this.guserService.getGuserQuests(this.mode)
       .then(gquest => this.gquest = gquest);
 
+  }
+  getBadges(){
+    this.guserService.getBadges(this.guser.login)
+      .then(response => {this.badges = response;this.urlify();});
+  }
+  urlify() {
+    for (let badge of this.badges) {
+      this.urls.push("http://localhost:7000/api/badge?name=" + badge);
+    }
   }
 }

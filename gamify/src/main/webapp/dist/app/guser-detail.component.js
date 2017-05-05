@@ -19,6 +19,7 @@ var GuserDetailComponent = (function () {
     function GuserDetailComponent(guserService, route) {
         this.guserService = guserService;
         this.route = route;
+        this.urls = new Array();
     }
     GuserDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -31,9 +32,20 @@ var GuserDetailComponent = (function () {
             _this.mode = params['id'];
         });
         this.guserService.getGuser(this.mode)
-            .then(function (guser) { return _this.guser = guser; });
+            .then(function (guser) { _this.guser = guser; _this.getBadges(); });
         this.guserService.getGuserQuests(this.mode)
             .then(function (gquest) { return _this.gquest = gquest; });
+    };
+    GuserDetailComponent.prototype.getBadges = function () {
+        var _this = this;
+        this.guserService.getBadges(this.guser.login)
+            .then(function (response) { _this.badges = response; _this.urlify(); });
+    };
+    GuserDetailComponent.prototype.urlify = function () {
+        for (var _i = 0, _a = this.badges; _i < _a.length; _i++) {
+            var badge = _a[_i];
+            this.urls.push("http://localhost:7000/api/badge?name=" + badge);
+        }
     };
     GuserDetailComponent = __decorate([
         core_1.Component({

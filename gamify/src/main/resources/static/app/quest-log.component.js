@@ -16,6 +16,7 @@ var guser_service_1 = require("./guser.service");
 var QuestLogComponent = (function () {
     function QuestLogComponent(guserService) {
         this.guserService = guserService;
+        this.urls = new Array();
     }
     QuestLogComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -24,6 +25,14 @@ var QuestLogComponent = (function () {
         this.guser = JSON.parse(localStorage.getItem('currentUser'));
         this.guserService.getGuserQuests(this.guser.id.toString())
             .then(function (gquest) { return _this.gquests = gquest; });
+        this.guserService.getBadges(this.guser.login)
+            .then(function (response) { _this.badges = response; _this.urlify(); });
+    };
+    QuestLogComponent.prototype.urlify = function () {
+        for (var _i = 0, _a = this.badges; _i < _a.length; _i++) {
+            var badge = _a[_i];
+            this.urls.push("http://localhost:7000/api/badge?name=" + badge);
+        }
     };
     QuestLogComponent = __decorate([
         core_1.Component({

@@ -22,6 +22,7 @@ var GuserService = (function () {
         this.gusersUrl = 'http://localhost:7000/api/gusers';
         this.gquestsUrl = 'http://localhost:7000/api/guserquests';
         this.addquestUrl = 'http://localhost:7000/api/addmequest';
+        this.getbadgesUrl = 'http://localhost:7000/api/mybadges';
     }
     GuserService.prototype.getGuser = function (mode) {
         return this.http.get(this.guserUrl + "/?id=" + mode)
@@ -50,6 +51,12 @@ var GuserService = (function () {
         var headers = new http_1.Headers({ 'content-type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
         return this.http.post(this.addquestUrl, JSON.stringify({ guserId: iid, gquestId: qqid }), options)
+            .toPromise()
+            .then(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
+    GuserService.prototype.getBadges = function (login) {
+        return this.http.get(this.getbadgesUrl + "/?login=" + login)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);

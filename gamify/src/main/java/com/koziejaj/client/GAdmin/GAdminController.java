@@ -6,6 +6,7 @@ import com.koziejaj.client.GLogin.GLoginRepository;
 import com.koziejaj.client.GQuestRepository;
 import com.koziejaj.client.GUserQRepository;
 import com.koziejaj.client.GUserRepository;
+import org.springframework.data.rest.core.Path;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -41,6 +42,8 @@ public class GAdminController {
     private GUserQRepository guserQRep;
     @Autowired
     private GLayoutRepository gLayoutRep;
+    @Autowired
+    private GBadgeRepository gBadRep;
 
     @RequestMapping(value="/api/gadmin/newquest", method = RequestMethod.POST)
     public Long newQuest(@RequestBody String postData) throws IOException {
@@ -123,5 +126,32 @@ public class GAdminController {
         out.close();
         return new ObjectMapper().writeValueAsString("Zmiany zostały zapisane");
     }
-
+    @RequestMapping("/api/gadmin/allbadges")
+    public List<String> allBadges() {
+        File folder = new File("target/classes/static/images/badges");
+        File[] listOfFiles = folder.listFiles();
+        List<String> model = new ArrayList<String>();
+        for (int i = 0; i < listOfFiles.length; i++) {
+            if (listOfFiles[i].isFile())
+                model.add(listOfFiles[i].getName());
+        }
+        return model;
+    }
+    @RequestMapping("/api/gadmin/rmbadge")
+    public boolean rmBadge(@RequestParam(value="id") String id) {
+        File file = new File("target/classes/static/images/badges/"+id);
+        file.delete();
+        return true;
+    }
+    @RequestMapping("/api/gadmin/givebadge")
+    public String gvBadge(@RequestParam(value="badge") String badge, @RequestBody String postData) throws IOException {
+        HashMap<String,Boolean> result = new ObjectMapper().readValue(postData, HashMap.class);
+        for (Map.Entry<String, Boolean> entry : result.entrySet()) {
+            String key = entry.getKey();
+            boolean value = entry.getValue();
+            if(value==true)
+                gBadRep.save(new GBadge(key,badge));
+        }
+        return new ObjectMapper().writeValueAsString("Odznaki zostały przyznane");
+    }
 }

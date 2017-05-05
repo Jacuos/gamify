@@ -2,6 +2,8 @@ package com.koziejaj.client;
 /**
  * Created by Jacek on 21-01-2017.
  */
+import com.koziejaj.client.GAdmin.GBadge;
+import com.koziejaj.client.GAdmin.GBadgeRepository;
 import com.koziejaj.client.GAdmin.GLayoutRepository;
 import com.koziejaj.client.GLogin.GLoginRepository;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +44,8 @@ public class ApiController extends HttpServlet {
     private GQuestRepository gQuestRep;
     @Autowired
     private GLayoutRepository gLayoutRep;
+    @Autowired
+    private GBadgeRepository gBadRep;
 
     @RequestMapping(value = "/api/hello", method = RequestMethod.GET)
     public Map<String,String> hello() {
@@ -145,6 +149,23 @@ public class ApiController extends HttpServlet {
         return IOUtils.toByteArray(in);
         //byte[] b = new byte[10];
         //return b;
+    }
+    @ResponseBody
+    @RequestMapping(value = "api/badge", method = RequestMethod.GET, produces = MediaType.IMAGE_JPEG_VALUE)
+    public byte[] badge(@RequestParam(value="name") String name) throws IOException {
+        InputStream in = ApiController.class.getResourceAsStream("/static/images/badges/"+name);
+        byte[] myOut = IOUtils.toByteArray(in);
+        in.close();
+        return myOut;
+    }
+    @RequestMapping("/api/mybadges")
+    public List<String> myBadges(@RequestParam(value="login") String login) {
+
+        List<GBadge> badges = gBadRep.findByLogin(login);
+        List<String> model = new ArrayList<String>();
+        for(GBadge bg : badges)
+            model.add(bg.getBadge());
+        return model;
     }
 
 }
