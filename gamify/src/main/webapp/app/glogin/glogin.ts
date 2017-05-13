@@ -7,10 +7,10 @@ export class Glogin{
   public isAdmin: boolean;
   public email: string;
 
-  constructor(lo: string, pa: string, is: boolean, em: string){
-    this.login = lo;
-    this.password = pa;
-    this.isAdmin = is;
-    this.email = em;
+    constructor(lo: string, pa: string, is: boolean, em: string){
+      this.login = lo;
+      this.password = pa;
+      this.isAdmin = is;
+      this.email = em;
   }
 }

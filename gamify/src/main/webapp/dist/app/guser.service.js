@@ -14,35 +14,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+var auth_service_1 = require("./glogin/auth.service");
 var GuserService = (function () {
-    function GuserService(http) {
+    function GuserService(http, auth) {
+        var _this = this;
         this.http = http;
-        this.helloUrl = 'http://localhost:7000/api/hello';
-        this.guserUrl = 'http://localhost:7000/api/guser';
-        this.gusersUrl = 'http://localhost:7000/api/gusers';
-        this.gquestsUrl = 'http://localhost:7000/api/guserquests';
-        this.addquestUrl = 'http://localhost:7000/api/addmequest';
-        this.getbadgesUrl = 'http://localhost:7000/api/mybadges';
+        this.auth = auth;
+        this.helloUrl = 'https://localhost:7000/api/hello?token=';
+        this.guserUrl = 'https://localhost:7000/api/guser?token=';
+        this.gusersUrl = 'https://localhost:7000/api/gusers?token=';
+        this.gquestsUrl = 'https://localhost:7000/api/guserquests?token=';
+        this.addquestUrl = 'https://localhost:7000/api/addmequest?token=';
+        this.getbadgesUrl = 'https://localhost:7000/api/mybadges?token=';
+        this.guserExUrl = 'https://localhost:7000/api/guserexists?token=';
+        this.subscription = this.auth.token$
+            .subscribe(function (token) { return _this.token = token; });
     }
     GuserService.prototype.getGuser = function (mode) {
-        return this.http.get(this.guserUrl + "/?id=" + mode)
+        return this.http.get(this.guserUrl + this.token + "&id=" + mode)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     GuserService.prototype.getGuserExists = function (mode) {
-        return this.http.get(this.guserUrl + "exists/?id=" + mode)
+        return this.http.get(this.guserExUrl + this.token + "&id=" + mode)
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     GuserService.prototype.getGuserQuests = function (mode) {
-        return this.http.get(this.gquestsUrl + "/?id=" + mode)
+        return this.http.get(this.gquestsUrl + this.token + "&id=" + mode)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     GuserService.prototype.getGusers = function () {
-        return this.http.get(this.gusersUrl)
+        return this.http.get(this.gusersUrl + this.token)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
@@ -50,13 +56,13 @@ var GuserService = (function () {
     GuserService.prototype.addQuest = function (iid, qqid) {
         var headers = new http_1.Headers({ 'content-type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post(this.addquestUrl, JSON.stringify({ guserId: iid, gquestId: qqid }), options)
+        return this.http.post(this.addquestUrl + this.token, JSON.stringify({ guserId: iid, gquestId: qqid }), options)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     GuserService.prototype.getBadges = function (login) {
-        return this.http.get(this.getbadgesUrl + "/?login=" + login)
+        return this.http.get(this.getbadgesUrl + this.token + "&login=" + login)
             .toPromise()
             .then(function (response) { return response.json(); })
             .catch(this.handleError);
@@ -67,7 +73,7 @@ var GuserService = (function () {
     };
     GuserService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, auth_service_1.AuthService])
     ], GuserService);
     return GuserService;
 }());

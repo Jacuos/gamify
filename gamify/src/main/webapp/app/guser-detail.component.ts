@@ -9,6 +9,8 @@ import {Gquest} from "./gquest";
 import {Guser} from "./guser";
 import {ActivatedRoute, Params} from "@angular/router";
 import {Layout} from "./gadmin/layout";
+import {AuthService} from "./glogin/auth.service";
+import {Subscription} from "rxjs";
 
 @Component({
   moduleId: module.id,
@@ -24,7 +26,12 @@ export class GuserDetailComponent  {
   exp: string;
   badges: string[];
   urls: string[] = new Array();
-  constructor(private guserService: GuserService, private route: ActivatedRoute,) { }
+
+  token: string;
+  subscription:Subscription = this.auth.token$
+    .subscribe(token => this.token = token);
+
+  constructor(private guserService: GuserService, private route: ActivatedRoute, private auth: AuthService) { }
 
   ngOnInit(): void {
     var temp = JSON.parse(localStorage.getItem('layout')) as Layout[];
@@ -49,7 +56,7 @@ export class GuserDetailComponent  {
   }
   urlify() {
     for (let badge of this.badges) {
-      this.urls.push("http://localhost:7000/api/badge?name=" + badge);
+      this.urls.push("https://localhost:7000/api/badge?token="+this.token+"&name=" + badge);
     }
   }
 }

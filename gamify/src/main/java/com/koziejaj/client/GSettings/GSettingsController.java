@@ -35,39 +35,53 @@ public class GSettingsController {
 
 
     @RequestMapping("/api/gsettings/setphoto")
-    public boolean photo(@RequestBody String postData) throws IOException{
-        HashMap<String,String> result = new ObjectMapper().readValue(postData, HashMap.class);
-        String iid = result.get("guserId");
-        String imageData = result.get("photo");
+    public boolean photo(@RequestBody String postData, @RequestParam(value="token") String token) throws IOException{
+            HashMap<String, String> result = new ObjectMapper().readValue(postData, HashMap.class);
+            String iid = result.get("guserId");
+            String imageData = result.get("photo");
+        if(gLoginRep.findByTokenAndLogin(token, gUserRep.findOne(Long.parseLong(iid)).getLogin()) != null) {
 
-        imageData = imageData.substring(imageData.indexOf(",")+1);
-        byte[] decoded = Base64.getDecoder().decode(imageData);
+            imageData = imageData.substring(imageData.indexOf(",") + 1);
+            byte[] decoded = Base64.getDecoder().decode(imageData);
 
-        FileUtils.writeByteArrayToFile(new File("target/classes/static/images/"+iid+".jpg"), decoded);
-        return true;
+            FileUtils.writeByteArrayToFile(new File("target/classes/static/images/" + iid + ".jpg"), decoded);
+            return true;
+        }
+        else
+            return false;
     }
 
     @RequestMapping("/api/gsettings/setdesc")
-    public boolean desc(@RequestBody String postData) throws IOException{
-        HashMap<String,String> result = new ObjectMapper().readValue(postData, HashMap.class);
-        String guid = result.get("guserId");
-        String desc = result.get("description");
+    public boolean desc(@RequestBody String postData, @RequestParam(value="token") String token) throws IOException{
+            HashMap<String, String> result = new ObjectMapper().readValue(postData, HashMap.class);
+            String guid = result.get("guserId");
+            String desc = result.get("description");
 
-        GUser updatedUser = gUserRep.findOne(Long.parseLong(guid));
-        updatedUser.setDescription(desc);
-        gUserRep.save(updatedUser);
-        return true;
+            GUser updatedUser = gUserRep.findOne(Long.parseLong(guid));
+        if(gLoginRep.findByTokenAndLogin(token, updatedUser.getLogin()) != null) {
+            updatedUser.setDescription(desc);
+            gUserRep.save(updatedUser);
+            return true;
+        }
+        else
+            return false;
     }
     @RequestMapping("/api/gsettings/setpass")
-    public boolean pass(@RequestBody String postData) throws IOException{
-        HashMap<String,String> result = new ObjectMapper().readValue(postData, HashMap.class);
-        String login = result.get("login");
-        String pass = result.get("password");
+    public String pass(@RequestBody String postData, @RequestParam(value="token") String token) throws IOException{
+            HashMap<String, String> result = new ObjectMapper().readValue(postData, HashMap.class);
+            String login = result.get("login");
+            String pass = result.get("password");
+            String oldPass = result.get("oldPass");
 
-        GLogin updatedLogin = gLoginRep.findOne(login);
-        updatedLogin.setPassword(pass);
-        gLoginRep.save(updatedLogin);
-        return true;
+        if(gLoginRep.findByTokenAndLogin(token, login) != null) {
+            if(gLoginRep.findByLoginAndPassword(login,oldPass) == null)
+                return new ObjectMapper().writeValueAsString("Niepoprawne hasło");
+            GLogin updatedLogin = gLoginRep.findOne(login);
+            updatedLogin.setPassword(pass);
+            gLoginRep.save(updatedLogin);
+            return new ObjectMapper().writeValueAsString("Hasło zostało zmienione");
+        }
+        return null;
     }
 
 }

@@ -11,7 +11,11 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  */
 @RepositoryRestResource(collectionResourceRel = "GLogins", path = "GLogins")
 public interface GLoginRepository extends CrudRepository<GLogin, String> {
-    List<GLogin> findByLoginAndPassword(String login, String password);
+    GLogin findByLoginAndPassword(String login, String password);
     GLogin findByLogin(String login);
     List<GLogin> findByEmail(String email);
+
+    GLogin findByToken(String token);
+    GLogin findByTokenAndLogin(String token, String login);
+    GLogin findByTokenAndIsAdmin(String token, boolean isAdmin);
 }

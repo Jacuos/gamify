@@ -7,35 +7,41 @@ import 'rxjs/add/operator/toPromise';
 
 import{Gquest} from './gquest';
 import{Guser} from './guser';
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
+import {AuthService} from "./glogin/auth.service";
 
 @Injectable()
 export class GuserService {
 
-  private helloUrl = 'http://localhost:7000/api/hello';
-  private guserUrl = 'http://localhost:7000/api/guser';
-  private gusersUrl = 'http://localhost:7000/api/gusers';
-  private gquestsUrl = 'http://localhost:7000/api/guserquests';
-  private addquestUrl = 'http://localhost:7000/api/addmequest';
-  private getbadgesUrl = 'http://localhost:7000/api/mybadges';
+  private helloUrl = 'https://localhost:7000/api/hello?token=';
+  private guserUrl = 'https://localhost:7000/api/guser?token=';
+  private gusersUrl = 'https://localhost:7000/api/gusers?token=';
+  private gquestsUrl = 'https://localhost:7000/api/guserquests?token=';
+  private addquestUrl = 'https://localhost:7000/api/addmequest?token=';
+  private getbadgesUrl = 'https://localhost:7000/api/mybadges?token=';
+  private guserExUrl = 'https://localhost:7000/api/guserexists?token=';
 
-  constructor(private http: Http) { }
+  token: string;
+  subscription:Subscription = this.auth.token$
+    .subscribe(token => this.token = token);
+  constructor(private http: Http, private auth: AuthService) {}
+
 
   getGuser(mode: String): Promise<Guser> {
-    return this.http.get(this.guserUrl+"/?id="+mode)
+    return this.http.get(this.guserUrl+this.token+"&id="+mode)
       .toPromise()
       .then(response => response.json() as Guser)
       .catch(this.handleError);
 
   }
   getGuserExists(mode: String): Observable<boolean> {
-    return this.http.get(this.guserUrl+"exists/?id="+mode)
+    return this.http.get(this.guserExUrl+this.token+"&id="+mode)
       .map(response => response.json() as boolean)
       .catch(this.handleError);
   }
 
   getGuserQuests(mode: String): Promise<Gquest[]> {
-    return this.http.get(this.gquestsUrl+"/?id="+mode)
+    return this.http.get(this.gquestsUrl+this.token+"&id="+mode)
       .toPromise()
       .then(response => response.json() as Gquest[])
       .catch(this.handleError);
@@ -43,7 +49,7 @@ export class GuserService {
   }
 
   getGusers(): Promise<Guser[]>{
-    return this.http.get(this.gusersUrl)
+    return this.http.get(this.gusersUrl+this.token)
       .toPromise()
       .then(response => response.json() as Guser[])
       .catch(this.handleError);
@@ -52,13 +58,13 @@ export class GuserService {
   addQuest(iid: number, qqid: number): Promise<string>{
     let headers = new Headers({ 'content-type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.addquestUrl, JSON.stringify({ guserId: iid, gquestId:  qqid}), options)
+    return this.http.post(this.addquestUrl+this.token, JSON.stringify({ guserId: iid, gquestId:  qqid}), options)
       .toPromise()
       .then(response => response.json() as string)
       .catch(this.handleError);
   }
   getBadges(login: String): Promise<string[]> {
-    return this.http.get(this.getbadgesUrl+"/?login="+login)
+    return this.http.get(this.getbadgesUrl+this.token+"&login="+login)
       .toPromise()
       .then(response => response.json() as string[])
       .catch(this.handleError);

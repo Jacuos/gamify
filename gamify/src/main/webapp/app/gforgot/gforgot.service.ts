@@ -9,8 +9,8 @@ import {Observable} from "rxjs";
 @Injectable()
 export class GforgotService {
 
-  private forgotUrl = 'http://localhost:7000/api/reqreset';
-  private resetUrl = 'http://localhost:7000/api/setreset';
+  private forgotUrl = 'https://localhost:7000/api/reqreset';
+  private resetUrl = 'https://localhost:7000/api/setreset';
 
 
   constructor(private http: Http) { }

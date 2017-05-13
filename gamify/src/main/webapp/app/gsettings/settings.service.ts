@@ -8,6 +8,8 @@ import 'rxjs/add/operator/toPromise';
 import{Guser} from '../guser';
 import { Observable } from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {AuthService} from "../glogin/auth.service";
+import {Subscription} from "rxjs";
 
 @Injectable()
 export class SettingsService {
@@ -15,12 +17,15 @@ export class SettingsService {
   baseS$ = this.baseS.asObservable();
 
 
-  private photoUrl = 'http://localhost:7000/api/gsettings/setphoto';
-  private descUrl = 'http://localhost:7000/api/gsettings/setdesc';
-  private passUrl = 'http://localhost:7000/api/gsettings/setpass';
+  private photoUrl = 'https://localhost:7000/api/gsettings/setphoto?token=';
+  private descUrl = 'https://localhost:7000/api/gsettings/setdesc?token=';
+  private passUrl = 'https://localhost:7000/api/gsettings/setpass?token=';
 
+  token: string;
+  subscription:Subscription = this.auth.token$
+    .subscribe(token => this.token = token);
 
-  constructor(private http: Http) { this.baseS.next("");}
+  constructor(private http: Http, private auth: AuthService) { this.baseS.next("");}
 
 
   setPhoto(iid: string, photo: string): Promise<boolean>{
@@ -28,7 +33,7 @@ export class SettingsService {
     let options = new RequestOptions({ headers: headers });
 
     this.baseS.next(photo);
-    return this.http.post(this.photoUrl, JSON.stringify({ guserId: iid, photo:  photo}), options)
+    return this.http.post(this.photoUrl+this.token, JSON.stringify({ guserId: iid, photo:  photo}), options)
       .toPromise()
       .then(response => response.json() as boolean)
       .catch(this.handleError);
@@ -37,18 +42,18 @@ export class SettingsService {
     let headers = new Headers({ 'content-type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.descUrl, JSON.stringify({guserId: iid, description:  desc}), options)
+    return this.http.post(this.descUrl+this.token, JSON.stringify({guserId: iid, description:  desc}), options)
       .toPromise()
       .then(response => response.json() as boolean)
       .catch(this.handleError);
   }
-  setPassword(iid: string, pass: string): Promise<boolean>{
+  setPassword(iid: string, pass: string, oldPass: string): Promise<string>{
     let headers = new Headers({ 'content-type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.passUrl, JSON.stringify({login: iid, password:  pass}), options)
+    return this.http.post(this.passUrl+this.token, JSON.stringify({login: iid, password:  pass, oldPass: oldPass}), options)
       .toPromise()
-      .then(response => response.json() as boolean)
+      .then(response => response.json() as string)
       .catch(this.handleError);
   }
 

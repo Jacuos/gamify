@@ -16,6 +16,7 @@ export class LoginComponent {
   model: any = {};
   loading = false;
   returnUrl: string;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -38,7 +39,7 @@ export class LoginComponent {
               data2 =>{
                 this.authenticationService.fetchEvenMore()
                   .subscribe(data3 =>{
-                this.router.navigate([this.returnUrl]);}
+                this.router.navigate([this.returnUrl]); this.loading = false;}
                 )
               }
           )

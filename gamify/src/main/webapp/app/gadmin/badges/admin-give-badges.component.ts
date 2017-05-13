@@ -8,6 +8,8 @@ import {Component} from '@angular/core';
 import {GadminService} from "../gadmin.service";
 import {Guser} from "../../guser";
 import {GuserService} from "../../guser.service";
+import {AuthService} from "../../glogin/auth.service";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -31,7 +33,10 @@ export class AdminGiveBadgesComponent  {
   };
   gusers: Guser[];
 
-  constructor(private adminService: GadminService, private guserService: GuserService){}
+  token: string;
+  subscription:Subscription = this.auth.token$
+    .subscribe(token => this.token = token);
+  constructor(private adminService: GadminService, private guserService: GuserService, private auth: AuthService){}
 
   ngOnInit(): void {
     this.adminService.getAllBadges()
@@ -42,7 +47,7 @@ export class AdminGiveBadgesComponent  {
 
   urlify(){
       for(let badge of this.badges){
-        this.urls[badge] = "http://localhost:7000/api/badge?name="+badge;
+        this.urls[badge] = "https://localhost:7000/api/badge?token="+this.token+"&name="+badge;
       }
   }
   chooseBadge(event: any, chosenOne: string){

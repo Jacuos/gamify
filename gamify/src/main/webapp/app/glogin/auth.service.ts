@@ -9,12 +9,13 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Glogin} from "./glogin";
 import {GuserService} from "../guser.service";
 import {Guser} from "../guser";
+import {Router} from "@angular/router";
 
 
 @Injectable()
 export class AuthService {
 
-  private gaddUrl = 'http://localhost:7000/api/addguser';
+  private gaddUrl = 'https://localhost:7000/api/addguser';
 
   logged = new BehaviorSubject<boolean>(false);
   logged$ = this.logged.asObservable();
@@ -22,10 +23,14 @@ export class AuthService {
   guser = new BehaviorSubject<Guser>(new Guser(0,"","","","",0,0));
   guser$ = this.guser.asObservable();
 
+  token = new BehaviorSubject<string>("no_token");
+  token$ = this.token.asObservable();
+
   isAdmin: boolean;
   constructor(private http: Http) {
     if(localStorage.getItem('currentLogin')) {
       var test = JSON.parse(localStorage.getItem('currentLogin')) as Glogin;
+      this.token.next(test.password);
       if(test.isAdmin)
         this.isAdmin = true;
     }
@@ -35,11 +40,16 @@ export class AuthService {
   login(username: string, password: string, notAdmin: boolean = true) {
     let headers = new Headers({ 'content-type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post('http://localhost:7000/api/glogin', JSON.stringify({ login: username, password: password }), options)
+    return this.http.post('https://localhost:7000/api/glogin', JSON.stringify({ login: username, password: password }), options)
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
         let user = response.json();
-        if (user) {
+        if(user == "BAN") {
+          alert("Otrzymałeś 24-godzinną blokadę ze względu na zbyt dużą liczbę nieudanych prób logowania.");
+          return;
+        }
+        else if (user) {
+          this.token.next(user.password);
           this.isAdmin = user.isAdmin;
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentLogin', JSON.stringify(user));
@@ -49,7 +59,7 @@ export class AuthService {
       });
   }
   fetchAdditionalData(username : string){
-    return this.http.get("http://localhost:7000/api/guser"+"?log="+username)
+    return this.http.get("https://localhost:7000/api/guser?token="+this.token.getValue()+"&log="+username)
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
         let data = response.json();
@@ -62,7 +72,7 @@ export class AuthService {
 
   }
   fetchEvenMore(){
-    return this.http.get("http://localhost:7000/api/gadmin/getparams")
+    return this.http.get("https://localhost:7000/api/gadmin/getparams?token="+this.token.getValue())
       .map((response: Response) => {
         let data = response.json();
         if (data) {

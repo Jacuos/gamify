@@ -19,10 +19,13 @@ import {Form, NgForm} from "@angular/forms";
   //styleUrls: [ 'home.component.css' ]
 })
 export class SettingsComponent  {
-  subscription:Subscription;
   subscription2:Subscription;
   guser: Guser;
   url: string;
+
+  token: string;
+  subscription:Subscription = this.authService.token$
+    .subscribe(token => this.token = token);
 
   constructor(private authService: AuthService, private setService: SettingsService, private home: HomeComponent){}
 
@@ -62,10 +65,9 @@ export class SettingsComponent  {
   }
   reload(){
     this.guser = JSON.parse(localStorage.getItem('currentUser')) as Guser;
-    this.url = "http://localhost:7000/api/photo?id="+this.guser.id;
+    this.url = "https://localhost:7000/api/photo?token="+this.token+"&id="+this.guser.id;
     this.setService.baseS.next(this.url);
     var login = JSON.parse(localStorage.getItem('currentLogin')) as Glogin;
-    this.savedPassword = login.password;
   }
 
   sendDescription(){
@@ -78,11 +80,10 @@ export class SettingsComponent  {
   password: string;
   oldPassword: string;
   password2: string;
-  savedPassword: string;
+  response: string;
   sendPassword(passForm: NgForm){
-    var ok: boolean;
-    this.setService.setPassword(this.guser.login, this.password)
-      .then(response => {ok = response; passForm.reset(); if(ok){alert("Hasło zostało zmienione");}});
+    this.setService.setPassword(this.guser.login, this.password, this.oldPassword)
+      .then(response => {this.response = response; passForm.reset(); alert(this.response);});
   }
 
 

@@ -15,11 +15,16 @@ var core_1 = require('@angular/core');
 var guser_service_1 = require('./guser.service');
 require('./rxjs-operators');
 var router_1 = require("@angular/router");
+var auth_service_1 = require("./glogin/auth.service");
 var GuserDetailComponent = (function () {
-    function GuserDetailComponent(guserService, route) {
+    function GuserDetailComponent(guserService, route, auth) {
+        var _this = this;
         this.guserService = guserService;
         this.route = route;
+        this.auth = auth;
         this.urls = new Array();
+        this.subscription = this.auth.token$
+            .subscribe(function (token) { return _this.token = token; });
     }
     GuserDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -44,7 +49,7 @@ var GuserDetailComponent = (function () {
     GuserDetailComponent.prototype.urlify = function () {
         for (var _i = 0, _a = this.badges; _i < _a.length; _i++) {
             var badge = _a[_i];
-            this.urls.push("http://localhost:7000/api/badge?name=" + badge);
+            this.urls.push("https://localhost:7000/api/badge?token=" + this.token + "&name=" + badge);
         }
     };
     GuserDetailComponent = __decorate([
@@ -53,7 +58,7 @@ var GuserDetailComponent = (function () {
             selector: 'guser-detail',
             templateUrl: 'guser-detail.component.html'
         }), 
-        __metadata('design:paramtypes', [guser_service_1.GuserService, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [guser_service_1.GuserService, router_1.ActivatedRoute, auth_service_1.AuthService])
     ], GuserDetailComponent);
     return GuserDetailComponent;
 }());

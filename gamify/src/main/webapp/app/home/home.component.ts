@@ -22,11 +22,14 @@ export class HomeComponent  {
   desc = 'Witamy w aplikacji grywalizacyjnej!';
   lvl = "Poziom";
   exp = "Doświadczenie";
-  subscription:Subscription;
   guser: Guser;
   logged: boolean;
   url: string;
 
+
+  token: string;
+  subscription:Subscription = this.authService.token$
+    .subscribe(token => this.token = token);
   constructor(private authService: AuthService, private guserService: GuserService,   @Inject(DOCUMENT) private document: any){}
   ngOnInit(): void {
     if(localStorage.getItem('layout')) {
@@ -38,7 +41,7 @@ export class HomeComponent  {
     this.subscription = this.authService.logged$
       .subscribe(logged => this.logged = logged);
     this.subscription = this.authService.guser$
-      .subscribe(guser => {this.guser = guser; this.url = "http://localhost:7000/api/photo?id="+this.guser.id});
+      .subscribe(guser => {this.guser = guser; this.url = "https://localhost:7000/api/photo?token="+this.token+"&id="+this.guser.id});
 
     console.log(this.document.location.href);
     if (localStorage.getItem('currentLogin') && this.document.location.href.search("\/gadmin") == -1 ) {
@@ -51,7 +54,7 @@ export class HomeComponent  {
       this.guser = JSON.parse(localStorage.getItem('currentUser')) as Guser;
       this.guserService.getGuser(this.guser.id.toString())
         .then(response => this.guser = response)
-        .then(response => this.url = "http://localhost:7000/api/photo?id="+this.guser.id);
+        .then(response => this.url = "https://localhost:7000/api/photo?token="+this.token+"&id="+this.guser.id);
     }
   }
 

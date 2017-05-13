@@ -13,10 +13,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var core_1 = require('@angular/core');
 var guser_service_1 = require("./guser.service");
+var auth_service_1 = require("./glogin/auth.service");
 var QuestLogComponent = (function () {
-    function QuestLogComponent(guserService) {
+    function QuestLogComponent(guserService, auth) {
+        var _this = this;
         this.guserService = guserService;
+        this.auth = auth;
         this.urls = new Array();
+        this.subscription = this.auth.token$
+            .subscribe(function (token) { return _this.token = token; });
     }
     QuestLogComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -31,7 +36,7 @@ var QuestLogComponent = (function () {
     QuestLogComponent.prototype.urlify = function () {
         for (var _i = 0, _a = this.badges; _i < _a.length; _i++) {
             var badge = _a[_i];
-            this.urls.push("http://localhost:7000/api/badge?name=" + badge);
+            this.urls.push("https://localhost:7000/api/badge?token=" + this.token + "&name=" + badge);
         }
     };
     QuestLogComponent = __decorate([
@@ -40,7 +45,7 @@ var QuestLogComponent = (function () {
             selector: 'quest-log',
             templateUrl: 'quest-log.component.html',
         }), 
-        __metadata('design:paramtypes', [guser_service_1.GuserService])
+        __metadata('design:paramtypes', [guser_service_1.GuserService, auth_service_1.AuthService])
     ], QuestLogComponent);
     return QuestLogComponent;
 }());

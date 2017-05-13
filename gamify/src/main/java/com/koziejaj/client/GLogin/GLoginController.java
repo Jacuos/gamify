@@ -2,12 +2,14 @@ package com.koziejaj.client.GLogin;
 /**
  * Created by Jacek on 21-01-2017.
  */
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.common.collect.Lists;
 import com.koziejaj.client.GLogin.GLoginRepository;
 import com.koziejaj.client.GUserQRepository;
 import it.ozimov.springboot.mail.model.Email;
 import it.ozimov.springboot.mail.model.defaultimpl.DefaultEmail;
 import it.ozimov.springboot.mail.service.EmailService;
+import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ import com.koziejaj.client.GUser;
 import javax.annotation.Resource;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -49,15 +52,45 @@ public class GLoginController {
     @Resource
     Environment environment;
 
+    @Autowired
+    private GLoginBanService gBan;
+
     @RequestMapping(value="/api/glogin", method = RequestMethod.POST)
-    public GLogin login(@RequestBody GLogin postData) {
-        List<GLogin> list = gLoginRep.findByLoginAndPassword(postData.getLogin(),postData.getPassword());
-        if(list.size()>0) {
-            GLogin model = list.get(0);
+    public Object login(@RequestBody GLogin postData, HttpServletRequest request) throws JsonProcessingException {
+        GLogin list = gLoginRep.findByLoginAndPassword(postData.getLogin(),postData.getPassword());
+
+        String ipAddress = request.getHeader("X-FORWARDED-FOR");
+        if (ipAddress == null) {
+            ipAddress = request.getRemoteAddr();
+        }
+
+        if(gBan.isBlocked(ipAddress))
+            return new ObjectMapper().writeValueAsString("BAN");
+        else if(list != null ) {
+            GLogin model = list;
+            String newToken = generateToken();
+            model.setToken(newToken);
+            gLoginRep.save(model);
+
+            model.setPassword(newToken);
+            model.setToken("");
             return model;
         }
-        else return null;
+        else
+        {
+            gBan.loginFailed(ipAddress);
+            return null;
+        }
     }
+    private String generateToken()
+    {
+        String newToken = UUID.randomUUID().toString();
+        if (gLoginRep.findByToken(newToken) == null)
+            return newToken;
+        else
+            return generateToken();
+    }
+
 
     @RequestMapping(value="/api/addguser", method = RequestMethod.POST)
     public boolean guserRegister(@RequestBody String postData) throws IOException {
@@ -79,7 +112,7 @@ public class GLoginController {
             return new ObjectMapper().writeValueAsString("Podane konto nie istnieje");
         }
         else{
-            String token = String.valueOf(ThreadLocalRandom.current().nextLong(100000000000l,1000000000000l));
+            String token = UUID.randomUUID().toString();
             gPassRep.save(new GPassReset(email,token,new Date()));
             sendEmail(email, temp.get(0).getLogin(), token);
             return new ObjectMapper().writeValueAsString("Link do resetu hasła został wysłany.");

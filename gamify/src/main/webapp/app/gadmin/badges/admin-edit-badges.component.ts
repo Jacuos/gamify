@@ -7,6 +7,8 @@
 import {Component} from '@angular/core';
 import {SettingsService} from "../../gsettings/settings.service";
 import {GadminService} from "../gadmin.service";
+import {AuthService} from "../../glogin/auth.service";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -24,7 +26,10 @@ export class AdminEditBadgesComponent  {
   badges: string[];
   urls = {};
 
-  constructor(private setService: SettingsService, private adminService: GadminService){}
+  token: string;
+  subscription:Subscription = this.auth.token$
+    .subscribe(token => this.token = token);
+  constructor(private setService: SettingsService, private adminService: GadminService, private auth: AuthService){}
 
   ngOnInit(): void {
     this.response = false;
@@ -52,7 +57,7 @@ export class AdminEditBadgesComponent  {
   }
   urlify(){
     for(let badge of this.badges){
-      this.urls[badge] = "http://localhost:7000/api/badge?name="+badge;
+      this.urls[badge] = "https://localhost:7000/api/badge?token="+this.token+"&name="+badge;
     }
     this.ready = true;
   }

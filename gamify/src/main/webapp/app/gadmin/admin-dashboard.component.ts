@@ -3,6 +3,8 @@
  */
 import {Component, Input} from '@angular/core';
 import {Guser} from "../guser";
+import {AuthService} from "../glogin/auth.service";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -14,12 +16,16 @@ import {Guser} from "../guser";
 export class AdminDashboardComponent  {
   guser: Guser;
   url: string;
-  constructor(){
+
+  token: string;
+  subscription:Subscription = this.auth.token$
+    .subscribe(token => this.token = token);
+  constructor(private auth: AuthService){
   }
   ngOnInit(): void {
     if (localStorage.getItem('currentUser')) {
       this.guser = JSON.parse(localStorage.getItem('currentUser')) as Guser;
-      this.url = "http://localhost:7000/api/photo?id="+this.guser.id;
+      this.url = "https://localhost:7000/api/photo?token="+this.token+"&id="+this.guser.id;
     }
   }
 }
