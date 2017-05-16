@@ -4,12 +4,16 @@
   </div>
 </div>
 <div *ngIf="gquests">
-<table class = "heroes">
+<table class="table table-striped table-hover ">
+  <thead>
   <tr>
     <th>Opis</th><th>{{exp}}</th>
   </tr>
+  </thead>
+  <tbody>
   <tr *ngFor="let gquest of gquests">
     <th>{{gquest.description}}</th><th>{{gquest.exp}}</th>
   </tr>
+  </tbody>
 </table>
 </div>

@@ -24,6 +24,7 @@ export class AdminUsersComponent  {
   };
   gusers: Guser[];
   selectedGuser: Guser;
+  ascDescSign = {'login':'˄', 'firstName':'˄', 'lastName':'˄', 'lvl':'˄', 'exp':'˄', 'description':'˄'};
   constructor(private guserService: GuserService, private router: Router, private adminService: GadminService) { }
 
   ngOnInit(): void {
@@ -35,10 +36,17 @@ export class AdminUsersComponent  {
     this.router.navigate(['/guser',{id: this.selectedGuser.id}]);
   }
   setOrder(value: string): void{
-    if(value != this.order.column)
+    if(value != this.order.column) {
       this.order.asc = true;
-    else
+      this.ascDescSign[value] = '˄';
+    }
+    else {
       this.order.asc = !this.order.asc;
+      if(this.ascDescSign[value] == '˅')
+        this.ascDescSign[value] = '˄';
+      else
+        this.ascDescSign[value] = '˅';
+    }
     this.order.column = value;
   }
   delete(user: Guser): void{

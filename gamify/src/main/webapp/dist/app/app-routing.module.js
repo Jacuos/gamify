@@ -36,6 +36,7 @@ var gsetpass_component_1 = require("./gforgot/gsetpass.component");
 var admin_badges_component_1 = require("./gadmin/badges/admin-badges.component");
 var admin_edit_badges_component_1 = require("./gadmin/badges/admin-edit-badges.component");
 var admin_give_badges_component_1 = require("./gadmin/badges/admin-give-badges.component");
+var greet_component_1 = require("./home/greet.component");
 var routes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'gadmin', redirectTo: '/gadmin/dashboard', pathMatch: 'full' },
@@ -59,7 +60,7 @@ var routes = [
     { path: 'questlog', component: quest_log_component_1.QuestLogComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'goquest', component: go_quest_component_1.GoQuestComponent, canActivate: [auth_guard_1.AuthGuard] },
     { path: 'settings', component: settings_component_1.SettingsComponent, canActivate: [auth_guard_1.AuthGuard] },
-    { path: '', redirectTo: '/scoreboard', pathMatch: 'full', canActivate: [auth_guard_1.AuthGuard] },
+    { path: '', component: greet_component_1.GreetComponent, pathMatch: 'full', canActivate: [auth_guard_1.AuthGuard] },
     { path: '**', component: not_found_component_1.NotFoundComponent }
 ];
 var AppRoutingModule = (function () {

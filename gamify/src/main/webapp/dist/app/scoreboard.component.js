@@ -20,8 +20,9 @@ var ScoreboardComponent = (function () {
         this.router = router;
         this.order = {
             column: "",
-            asc: false
+            asc: false,
         };
+        this.ascDescSign = { 'login': '˄', 'firstName': '˄', 'lastName': '˄', 'lvl': '˄', 'exp': '˄', 'description': '˄' };
     }
     ScoreboardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -36,10 +37,17 @@ var ScoreboardComponent = (function () {
         this.router.navigate(['/guser', { id: this.selectedGuser.id }]);
     };
     ScoreboardComponent.prototype.setOrder = function (value) {
-        if (value != this.order.column)
+        if (value != this.order.column) {
             this.order.asc = true;
-        else
+            this.ascDescSign[value] = '˄';
+        }
+        else {
             this.order.asc = !this.order.asc;
+            if (this.ascDescSign[value] == '˅')
+                this.ascDescSign[value] = '˄';
+            else
+                this.ascDescSign[value] = '˅';
+        }
         this.order.column = value;
     };
     ScoreboardComponent = __decorate([
@@ -47,7 +55,6 @@ var ScoreboardComponent = (function () {
             moduleId: module.id,
             selector: 'scoreboard',
             templateUrl: 'scoreboard.component.html',
-            styleUrls: ['scoreboard.component.css']
         }), 
         __metadata('design:paramtypes', [guser_service_1.GuserService, router_1.Router])
     ], ScoreboardComponent);

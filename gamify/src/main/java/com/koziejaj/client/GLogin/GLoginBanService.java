@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class GLoginBanService {
 
-    private final int MAX_ATTEMPT = 2;
+    private final int MAX_ATTEMPT = 20;
     private LoadingCache<String, Integer> attemptsCache;
 
     public GLoginBanService() {

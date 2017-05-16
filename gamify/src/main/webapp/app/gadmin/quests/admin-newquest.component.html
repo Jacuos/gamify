@@ -6,7 +6,7 @@ Zadanie "{{name}}" zostało dodane!
   </div>
 </div>
 
-<form name="form" (ngSubmit)="f.form.valid && generate(f.form.value)" #f="ngForm" novalidate>
+<form name="form" (ngSubmit)="f.form.valid && generate(f.form.value)" #f="ngForm" novalidate class="form-horizontal">
   <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !description.valid && !name}">
     <label for="description">Opis</label>
     <input type="text" class="form-control" name="description" [(ngModel)]="model.description" #description="ngModel" required />

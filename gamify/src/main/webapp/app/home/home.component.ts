@@ -19,7 +19,7 @@ import {Layout} from "../gadmin/layout";
 })
 @Injectable()
 export class HomeComponent  {
-  desc = 'Witamy w aplikacji grywalizacyjnej!';
+  header = 'GAMIFY';
   lvl = "Poziom";
   exp = "Doświadczenie";
   guser: Guser;
@@ -34,7 +34,7 @@ export class HomeComponent  {
   ngOnInit(): void {
     if(localStorage.getItem('layout')) {
       var temp = JSON.parse(localStorage.getItem('layout')) as Layout[];
-      this.desc = temp[2].value;
+      this.header = temp[2].value;
       this.lvl = temp[1].value;
       this.exp = temp[0].value;
     }

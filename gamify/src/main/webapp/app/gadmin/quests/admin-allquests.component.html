@@ -1,5 +1,10 @@
-<ul class="quests">
-  <li *ngFor="let quest of quests">
-    <span class="badge">{{quest.id}}</span> {{quest.description}} | {{quest.exp}} | {{quest.endOf.toLocaleString()}}
-  </li>
-</ul>
+<table class="table table-striped table-hover ">
+  <tbody>
+  <tr *ngFor="let quest of quests">
+    <th>{{quest.id}}</th>
+    <th> {{quest.description}}</th>
+    <th>{{quest.exp}}</th>
+    <th>{{quest.endOf.toLocaleString()}}</th>
+  </tr>
+  </tbody>
+</table>

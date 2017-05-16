@@ -1,13 +1,35 @@
-<div *ngIf="guser">
-<p><img src={{url}} alt="Smiley face" height="100" width="100"><br>
-  {{guser.login}}<br>|LVL:{{guser.lvl}}|EXP:{{guser.exp}}
-</p>
-</div>
-<nav>
-  <a routerLink="/gadmin/dashboard/quests/new" routerLinkActive="active">Zadania</a>
-  <a routerLink="/gadmin/dashboard/badges/edit" routerLinkActive="active">Odznaki</a>
-  <a routerLink="/gadmin/dashboard/users" routerLinkActive="active">Użytkownicy</a>
-  <a routerLink="/gadmin/dashboard/layout" routerLinkActive="active">Motyw</a>
-  <a routerLink="/gadmin/login" routerLinkActive="active">Wyloguj się</a>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLinkActive="active" routerLink="/gadmin/dashboard">GAMIFY-ADMIN</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="/gadmin/dashboard/quests/new" routerLinkActive="active">Zadania</a></li>
+        <li routerLinkActive="active"><a routerLink="/gadmin/dashboard/badges/edit" routerLinkActive="active">Odznaki</a></li>
+        <li routerLinkActive="active"><a routerLink="/gadmin/dashboard/users" routerLinkActive="active">Użytkownicy</a></li>
+        <li routerLinkActive="active"><a routerLink="/gadmin/dashboard/layout" routerLinkActive="active">Motyw</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a routerLink="/gadmin/login" routerLinkActive="active">Wyloguj się</a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
-<router-outlet></router-outlet>
+<div class="body">
+  <router-outlet ></router-outlet>
+</div>
+
+
+<div *ngIf="guser" class="hero">
+  <img src={{url}} alt="Smiley face" height="100" width="100">
+  <div class="hero-text">
+    {{guser.login}}|LVL:{{guser.lvl}}|EXP:{{guser.exp}}
+  </div>
+</div>

@@ -27,6 +27,7 @@ import {GsetpassComponent} from "./gforgot/gsetpass.component";
 import {AdminBadgesComponent} from "./gadmin/badges/admin-badges.component";
 import {AdminEditBadgesComponent} from "./gadmin/badges/admin-edit-badges.component";
 import {AdminGiveBadgesComponent} from "./gadmin/badges/admin-give-badges.component";
+import {GreetComponent} from "./home/greet.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -53,7 +54,7 @@ const routes: Routes = [
   {path: 'questlog', component: QuestLogComponent, canActivate: [AuthGuard]},
   {path: 'goquest', component: GoQuestComponent, canActivate: [AuthGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
-  {path: '', redirectTo: '/scoreboard', pathMatch: 'full', canActivate: [AuthGuard]},
+  {path: '', component: GreetComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   { path: '**', component: NotFoundComponent }
 ];
 @NgModule({

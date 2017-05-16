@@ -1,15 +1,21 @@
-<form (ngSubmit)="onSubmit()" #lForm="ngForm" novalidate>
+<form (ngSubmit)="onSubmit()" #lForm="ngForm" novalidate class="form-horizontal">
+  <div class="form-group">
 <li *ngFor="let name of names">
+  <div *ngIf="name.id == 'greeting'">
+    <span class="badge">{{name.id}}</span><br><textarea rows="5" cols="60" id="greeting" [(ngModel)]="name.value"  name={{name.id}}></textarea>
+  </div>
+  <div *ngIf="name.id != 'greeting'">
   <span class="badge">{{name.id}}</span><input type="text" class="form-control" id={{name.id}} [(ngModel)]="name.value" name={{name.id}}>
+  </div>
 </li>
-  <div>
+
     <label for="css">CSS</label><br>
     <textarea rows="5" cols="60" id="css" [(ngModel)]="css" name="css"></textarea>
-  </div>
-  <div>
+
     <label for="formula">Wzór na progi punktowe.</label>
     Składnia: x - poziom, * - mnożenie, / - dzielenie, +,- -dodawanie, odejmowanie
     <input type="text" class="form-control" id="formula"[(ngModel)]="formula" name="formula">
-  </div>
+
   <button type="submit" class="btn btn-success" [disabled]="!lForm.form.valid">Zapisz</button>{{response}}
+  </div>
 </form>

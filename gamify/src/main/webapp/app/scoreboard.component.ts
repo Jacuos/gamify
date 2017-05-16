@@ -11,19 +11,21 @@ import {Layout} from "./gadmin/layout";
   moduleId: module.id,
   selector: 'scoreboard',
   templateUrl: 'scoreboard.component.html',
-  styleUrls: [ 'scoreboard.component.css' ]
+  //styleUrls: [ 'scoreboard.component.css' ]
 })
 export class ScoreboardComponent  {
 
   search: string;
   order = {
   column: "",
-  asc: false
+  asc: false,
 };
   gusers: Guser[];
   selectedGuser: Guser;
   lvl: string;
   exp: string;
+  ascDescSign = {'login':'˄', 'firstName':'˄', 'lastName':'˄', 'lvl':'˄', 'exp':'˄', 'description':'˄'};
+
   constructor(private guserService: GuserService, private router: Router) { }
 
   ngOnInit(): void {
@@ -38,10 +40,17 @@ export class ScoreboardComponent  {
     this.router.navigate(['/guser',{id: this.selectedGuser.id}]);
   }
   setOrder(value: string): void{
-    if(value != this.order.column)
+    if(value != this.order.column) {
       this.order.asc = true;
-    else
+      this.ascDescSign[value] = '˄';
+    }
+    else {
       this.order.asc = !this.order.asc;
+      if(this.ascDescSign[value] == '˅')
+        this.ascDescSign[value] = '˄';
+      else
+        this.ascDescSign[value] = '˅';
+    }
     this.order.column = value;
   }
 }

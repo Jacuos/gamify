@@ -1,7 +1,7 @@
 /**
  * Created by Jacek on 2017-03-01.
  */
-import { Component,} from '@angular/core';
+import {Component, ViewEncapsulation,} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from './auth.service';
@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 @Component({
   moduleId: module.id,
   templateUrl: 'login.component.html',
-  selector: 'login'
+  selector: 'login',
 })
 
 export class LoginComponent {

@@ -32,7 +32,7 @@ export class AdminGiveBadgesComponent  {
     asc: false
   };
   gusers: Guser[];
-
+  ascDescSign = {'login':'˄', 'firstName':'˄', 'lastName':'˄', 'lvl':'˄', 'exp':'˄', 'description':'˄'};
   token: string;
   subscription:Subscription = this.auth.token$
     .subscribe(token => this.token = token);
@@ -56,12 +56,20 @@ export class AdminGiveBadgesComponent  {
   }
 
   setOrder(value: string): void{
-    if(value != this.order.column)
+    if(value != this.order.column) {
       this.order.asc = true;
-    else
+      this.ascDescSign[value] = '˄';
+    }
+    else {
       this.order.asc = !this.order.asc;
+      if(this.ascDescSign[value] == '˅')
+        this.ascDescSign[value] = '˄';
+      else
+        this.ascDescSign[value] = '˅';
+    }
     this.order.column = value;
   }
+
   giveBadges(event: any){
     this.adminService.giveBadge(this.chosenOnes,this.chosenOne)
       .then(response => this.response = response);

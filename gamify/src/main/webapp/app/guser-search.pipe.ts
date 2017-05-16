@@ -57,7 +57,7 @@ export class GuserSearchPipe implements PipeTransform {
             items.sort(this.cExpDesc);
           break;
 
-        case "desciption":
+        case "description":
           if (order.asc == true) {
             items.sort(this.cDescrAsc);
           }

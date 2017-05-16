@@ -1,15 +1,18 @@
-<div id="search-component">
-  <input [(ngModel)]="search" placeholder="Szukaj..."/>
+<div class="navbar-form navbar-left">
+  <input type="text"  class="form-control" [(ngModel)]="search" placeholder="Szukaj..."/>
 </div>
-<table class = "heroes">
+<table class="table table-striped table-hover ">
+  <thead>
   <tr>
-    <th>Login <button (click)="setOrder('login')">^</button></th>
-  <th>Imię <button (click)="setOrder('firstName')">^</button></th>
-    <th>Nazwisko <button (click)="setOrder('lastName')">^</button></th>
-    <th>{{lvl}} <button (click)="setOrder('lvl')">^</button></th>
-    <th>{{exp}} <button (click)="setOrder('exp')">^</button></th>
-    <th>Opis <button (click)="setOrder('desciption')">^</button></th>
+    <th>Login <button (click)="setOrder('login')" class="btn btn-primary btn-xs">{{ascDescSign["login"]}}</button></th>
+  <th>Imię <button (click)="setOrder('firstName')" class="btn btn-primary btn-xs">{{ascDescSign["firstName"]}}</button></th>
+    <th>Nazwisko <button (click)="setOrder('lastName')" class="btn btn-primary btn-xs">{{ascDescSign["lastName"]}}</button></th>
+    <th>{{lvl}} <button (click)="setOrder('lvl')" class="btn btn-primary btn-xs">{{ascDescSign["lvl"]}}</button></th>
+    <th>{{exp}} <button (click)="setOrder('exp')" class="btn btn-primary btn-xs">{{ascDescSign["exp"]}}</button></th>
+    <th>Opis <button (click)="setOrder('description')" class="btn btn-primary btn-xs">{{ascDescSign["description"]}}</button></th>
   </tr>
+  </thead>
+  <tbody>
   <tr *ngFor="let guser of gusers  | gusersearch:search:order" (click)="onSelect(guser)" class = "guser" [class.selected]="guser === selectedGuser">
     <th>{{guser.login}}</th>
     <th>{{guser.firstName}}</th>
@@ -18,6 +21,6 @@
     <th>{{guser.exp}} </th>
     <th>{{guser.description}} </th>
   </tr>
+  </tbody>
 </table>
-  {{search}}
-{{order.column}}{{order.asc}}
+

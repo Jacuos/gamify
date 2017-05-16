@@ -1,13 +1,18 @@
-<form>
+<form class="form-horizontal">
+  <div class="form-group">
   <label for="photo">
     Zmień awatar (maksymalne wymiary: 100x100)<br>
-    <img [src]="url"  height="100" width="100"  />
+    <div class="container">
+    <img class="img-picker" [src]="url"  height="100" width="100"  />
+      <img class="front" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH4QUPDyYr5XHA+AAAA41JREFUeNrtnb1rFEEYh5+73F3Mh5oYP0gIiL1go/g/GNBKQVFrtbAVi2AK66ighRZaRFDwG2MR06gkoqJCIqIRETVNNIiIpEjiV5E5SKLe7dzt3byX/T0wXdh39vfs7M7O7W5ACCGEEMIQR1wTBugBfrvWozjsyJAUgzIkxaAMSTEoQ1IMypAUgzIkxaAMSTEoQ1IMypAUgzIkxaAMSTEoQ1IMypAUgzIkxaAMSTEoQ1IMyki8FIsyEivFsozESakFGYmRUksylryUWpSxZKXUsoyqSknVgMzfSdrntO5LJURIiIQICZEQISESIiREQoSECAmRECEhEiIkREKEhEiIkBAhIRIiJERChBkhKWAHcBl4B0xR+Mm/p0BbDWbUBjwvsm9TLoNLwPYQnewAHhD9McxHQEuJteJ+JLQUWoEnHjXuuYyqwgZg3KNzQ8CKMupZEAKwEhj2qPPRZWVKxgDQUGZNK0IAGoG7HrXGKymlA3jr0ZmbQC6GupaEANQDtzzqfQDWxy1jHTDm0YlrMcmwSg647pHHG6A9ruKrgBGP4heBugTMULPAFY9cRuOYZTYC9z2KXnUdTQo5dzaIms8w0FxqsSY3Q4pa7HxCRsZi6oALHjk9LEVKveds4jS18TZWpUi5DKLmNQgsi7rxDHDDY+MnEy5jvpRTnrPQTJSllD6PjfZKxl9Sej3y6yu2fHVCI6PqI6X3fxs66rER/WuI4vSUkmf+CN8G3Cba6u8ZoLvMzv4AvhsPdHmUc3wRjgOHIvzdT6DLLTXR7G7vq/0i/kAMO1wJMp4zzLjae3erwTHCfR1hp0EhuwLm0Q3wOmAHhgwKGQ6Yx0uAGcJ+Q2SzIRlbAmcxnQa+BA7hsCEhofvyFXdxDXlUzACdBmR0ArOBsxhMu2XhkGSBAwaEHDQw6xsF2Ev4b1FNUv5PveXQ4PoQOof9FkYIwGpgd8D6e1wfsDBCssC0gaPjRaC1sZSrHXr/p4Fcxl3IXgGbAh8dG4FfCV77GgNm0vOHigh/usoLGVEewRmZL0QjxMgIyV9E1wCflUlQ2oGJ/AiZBCaUSTA+5fNPLz6HiXCnq8VCdB2REFFIiE5Zgae8LFqqyLqZVovyqSrfgLXM/QyxYITMAueUT9U5m5fxL5oo/oKjWnztmcu8IK1Av8KqeOt3WS+g0HJ3F7AP2MrcC48inuvFY+ae6b2jOIQQQoglzB/9r6CY1D41IgAAAABJRU5ErkJggg=="  height="100" width="100"  />
+    </div>
   </label>
   <input type="file" accept="image/*" style="display:none;" name="photo" id="photo" (change)="crop($event)">
   <img [src]="baseUrl" class="photo" style="display:none;"/>
+  </div>
 </form>
 <label for="passForm">Zmień hasło</label>
-<form (ngSubmit)="sendPassword(passForm)" #passForm="ngForm" id = "passForm" novalidate>
+<form (ngSubmit)="sendPassword(passForm)" class="form-horizontal" #passForm="ngForm" id = "passForm" novalidate>
   <div class="form-group">
     Stare hasło
     <input type="password" class="form-control" id="oldPassword" required [(ngModel)]="oldPassword" name="oldPassword" #oldPass="ngModel">
@@ -21,14 +26,15 @@
     <div [hidden]="pass2.valid || pass2.untouched" class="alert alert-danger">
       Wpisane hasła się nie zgadzają.
     </div>
-  </div>
   <button type="submit" class="btn btn-success" [disabled]="!passForm.form.valid">Zmień hasło</button>
+    </div>
 </form>
 
-<form (ngSubmit)="sendDescription()">
-<div>
+<form (ngSubmit)="sendDescription()" class="form-horizontal">
+  <div class="form-group">
   <label for="description">Zmień opis</label><br>
   <textarea rows="4" cols="50" id="description" [(ngModel)]="guser.description" name="description"></textarea>
-</div>
+<br>
 <button type="submit" class="btn btn-success">Zapisz</button>
+  </div>
 </form>
