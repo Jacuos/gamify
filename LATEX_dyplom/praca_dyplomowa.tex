@@ -102,22 +102,134 @@
 % Wstęp
 %-----------------
 \chapter{Wstęp}
-Tu trzeba zacząć wstawiać własną treść i oczywiście usunąć tę, która jest użyta w przykładzie...
 \section{Grywalizacja}
-
+	Grywalizacja, gryfikacja lub gamifikacja, to zgodnie z definicją [Wikipedia] "Wykorzystanie mechaniki znanej np. z gier fabularnych i komputerowych, do modyfikowania zachowań ludzi w sytuacjach niebędących grami, w celu zwiększenia zaangażowania ludzi." Ta szeroka definicja obejmuje rozwiązania stosowane w marketingu, zarządzaniu projektami jak i edukacji. Założeniem stworzonej aplikacji jest motywowanie grup ludzi do wspólnej pracy poprzez system wyzwań i nagród. Należy jednak pamiętać że o ile aplikacja pomaga zarządzać zadaniami, prowadzić ranking i kontrolować rozwój użytkowników, o tyle weryfikacja wykonanych zadań czy przyznawanie fizycznych nagród pozostaje obowiązkiem administratora. Stworzone rozwiązanie było także pretekstem do zbadania współczesnych technologii wytwarzania aplikacji internetowych, opisanych w dalszej części pracy. 
+	\section{Projekt}
+	Ideę działania aplikacji przybliżyć mogą poniższe przykładowe Przypadki Użycia:\\
+	UC Użytkownika:\\
+	Wykonanie Zadania
+	\begin{enumerate}
+		\item Użytkownik loguje się do Systemu.
+		\item Użytkownik wybiera opcję ,,Wykonaj Zadanie'' -> (lub skanuje QR)
+		\item System wyświetla formularz wykonania Zadania.
+		\item Użytkownik wpisuje numer Zadania.
+		\item System dodaje zadanie i punkty Użytkownikowi
+	\end{enumerate}
+	Przejrzenie tabeli Rankingu
+	\begin{enumerate}
+		\item Użytkownik loguje się do Systemu.
+		\item Użytkownik wybiera opcję ,,Ranking''.
+		\item System wyświetla tabelę Użytkowników.
+		\item Użytkownik wybiera sortowanie malejąco, po Punktach.
+		\item System wyświela posortowaną listę.
+	\end{enumerate}
+	UC Administratora:\\
+	Dodanie nowego Zadania
+	\begin{enumerate}
+		\item Administrator loguje się do systemu
+		\item Administrator wybiera opcję ,,Dodaj Zadanie''
+		\item System wyświetla formularz dodania Zadania.
+		\item Administrator podaje opis, datę końcową i punkty Zadania.
+		\item System generuje numer Zadania i zapisuje je.
+	\end{enumerate}
+	Przynanie Odznaki Użytkownikom
+	\begin{enumerate}
+		\item Administrator loguje się do Systemu.
+		\item Administrator wybiera opcję ,,Odznaki''.
+		\item System wyświetla okno edycji Odznak.
+		\item Administrator wybiera opcję ,,Przyznaj odznakę''
+		\item System wybiera okno wyboru odznaki.
+		\item Administrator wybiera Odznakę.
+		\item System wyświetla okno wyboru Użytkowników.
+		\item Administrator wybiera UżytkownikóW.
+		\item System przyznaje odznakę wybranym Użytkownikom.
+	\end{enumerate}
+	
+	(Jak starczy czasu na koniec to może też diagram UC)
+	Poniższe diagramy klas przedstawiają strukturę modułu GLogin - oddzielnie dla wnętrza (,,back-end'') i fasady (,,front-end''). Są one reprezentatywne dla całości projektu, zaś stworzenie pełnej dokumentacji uważam za odpowiedni temat dla oddzielnej pracy dyplomowej. Prywatne zmienne posiadające publiczne metody dostępowe zostały przedstawione jako zmienne publiczne. Redukuje to liczbę metod i zwiększa czytelność diagramów.
+	\begin{figure}[!htbp]
+		\begin{center}
+			\centering
+			\includegraphics[width=\textwidth]{\ImgPath/rys/UML-Java.png}
+		\end{center}
+		\caption{Diagram klas w języku Java.}
+		\label{UMLJava}
+	\end{figure}
+		\begin{figure}[!htbp]
+			\begin{center}
+				\centering
+				\includegraphics[width=\textwidth]{\ImgPath/rys/UML-TS.png}
+			\end{center}
+			\caption{Diagram klas w języku TypeScript.}
+			\label{UMLTS}
+		\end{figure}
+\section{Użyte technologie}
+Do wykonania aplikacji użyto poniższych technologii: 
+	\begin{figure}[!htbp]
+		\begin{center}
+			\centering
+			\includegraphics[width=\textwidth]{\ImgPath/rys/technologies.png}
+		\end{center}
+		\caption{Języki, szkielety i systemy bedące częścią projektu.}
+		\label{technologies}
+	\end{figure}	
 \section{Wzorzec MVC}
+- o wzorcu MVC ogólnie + mądry rysunek\\
+MVC to wzorzec architektoniczny służący do organizowania struktury systemów interaktywnych. Składa się on z trzech części:
+	\begin{enumerate}
+		\item Model - reprezentuje dane i wykonuje logikę biznesową.
+		\item Widok - wyświetla dane pobrane z Modelu.
+		\item Kontroler - reaguje na dane wejściowe użytkownika. Przesyła żądania wykonania logiki biznesowej do Modelu i zmian Widoku. 
+	\end{enumerate}
+Zarówno Angular jak i Spring samodzielnie realizują wzorzec MVC. Jednak gdy połączymy te dwie technologie, sytuacja zmienia się. Warstwa kontrolera przeniesiona jest do Angulara i jest wykonywana przez przeglądarkę. To samo samo dzieje się z warstwą widoku. Po stronie serwerowej Springa pozostaje warstwa modelu. Ten rozdział powoduje że potrzebny jest odpowiedni sposób komunikacji klient-serwer. Nazywa się on REST API. Skróty te oznaczają Representational State Transfer i Application Programming Interface. Pierwszy skrót oznacza bezstanową wymianę tekstowych zasobów sieciowych. Przykładem są tu zapytania HTTP GET, POST, PUT, DELETE. Drugi skrót oznacza jednoznacznie zdefiniowany sposób komunikacji między komponentami. W wypadku aplikacji internetowej oznacza to że strona serwerowa odbierając zapytanie HTTP pod danym adresem, powinna zwrócić odpowiedź w postaci XML lub JSON.
+		\begin{figure}[!htbp]
+			\begin{center}
+				\centering
+				\includegraphics[width=\textwidth]{\ImgPath/rys/testAPI.png}
+			\end{center}
+			\caption{Zapytanie do API i odpowiedź. Taka komunikacja pozwala wykorzystać tą samą warstwę modelu w kilku różnych aplikacjach.}
+			\label{UMLTS}
+		\end{figure}
+- o tym jakie technologie u mnie realizują którą warstwę. O tym że Angular narzuca sobie warstwę kontrolera i potrzebujemy REST API\\
+- Podział na moduły - klient-admin + pakiety do każdej poszczególnej funkcjonalnosci. Przedrostek g podyktowany zbieżnoscią nazw takich jak login czy user z natywnymi elementami użytych platform.
 
 \chapter{Spring}
+-framework ogólnego przeznaczenia\\
+-Spring boot - co to?\\
+- konfiguracja xml vs adnotacje\\
+- maven(wklej i omów prosty przykład, napisz że mój jest bardziej pro, no ale)\\
+- przydatne moduły Springa - Data, JPA, Security, Jackson\\
+- moje REST API - klient\\
+- moje REST API - admin\\
 
 \chapter{Baza danych Oracle}
+-Krótka historia baz oracla \\
+- Konfiguracja bazy w Springu\\
+- metody optymalizacji - stronicowanie, te takie priorytety kolumn\\
+- PLSQL - SQL na sterydach - porównaj, opisz możliwosci, krótkie zapytania na naszej bazie\\
 
 \chapter{Angular 2}
+-cechy charakterystyczne, dlaczego taki modny - standalone, własny serwer, SINGLE-PAGE APP\\
+- Typescript vs Javascript - statyczne typowanie, kompatybilnosc z JS i bibliotekami - moja konfiguracja bibliotek i moja konfiguracja kompilowania i wrzucania do projektu Springa\\
+- serwisy i modele po stronie angulara\\
+- moje kontrolery - klient - w tym opis podstawowych elementóW kontrolera, to że własny css\\
+- moje kontrolery - admin\\
 
 \chapter{Bezpieczeństwo}
+- token do CSRF\\
+- https\\
+- token logowania wymieniany za hasło - policz też entropię, ile zajmie złamanie, wykaż że razem z punktem [BAN na IP] strona jest bezpieczna\\
+- reset i zmiana hasła\\
+- BAN na IP\\
+- SQL Injection - nie działa bo Java\\
 
 \chapter{Wdrożenie systemu}
-
+-Tomcat i pliki jar
+- Jakie są mniej więcej chmury, konfiguracja i screeny jak wrzucam - TBA
 \chapter{Wnioski}
+- policz czasy ładowania strony i porównaj z pro stronami - wp, facebook. Dodaj dużo danych i sprawdź w stresie może.\\
+-wady debugowania Angulara, czasy kompilacji Springa/Mavena/Tomcata - czy tyle warstw aplikacji na pewno jest nam potrzebne?\\
+- Zmiany w technologii - im bliżej frontendu tym szybciej. Warto odpowiedzieć sobie na pytanie - w czym ta nowa technologia jest lepsza od mojej, ale też dobierać technologię do projektu?
 
 
 \chapter{Schowek}
@@ -145,6 +257,13 @@ int main(String args){}
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
+\bibitem{Pierwsza}{Dokumentacja Springa/Mądra książka o Springu}
+\bibitem{Druga}{Mądra książka o PLSQL - ta do wersji 10 co czytałes w PKO}
+\bibitem{Trzecia}{Dokumentacja Angulara}
+\bibitem{Czwarta}{Ta książka o gamifikacji albo wikipedia }
+\bibitem{Piąta}{Cos o bezpieczenstwie - poszukaj w materialach do zajęć z bezpieczeństwa, oni ogarniali temat}
+\bibitem{Szósta}{Thinking in JAVA?? Jak znajdziesz fragment który się przyda}
+
 \bibitem{Stevens}{W. R. Stevens, G. R. Wright, ,,Biblia TCP/IP tom 1'', RM, 
 1998.}
 

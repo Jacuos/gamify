@@ -2,10 +2,10 @@
  * Created by Jacek on 23-01-2017.
  */
 import {Component, Input} from '@angular/core';
-import {GuserService} from "./guser.service";
+import {GuserService} from "../guser.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Guser} from "./guser";
-import {HomeComponent} from "./home/home.component";
+import {Guser} from "../guser";
+import {HomeComponent} from "../home/home.component";
 
 @Component({
   moduleId: module.id,

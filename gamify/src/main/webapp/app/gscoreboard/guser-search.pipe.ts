@@ -2,7 +2,7 @@
  * Created by Jacek on 2017-02-28.
  */
 import {Pipe, PipeTransform, Injectable} from '@angular/core';
-import {Guser} from "./guser";
+import {Guser} from "../guser";
 @Pipe({
   name: 'gusersearch',
   pure: false

@@ -5,7 +5,7 @@
 import {Component, Input, ElementRef} from '@angular/core';
 import {GadminService} from "../gadmin.service";
 import {QRCodeComponent} from 'angular2-qrcode';
-import {Gquest} from "../../gquest";
+import {Gquest} from "../../gquest/gquest";
 
 
 @Component({

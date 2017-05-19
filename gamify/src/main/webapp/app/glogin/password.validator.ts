@@ -14,7 +14,7 @@ export function forbiddenNameValidator(pass1:string): ValidatorFn {
 export class PasswordValidator implements Validator, OnChanges {
   @Input() validatepassword: string;
 
-  private valFn = Validators.nullValidator;
+  private valFn: ValidatorFn = Validators.nullValidator;
   ngOnChanges(changes: SimpleChanges): void {
     var change = changes["validatepassword"];
     console.log("change: "+change.currentValue);

@@ -6,7 +6,7 @@ import {Headers, Http, Response, RequestOptions,} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import {Observable, Subscription} from "rxjs";
-import {Gquest} from "../gquest";
+import {Gquest} from "../gquest/gquest";
 import {Layout} from "./layout";
 import {AuthService} from "../glogin/auth.service";
 

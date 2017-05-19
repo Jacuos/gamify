@@ -6,16 +6,16 @@ import { HttpModule, JsonpModule }    from '@angular/http';
 import {AppRoutingModule} from "./app-routing.module";
 
 import { AppComponent }  from './app.component';
-import { ScoreboardComponent }     from './scoreboard.component';
-import {GuserDetailComponent} from "./guser-detail.component";
+import { ScoreboardComponent }     from './gscoreboard/scoreboard.component';
+import {GuserDetailComponent} from "./gscoreboard/guser-detail.component";
 import { GuserService }         from './guser.service';
 import {AuthService} from "./glogin/auth.service";
 import {AuthGuard} from "./glogin/auth.guard";
 import {LoginComponent} from "./glogin/login.component";
-import {QuestLogComponent} from "./quest-log.component";
-import {GoQuestComponent} from "./go-quest.component";
+import {QuestLogComponent} from "./gquest/quest-log.component";
+import {GoQuestComponent} from "./gquest/go-quest.component";
 
-import {GuserSearchPipe} from "./guser-search.pipe";
+import {GuserSearchPipe} from "./gscoreboard/guser-search.pipe";
 import {HomeComponent} from "./home/home.component";
 import {RegisterComponent} from "./glogin/register.component";
 import {NotFoundComponent} from "./not-found.component";

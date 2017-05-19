@@ -2,10 +2,10 @@
  * Created by Jacek on 16-01-2017.
  */
 import { Component } from '@angular/core';
-import {GuserService} from "./guser.service";
-import {Guser} from "./guser";
+import {GuserService} from "../guser.service";
+import {Guser} from "../guser";
 import { Router }            from '@angular/router';
-import {Layout} from "./gadmin/layout";
+import {Layout} from "../gadmin/layout";
 
 @Component({
   moduleId: module.id,

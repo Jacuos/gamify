@@ -2,11 +2,11 @@
  * Created by Jacek on 23-01-2017.
  */
 import { Component } from '@angular/core';
-import {Guser} from "./guser";
+import {Guser} from "../guser";
 import {Gquest} from "./gquest";
-import {GuserService} from "./guser.service";
-import {Layout} from "./gadmin/layout";
-import {AuthService} from "./glogin/auth.service";
+import {GuserService} from "../guser.service";
+import {Layout} from "../gadmin/layout";
+import {AuthService} from "../glogin/auth.service";
 import {Subscription} from "rxjs";
 
 @Component({

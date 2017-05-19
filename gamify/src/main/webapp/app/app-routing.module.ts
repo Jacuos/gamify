@@ -4,11 +4,11 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ScoreboardComponent }     from './scoreboard.component';
-import {GuserDetailComponent} from "./guser-detail.component";
+import { ScoreboardComponent }     from './gscoreboard/scoreboard.component';
+import {GuserDetailComponent} from "./gscoreboard/guser-detail.component";
 import {LoginComponent} from "./glogin/login.component";
-import {QuestLogComponent} from "./quest-log.component";
-import {GoQuestComponent} from "./go-quest.component";
+import {QuestLogComponent} from "./gquest/quest-log.component";
+import {GoQuestComponent} from "./gquest/go-quest.component";
 import {AuthGuard} from "./glogin/auth.guard";
 import {RegisterComponent} from "./glogin/register.component";
 import {NotFoundComponent} from "./not-found.component";
