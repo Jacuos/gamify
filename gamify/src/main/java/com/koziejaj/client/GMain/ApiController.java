@@ -1,4 +1,4 @@
-package com.koziejaj.client;
+package com.koziejaj.client.GMain;
 /**
  * Created by Jacek on 21-01-2017.
  */
@@ -9,19 +9,10 @@ import com.koziejaj.client.GLogin.GLoginRepository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import javax.servlet.*;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import java.beans.beancontext.BeanContextSupport;
-import java.io.File;
 import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.util.*;

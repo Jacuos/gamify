@@ -6,8 +6,8 @@
 
 import {Component} from '@angular/core';
 import {GadminService} from "../gadmin.service";
-import {Guser} from "../../guser";
-import {GuserService} from "../../guser.service";
+import {Guser} from "../../gmain/guser";
+import {GuserService} from "../../gmain/guser.service";
 import {AuthService} from "../../glogin/auth.service";
 import {Subscription} from "rxjs";
 

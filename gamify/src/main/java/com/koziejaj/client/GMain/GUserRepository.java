@@ -1,4 +1,4 @@
-package com.koziejaj.client;
+package com.koziejaj.client.GMain;
 
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;

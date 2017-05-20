@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.1.13)  19 MAY 2017 01:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.1.13)  20 MAY 2017 21:28
 entering extended mode
 **praca_dyplomowa.tex
 (praca_dyplomowa.tex
@@ -554,6 +554,17 @@ File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\ucs.sty
+Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
+
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\uni-global.def
+File: uni-global.def 2013/05/13 UCS: Unicode global data
+)
+\uc@secondtry=\count113
+\uc@combtoks=\toks23
+\uc@combtoksb=\toks24
+\uc@temptokena=\toks25
+)
 (C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -564,9 +575,9 @@ File: lstlang1.sty 2015/06/04 1.6 listings language file
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip52
 \enit@outerparindent=\dimen128
-\enit@toks=\toks23
+\enit@toks=\toks26
 \enit@inbox=\box28
-\enitdp@description=\count113
+\enitdp@description=\count114
 )
 (prmag2017.sty
 Package `prmag2017' (ZETiIS PW Thesis) ver. 0.2 (Jan 2017)
@@ -574,108 +585,125 @@ Package `prmag2017' (ZETiIS PW Thesis) ver. 0.2 (Jan 2017)
 
 LaTeX Warning: Label `UMLTS' multiply defined.
 
+
+LaTeX Warning: Label `UMLTS' multiply defined.
+
+
+LaTeX Warning: Label `UMLTS' multiply defined.
+
+
+LaTeX Warning: Label `UMLTS' multiply defined.
+
+
+LaTeX Warning: Label `UMLTS' multiply defined.
+
 )
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 98.
-LaTeX Font Info:    ... okay on input line 98.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
  (C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count114
+\scratchcounter=\count115
 \scratchdimen=\dimen129
 \scratchbox=\box29
-\nofMPsegments=\count115
-\nofMParguments=\count116
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count117
+\nofMPsegments=\count116
+\nofMParguments=\count117
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count118
 \MPscratchDim=\dimen130
-\MPnumerator=\count118
-\makeMPintoPDFobject=\count119
-\everyMPtoPDFconversion=\toks25
+\MPnumerator=\count119
+\makeMPintoPDFobject=\count120
+\everyMPtoPDFconversion=\toks28
 )
 \AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring OFF on input line 98.
+Package hyperref Info: Link coloring OFF on input line 126.
  (D:\NAUKA\LATEX\mojMikTex\tex\latex\hyperref\nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (D:\NAUKA\LATEX\mojMikTex\tex\generic\oberdiek\gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count120
+\c@section@level=\count121
 )
-LaTeX Info: Redefining \ref on input line 98.
-LaTeX Info: Redefining \pageref on input line 98.
-LaTeX Info: Redefining \nameref on input line 98.
+LaTeX Info: Redefining \ref on input line 126.
+LaTeX Info: Redefining \pageref on input line 126.
+LaTeX Info: Redefining \nameref on input line 126.
 
 (praca_dyplomowa.out) (praca_dyplomowa.out)
 \@outlinefile=\write3
-\c@lstlisting=\count121
-Package hyperref Info: Option `pageanchor' set `false' on input line 99.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 99.
+\c@lstlisting=\count122
+
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\ucsencs.def
+File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
+)
+Package hyperref Info: Option `pageanchor' set `false' on input line 127.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 127.
 
 (D:\NAUKA\LATEX\mojMikTex\tex\latex\psnfss\t1phv.fd
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
-<PWHead.png, id=59, 2015.53pt x 320.19624pt>
+<PWHead.png, id=91, 2015.53pt x 320.19624pt>
 File: PWHead.png Graphic file (type png)
  <use PWHead.png>
-Package pdftex.def Info: PWHead.png used on input line 99.
+Package pdftex.def Info: PWHead.png used on input line 127.
 (pdftex.def)             Requested size: 455.24408pt x 72.31953pt.
 
-Overfull \hbox (31.10086pt too wide) in paragraph at lines 99--99
+Overfull \hbox (31.10086pt too wide) in paragraph at lines 127--127
 [] 
  []
 
-<inzhead.png, id=60, 1392.20125pt x 303.1325pt>
+<inzhead.png, id=92, 1392.20125pt x 303.1325pt>
 File: inzhead.png Graphic file (type png)
  <use inzhead.png>
-Package pdftex.def Info: inzhead.png used on input line 99.
+Package pdftex.def Info: inzhead.png used on input line 127.
 (pdftex.def)             Requested size: 455.24408pt x 99.12282pt.
 
-Overfull \hbox (31.10086pt too wide) in paragraph at lines 99--99
+Overfull \hbox (31.10086pt too wide) in paragraph at lines 127--127
  [] 
  []
 
-LaTeX Font Info:    Try loading font information for OML+plm on input line 99.
+LaTeX Font Info:    Try loading font information for OML+plm on input line 127.
+
 (C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\polski\omlplm.fd
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMS+plsy on input line 99.
-
+LaTeX Font Info:    Try loading font information for OMS+plsy on input line 127
+.
 
 (C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\polski\omsplsy.fd
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMX+plex on input line 99.
-
+LaTeX Font Info:    Try loading font information for OMX+plex on input line 127
+.
 
 (C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\polski\omxplex.fd
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <12> on input line 99.
+(Font)              <12> on input line 127.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 99.
+(Font)              <8> on input line 127.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 99.
-LaTeX Font Info:    Try loading font information for U+msa on input line 99.
+(Font)              <6> on input line 127.
+LaTeX Font Info:    Try loading font information for U+msa on input line 127.
 
 (D:\NAUKA\LATEX\mojMikTex\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 99.
+LaTeX Font Info:    Try loading font information for U+msb on input line 127.
 
 (D:\NAUKA\LATEX\mojMikTex\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -684,13 +712,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 {C:/Users/Jacek/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./PWHead.pn
 g (PNG copy)> <./inzhead.png (PNG copy)>]) [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 99.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 127.
+
 
 (D:\NAUKA\LATEX\mojMikTex\tex\latex\base\omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 99.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 127.
  [3
 
 
@@ -703,134 +732,208 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 
 
 ] (podziekowania.tex) [2]
-Package hyperref Info: Option `pageanchor' set `true' on input line 99.
+Package hyperref Info: Option `pageanchor' set `true' on input line 127.
 
 Rozdzia\l  1.
 [1
 
 
-] <./rys/UML-Java.png, id=114, 986.68625pt x 571.13374pt>
+] <./rys/UML-Java.png, id=154, 986.68625pt x 571.13374pt>
 File: ./rys/UML-Java.png Graphic file (type png)
 
 <use ./rys/UML-Java.png>
-Package pdftex.def Info: ./rys/UML-Java.png used on input line 153.
+Package pdftex.def Info: ./rys/UML-Java.png used on input line 180.
 (pdftex.def)             Requested size: 390.0pt x 225.74786pt.
 
-<./rys/UML-TS.png, id=115, 1171.37625pt x 541.02126pt>
+<./rys/UML-TS.png, id=155, 1171.37625pt x 541.02126pt>
 File: ./rys/UML-TS.png Graphic file (type png)
  <use ./rys/UML-TS.png>
-Package pdftex.def Info: ./rys/UML-TS.png used on input line 161.
+Package pdftex.def Info: ./rys/UML-TS.png used on input line 188.
 (pdftex.def)             Requested size: 390.0pt x 180.13083pt.
 
-<./rys/technologies.png, id=116, 651.3936pt x 411.939pt>
+<./rys/technologies.png, id=156, 651.3936pt x 411.939pt>
 File: ./rys/technologies.png Graphic file (type png)
 
 <use ./rys/technologies.png>
-Package pdftex.def Info: ./rys/technologies.png used on input line 171.
+Package pdftex.def Info: ./rys/technologies.png used on input line 198.
 (pdftex.def)             Requested size: 390.0pt x 246.6373pt.
  [2] [3 <./rys/UML-Java.png (PNG copy)> <./rys/UML-TS.png (PNG copy)>] <./rys/t
-estAPI.png, id=148, 484.05844pt x 36.88782pt>
+estAPI.png, id=188, 484.05844pt x 36.88782pt>
 File: ./rys/testAPI.png Graphic file (type png)
 
 <use ./rys/testAPI.png>
-Package pdftex.def Info: ./rys/testAPI.png used on input line 188.
+Package pdftex.def Info: ./rys/testAPI.png used on input line 214.
 (pdftex.def)             Requested size: 390.0pt x 29.72134pt.
- [4 <./rys/technologies.png>] [5 <./rys/testAPI.png>]
-Rozdzia\l  2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--204
+<./rys/appmodules.png, id=189, 484.05844pt x 350.81062pt>
+File: ./rys/appmodules.png Graphic file (type png)
+
+<use ./rys/appmodules.png>
+Package pdftex.def Info: ./rys/appmodules.png used on input line 223.
+(pdftex.def)             Requested size: 390.0pt x 282.65622pt.
+ [4 <./rys/technologies.png>] [5 <./rys/testAPI.png>] [6 <./rys/appmodules.png>
+]
+Rozdzia\l  2.
+[7
+
+] (C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+)
+Overfull \hbox (17.41908pt too wide) in paragraph at lines 270--271
+\T1/cmr/m/n/12 przy-sto-so-wana do ubsªugi za-py-ta« sie-cio-wych. Ad-no-ta-cja
+ @Re-qu-est-Map-ping(''/'')
+ []
+
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+) [8]
+<./rys/helloWorld.png, id=237, 483.30562pt x 173.89969pt>
+File: ./rys/helloWorld.png Graphic file (type png)
+
+<use ./rys/helloWorld.png>
+Package pdftex.def Info: ./rys/helloWorld.png used on input line 317.
+(pdftex.def)             Requested size: 390.0pt x 140.33257pt.
+
+<./rys/helloWorld2.png, id=238, 484.81125pt x 42.1575pt>
+File: ./rys/helloWorld2.png Graphic file (type png)
+
+<use ./rys/helloWorld2.png>
+Package pdftex.def Info: ./rys/helloWorld2.png used on input line 325.
+(pdftex.def)             Requested size: 390.0pt x 33.9145pt.
+ [9] [10 <./rys/helloWorld.png> <./rys/helloWorld2.png>] <./rys/mavencycle.png,
+ id=285, 494.84875pt x 413.545pt>
+File: ./rys/mavencycle.png Graphic file (type png)
+
+<use ./rys/mavencycle.png>
+Package pdftex.def Info: ./rys/mavencycle.png used on input line 347.
+(pdftex.def)             Requested size: 390.0pt x 325.9208pt.
+
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+) [11 <./rys/mavencycle.png>] [12]
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+)
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+) [13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14]
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [15]
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+)
+Underfull \vbox (badness 7522) has occurred while \output is active []
+
+ [16]
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+)
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+) [17]
+Underfull \hbox (badness 10000) in paragraph at lines 578--585
 
  []
 
-[6
-
-]
+[18]
 Rozdzia\l  3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--210
+Underfull \hbox (badness 10000) in paragraph at lines 587--592
 
  []
 
-[7
+[19
 
 ]
 Rozdzia\l  4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--217
+Underfull \hbox (badness 10000) in paragraph at lines 594--600
 
  []
 
-[8
+[20
 
 ]
 Rozdzia\l  5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 219--225
+Underfull \hbox (badness 10000) in paragraph at lines 603--609
 
  []
 
-[9
+[21
 
 ]
 Rozdzia\l  6.
-[10
+[22
 
 ]
 Rozdzia\l  7.
-[11
+[23
 
 ]
 Rozdzia\l  8.
-<./rys/schemat_komunikacji.png, id=190, 901.2494pt x 480.38293pt>
+<./rys/schemat_komunikacji.png, id=541, 901.2494pt x 480.38293pt>
 File: ./rys/schemat_komunikacji.png Graphic file (type png)
 
 <use ./rys/schemat_komunikacji.png>
-Package pdftex.def Info: ./rys/schemat_komunikacji.png used on input line 248.
+Package pdftex.def Info: ./rys/schemat_komunikacji.png used on input line 632.
 (pdftex.def)             Requested size: 360.49338pt x 192.14977pt.
- [12
 
- <./rys/schemat_komunikacji.png>]
-[13
+(C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+) [24
 
-] [14
+ <./rys/schemat_komunikacji.png>] [25
 
-] (opiniaopiekuna.tex) [15] (recenzja.tex [16])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 274.
- [17]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 274.
+] [26
 
-(praca_dyplomowa.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 274.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 274.
+] (opiniaopiekuna.tex) [27] (recenzja.tex
+[28])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 658.
+ [29]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 658.
+ (praca_dyplomowa.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 658.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 658.
 Package rerunfilecheck Info: File `praca_dyplomowa.out' has not changed.
-(rerunfilecheck)             Checksum: 1C6A3E07D2B1E25F964BC64BE7D81EF7;713.
+(rerunfilecheck)             Checksum: 8B77674682A4CF4B7272B0C8FBED4C42;1245.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 274.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 658.
  ) 
 Here is how much of TeX's memory you used:
- 8681 strings out of 493698
- 121697 string characters out of 3145647
- 227726 words of memory out of 3000000
- 11766 multiletter control sequences out of 15000+200000
+ 9141 strings out of 493698
+ 131977 string characters out of 3145647
+ 289660 words of memory out of 3000000
+ 11921 multiletter control sequences out of 15000+200000
  24647 words of font info for 47 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 29i,7n,40p,938b,1062s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 29i,7n,40p,1182b,1440s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Jacek\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
-ecrm1728.pk> <C:\Users\Jacek\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\
-ec\dpi600\ecbx2488.pk> <C:\Users\Jacek\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
-\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Jacek\AppData\Local\MiKTeX\2.9\fonts
-\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Jacek\AppData\Local\MiKTeX
-\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk> <C:\Users\Jacek\AppData\Lo
-cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk>{D:/NAUKA/LATEX/m
-ojMikTex/fonts/enc/dvips/fontname/8r.enc}<D:/NAUKA/LATEX/mojMikTex/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><D:/NAUKA/LATEX/mojMikTex/fonts/type1/urw/helveti
-c/uhvr8a.pfb>
-Output written on praca_dyplomowa.pdf (23 pages, 631706 bytes).
+ecti1200.pk>{C:/Users/Jacek/AppData/Roaming/MiKTeX/2.9/fonts/enc/dvips/pl/plms.
+enc} <C:\Users\Jacek\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi60
+0\ecrm1728.pk> <C:\Users\Jacek\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappe
+n\ec\dpi600\ecbx2488.pk> <C:\Users\Jacek\AppData\Local\MiKTeX\2.9\fonts\pk\ljfo
+ur\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Jacek\AppData\Local\MiKTeX\2.9\fon
+ts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Jacek\AppData\Local\MiKT
+eX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk> <C:\Users\Jacek\AppData\
+Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk>{D:/NAUKA/LATEX
+/mojMikTex/fonts/enc/dvips/fontname/8r.enc}<D:/NAUKA/LATEX/mojMikTex/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Jacek/AppData/Roaming/MiKTeX/2.9/font
+s/type1/public/pl/plsy10.pfb><D:/NAUKA/LATEX/mojMikTex/fonts/type1/urw/helvetic
+/uhvr8a.pfb>
+Output written on praca_dyplomowa.pdf (35 pages, 761071 bytes).
 PDF statistics:
- 545 PDF objects out of 1000 (max. 8388607)
- 76 named destinations out of 1000 (max. 500000)
- 148 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1036 PDF objects out of 1200 (max. 8388607)
+ 346 named destinations out of 1000 (max. 500000)
+ 232 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -4,11 +4,19 @@
 \BOOKMARK [1][-]{section.1.3}{Uzyte technologie}{chapter.1}% 4
 \BOOKMARK [1][-]{section.1.4}{Wzorzec MVC}{chapter.1}% 5
 \BOOKMARK [0][-]{chapter.2}{Spring}{}% 6
-\BOOKMARK [0][-]{chapter.3}{Baza danych Oracle}{}% 7
-\BOOKMARK [0][-]{chapter.4}{Angular 2}{}% 8
-\BOOKMARK [0][-]{chapter.5}{Bezpieczenstwo}{}% 9
-\BOOKMARK [0][-]{chapter.6}{Wdrozenie systemu}{}% 10
-\BOOKMARK [0][-]{chapter.7}{Wnioski}{}% 11
-\BOOKMARK [0][-]{chapter.8}{Schowek}{}% 12
-\BOOKMARK [1][-]{section.8.1}{Rzeczy}{chapter.8}% 13
-\BOOKMARK [0][-]{chapter*.4}{Bibliografia}{}% 14
+\BOOKMARK [1][-]{section.2.1}{Metody konfiguracji}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Spring Boot}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.3}{Maven}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.4}{Przydatne modu\233y}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.5}{Implementacja REST API}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.5.1}{Mapowanie obiektowo - relacyjne}{section.2.5}% 12
+\BOOKMARK [2][-]{subsection.2.5.2}{Repozytoria}{section.2.5}% 13
+\BOOKMARK [2][-]{subsection.2.5.3}{Kontroler}{section.2.5}% 14
+\BOOKMARK [0][-]{chapter.3}{Baza danych Oracle}{}% 15
+\BOOKMARK [0][-]{chapter.4}{Angular 2}{}% 16
+\BOOKMARK [0][-]{chapter.5}{Bezpieczenstwo}{}% 17
+\BOOKMARK [0][-]{chapter.6}{Wdrozenie systemu}{}% 18
+\BOOKMARK [0][-]{chapter.7}{Wnioski}{}% 19
+\BOOKMARK [0][-]{chapter.8}{Schowek}{}% 20
+\BOOKMARK [1][-]{section.8.1}{Rzeczy}{chapter.8}% 21
+\BOOKMARK [0][-]{chapter*.4}{Bibliografia}{}% 22

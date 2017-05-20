@@ -5,7 +5,7 @@ import { Injectable }    from '@angular/core';
 import {Headers, Http, Response, RequestOptions,} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import{Guser} from '../guser';
+import{Guser} from '../gmain/guser';
 import { Observable } from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {AuthService} from "../glogin/auth.service";

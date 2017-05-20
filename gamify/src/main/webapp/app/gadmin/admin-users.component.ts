@@ -3,8 +3,8 @@
  */
 
 import {Component, Input} from '@angular/core';
-import {Guser} from "../guser";
-import {GuserService} from "../guser.service";
+import {Guser} from "../gmain/guser";
+import {GuserService} from "../gmain/guser.service";
 import {Router} from "@angular/router";
 import {GadminService} from "./gadmin.service";
 

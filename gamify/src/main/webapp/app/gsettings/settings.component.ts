@@ -7,8 +7,8 @@ import {AuthService} from "../glogin/auth.service";
 import {Subscription} from "rxjs";
 import {SettingsService} from "./settings.service";
 import {Router} from "@angular/router";
-import {HomeComponent} from "../home/home.component";
-import {Guser} from "../guser";
+import {HomeComponent} from "../ghome/home.component";
+import {Guser} from "../gmain/guser";
 import {Glogin} from "../glogin/glogin";
 import {Form, NgForm} from "@angular/forms";
 

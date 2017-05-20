@@ -2,7 +2,7 @@
  * Created by Jacek on 2017-04-04.
  */
 import {Component, Input} from '@angular/core';
-import {Guser} from "../guser";
+import {Guser} from "../gmain/guser";
 import {AuthService} from "../glogin/auth.service";
 import {Subscription} from "rxjs";
 

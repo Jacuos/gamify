@@ -7,7 +7,7 @@ package com.koziejaj.client.GSettings;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.koziejaj.client.GLogin.GLogin;
 import com.koziejaj.client.GLogin.GLoginRepository;
-import com.koziejaj.client.GUserRepository;
+import com.koziejaj.client.GMain.GUserRepository;
 import org.apache.commons.io.FileUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,12 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.koziejaj.client.GUser;
+import com.koziejaj.client.GMain.GUser;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Base64;
 import java.util.HashMap;
 

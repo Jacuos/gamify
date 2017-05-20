@@ -5,8 +5,8 @@ import {Component, Injectable} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import {AuthService} from "./auth.service";
 import {Glogin} from "./glogin";
-import {Guser} from "../guser";
-import {GuserService} from "../guser.service";
+import {Guser} from "../gmain/guser";
+import {GuserService} from "../gmain/guser.service";
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 // Observable class extensions

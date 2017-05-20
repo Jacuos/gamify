@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Glogin} from "./glogin";
-import {GuserService} from "../guser.service";
-import {Guser} from "../guser";
+import {GuserService} from "../gmain/guser.service";
+import {Guser} from "../gmain/guser";
 import {Router} from "@angular/router";
 
 

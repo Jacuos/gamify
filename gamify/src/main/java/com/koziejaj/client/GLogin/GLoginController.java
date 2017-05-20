@@ -4,26 +4,21 @@ package com.koziejaj.client.GLogin;
  */
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.common.collect.Lists;
-import com.koziejaj.client.GLogin.GLoginRepository;
-import com.koziejaj.client.GUserQRepository;
+import com.koziejaj.client.GMain.GUserQRepository;
 import it.ozimov.springboot.mail.model.Email;
 import it.ozimov.springboot.mail.model.defaultimpl.DefaultEmail;
 import it.ozimov.springboot.mail.service.EmailService;
-import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.koziejaj.client.GUserRepository;
-import com.koziejaj.client.GUser;
+import com.koziejaj.client.GMain.GUserRepository;
+import com.koziejaj.client.GMain.GUser;
 
 import javax.annotation.Resource;
 import javax.mail.internet.AddressException;
@@ -32,9 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.nio.charset.Charset;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 
 @RestController

@@ -4,30 +4,30 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ScoreboardComponent }     from './gscoreboard/scoreboard.component';
-import {GuserDetailComponent} from "./gscoreboard/guser-detail.component";
-import {LoginComponent} from "./glogin/login.component";
-import {QuestLogComponent} from "./gquest/quest-log.component";
-import {GoQuestComponent} from "./gquest/go-quest.component";
-import {AuthGuard} from "./glogin/auth.guard";
-import {RegisterComponent} from "./glogin/register.component";
+import { ScoreboardComponent }     from '../gscoreboard/scoreboard.component';
+import {GuserDetailComponent} from "../gscoreboard/guser-detail.component";
+import {LoginComponent} from "../glogin/login.component";
+import {QuestLogComponent} from "../gquest/quest-log.component";
+import {GoQuestComponent} from "../gquest/go-quest.component";
+import {AuthGuard} from "../glogin/auth.guard";
+import {RegisterComponent} from "../glogin/register.component";
 import {NotFoundComponent} from "./not-found.component";
-import {AdminLoginComponent} from "./gadmin/admin-login.component";
-import {AdminDashboardComponent} from "./gadmin/admin-dashboard.component";
-import {GadminComponent} from "./gadmin/gadmin.component";
-import {AdminGuard} from "./gadmin/admin.guard";
-import {AdminQuestsComponent} from "./gadmin/quests/admin-quests.component";
-import {AdminUsersComponent} from "./gadmin/admin-users.component";
-import {AdminLayoutComponent} from "./gadmin/admin-layout.component";
-import {AdminAllQuestsComponent} from "./gadmin/quests/admin-allquests.component";
-import {AdminNewQuestComponent} from "./gadmin/quests/admin-newquest.component";
-import {SettingsComponent} from "./gsettings/settings.component";
-import {GforgotComponent} from "./gforgot/gforgot.component";
-import {GsetpassComponent} from "./gforgot/gsetpass.component";
-import {AdminBadgesComponent} from "./gadmin/badges/admin-badges.component";
-import {AdminEditBadgesComponent} from "./gadmin/badges/admin-edit-badges.component";
-import {AdminGiveBadgesComponent} from "./gadmin/badges/admin-give-badges.component";
-import {GreetComponent} from "./home/greet.component";
+import {AdminLoginComponent} from "../gadmin/admin-login.component";
+import {AdminDashboardComponent} from "../gadmin/admin-dashboard.component";
+import {GadminComponent} from "../gadmin/gadmin.component";
+import {AdminGuard} from "../gadmin/admin.guard";
+import {AdminQuestsComponent} from "../gadmin/quests/admin-quests.component";
+import {AdminUsersComponent} from "../gadmin/admin-users.component";
+import {AdminLayoutComponent} from "../gadmin/admin-layout.component";
+import {AdminAllQuestsComponent} from "../gadmin/quests/admin-allquests.component";
+import {AdminNewQuestComponent} from "../gadmin/quests/admin-newquest.component";
+import {SettingsComponent} from "../gsettings/settings.component";
+import {GforgotComponent} from "../gforgot/gforgot.component";
+import {GsetpassComponent} from "../gforgot/gsetpass.component";
+import {AdminBadgesComponent} from "../gadmin/badges/admin-badges.component";
+import {AdminEditBadgesComponent} from "../gadmin/badges/admin-edit-badges.component";
+import {AdminGiveBadgesComponent} from "../gadmin/badges/admin-give-badges.component";
+import {GreetComponent} from "../ghome/greet.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},

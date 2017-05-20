@@ -1,12 +1,10 @@
-package com.koziejaj.client;
+package com.koziejaj.client.GMain;
 /**
  * Created by Jacek on 2017-02-24.
  */
 
 import org.springframework.data.repository.CrudRepository;
-import java.util.List;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 /**

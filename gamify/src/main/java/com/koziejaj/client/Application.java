@@ -3,9 +3,9 @@ package com.koziejaj.client;
 /**
  * Created by Jacek on 17-12-2016.
  */
-import java.net.InetAddress;
-import java.util.Arrays;
 
+import com.koziejaj.client.GMain.GUser;
+import com.koziejaj.client.GMain.GUserRepository;
 import it.ozimov.springboot.mail.configuration.EnableEmailTools;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,8 +14,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import javax.annotation.Resource;
-
-import oracle.jdbc.pool.OracleDataSource;
 
 
 @SpringBootApplication

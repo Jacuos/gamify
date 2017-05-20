@@ -6,8 +6,8 @@ import {Component, Input, Inject, Injectable} from '@angular/core';
 import {Router, ActivatedRoute, RouterState}            from '@angular/router';
 import {AuthService} from "../glogin/auth.service";
 import {Subscription, Observable} from "rxjs";
-import {Guser} from "../guser";
-import {GuserService} from "../guser.service";
+import {Guser} from "../gmain/guser";
+import {GuserService} from "../gmain/guser.service";
 import {DOCUMENT} from "@angular/platform-browser";
 import {Layout} from "../gadmin/layout";
 

@@ -1,4 +1,4 @@
-package com.koziejaj.client;
+package com.koziejaj.client.GMain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

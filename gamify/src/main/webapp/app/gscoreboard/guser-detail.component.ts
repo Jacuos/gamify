@@ -2,11 +2,11 @@
  * Created by Jacek on 16-01-2017.
  */
 import { Component, OnInit } from '@angular/core';
-import { GuserService }         from '../guser.service';
-import '../rxjs-operators';
+import { GuserService }         from '../gmain/guser.service';
+import '../gmain/rxjs-operators';
 
 import {Gquest} from "../gquest/gquest";
-import {Guser} from "../guser";
+import {Guser} from "../gmain/guser";
 import {ActivatedRoute, Params} from "@angular/router";
 import {Layout} from "../gadmin/layout";
 import {AuthService} from "../glogin/auth.service";

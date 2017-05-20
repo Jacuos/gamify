@@ -3,22 +3,18 @@ package com.koziejaj.client.GAdmin;
  * Created by Jacek on 21-01-2017.
  */
 import com.koziejaj.client.GLogin.GLoginRepository;
-import com.koziejaj.client.GQuestRepository;
-import com.koziejaj.client.GUserQRepository;
-import com.koziejaj.client.GUserRepository;
-import org.springframework.data.rest.core.Path;
+import com.koziejaj.client.GMain.GQuestRepository;
+import com.koziejaj.client.GMain.GUserQRepository;
+import com.koziejaj.client.GMain.GUserRepository;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import com.koziejaj.client.GQuest;
+import com.koziejaj.client.GMain.GQuest;
 
 import java.io.File;
 import java.io.IOException;

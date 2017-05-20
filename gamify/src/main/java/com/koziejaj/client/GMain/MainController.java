@@ -1,4 +1,4 @@
-package com.koziejaj.client;
+package com.koziejaj.client.GMain;
 
 /**
  * Created by Jacek on 17-12-2016.

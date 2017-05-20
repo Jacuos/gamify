@@ -20,7 +20,35 @@
 \usepackage{indentfirst}
 \usepackage[pdftex]{hyperref}
 \usepackage{listings}
-\lstset{language=Java}  
+\usepackage{ucs}
+\lstset{frame=tb,
+		language=Java,
+		breaklines=true,
+		showstringspaces=false,
+		columns=flexible,
+		numbers=none,
+		tabsize=3,
+		inputencoding=utf8x, 
+		extendedchars=\true,
+		literate={ą}{{\k{a}}}1
+		{Ą}{{\k{A}}}1
+		{ę}{{\k{e}}}1
+		{Ę}{{\k{E}}}1
+		{ó}{{\'o}}1
+		{Ó}{{\'O}}1
+		{ś}{{\'s}}1
+		{Ś}{{\'S}}1
+		{ł}{{\l{}}}1
+		{Ł}{{\L{}}}1
+		{ż}{{\.z}}1
+		{Ż}{{\.Z}}1
+		{ź}{{\'z}}1
+		{Ź}{{\'Z}}1
+		{ć}{{\'c}}1
+		{Ć}{{\'C}}1
+		{ń}{{\'n}}1
+		{Ń}{{\'N}}1
+	}  
 
 
 % rozmaite polecenia pomocnicze
@@ -97,7 +125,6 @@
 
 \begin{document}
 \maketitle
-
 %-----------------
 % Wstęp
 %-----------------
@@ -105,7 +132,7 @@
 \section{Grywalizacja}
 	Grywalizacja, gryfikacja lub gamifikacja, to zgodnie z definicją [Wikipedia] "Wykorzystanie mechaniki znanej np. z gier fabularnych i komputerowych, do modyfikowania zachowań ludzi w sytuacjach niebędących grami, w celu zwiększenia zaangażowania ludzi." Ta szeroka definicja obejmuje rozwiązania stosowane w marketingu, zarządzaniu projektami jak i edukacji. Założeniem stworzonej aplikacji jest motywowanie grup ludzi do wspólnej pracy poprzez system wyzwań i nagród. Należy jednak pamiętać że o ile aplikacja pomaga zarządzać zadaniami, prowadzić ranking i kontrolować rozwój użytkowników, o tyle weryfikacja wykonanych zadań czy przyznawanie fizycznych nagród pozostaje obowiązkiem administratora. Stworzone rozwiązanie było także pretekstem do zbadania współczesnych technologii wytwarzania aplikacji internetowych, opisanych w dalszej części pracy. 
 	\section{Projekt}
-	Ideę działania aplikacji przybliżyć mogą poniższe przykładowe Przypadki Użycia:\\
+	Ideę działania aplikacji ,,Gamify'' przybliżyć mogą poniższe przykładowe Przypadki Użycia:\\
 	UC Użytkownika:\\
 	Wykonanie Zadania
 	\begin{enumerate}
@@ -174,7 +201,6 @@ Do wykonania aplikacji użyto poniższych technologii:
 		\label{technologies}
 	\end{figure}	
 \section{Wzorzec MVC}
-- o wzorcu MVC ogólnie + mądry rysunek\\
 MVC to wzorzec architektoniczny służący do organizowania struktury systemów interaktywnych. Składa się on z trzech części:
 	\begin{enumerate}
 		\item Model - reprezentuje dane i wykonuje logikę biznesową.
@@ -190,21 +216,377 @@ Zarówno Angular jak i Spring samodzielnie realizują wzorzec MVC. Jednak gdy po
 			\caption{Zapytanie do API i odpowiedź. Taka komunikacja pozwala wykorzystać tą samą warstwę modelu w kilku różnych aplikacjach.}
 			\label{UMLTS}
 		\end{figure}
-- o tym jakie technologie u mnie realizują którą warstwę. O tym że Angular narzuca sobie warstwę kontrolera i potrzebujemy REST API\\
-- Podział na moduły - klient-admin + pakiety do każdej poszczególnej funkcjonalnosci. Przedrostek g podyktowany zbieżnoscią nazw takich jak login czy user z natywnymi elementami użytych platform.
+Modułowa struktura projektu przedstawia się następująco: wewnątrz projektu Springa rezydują obok siebie 3 foldery - z plikami źródłowymi Javy, plikami statycznymi (grafiką) i projektem Angulara. Obydwa języki posiadają moduły główne - tam przechowywane są konfiguracje i najczęściej używane klasy. Każda większa funkcjonalność posiada oddzielny folder. To samo tyczy się aplikacji admina która jest traktowana jako oddzielny moduł. Przedrostek g występujący w nazwach klas i modułów podyktowany jest zbieżnoscią nazw takich jak login czy user z natywnymi elementami użytych platform.
+		\begin{figure}[!htbp]
+			\begin{center}
+				\centering
+				\includegraphics[width=\textwidth]{\ImgPath/rys/appmodules.png}
+			\end{center}
+			\caption{Modułowy podział projektu.}
+			\label{UMLTS}
+		\end{figure}
 
 \chapter{Spring}
+Spring to szkielet tworzenia aplikacji (ang. framework) przeznaczony dla Javy Enterprise Edition, czyli serwerowej odmiany tego języka. Powstał jako alternatywa dla oficjalnych standardów serwerowych Javy takich jak Enterprise JavaBeans. Spring nie narzuca jednego modelu programowania. Posiada wiele modułów które są przydatne przy pisaniu aplikacji, jednocześnie będąc całkowicie opcjonalnymi. Znaną cechą Springa jest \textbf{,,odwrócenie sterowania''} (ang. Inversion of Control), czyli wzorzec w którym wykonywaniem programu steruje szkielet a nie kod programisty. To Spring decyduje kiedy wykonać dane akcje. Przykładem odwróconego sterowania jest chociażby \textbf{"wstrzykiwnie zależności"} (ang. Dependency Injection), kiedy to utworzone, zainicjowane obiekty przekazywane są obiektom które ich potrzebują. Obiekty nie tworzą wtedy samodzielnie instancji innych obiektów. Kolejną ważną cechą Springa jest \textbf{,,programowanie aspektowe''} czyli wzorzec w którym rozdziela się fizycznie funkcjonalności i definiuje punkty komunikacji między nimi, dostępne wszędzie tam gdzie są potrzebne.
+\section{Metody konfiguracji}
+Konfiguracja projektu w Springu może odbywać się na dwa sposoby - przy pomocy plików XML lub adnotacji.  Poniższy przykład prezentuje te same ustawienia w obydwu reprezentacjach:\\
+\begin{tabular}{|l|l|}
+	\hline XML\\ 
+	\hline <beans> \\
+	<bean id = ''myClass'' \\ class = ''com.koziejaj.MyClass'' />\\
+	</beans>\\ \\
+	\hline 
+\end{tabular} 
+\begin{tabular}{|l|l|}
+	\hline Adnotacje\\ 
+	\hline @Configuration\\
+	public class MyClassConfig \{\\
+	@Bean \\
+	public MyClass myClass()\{\\
+	return new MyClass();
+	\}
+	\}\\
+	\hline 
+\end{tabular}\\
+Konfiguracja XML odbywa się w oddzielnych plikach, zaś adnotacjami - bezpośrednio w kodzie którego dotyczy. Warto wiedzieć że konfiguracja adnotacjami wykonuje się przed XML. W projekcie użyto adnotacji. Wydają się one czytelniejsze, są też kierunkiem w którym zmierza rozwój Springa. Nie bez powodu był on kiedyś określany kolokwialnie jako "XML hell". Wyjątkiem są pliki z rozszerzeniem .properties. Przechowują one stałe wartości, takie jak numer portu serwera, dane uwierzytelniające bazy danych.
+\section{Spring Boot}
+Brak narzuconych standardów szkieletu aplikacji ma także i swoje wady. Spring wymaga dużej ilości konfiguracji, a także dobrania modułów i bibliotek które będą nam potrzebne. Moduł Spring Boot zawiera wstępną konfigurację i najpotrzebniejsze biblioteki. Jednocześnie umożliwia dostosowanie projektu do specyficznych wymagań. Podczas uruchomienia sprawdza których elementów konfiguracji brakuje i dodaje je zgodnie z posiadaną wiedzą na temat projektu. Moduł ten można uznać za fundament stworzonej aplikacji. Ilość kodu wymaganą do napisania aplikacji serwerowej w ramach Spring Boot przedstawiają poniższe listingi:
+
+\begin{lstlisting}[label={MVCController}]
+package hello;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@RestController
+public class HelloController {
+
+	@RequestMapping("/")
+	public String index() {
+	return "Witaj Swiecie! Pozdrowienia od Spring Boot!\n";
+	}
+}
+\end{lstlisting}
+Adnotacja @RestController informuje moduł Spring MVC że klasa będzie przystosowana do ubsługi zapytań sieciowych. Adnotacja @RequestMapping(''/'') oznacza ścieżkę która spowoduje wywołanie metody.
+
+\begin{lstlisting}
+package hello;
+
+import java.util.Arrays;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+	@Bean
+	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+		return args -> {
+
+			System.out.println("Klasy Projektu:");
+
+			String[] beanNames = ctx.getBeanDefinitionNames();
+			Arrays.sort(beanNames);
+			for (String beanName : beanNames) {
+				System.out.println(beanName);
+			}
+
+		};
+	}
+
+}
+\end{lstlisting}
+Adnotacja @SpringBootApplication jest wygodnym połączeniem kilku innych adnotacji: 
+\begin{itemize}
+	\item @Configuration - oznacza klasę jako źródło metod z adnotacją @Bean, które powinne być dostępne w kontekście aplikacji.
+	\item @EnableAutoConfiguration - nakazuje Spring Boot dodać do kontekstu aplikacji wszystkie metody @Bean na podstawie ścieżki projektu, innych metod @Bean i dostępnych konfiguracji.
+	\item @ComponentScan - skanuje pakiet (w tym przypadku ,,hello'') w poszukiwaniu komponentów, konfiguracji i serwisów.
+\end{itemize}
+Metoda SpringApplication.run(); uruchamia aplikację, zaś metoda zwracająca CommandLineRunner jest uruchamiana podczas startu.
+		\begin{figure}[!htbp]
+			\begin{center}
+				\centering
+				\includegraphics[width=\textwidth]{\ImgPath/rys/helloWorld.png}
+			\end{center}
+			\caption{Fragment uruchomienia skompilowanego przykładu.}
+			\label{UMLTS}
+		\end{figure}
+				\begin{figure}[!htbp]
+					\begin{center}
+						\centering
+						\includegraphics[width=\textwidth]{\ImgPath/rys/helloWorld2.png}
+					\end{center}
+					\caption{Zapytanie wysłane do przykładu.}
+					\label{UMLTS}
+				\end{figure}
+				
+
+\section{Maven}
+Maven to w narzędzie do zarządzania projektem - jego zależnościami (używanymi bibliotekami) i strukturą (podziałem na moduły). Maven automatyzuje budowę projektu zgodnie z poniższymi krokami.
+\begin{enumerate}
+	\item Validate - walidacja kodu. Sprawdzana jest poprawność kodu źródłowego, umożliwiająca jego kompilację.
+	\item Compile - kompilacja, czyli przetworzenie kodu źródłowego na kod bajtowy, wykonywany przez maszynę wirtualną Javy.
+	\item Test - wykonanie testów jednostkowych.
+	\item Package - budowa pojedynczej paczki wykonywalnej (plik .JAR) lub wykonywanej przez serwer (plik .WAR).
+	\item Integration-test - wykonanie testów integracyjnych.
+	\item Verify - weryfikacja jakościowa paczki zbudowanej w kroku 4.
+	\item Install - instalacja paczki. Oznacza to umieszczenie paczki z kroku 4 w repozytorium lokalnym lub zdalnym.
+	\item Deploy - umieszczenie projektu w repozytorium.
+\end{enumerate}
+				\begin{figure}[!htbp]
+					\begin{center}
+						\centering
+						\includegraphics[width=\textwidth]{\ImgPath/rys/mavencycle.png}
+					\end{center}
+					\caption{Uproszczony cykl życia projektu Maven.}
+					\label{UMLTS}
+				\end{figure}
+Konfiguracja Maven znajduje sie pliku POM.xml. Poniższy przykład przedstawia skróconą wersję pliku POM stworzonego projektu:
+
+\begin{lstlisting}
+<!-- Nagłówek określający używaną wersję -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+<!-- Podstawowe informacje na temat projektu -->
+<modelVersion>4.0.0</modelVersion>
+<groupId>com.koziejaj.client</groupId>
+<artifactId>gamify</artifactId>
+<packaging>jar</packaging>
+<version>0.1-dev</version>
+<name>gamify</name>
+<url>http://maven.apache.org</url>
+
+<!-- Dziedziczenie po istniejącaym projekcie -->
+<parent>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-parent</artifactId>
+<version>1.4.2.RELEASE</version>
+</parent>
+
+<!-- Zależności - lista bibliotek które należy pobrać -->
+<dependencies>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+</dependencies>
+
+<!-- Dodatkowe ustawienia -->
+<properties>
+<java.version>1.8</java.version>
+</properties>
+
+</project>
+
+\end{lstlisting}
+
+\section{Przydatne moduły}
+Oto lista najważniejszych modułów użytych w projekcie:
+\begin{itemize}
+	\item Spring MVC - przy pomocy klasy DispatcherServlet przekazuje zapytania do odpowiednich kontrolerów, tak jak na listingu \ref{MVCController}. W przypadku wykonanego projektu, jest częścią modułu spring-boot-starter-web.
+	\item Spring Data - rozbudowana, wielomodułowa biblioteka, wspierająca warstwę dostępu do danych. Wypiera popularną niegdyś bibliotekę Hibernate. W przypadku Gamify, użyto dwóch modułów:
+	\begin{itemize}
+		\item JPA - służy do mapowania obiektowo-relacyjnego zgodnie ze standardem JPA. Pobrany jako moduł spring-boot-starter-data-jpa.
+		\item REST - Umożliwia tworzenie repozytoriów z automatycznie generowanymi metodami CRUD. Obiekt takiego repozytorium odpowiada tabeli w bazie danych. Mogą być one z łatwością rozbudowane o szczegółowe metody obróbki danych. Przykładowo, metoda 
+		\begin{lstlisting}
+		GLogin findByLoginAndPassword(String login, String password);
+		\end{lstlisting}
+		wyszuka użytkowników o określonym loginie i haśle bez potrzeby pisania jakiejkolwiek logiki biznesowej. REST umożliwia wysyłanie zapytań do repozytoriów w sposób analogiczny do kontrolerów \ref{MVCController}, jednak ta funkcjonalność nie została wykorzystana w projekcie. Moduł pobrany jako: spring-boot-starter-data-rest.
+	\end{itemize}
+	\item Spring Security - biblioteka zapewniająca bezpieczeństwo aplikacji, szerzej opisana w rozdziale Bezpieczeństwo \ref{Safety}.
+\end{itemize}
+\section{Implementacja REST API}
+Implementacja serwerowej części aplikacji zostanie omówiona na przykładzie modułu panelu Administratora. Ograniczy to analizę do sześciu klas, zorganizowanych podobnie do wcześniejszego diagramu panelu logowania \ref{UMLJava}.
+\subsection{Mapowanie obiektowo - relacyjne}
+Klasy omówione w tej sekcji są definicjami tabel bazy danych. Klasa taka odpowiada pojedynczemu rekordowi tabeli i pozwala na jego modyfikację.\\ 
+Jedną z funkcjonalności panelu Administratora jest tworzenie i przyznawanie Odznak. Jest to taki wirtualny medal za specjalne zasługi, który Administrator może nadać Użytkownikowi. Instancja takiego medalu musi zawierać dwie informacje - unikatowy login Użytkownika który go posiada i nazwę Odznaki. Nazwa ta odpowiada plikowi graficznemu Odznaki w plikach statycznych projektu.
+\begin{lstlisting}
+package com.koziejaj.client.GAdmin;
+
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+
+//Adnotacja oznaczająca klasę odpowiadającą tabeli bazy danych
+@Entity
+//Adnotacja wczytująca definicję klucza głównego (primary key) - wyjaśnienie w kolejnym listingu
+@IdClass(GBId.class)
+public class GBadge{
+
+	//Adnotacje klucza głównego
+	@Id
+	private String login;
+	@Id
+	private String badge;
+
+	//Konstruktory
+	public GBadge() {
+	}
+
+	public GBadge(String i, String v) {
+	login = i;
+	badge = v;
+	}
+
+	//Metody dostępowe
+	public String getLogin() {
+	return login;
+	}
+
+	public void setLogin(String login) {
+	this.login = login;
+	}
+
+	public String getBadge() {
+	return badge;
+	}
+
+	public void setBadge(String badge) {
+	this.badge = badge;
+	}
+}
+\end{lstlisting}
+Chcąc wykorzystywać klucz główny złożony z kilku kolumn, należy zdefiniować specjalną klasę. Taki klucz gwarantuje że dany Użytkownik posiada co najwyżej jedną instancję danej odznaki.
+\begin{lstlisting}
+package com.koziejaj.client.GAdmin;
+
+import java.io.Serializable;
+
+//klasa klucza głownego implementuję serializację, co pozwala szkieletowi aplikacji porównywać ich wartości zapisane jako strumień bajtów.
+public class GBId implements Serializable {
+
+	private String login;
+	private String badge;
+
+	public GBId(){}
+
+	public String getLogin() {
+	return login;
+	}
+
+	public void setLogin(String login) {
+	this.login = login;
+	}
+
+	public String getBadge() {
+	return badge;
+	}
+
+	public void setBadge(String badge) {
+	this.badge = badge;
+	}
+}
+\end{lstlisting}
+Administrator może zmieniać różne parametry wpływające na aplikację Użytkownika. Jest to funkcjonalność bardzo prostego "Systemu zarządzania treścią" (ang. CMS). Na ten moment obsługiwane wartości to: zawartość strony powitalnej, słowa oznaczające Punkty i Poziomy w aplikacji Użytkownika, arkusz css aplikacji, wzór na progi punktowe kolejnych Poziomów. Dodanie kolejnej funkcjonalności tego typu wymagałoby dodania rekordu w tabeli i zmodyfikowania aplikacji Użytkownika. Do przechowywania zmian potrzebna jest bardzo prosta klasa: 
+\begin{lstlisting}
+package com.koziejaj.client.GAdmin;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Entity
+public class GLayout {
+
+@Id
+private String id;
+private String value;
+
+public GLayout() {}
+
+	public GLayout(String i, String v) {
+	id = i;
+	value = v;
+	}
+
+	public String getId() {
+	return id;
+	}
+
+	public void setId(String id) {
+	this.id = id;
+	}
+
+	public String getValue() {
+	return value;
+	}
+
+	public void setValue(String value) {
+	this.value = value;
+	}
+	
+	//Metoda ToString przesłonięta by ułatwić debugowanie aplikacji.
+	@Override
+	public String toString() {
+	return String.format(
+	"GLayout[id=%s, value=%s]",
+	id,value);
+	}
+
+}
+
+\end{lstlisting}
+\subsection{Repozytoria}
+Zarówno klasa GBadge jak GLayout mają swoje repozytoria. Można traktować je jako instancje tabel bazy danych. To w repozytoriach szuka się rekordów i zapisuje zmiany na stałe.
+\begin{lstlisting}
+package com.koziejaj.client.GAdmin;
+
+import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.transaction.annotation.Transactional;
+
+@RepositoryRestResource(collectionResourceRel = "GBadges", path = "GBadges")
+public interface GBadgeRepository extends CrudRepository<GBadge, String> {
+List<GBadge> findByLogin( String login);
+@Transactional
+List<GBadge> removeByBadge(@Param("badge") String badge);
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+package com.koziejaj.client.GAdmin;
+
+import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+@RepositoryRestResource(collectionResourceRel = "GUsers", path = "GUsers")
+public interface GLayoutRepository extends CrudRepository<GLayout, String> {
+
+
+}
+
+\end{lstlisting}
+\subsection{Kontroler}
 -framework ogólnego przeznaczenia\\
 -Spring boot - co to?\\
 - konfiguracja xml vs adnotacje\\
 - maven(wklej i omów prosty przykład, napisz że mój jest bardziej pro, no ale)\\
-- przydatne moduły Springa - Data, JPA, Security, Jackson\\
+- przydatne moduły Springa - MVC, Data, JPA, Security, Jackson\\
 - moje REST API - klient\\
 - moje REST API - admin\\
 
 \chapter{Baza danych Oracle}
 -Krótka historia baz oracla \\
 - Konfiguracja bazy w Springu\\
+-Rysunek gdzie są WSZYSTKIE tabele i powiązania między nimi\\
 - metody optymalizacji - stronicowanie, te takie priorytety kolumn\\
 - PLSQL - SQL na sterydach - porównaj, opisz możliwosci, krótkie zapytania na naszej bazie\\
 
@@ -212,10 +594,12 @@ Zarówno Angular jak i Spring samodzielnie realizują wzorzec MVC. Jednak gdy po
 -cechy charakterystyczne, dlaczego taki modny - standalone, własny serwer, SINGLE-PAGE APP\\
 - Typescript vs Javascript - statyczne typowanie, kompatybilnosc z JS i bibliotekami - moja konfiguracja bibliotek i moja konfiguracja kompilowania i wrzucania do projektu Springa\\
 - serwisy i modele po stronie angulara\\
+-Zamiast tego co poniżej omów main.ts, app.module.ts, app.routing.ts i 1 moduł-scoreboard
 - moje kontrolery - klient - w tym opis podstawowych elementóW kontrolera, to że własny css\\
 - moje kontrolery - admin\\
 
 \chapter{Bezpieczeństwo}
+\label{Safety}
 - token do CSRF\\
 - https\\
 - token logowania wymieniany za hasło - policz też entropię, ile zajmie złamanie, wykaż że razem z punktem [BAN na IP] strona jest bezpieczna\\

@@ -5,10 +5,10 @@ import { Injectable }    from '@angular/core';
 import {Headers, Http, Response, RequestOptions,} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import{Gquest} from './gquest/gquest';
+import{Gquest} from '../gquest/gquest';
 import{Guser} from './guser';
 import {Observable, Subscription} from "rxjs";
-import {AuthService} from "./glogin/auth.service";
+import {AuthService} from "../glogin/auth.service";
 
 @Injectable()
 export class GuserService {
