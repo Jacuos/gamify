@@ -13,11 +13,17 @@
 \contentsline {subsection}{\numberline {2.5.1}Mapowanie obiektowo - relacyjne}{13}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}Repozytoria}{17}{subsection.2.5.2}
 \contentsline {subsection}{\numberline {2.5.3}Kontroler}{18}{subsection.2.5.3}
-\contentsline {chapter}{\numberline {3}Baza danych Oracle}{19}{chapter.3}
-\contentsline {chapter}{\numberline {4}Angular 2}{20}{chapter.4}
-\contentsline {chapter}{\numberline {5}Bezpiecze\IeC {\'n}stwo}{21}{chapter.5}
-\contentsline {chapter}{\numberline {6}Wdro\IeC {\.z}enie systemu}{22}{chapter.6}
-\contentsline {chapter}{\numberline {7}Wnioski}{23}{chapter.7}
-\contentsline {chapter}{\numberline {8}Schowek}{24}{chapter.8}
-\contentsline {section}{\numberline {8.1}Rzeczy}{24}{section.8.1}
-\contentsline {chapter}{Bibliografia}{25}{chapter*.4}
+\contentsline {chapter}{\numberline {3}Baza danych Oracle}{25}{chapter.3}
+\contentsline {section}{\numberline {3.1}Integracja z projektem}{25}{section.3.1}
+\contentsline {section}{\numberline {3.2}Optymalizacja}{27}{section.3.2}
+\contentsline {chapter}{\numberline {4}Bezpiecze\IeC {\'n}stwo}{30}{chapter.4}
+\contentsline {section}{\numberline {4.1}Ataki CSRF}{30}{section.4.1}
+\contentsline {section}{\numberline {4.2}Protok\IeC {\'o}\IeC {\l } HTTPS}{31}{section.4.2}
+\contentsline {section}{\numberline {4.3}Logowanie}{31}{section.4.3}
+\contentsline {section}{\numberline {4.4}Reset i zmiana has\IeC {\l }a}{34}{section.4.4}
+\contentsline {section}{\numberline {4.5}SQL Injection}{34}{section.4.5}
+\contentsline {chapter}{\numberline {5}Wdro\IeC {\.z}enie systemu}{36}{chapter.5}
+\contentsline {chapter}{\numberline {6}Wnioski}{37}{chapter.6}
+\contentsline {chapter}{\numberline {7}Schowek}{38}{chapter.7}
+\contentsline {section}{\numberline {7.1}Rzeczy}{38}{section.7.1}
+\contentsline {chapter}{Bibliografia}{39}{chapter*.4}

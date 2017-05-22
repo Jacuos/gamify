@@ -417,10 +417,7 @@ Jedną z funkcjonalności panelu Administratora jest tworzenie i przyznawanie Od
 package com.koziejaj.client.GAdmin;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-
+import ...
 //Adnotacja oznaczająca klasę odpowiadającą tabeli bazy danych
 @Entity
 //Adnotacja wczytująca definicję klucza głównego (primary key) - wyjaśnienie w kolejnym listingu
@@ -495,8 +492,7 @@ Administrator może zmieniać różne parametry wpływające na aplikację Użyt
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import ...
 @Entity
 public class GLayout {
 
@@ -543,16 +539,17 @@ Zarówno klasa GBadge jak GLayout mają swoje repozytoria. Można traktować je 
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
-import org.springframework.data.repository.CrudRepository;
-import java.util.List;
+import ...
 
-import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.transaction.annotation.Transactional;
-
+//Adnotacja oznaczająca repozytorium REST i jego ścieżkę dostępu. Funkcjonalność nie używana w projekcie.
 @RepositoryRestResource(collectionResourceRel = "GBadges", path = "GBadges")
+
+//implementując interfejs CrudRepository otrzymujemy zestaw metod takich jak save, findAll, findOne, count, delete i możemy rozszerzać klasę przy pomocy słów findBy, removeBy, countBy, Top, First i tym podobnych. Należy podać parametry<T, ID> oznaczające typ przechowywanych danych i typ klucza głównego
 public interface GBadgeRepository extends CrudRepository<GBadge, String> {
+
+//Metoda zwróci wszystkie Odznaki podanego Użytkownika
 List<GBadge> findByLogin( String login);
+//Adnotacja oznaczająca wykonanie metody (usunięcia wszystkich Odznak danego typu) w pojedynczej transakcji bazy danych. Jest to wymóg formalny, zabezpieczający przed próbą operowania na usuniętych już rekordach.
 @Transactional
 List<GBadge> removeByBadge(@Param("badge") String badge);
 }
@@ -561,20 +558,190 @@ List<GBadge> removeByBadge(@Param("badge") String badge);
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
-import org.springframework.data.repository.CrudRepository;
-import java.util.List;
-
-import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import ...
 
 @RepositoryRestResource(collectionResourceRel = "GUsers", path = "GUsers")
 public interface GLayoutRepository extends CrudRepository<GLayout, String> {
-
-
 }
 
 \end{lstlisting}
 \subsection{Kontroler}
+Kontroler to klasa nasłuchująca  zapytań pod zdefiniowanymi adresami URL i wykonująca logikę biznesową operując na wyżej opisanych klasach mapowań i repozytoriów. Podstawowa budowa została zaprezentowana w \ref{MVCController}
+\begin{lstlisting}
+package com.koziejaj.client.GAdmin;
+
+import ...
+
+@RestController
+public class GAdminController {
+
+	//Adnotacja wstrzykująca obiekty zgodnie z wzorcem Dependency Injection. Jak widać, moduł panelu Administratora wymaga użycia klas z innych modułów.
+    @Autowired
+    private GQuestRepository gQuestRep;
+    @Autowired
+    private GUserRepository gUserRep;
+    @Autowired
+    private GLoginRepository gLoginRep;
+    @Autowired
+    private GUserQRepository guserQRep;
+    @Autowired
+    private GLayoutRepository gLayoutRep;
+    @Autowired
+    private GBadgeRepository gBadRep;
+	
+	//Poza ścieżką możemy zdefiniować typ zapytania HTTP na który reaguje metoda.
+    @RequestMapping(value="/api/gadmin/newquest", method = RequestMethod.POST)
+    //@RequestBody definiuje zmienną odbierającą ciało zapytania - przykładowo plik JSON. @RequestParam to parametr zapytania, zgodny ze wzorcem: URL?parametr=wartość
+    public Long newQuest(@RequestBody String postData, @RequestParam(value="token") String token) throws IOException {
+        if(gLoginRep.findByTokenAndIsAdmin(token,true) != null) {
+	        //Klasa ObjectMapper z biblioteki FasterXML umożliwia czytanie plików JSON i zamianę obiektów na odpowiedzi zgodne z tym formatem.
+            HashMap<String, Object> result = new ObjectMapper().readValue(postData, HashMap.class);
+            
+			//ID nowego Zadania to unikatowa, dwunastocyfrowa losowa liczba.
+            Long myId = ThreadLocalRandom.current().nextLong(100000000000l, 1000000000000l);
+            while (gQuestRep.findById(myId) != null) {
+                myId = ThreadLocalRandom.current().nextLong(100000000000l, 1000000000000l);
+            }
+            //Każde Zadanie ma Datę po której nie może zostać wykonane. Jeśli Zadanie dostępne jest zawsze, wystarczy podać bardzo dużą wartość np rok 9999.
+            LocalDateTime myDate = LocalDateTime.parse(result.get("endOf").toString());
+            //Nowe Zadanie zapisywane jest poprzez repozytorium a Administrator otrzymuje ID nowego zadania jako odpowiedź zwrotną.
+            gQuestRep.save(new GQuest(myId, result.get("description").toString(), (int) result.get("exp"), myDate));
+            return myId;
+
+        }
+        else
+            return null;
+    }
+    
+	//Administrator ma podgląd wszystkch Zadań istniejących w aplikacji.
+    @RequestMapping("/api/gadmin/allquests")
+    public Iterable<GQuest> gusers(@RequestParam(value="token") String token) {
+        if(gLoginRep.findByTokenAndIsAdmin(token,true) != null) {
+            Iterable<GQuest> model = gQuestRep.findAll();
+            return model;
+        }
+        else
+            return null;
+    }
+	
+	//Administrator może usunąć konto Użytkownika
+    @RequestMapping("/api/gadmin/rmguser")
+    public boolean rmGuser(@RequestParam(value="id") Long id, @RequestParam(value="token") String token) {
+        if(gLoginRep.findByTokenAndIsAdmin(token, true) != null) {
+            String login = gUserRep.findOne(id).getLogin();
+            gUserRep.delete(id);
+            gLoginRep.delete(login);
+            guserQRep.removeByGuserId(id);
+            return true;
+        }
+        else
+            return false;
+    }
+    
+	//Administrator i Użytkownik mogą pobrać parametry edytowalne aplikacji Użytkownika - stronę powitalną, wzór na punkty i tym podbne.
+    @RequestMapping("/api/gadmin/getparams")
+    public Iterable<GLayout> getParam(@RequestParam(value="token") String token) {
+        if(gLoginRep.findByToken(token) != null) {
+            Iterable<GLayout> model = gLayoutRep.findAll();
+            return model;
+        }
+        else
+            return null;
+    }
+    //Administrator by móc edytować plik CSS z poziomu aplikacji, otrzymuje wersję skonwertowaną na JSON, stąd zamiana znaków specjalnych na kody HTML. 
+    @RequestMapping("/api/gadmin/getcss")
+    public String getCss(@RequestParam(value="token") String token) throws IOException {
+        if(gLoginRep.findByToken(token) != null) {
+            byte[] encoded = Files.readAllBytes(Paths.get("src/main/webapp/styles.css"));
+            String model = new String(encoded, Charset.defaultCharset());
+            model = model.replace("\r\n", "%D%A");
+            model = model.replace("\"", "%22");
+            model = model.replace("\\", "%5C");
+            model = model.replace("{", "%7B");
+            model = model.replace("}", "%7D");
+            model = "\"" + model + "\"";
+            return model;
+        }
+        else
+            return null;
+    }
+    
+    //Administrator może zmienić wartości parametrów edytowalnych aplikacji Użytkownika.
+    @RequestMapping("/api/gadmin/setparams")
+    public String setParams(@RequestBody ArrayList<GLayout> postData, @RequestParam(value="token") String token) throws IOException {
+        if(gLoginRep.findByTokenAndIsAdmin(token, true) != null) {
+            gLayoutRep.save(postData);
+            return new ObjectMapper().writeValueAsString("Zmiany zostały zapisane");
+        }
+        else
+            return null;
+    }
+    //Gdy Administrator chce nadpisać CSS, kody HTML są zamieniane z powrotem na znaki a całość jest zapisywana w pliku.
+    @RequestMapping("/api/gadmin/setcss")
+    public String setCss(@RequestBody String model, @RequestParam(value="token") String token) throws IOException {
+        if(gLoginRep.findByTokenAndIsAdmin(token, true) != null) {
+            model = model.substring(1, model.length() - 1);
+            model = model.replace("%D%A", "\r\n");
+            model = model.replace("%22", "\"");
+            model = model.replace("%5C", "\\");
+            model = model.replace("%7B", "{");
+            model = model.replace("%7D", "}");
+            PrintWriter out = new PrintWriter("src/main/webapp/styles.css");
+            out.print(model);
+            out.close();
+            return new ObjectMapper().writeValueAsString("Zmiany zostały zapisane");
+        }
+        else
+            return null;
+    }
+    //Administrator ma podgląd wszystkich Odznak które może przyznać. Zwracane są tu nazwy plików graficznych które odpowiadają zapisom w tabeli. Odznaki są widoczne dzięki uniwersalnej ścieżce API zwracającej obrazki, znajdującej się w innym module.
+    @RequestMapping("/api/gadmin/allbadges")
+    public List<String> allBadges(@RequestParam(value="token") String token) {
+        if(gLoginRep.findByToken(token) != null) {
+            File folder = new File("target/classes/static/images/badges");
+            File[] listOfFiles = folder.listFiles();
+            List<String> model = new ArrayList<String>();
+            for (int i = 0; i < listOfFiles.length; i++) {
+                if (listOfFiles[i].isFile())
+                    model.add(listOfFiles[i].getName());
+            }
+            return model;
+        }
+        else
+            return null;
+    }
+    
+    //Administrator może usunąć Odznakę. Jest ona odbierana wszystkim Użytkownikom.
+    @RequestMapping("/api/gadmin/rmbadge")
+    public boolean rmBadge(@RequestParam(value="id") String id, @RequestParam(value="token") String token) {
+        if(gLoginRep.findByTokenAndIsAdmin(token, true) != null) {
+            File file = new File("target/classes/static/images/badges/" + id);
+            file.delete();
+            gBadRep.removeByBadge(id);
+            return true;
+        }
+        else
+            return false;
+    }
+    //Administrator może przyznać Odznakę liście wybranych Użytkowników.
+    @RequestMapping("/api/gadmin/givebadge")
+    public String gvBadge(@RequestParam(value="badge") String badge, @RequestBody String postData, @RequestParam(value="token") String token) throws IOException {
+        if(gLoginRep.findByTokenAndIsAdmin(token, true) != null) {
+            HashMap<String, Boolean> result = new ObjectMapper().readValue(postData, HashMap.class);
+            for (Map.Entry<String, Boolean> entry : result.entrySet()) {
+                String key = entry.getKey();
+                boolean value = entry.getValue();
+                if (value == true)
+                    gBadRep.save(new GBadge(key, badge));
+            }
+            return new ObjectMapper().writeValueAsString("Odznaki zostały przyznane");
+        }
+        else
+            return null;
+    }
+}
+
+\end{lstlisting}
 -framework ogólnego przeznaczenia\\
 -Spring boot - co to?\\
 - konfiguracja xml vs adnotacje\\
@@ -584,28 +751,219 @@ public interface GLayoutRepository extends CrudRepository<GLayout, String> {
 - moje REST API - admin\\
 
 \chapter{Baza danych Oracle}
+Pierwszy system zarządzania bazą danych Oracle powstał w 1979 roku i do dziś rozwiązania tej firmy pozostają w czołówce najpopularniejszych baz danych na świecie. Jest to oprogramowanie zamknięte, w dużej mierze płatne. Istnieje na szczęście bezpłatna wersja Express, która została wykorzystana w projekcie.
+\section{Integracja z projektem}
+Konfiguracja połączenia z bazą danych Oracle wymaga od nas dwóch kroków. Najpierw dodajemy sterownik do projektu z pomocą Maven i POM.xml:
+\begin{lstlisting}
+      <dependency>
+        <groupId>com.oracle</groupId>
+        <artifactId>ojdbc7</artifactId>
+        <version>12.1.0.1</version>
+      </dependency>
+\end{lstlisting}
+Następnie w pliku application.properties dodajemy poniższe linijki.
+\begin{lstlisting}
+spring.datasource.url= jdbc:oracle:thin:@//localhost:1521/xe
+spring.datasource.username=admin
+spring.datasource.password=test123
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+
+spring.jpa.database-platform=org.hibernate.dialect.Oracle10gDialect
+spring.jpa.hibernate.ddl-auto=update
+\end{lstlisting}
+Informacje takie jak numer portu login, hasło są podawane podczas tworzenia nowej bazy danych w GUI narzędzia Oracle SQL Developer. Alternatywnie można wykorzystać SQL*Plus, czyli program linii komend.
+		\begin{figure}[!htbp]
+			\begin{center}
+				\centering
+				\includegraphics[width=\textwidth]{\ImgPath/rys/sqldeveloper.png}
+			\end{center}
+			\caption{SQL Developer pozwala na kompleksowe zarządzanie bazą danych}
+			\label{UMLTS}
+		\end{figure}
+Diagram 3.2 przedstawia schemat bazy danych projektu.
+				\begin{figure}[!htbp]
+					\begin{center}
+						\centering
+						\includegraphics[width=\textwidth]{\ImgPath/rys/DBModel.png}
+					\end{center}
+					\caption{PK oznacza klucz główny. Strzałki to klucze obce, kierunek grotu wskazuje na tabelę z której pochodzi klucz obcy. Oznaczenia liczbowe wskazują ile takich samych kluczy obcych może być w tabeli.}
+					\label{UMLTS}
+				\end{figure}		
+\section{Optymalizacja}
+Mechanizmami optymalizującymi zapytania do bazy danych jest między innymi \textbf{indeksowanie} i \textbf{partycjonowanie}. Indeksowanie tabeli po danej kolumnie/kolumnach powoduje przechowywanie wszystkich rekordów w oddzielnej strukturze w sposób posortowany. Standardowe indeksy Oracle opierają się na B-drzewach, których przykład został pokazany na Rysunku 3.3.
+				\begin{figure}[!htbp]
+					\begin{center}
+						\centering
+						\includegraphics[width=\textwidth]{\ImgPath/rys/btree.png}
+					\end{center}
+					\caption{Liście B-drzewa przechowują rekordy, gałęzie usprawniają przeszukiwanie.}
+					\label{UMLTS}
+				\end{figure}
+Standardowo, indeks tabeli tworzony jest po kluczu głównym. Można dodać je też samodzielnie. Poniższa komenda doda do tabeli GUSER indeksowanie po kolumnie LOGIN, która jest wyszukiwana równie często co klucz główny ID.
+\begin{lstlisting}
+CREATE INDEX GUSER_LOGIN ON GUSER (LOGIN);
+\end{lstlisting}
+Partycjonowanie dzieli z kolei tabelę na części na podstawie wartości kolumny. Idealnym przykładem jest tu trzymanie historycznych danych  dzieląc na partycje miesięcy czy lat. Zgodnie z dokumentacją, należy rozważyć partycjonowanie każdej tabeli przekraczającej 2 GB wielkości. Różnicę dobrze obrazuje rysunek 3.4:
+				\begin{figure}[!htbp]
+					\begin{center}
+						\centering
+						\includegraphics[width=\textwidth]{\ImgPath/rys/partitions.png}
+					\end{center}
+					\caption{Mechanizmy partycjonowania i indeksowania można ze sobą łaczyć.}
+					\label{UMLTS}
+				\end{figure}
+Chcąc partycjonować tabelę GQUEST po roku zakończenia zadania, należy wykonać poniższą komendę. Niestety po jej wykonaniu okazało się że wersja Oracle Express nie obsługuje funkcji partycjonowania.
+\begin{lstlisting}
+--Tabela tymczasowa - taka sama jak GUSER
+CREATE TABLE TEMP
+  ( ID NUMBER(19,0),
+    DESCRIPTION  VARCHAR(255),
+    END_OF TIMESTAMP(6),
+    EXP  NUMBER(10,0)
+    )
+--Partycjonowanie po dacie
+PARTITION BY RANGE (END_OF) 
+INTERVAL(NUMTOYMINTERVAL(1, 'YEAR'))
+    ( PARTITION y0 VALUES LESS THAN (TO_TIMESTAMP('2016/01/01 00:00:00', 'YYYY/MM/DD HH:MI:SS')),
+      PARTITION y1 VALUES LESS THAN (TO_TIMESTAMP('2017/01/01 00:00:00', 'YYYY/MM/DD HH:MI:SS')),
+      PARTITION y2 VALUES LESS THAN (TO_TIMESTAMP('2018/01/01 00:00:00', 'YYYY/MM/DD HH:MI:SS')),
+      PARTITION y3 VALUES LESS THAN (TO_TIMESTAMP('2019/01/01 00:00:00', 'YYYY/MM/DD HH:MI:SS')) );
+--Zmiana definicji oryginalnej tablicy    
+exec dbms_redefinition.start_redef_table( user, 'GQUEST', 'TEMP' );
+\end{lstlisting}
 -Krótka historia baz oracla \\
 - Konfiguracja bazy w Springu\\
 -Rysunek gdzie są WSZYSTKIE tabele i powiązania między nimi\\
 - metody optymalizacji - stronicowanie, te takie priorytety kolumn\\
 - PLSQL - SQL na sterydach - porównaj, opisz możliwosci, krótkie zapytania na naszej bazie\\
 
-\chapter{Angular 2}
--cechy charakterystyczne, dlaczego taki modny - standalone, własny serwer, SINGLE-PAGE APP\\
-- Typescript vs Javascript - statyczne typowanie, kompatybilnosc z JS i bibliotekami - moja konfiguracja bibliotek i moja konfiguracja kompilowania i wrzucania do projektu Springa\\
-- serwisy i modele po stronie angulara\\
--Zamiast tego co poniżej omów main.ts, app.module.ts, app.routing.ts i 1 moduł-scoreboard
-- moje kontrolery - klient - w tym opis podstawowych elementóW kontrolera, to że własny css\\
-- moje kontrolery - admin\\
-
 \chapter{Bezpieczeństwo}
 \label{Safety}
-- token do CSRF\\
-- https\\
-- token logowania wymieniany za hasło - policz też entropię, ile zajmie złamanie, wykaż że razem z punktem [BAN na IP] strona jest bezpieczna\\
-- reset i zmiana hasła\\
-- BAN na IP\\
-- SQL Injection - nie działa bo Java\\
+\section{Ataki CSRF}
+Ataki typu Cross-Site Request Forgery polegają na oszukaniu Użytkownika celem wykonania przez niego niezamierzonych akcji w aplikacji od której jest zalogowany. Oszust może nakłonić Użytkownika do kliknięcia w link prowadzący do innej strony, której budowa spowoduje zmianę lub usunięcie  danych Użytkownika. Oszust wykorzystuje tu cudze uprawnienia w aplikacji. Popularną metodą zabezpieczenia się przed tego typu atakiem jest wysłanie losowego tokena (unikatowego dla Użytkownika i sesji) i zapisanie go w pliku Cookie. Token ten jest wysyłany z każdym zapytaniem z powrotem do serwera i zmieniany po każdym zamknięciu przeglądarki. Uniemożliwia to atak, ponieważ strona oszusta nie ma dostępu do pliku Cookie oryginalnej aplikacji. Ta metoda, wykorzystana w projekcie, nie wymagała żadnych zmian po stronie projektu Angular. Pobiera on i wysyła tokeny pod warunkiem że otrzyma plik Cookie o nazwie "XSRF-TOKEN", wysłany z nagłówkiem "X-XSRF-TOKEN". Po stronie Springa, należało dodać poniższy kod.
+\begin{lstlisting}
+package com.koziejaj.client.GSecurity;
+
+
+import ...
+
+//Poniższa klasa jest oznaczona jako konfiguracja modułu Spring Security
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true)
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+	//Dodanie obiektu typu HttpSecurity jako argumentu wywołania, umożliwia jego modyfikację.
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+    
+		// Standardowo, biblioteka Security ma włączoną obsługę zabezpieczenia CSRF. Jedyne co nalezy zrobić to ustawić sposób wysyłania na plik Cookie. Domyślnie token wysyłany jest jako atrybut zapytań.
+        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+
+    }
+
+}
+\end{lstlisting}
+
+\section{Protokół HTTPS}
+Protokół HTTPS to szyfrowana wersja protokołu HTTP. Jego wykorzystanie utrudnia wykradnięcie wrażliwych danych jak na przykład hasło użytkownika wysyłane przy logowaniu. Wykorzystanie HTTPS wymaga wygenerowania certyfikatu SSL który zawiera klucz publiczny i różne informacje o serwerze. Na potrzeby projektu certyfikat został wygenerowany i podpisany samodzielnie, co w przeglądarkach powoduje wyświetlenie ostrzeżenia. W środowisku produkcyjnym, certyfikat powinien być podpisany przez Urząd Certyfikacyjny. Posiadając certyfikat, należało w pliku application.properties dodać poniższe linie:
+\begin{lstlisting}
+server.ssl.key-store: keystore.koziejaj #Nazwa pliku
+server.ssl.key-store-password: Qazsedc #Hasło
+server.ssl.keyStoreType: PKCS12 #Format pliku
+server.ssl.keyAlias: tomcat #Nazwa klucza publicznego wewnątrz pliku
+\end{lstlisting}
+ 
+\section{Logowanie}
+Bezpieczne logowanie zostało zaimplementowane w następujący sposób:
+\begin{enumerate}
+	\item Użytkownik wysyła login i hasło do serwera
+	\item Serwer sprawdza czy dane są poprawne. Jeśli tak, wysyła w odpowiedzi 128 bitowy, losowy i unikatowy token. Token jest zapisywany w tabeli GLOGIN.
+	\item Użytkownik wysyła token razem z każdym zapytaniem do API.
+	\item Serwer obsługuje zapytanie tylko jeśli token się zgadza. W niektórych przypadkach serwer sprawdza czy token jest przypisany do tego Użytkownika który go wysłał lub czy jest przypisany do Administratora. Dzięki temu Użytkownik nie może zmienić danych innego Użytkownika czy korzystać z uprawnień Administratora.
+	\item Jeżeli Użytkownik błędnie poda hasło 20 razy w ciągu jednego dnia, jego adres IP zostaje zablokowany do końca dnia. Jest to zabezpieczenie przed atakami typu brute-force.
+\end{enumerate}
+Zgodnie z wymaganiami, hasło musi mieć co najmniej 8 znaków, małe i duże litery oraz cyfry. Daje to 62 znaki w zbiorze i $2*10^{14}$ kombinacji. Dla ataku brute-force dokonywanego z 1 adresu IP, przyjmując że średnio hasło zostanie złamane po sprawdzeniu połowy kombinacji, czas łamania hasła wynosi:  $10^{14}/20=5*10^{12}$ dni, czyli około 14 miliardów lat. Oczywiście atak z wielu adresów IP i z wykorzystaniem tęczowych tablic będzie dużo bardziej skuteczny. Dlatego warto stosować jak najmocniejsze hasła i zapewniać mechanizmy ich odzyskiwania. Czas łamania 128-bitowego tokena na milionie komputerów wykonujących miliard prób na sekundę wynosi $2^{127}*10^{-6}*10^{-9}s$ = około 11 miliardów lat. Co wiecej, tokeny te zmieniają się z każdym logowaniem.
+Kod odpowiadający za generowanie losowego tokena:
+\begin{lstlisting}
+    private String generateToken()
+    {
+        String newToken = UUID.randomUUID().toString();
+        //Ten warunek gwarantuje że w tym samym momencie nie ma dwóch takich samych tokenów
+        if (gLoginRep.findByToken(newToken) == null)
+            return newToken;
+        else
+            return generateToken();
+    }
+\end{lstlisting}
+Serwis odpowiadający za zliczanie nieudanych prób logowania i blokowanie adresów IP:
+\begin{lstlisting}
+package com.koziejaj.client.GLogin;
+
+import ..
+
+@Service
+public class GLoginBanService {
+	//Maksymalna liczba prób na jeden adres IP
+    private final int MAX_ATTEMPT = 20;
+    //Struktura przechowująca adresy IP i liczbę ich nieudanych prób
+    private LoadingCache<String, Integer> attemptsCache;
+
+    public GLoginBanService() {
+        super();
+        //Zmienna attemptsCache jest czyszczona po 1 dniu.
+        attemptsCache = CacheBuilder.newBuilder().
+                expireAfterWrite(1, TimeUnit.DAYS).build(new CacheLoader<String, Integer>() {
+            public Integer load(String key) {
+                return 0;
+            }
+        });
+    }
+    
+	//Metoda wywoływana przy nieudanej próbie
+    public void loginFailed(String key) {
+        int attempts = 0;
+        try {
+            attempts = attemptsCache.get(key);
+        } catch (ExecutionException e) {
+            attempts = 0;
+        }
+        attempts++;
+        attemptsCache.put(key, attempts);
+    }
+	//Metoda wywoływana przy każdej próbie logowania
+    public boolean isBlocked(String key) {
+        try {
+            return attemptsCache.get(key) >= MAX_ATTEMPT;
+        } catch (ExecutionException e) {
+            return false;
+        }
+    }
+}
+
+\end{lstlisting}
+Każde zapytanie do API ma sprawdzany token:
+\begin{lstlisting}
+    @RequestMapping("/api/gusers")
+    //Parametr token jest odbierany przy każdym zapytaniu
+    public Iterable<GUser> gusers(@RequestParam(value="token") String token) {
+    //Jeśli takiego tokena nie ma, zapytanie się nie wykonuje i zwraca null.
+        if(gLoginRep.findByToken(token) != null) {
+            Iterable<GUser> model = repository.findAll();
+            return model;
+        }
+        else
+            return null;
+    }
+\end{lstlisting}
+\section{Reset i zmiana hasła}
+Zalogowany Użytkownik, może zmienić hasło, wysyłając stare hasło, nowe hasło, oraz swój login i token logowania. Jeżeli Użytkownik zapomni hasła, może skorzystać z formularza dostępnego ze strony logowania. Po podaniu swojego adresu email, otrzymuje wiadomość z adresem URL (zawierającym 128 bitowy token) do formularza, pozwalającym na wpisanie nowego hasła. Formularz przekazuje do API adres email, nowe hasło i token. Jeśli dane się zgadzają, hasło zostaje zmienione.
+\section{SQL Injection}
+Atak ten polega na wprowadzeniu dodatkowego kodu wykonywalnego (w języku SQL) do danych przysyłanych przez Użytkownika na serwer. Przykładowo, wysyłając jako imię wyszukiwanego użytkownika:  ,,x'; DROP TABLE GUSER; SELECT '1'', zapytanie wykonywane po stronie serwera mogłoby przyjąć formę:
+\begin{lstlisting}
+ SELECT * FROM GUSER WHERE LOGIN = 'x'; DROP TABLE GUSER; SELECT '1'
+\end{lstlisting}
+Zgodnie z testami, aplikacja wydaje się być odporna na tego typu ataki. Warstwy mapowania i repozytoriów samodzielnie dokonują filtrowania wprowadzonych danych. Kod SQL nie jest wykonywany bezpośrednio w żadnym miejscu aplikacji, tym bardziej w połączeniu z danymi przysłanymi przez Użytkownika.
 
 \chapter{Wdrożenie systemu}
 -Tomcat i pliki jar

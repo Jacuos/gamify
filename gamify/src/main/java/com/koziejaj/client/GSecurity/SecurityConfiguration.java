@@ -13,12 +13,10 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.security.web.csrf.*;
 import org.springframework.web.filter.OncePerRequestFilter;
 import javax.servlet.http.HttpServletRequest;
-import org.springframework.security.web.csrf.CsrfToken;
-import org.springframework.security.web.csrf.CsrfTokenRepository;
-import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
-import org.springframework.security.web.csrf.CsrfFilter;
 
 
 import java.io.IOException;
@@ -57,13 +55,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .httpBasic().disable();
         http
-                .csrf().csrfTokenRepository(csrfTokenRepository())
-                .and()
-                    .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
+                .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
 
     }
-    private Filter csrfHeaderFilter() {
+   /* private Filter csrfHeaderFilter() {
         return new OncePerRequestFilter() {
             @Override
             protected void doFilterInternal(HttpServletRequest request,
@@ -84,7 +80,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         			HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
         			repository.setHeaderName("X-XSRF-TOKEN");
         			return repository;
-        		}
-
+        		}*/
 
 }
