@@ -130,7 +130,7 @@
 %-----------------
 \chapter{Wstęp}
 \section{Grywalizacja}
-	Grywalizacja, gryfikacja lub gamifikacja, to zgodnie z definicją [Wikipedia] "Wykorzystanie mechaniki znanej np. z gier fabularnych i komputerowych, do modyfikowania zachowań ludzi w sytuacjach niebędących grami, w celu zwiększenia zaangażowania ludzi." Ta szeroka definicja obejmuje rozwiązania stosowane w marketingu, zarządzaniu projektami jak i edukacji. Założeniem stworzonej aplikacji jest motywowanie grup ludzi do wspólnej pracy poprzez system wyzwań i nagród. Należy jednak pamiętać że o ile aplikacja pomaga zarządzać zadaniami, prowadzić ranking i kontrolować rozwój użytkowników, o tyle weryfikacja wykonanych zadań czy przyznawanie fizycznych nagród pozostaje obowiązkiem administratora. Stworzone rozwiązanie było także pretekstem do zbadania współczesnych technologii wytwarzania aplikacji internetowych, opisanych w dalszej części pracy. 
+	Grywalizacja, gryfikacja lub gamifikacja, to zgodnie z definicją \cite{Wikipedia} "Wykorzystanie mechaniki znanej np. z gier fabularnych i komputerowych, do modyfikowania zachowań ludzi w sytuacjach niebędących grami, w celu zwiększenia zaangażowania ludzi." Ta szeroka definicja obejmuje rozwiązania stosowane w marketingu, zarządzaniu projektami jak i edukacji. Założeniem stworzonej aplikacji jest motywowanie grup ludzi do wspólnej pracy poprzez system wyzwań i nagród. Należy jednak pamiętać że o ile aplikacja pomaga zarządzać zadaniami, prowadzić ranking i kontrolować rozwój użytkowników, o tyle weryfikacja wykonanych zadań czy przyznawanie fizycznych nagród pozostaje obowiązkiem administratora. Stworzone rozwiązanie było także pretekstem do zbadania współczesnych technologii wytwarzania aplikacji internetowych, opisanych w dalszej części pracy. 
 	\section{Projekt}
 	Ideę działania aplikacji ,,Gamify'' przybliżyć mogą poniższe przykładowe Przypadki Użycia:\\
 	UC Użytkownika:\\
@@ -227,7 +227,7 @@ Modułowa struktura projektu przedstawia się następująco: wewnątrz projektu 
 \chapter{Spring}
 Spring to szkielet tworzenia aplikacji (ang. framework) przeznaczony dla Javy Enterprise Edition, czyli serwerowej odmiany tego języka. Powstał jako alternatywa dla oficjalnych standardów serwerowych Javy takich jak Enterprise JavaBeans. Spring nie narzuca jednego modelu programowania. Posiada wiele modułów które są przydatne przy pisaniu aplikacji, jednocześnie będąc całkowicie opcjonalnymi. Znaną cechą Springa jest \textbf{,,odwrócenie sterowania''} (ang. Inversion of Control), czyli wzorzec w którym wykonywaniem programu steruje szkielet a nie kod programisty. To Spring decyduje kiedy wykonać dane akcje. Przykładem odwróconego sterowania jest chociażby \textbf{"wstrzykiwnie zależności"} (ang. Dependency Injection), kiedy to utworzone, zainicjowane obiekty przekazywane są obiektom które ich potrzebują. Obiekty nie tworzą wtedy samodzielnie instancji innych obiektów. Kolejną ważną cechą Springa jest \textbf{,,programowanie aspektowe''} czyli wzorzec w którym rozdziela się fizycznie funkcjonalności i definiuje punkty komunikacji między nimi, dostępne wszędzie tam gdzie są potrzebne.
 \section{Metody konfiguracji}
-Konfiguracja projektu w Springu może odbywać się na dwa sposoby - przy pomocy plików XML lub adnotacji.  Poniższy przykład prezentuje te same ustawienia w obydwu reprezentacjach:\\
+Konfiguracja projektu w Springu może odbywać się na dwa sposoby - przy pomocy plików XML lub adnotacji.Obydwa te podejścia przedstawiono w kursie \cite{Spring2}  Poniższy przykład prezentuje te same ustawienia w obydwu reprezentacjach:\\
 \begin{tabular}{|l|l|}
 	\hline XML\\ 
 	\hline <beans> \\
@@ -248,7 +248,7 @@ Konfiguracja projektu w Springu może odbywać się na dwa sposoby - przy pomocy
 \end{tabular}\\
 Konfiguracja XML odbywa się w oddzielnych plikach, zaś adnotacjami - bezpośrednio w kodzie którego dotyczy. Warto wiedzieć że konfiguracja adnotacjami wykonuje się przed XML. W projekcie użyto adnotacji. Wydają się one czytelniejsze, są też kierunkiem w którym zmierza rozwój Springa. Nie bez powodu był on kiedyś określany kolokwialnie jako "XML hell". Wyjątkiem są pliki z rozszerzeniem .properties. Przechowują one stałe wartości, takie jak numer portu serwera, dane uwierzytelniające bazy danych.
 \section{Spring Boot}
-Brak narzuconych standardów szkieletu aplikacji ma także i swoje wady. Spring wymaga dużej ilości konfiguracji, a także dobrania modułów i bibliotek które będą nam potrzebne. Moduł Spring Boot zawiera wstępną konfigurację i najpotrzebniejsze biblioteki. Jednocześnie umożliwia dostosowanie projektu do specyficznych wymagań. Podczas uruchomienia sprawdza których elementów konfiguracji brakuje i dodaje je zgodnie z posiadaną wiedzą na temat projektu. Moduł ten można uznać za fundament stworzonej aplikacji. Ilość kodu wymaganą do napisania aplikacji serwerowej w ramach Spring Boot przedstawiają poniższe listingi:
+Brak narzuconych standardów szkieletu aplikacji ma także i swoje wady. Spring wymaga dużej ilości konfiguracji, a także dobrania modułów i bibliotek które będą nam potrzebne. Moduł Spring Boot zawiera wstępną konfigurację i najpotrzebniejsze biblioteki. Jednocześnie umożliwia dostosowanie projektu do specyficznych wymagań. Podczas uruchomienia sprawdza których elementów konfiguracji brakuje i dodaje je zgodnie z posiadaną wiedzą na temat projektu. Moduł ten można uznać za fundament stworzonej aplikacji. Ilość kodu wymaganą do napisania aplikacji serwerowej w ramach Spring Boot przedstawiają poniższe listingi, zgodne z podejściem przedstawionym w \cite{Spring}:
 
 \begin{lstlisting}[label={MVCController}]
 package hello;
@@ -328,7 +328,7 @@ Metoda SpringApplication.run(); uruchamia aplikację, zaś metoda zwracająca Co
 				
 
 \section{Maven}
-Maven to w narzędzie do zarządzania projektem - jego zależnościami (używanymi bibliotekami) i strukturą (podziałem na moduły). Maven automatyzuje budowę projektu zgodnie z poniższymi krokami.
+Maven to w narzędzie do zarządzania projektem - jego zależnościami (używanymi bibliotekami) i strukturą (podziałem na moduły). Maven automatyzuje budowę projektu zgodnie z poniższymi krokami \cite{Maven}.
 \begin{enumerate}
 	\item Validate - walidacja kodu. Sprawdzana jest poprawność kodu źródłowego, umożliwiająca jego kompilację.
 	\item Compile - kompilacja, czyli przetworzenie kodu źródłowego na kod bajtowy, wykonywany przez maszynę wirtualną Javy.
@@ -409,7 +409,7 @@ Oto lista najważniejszych modułów użytych w projekcie:
 \section{Implementacja REST API}
 Implementacja serwerowej części aplikacji zostanie omówiona na przykładzie modułu panelu Administratora. Ograniczy to analizę do sześciu klas, zorganizowanych podobnie do wcześniejszego diagramu panelu logowania \ref{UMLJava}.
 \subsection{Mapowanie obiektowo - relacyjne}
-Klasy omówione w tej sekcji są definicjami tabel bazy danych. Klasa taka odpowiada pojedynczemu rekordowi tabeli i pozwala na jego modyfikację.\\ 
+Klasy omówione w tej sekcji są definicjami tabel bazy danych. Zostały one wytworzone zgodnie z poradnikiem "Accessing Data JPA" \cite{Spring}. Klasa taka odpowiada pojedynczemu rekordowi tabeli i pozwala na jego modyfikację.\\ 
 Jedną z funkcjonalności panelu Administratora jest tworzenie i przyznawanie Odznak. Jest to taki wirtualny medal za specjalne zasługi, który Administrator może nadać Użytkownikowi. Instancja takiego medalu musi zawierać dwie informacje - unikatowy login Użytkownika który go posiada i nazwę Odznaki. Nazwa ta odpowiada plikowi graficznemu Odznaki w plikach statycznych projektu.
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
@@ -533,7 +533,7 @@ public GLayout() {}
 
 \end{lstlisting}
 \subsection{Repozytoria}
-Zarówno klasa GBadge jak GLayout mają swoje repozytoria. Można traktować je jako instancje tabel bazy danych. To w repozytoriach szuka się rekordów i zapisuje zmiany na stałe.
+Zarówno klasa GBadge jak GLayout mają swoje repozytoria. Można traktować je jako instancje tabel bazy danych. To w repozytoriach szuka się rekordów i zapisuje zmiany na stałe. \cite{Spring}
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
@@ -780,7 +780,7 @@ Diagram 3.2 przedstawia schemat bazy danych projektu.
 					\label{UMLTS}
 				\end{figure}		
 \section{Optymalizacja}
-Mechanizmami optymalizującymi zapytania do bazy danych jest między innymi \textbf{indeksowanie} i \textbf{partycjonowanie}. Indeksowanie tabeli po danej kolumnie/kolumnach powoduje przechowywanie wszystkich rekordów w oddzielnej strukturze w sposób posortowany. Standardowe indeksy Oracle opierają się na B-drzewach, których przykład został pokazany na Rysunku 3.3.
+Mechanizmami optymalizującymi zapytania do bazy danych jest między innymi \textbf{indeksowanie} i \textbf{partycjonowanie}. Indeksowanie tabeli po danej kolumnie/kolumnach powoduje przechowywanie wszystkich rekordów w oddzielnej strukturze w sposób posortowany. Standardowe indeksy Oracle opierają się na B-drzewach, których przykład został pokazany na Rysunku 3.3, zaczerpniętym z oficjalnej dokumentacji \cite{Oracle2}.
 				\begin{figure}[!htbp]
 					\begin{center}
 						\centering
@@ -793,7 +793,7 @@ Standardowo, indeks tabeli tworzony jest po kluczu głównym. Można dodać je t
 \begin{lstlisting}
 CREATE INDEX GUSER_LOGIN ON GUSER (LOGIN);
 \end{lstlisting}
-Partycjonowanie dzieli z kolei tabelę na części na podstawie wartości kolumny. Idealnym przykładem jest tu trzymanie historycznych danych  dzieląc na partycje miesięcy czy lat. Zgodnie z dokumentacją, należy rozważyć partycjonowanie każdej tabeli przekraczającej 2 GB wielkości. Różnicę dobrze obrazuje rysunek 3.4:
+Partycjonowanie dzieli z kolei tabelę na części na podstawie wartości kolumny. Idealnym przykładem jest tu trzymanie historycznych danych  dzieląc na partycje miesięcy czy lat. Zgodnie z dokumentacją, należy rozważyć partycjonowanie każdej tabeli przekraczającej 2 GB wielkości. Różnicę dobrze obrazuje rysunek 3.4 \cite{Oracle2}:
 				\begin{figure}[!htbp]
 					\begin{center}
 						\centering
@@ -824,7 +824,7 @@ exec dbms_redefinition.start_redef_table( user, 'GQUEST', 'TEMP' );
 \chapter{Bezpieczeństwo}
 \label{Safety}
 \section{Ataki CSRF}
-Ataki typu Cross-Site Request Forgery polegają na oszukaniu Użytkownika celem wykonania przez niego niezamierzonych akcji w aplikacji od której jest zalogowany. Oszust może nakłonić Użytkownika do kliknięcia w link prowadzący do innej strony, której budowa spowoduje zmianę lub usunięcie  danych Użytkownika. Oszust wykorzystuje tu cudze uprawnienia w aplikacji. Popularną metodą zabezpieczenia się przed tego typu atakiem jest wysłanie losowego tokena (unikatowego dla Użytkownika i sesji) i zapisanie go w pliku Cookie. Token ten jest wysyłany z każdym zapytaniem z powrotem do serwera i zmieniany po każdym zamknięciu przeglądarki. Uniemożliwia to atak, ponieważ strona oszusta nie ma dostępu do pliku Cookie oryginalnej aplikacji. Ta metoda, wykorzystana w projekcie, nie wymagała żadnych zmian po stronie projektu Angular. Pobiera on i wysyła tokeny pod warunkiem że otrzyma plik Cookie o nazwie "XSRF-TOKEN", wysłany z nagłówkiem "X-XSRF-TOKEN". Po stronie Springa, należało dodać poniższy kod.
+Ataki typu Cross-Site Request Forgery \cite{Owasp} polegają na oszukaniu Użytkownika celem wykonania przez niego niezamierzonych akcji w aplikacji od której jest zalogowany. Oszust może nakłonić Użytkownika do kliknięcia w link prowadzący do innej strony, której budowa spowoduje zmianę lub usunięcie  danych Użytkownika. Oszust wykorzystuje tu cudze uprawnienia w aplikacji. Popularną metodą zabezpieczenia się przed tego typu atakiem jest wysłanie losowego tokena (unikatowego dla Użytkownika i sesji) i zapisanie go w pliku Cookie. Token ten jest wysyłany z każdym zapytaniem z powrotem do serwera i zmieniany po każdym zamknięciu przeglądarki. Uniemożliwia to atak, ponieważ strona oszusta nie ma dostępu do pliku Cookie oryginalnej aplikacji. Ta metoda, wykorzystana w projekcie, nie wymagała żadnych zmian po stronie projektu Angular. Pobiera on i wysyła tokeny pod warunkiem że otrzyma plik Cookie o nazwie "XSRF-TOKEN", wysłany z nagłówkiem "X-XSRF-TOKEN". Po stronie Springa, należało dodać poniższy kod.
 \begin{lstlisting}
 package com.koziejaj.client.GSecurity;
 
@@ -850,7 +850,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 \end{lstlisting}
 
 \section{Protokół HTTPS}
-Protokół HTTPS to szyfrowana wersja protokołu HTTP. Jego wykorzystanie utrudnia wykradnięcie wrażliwych danych jak na przykład hasło użytkownika wysyłane przy logowaniu. Wykorzystanie HTTPS wymaga wygenerowania certyfikatu SSL który zawiera klucz publiczny i różne informacje o serwerze. Na potrzeby projektu certyfikat został wygenerowany i podpisany samodzielnie, co w przeglądarkach powoduje wyświetlenie ostrzeżenia. W środowisku produkcyjnym, certyfikat powinien być podpisany przez Urząd Certyfikacyjny. Posiadając certyfikat, należało w pliku application.properties dodać poniższe linie:
+Protokół HTTPS to szyfrowana wersja protokołu HTTP. Jego wykorzystanie utrudnia wykradnięcie wrażliwych danych jak na przykład hasło użytkownika wysyłane przy logowaniu. Wykorzystanie HTTPS wymaga wygenerowania certyfikatu SSL \cite{Owasp} który zawiera klucz publiczny i różne informacje o serwerze. Na potrzeby projektu certyfikat został wygenerowany i podpisany samodzielnie, co w przeglądarkach powoduje wyświetlenie ostrzeżenia. W środowisku produkcyjnym, certyfikat powinien być podpisany przez Urząd Certyfikacyjny. Posiadając certyfikat, należało w pliku application.properties dodać poniższe linie:
 \begin{lstlisting}
 server.ssl.key-store: keystore.koziejaj #Nazwa pliku
 server.ssl.key-store-password: Qazsedc #Hasło
@@ -943,7 +943,7 @@ Każde zapytanie do API ma sprawdzany token:
 \section{Reset i zmiana hasła}
 Zalogowany Użytkownik, może zmienić hasło, wysyłając stare hasło, nowe hasło, oraz swój login i token logowania. Jeżeli Użytkownik zapomni hasła, może skorzystać z formularza dostępnego ze strony logowania. Po podaniu swojego adresu email, otrzymuje wiadomość z adresem URL (zawierającym 128 bitowy token) do formularza, pozwalającym na wpisanie nowego hasła. Formularz przekazuje do API adres email, nowe hasło i token. Jeśli dane się zgadzają, hasło zostaje zmienione.
 \section{SQL Injection}
-Atak ten polega na wprowadzeniu dodatkowego kodu wykonywalnego (w języku SQL) do danych przysyłanych przez Użytkownika na serwer. Przykładowo, wysyłając jako imię wyszukiwanego użytkownika:  ,,x'; DROP TABLE GUSER; SELECT '1'', zapytanie wykonywane po stronie serwera mogłoby przyjąć formę:
+Atak ten \cite{Owasp} polega na wprowadzeniu dodatkowego kodu wykonywalnego (w języku SQL) do danych przysyłanych przez Użytkownika na serwer. Przykładowo, wysyłając jako imię wyszukiwanego użytkownika:  ,,x'; DROP TABLE GUSER; SELECT '1'', zapytanie wykonywane po stronie serwera mogłoby przyjąć formę:
 \begin{lstlisting}
  SELECT * FROM GUSER WHERE LOGIN = 'x'; DROP TABLE GUSER; SELECT '1'
 \end{lstlisting}
@@ -1012,41 +1012,33 @@ Podczas projektu natknięto się na wiele błędów, których przyczyny okazały
 					\caption{Błąd biblioteki SystemJS tak naprawdę oznaczał problem z definicją ścieżki do biblioteki, której chciano użyć w projekcie.}
 					\label{UMLTS}
 				\end{figure}
-Tylko pisząc kod linijka po linijce i testując co chwilę, dało się odnajdować źródła problemów. W połączeniu z długim czasem rekompilacji i restartu serwera (około 30 sekund na wydajnej maszynie), proces wytwórczy można ocenić jako dosyć żmudny. Sposób połączenia aplikacji klienckiej i serwerowej we wspólnym projekcie, korzystając z dwóch szkieletów, także z początku nie był wyzwaniem trywialnym. Rodzi sie pytanie - czy tyle warstw aplikacji jest faktycznie potrzebne? Na pewno szkielety i biblioteki usprawniają pracę programisty. Warto jednak stosować się do zasad YAGNI i KISS - nie dodawać do projektu elementów niepotrzebnych i unikać przesadnej złożoności.
-\chapter{Schowek}
-\label{Schowek}
-
-\section{Rzeczy}
-\ref{Schowek}
-\cite{Stevens}
-\begin{itemize}
-	\item Punkt 1
-	\item Punkt 2
-\end{itemize}
-\begin{figure}[!htbp]
-	\begin{center}
-		\centering
-		\includegraphics[scale=0.4]{\ImgPath/rys/schemat_komunikacji.png}
-	\end{center}
-	\caption{Schemat komunikacji steganograficznej}
-	\label{schematKomunikacji}
-\end{figure}
-\begin{lstlisting}
-int main(String args){}
-\end{lstlisting}
+Tylko pisząc kod linijka po linijce i testując co chwilę, możliwe było odnajdowanie źródeł problemów. W połączeniu z długim czasem rekompilacji i restartu serwera (około 30 sekund na wydajnej maszynie), proces wytwórczy można ocenić jako dosyć żmudny. Sposób połączenia aplikacji klienckiej i serwerowej we wspólnym projekcie, korzystając z dwóch szkieletów, także z początku nie był zagadnieniem trywialnym. Rodzi sie pytanie - czy tyle warstw aplikacji jest faktycznie potrzebne? Na pewno szkielety i biblioteki usprawniają pracę programisty. Warto jednak stosować się do zasad YAGNI i KISS - nie dodawać do projektu elementów niepotrzebnych i unikać przesadnej złożoności.
 
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
-\bibitem{Pierwsza}{Dokumentacja Springa/Mądra książka o Springu}
-\bibitem{Druga}{Mądra książka o PLSQL - ta do wersji 10 co czytałes w PKO}
-\bibitem{Trzecia}{Dokumentacja Angulara}
-\bibitem{Czwarta}{Ta książka o gamifikacji albo wikipedia }
-\bibitem{Piąta}{Cos o bezpieczenstwie - poszukaj w materialach do zajęć z bezpieczeństwa, oni ogarniali temat}
-\bibitem{Szósta}{Thinking in JAVA?? Jak znajdziesz fragment który się przyda}
 
-\bibitem{Stevens}{W. R. Stevens, G. R. Wright, ,,Biblia TCP/IP tom 1'', RM, 
-1998.}
+\bibitem{Spring}{Pivotal Software, ,,Guides''}
+\newline \url{https://spring.io/guides}
+
+\bibitem{Spring2}{Tutorials Point, ,,Spring - Bean Definition'', ,,Spring - Java Based Configuration''}
+\newline \url{http://www.tutorialspoint.com/spring/}
+
+\bibitem{Maven}{Apache Software Foundation, ,,Documentation''}
+\newline \url{https://maven.apache.org/guides/}
+
+\bibitem{Oracle}{Scott Urman, Ron Hardman, Michael McLaughlin, ,,Oracle Database 10g : programowanie w języku PL/SQL'', Helion,2008}
+\bibitem{Oracle2}{Oracle, ,,Indexes and Index-Organized Tables'', ,,Partitions, Views, and Other Schema Objects''}
+\newline \url{https://docs.oracle.com/cd/E11882_01/server.112/e40540/toc.htm}
+
+
+\bibitem{Wikipedia}{Wikipedia, ,,Grywalizacja'' }
+\newline \url{https://pl.wikipedia.org/wiki/Grywalizacja}
+
+\bibitem{Owasp}{OWASP, ,,SQL Injection'', ,,Cross-Site Request Forgery (CSRF)'', ,,Insecure Transport''}
+\newline \url{https://www.owasp.org}
+
+\bibitem{Java}{Bruce Eckel, ,,Thinking in Java : edycja polska'', Helion, 2006}
 
 \end{thebibliography}
 

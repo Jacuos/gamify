@@ -8,7 +8,7 @@
 \contentsline {section}{\numberline {2.1}Metody konfiguracji}{7}{section.2.1}
 \contentsline {section}{\numberline {2.2}Spring Boot}{8}{section.2.2}
 \contentsline {section}{\numberline {2.3}Maven}{10}{section.2.3}
-\contentsline {section}{\numberline {2.4}Przydatne modu\IeC {\l }y}{12}{section.2.4}
+\contentsline {section}{\numberline {2.4}Przydatne modu\IeC {\l }y}{13}{section.2.4}
 \contentsline {section}{\numberline {2.5}Implementacja REST API}{13}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}Mapowanie obiektowo - relacyjne}{13}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}Repozytoria}{17}{subsection.2.5.2}
@@ -26,6 +26,4 @@
 \contentsline {section}{\numberline {5.1}Migracja bazy danych}{35}{section.5.1}
 \contentsline {section}{\numberline {5.2}Migracja aplikacji}{36}{section.5.2}
 \contentsline {chapter}{\numberline {6}Wnioski}{38}{chapter.6}
-\contentsline {chapter}{\numberline {7}Schowek}{40}{chapter.7}
-\contentsline {section}{\numberline {7.1}Rzeczy}{40}{section.7.1}
-\contentsline {chapter}{Bibliografia}{41}{chapter*.4}
+\contentsline {chapter}{Bibliografia}{40}{chapter*.4}
