@@ -137,7 +137,11 @@
 	Wykonanie Zadania
 	\begin{enumerate}
 		\item Użytkownik loguje się do Systemu.
-		\item Użytkownik wybiera opcję ,,Wykonaj Zadanie'' -> (lub skanuje QR)
+		\item Użytkownik wybiera opcję ,,Wykonaj Zadanie'' (Ścieżka alternatywna):
+		\begin{enumerate}
+		\item Użytkownik skanuje kod QR
+		\item System dodaje zadanie i punkty Użytkownikowi
+		\end{enumerate}
 		\item System wyświetla formularz wykonania Zadania.
 		\item Użytkownik wpisuje numer Zadania.
 		\item System dodaje zadanie i punkty Użytkownikowi
@@ -165,10 +169,10 @@
 		\item Administrator wybiera opcję ,,Odznaki''.
 		\item System wyświetla okno edycji Odznak.
 		\item Administrator wybiera opcję ,,Przyznaj odznakę''
-		\item System wybiera okno wyboru odznaki.
+		\item System wybiera okno wyboru Odznaki.
 		\item Administrator wybiera Odznakę.
 		\item System wyświetla okno wyboru Użytkowników.
-		\item Administrator wybiera UżytkownikóW.
+		\item Administrator wybiera Użytkowników.
 		\item System przyznaje odznakę wybranym Użytkownikom.
 	\end{enumerate}
 	Poniższe diagramy klas przedstawiają strukturę modułu GLogin - oddzielnie dla wnętrza (,,back-end'') i fasady (,,front-end''). Są one reprezentatywne dla całości projektu, zaś stworzenie pełnej dokumentacji uważam za odpowiedni temat dla oddzielnej pracy dyplomowej. Prywatne zmienne posiadające publiczne metody dostępowe zostały przedstawione jako zmienne publiczne. Redukuje to liczbę metod i zwiększa czytelność diagramów.
@@ -409,7 +413,7 @@ Oto lista najważniejszych modułów użytych w projekcie:
 \section{Implementacja REST API}
 Implementacja serwerowej części aplikacji zostanie omówiona na przykładzie modułu panelu Administratora. Ograniczy to analizę do sześciu klas, zorganizowanych podobnie do wcześniejszego diagramu panelu logowania \ref{UMLJava}.
 \subsection{Mapowanie obiektowo - relacyjne}
-Klasy omówione w tej sekcji są definicjami tabel bazy danych. Zostały one wytworzone zgodnie z poradnikiem "Accessing Data JPA" \cite{Spring}. Klasa taka odpowiada pojedynczemu rekordowi tabeli i pozwala na jego modyfikację.\\ 
+Klasy omówione w tej sekcji są definicjami tabel bazy danych. Zostały one wytworzone zgodnie z poradnikiem ,,Accessing Data JPA'' \cite{Spring}. Klasa taka odpowiada pojedynczemu rekordowi tabeli i pozwala na jego modyfikację.\\ 
 Jedną z funkcjonalności panelu Administratora jest tworzenie i przyznawanie Odznak. Jest to taki wirtualny medal za specjalne zasługi, który Administrator może nadać Użytkownikowi. Instancja takiego medalu musi zawierać dwie informacje - unikatowy login Użytkownika który go posiada i nazwę Odznaki. Nazwa ta odpowiada plikowi graficznemu Odznaki w plikach statycznych projektu.
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
@@ -486,7 +490,7 @@ public class GBId implements Serializable {
 	}
 }
 \end{lstlisting}
-Administrator może zmieniać różne parametry wpływające na aplikację Użytkownika. Jest to funkcjonalność bardzo prostego "Systemu zarządzania treścią" (ang. CMS). Na ten moment obsługiwane wartości to: zawartość strony powitalnej, słowa oznaczające Punkty i Poziomy w aplikacji Użytkownika, arkusz css aplikacji, wzór na progi punktowe kolejnych Poziomów. Dodanie kolejnej funkcjonalności tego typu wymagałoby dodania rekordu w tabeli i zmodyfikowania aplikacji Użytkownika. Do przechowywania zmian potrzebna jest bardzo prosta klasa: 
+Administrator może zmieniać różne parametry wpływające na aplikację Użytkownika. Jest to funkcjonalność bardzo prostego ,,Systemu zarządzania treścią'' (ang. CMS). Na ten moment obsługiwane wartości to: zawartość strony powitalnej, słowa oznaczające Punkty i Poziomy w aplikacji Użytkownika, arkusz css aplikacji, wzór na progi punktowe kolejnych Poziomów. Dodanie kolejnej funkcjonalności tego typu wymagałoby dodania rekordu w tabeli i zmodyfikowania aplikacji Użytkownika. Do przechowywania zmian potrzebna jest bardzo prosta klasa: 
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
@@ -962,19 +966,21 @@ Serwer bazy danych Oracle jest dostępny na platformie Microsoftu tylko dla posi
 					\label{UMLTS}
 				\end{figure}
 Wymagało to ręcznego odtworzenia wszystkich tabel. Na szczęście przepisanie kodu PL/SQL (Oracle) na Transact-SQL (Microsoft) nie sprawia większego problemu:\\
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{7cm}|p{7cm}|}
 	\hline PL/SQL\\ 
 	\hline   CREATE TABLE ''GBADGE''  \\
-	(	''BADGE'' VARCHAR2(255 CHAR) NOT NULL, \\
+	(\\	
+	''BADGE'' VARCHAR2(255 CHAR) NOT NULL, \\
 	''LOGIN'' VARCHAR2(255 CHAR) NOT NULL,  \\
 	PRIMARY KEY (''BADGE'', ''LOGIN'')\\
 	)\\
 	\hline 
 \end{tabular} 
-\begin{tabular}{|l|l|}
+\begin{tabular}{|p{7cm}|p{7cm}|}
 	\hline Transact-SQL\\ 
 	\hline CREATE TABLE "GBADGE" \\
-	(	''BADGE'' VARCHAR(255) NOT NULL, \\
+	(\\
+	''BADGE'' VARCHAR(255) NOT NULL, \\
 	''LOGIN'' VARCHAR(255) NOT NULL, \\
 	PRIMARY KEY (''BADGE'', ''LOGIN'')\\
 	)\\
@@ -998,7 +1004,7 @@ Poniższy wykres przedstawia medianę czasów ładowania aplikacji w porównaniu
 						\centering
 						\includegraphics[width=\textwidth]{\ImgPath/rys/speedChart.png}
 					\end{center}
-					\caption{Postawienie własnej maszyny wirtualnej okazało się być najłatwiejszym rozwiązaniem w przypadku opisywanego projektu.}
+					\caption{Prędkość wczytywania aplikacji na pierwszy rzut oka nie zachwyca.}
 					\label{UMLTS}
 				\end{figure}
 Aplikacja teoretycznie powinna dążyć do prędkości uzyskiwanej przez stronę startową facebooka - obydwie witają użytkownika ekranem logowania. Czas ten jest jednak dużo gorszy. Wynika to z (między wieloma innymi czynnikami) filozofii aplikacji klienckiej napisanej w szkielecie Angular. Jako tak zwane ,,single-page app'', wczytuje ona cały kod aplikacji przy pojedynczym wczytaniu strony  - pliki HTML i JS wszystkich podstron. Przy przejściu na kolejne podstrony następują jedynie odpowiednie zapytania do API. Takie podejście daje dużo lepsze wyniki w aplikacjach z których korzysta się dłużej, przemieszczając po wielu zakładkach. Aplikacji Angular nie warto często odświeżać, powinna sama dbać o aktualność przedstawionych danych. Dłuższy czas pierwszego ładowania jest tu kompromisem, wynagradzanym przez późniejsze szybsze działanie aplikacji.\\
