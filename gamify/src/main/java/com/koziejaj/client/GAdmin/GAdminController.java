@@ -42,7 +42,7 @@ public class GAdminController {
     private GBadgeRepository gBadRep;
 
     @RequestMapping(value="/api/gadmin/newquest", method = RequestMethod.POST)
-    public Long newQuest(@RequestBody String postData, @RequestParam(value="token") String token) throws IOException {
+    public Long newQuest(@RequestParam(value="token") String token, @RequestBody String postData) throws IOException {
         if(gLoginRep.findByTokenAndIsAdmin(token,true) != null) {
             HashMap<String, Object> result = new ObjectMapper().readValue(postData, HashMap.class);
             System.out.println(result.get("description").getClass() + " " + result.get("exp").getClass() + " " + result.get("endOf").getClass());

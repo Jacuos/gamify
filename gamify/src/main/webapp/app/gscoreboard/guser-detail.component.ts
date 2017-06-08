@@ -26,6 +26,7 @@ export class GuserDetailComponent  {
   exp: string;
   badges: string[];
   urls: string[] = new Array();
+  photoUrl: string;
 
   token: string;
   subscription:Subscription = this.auth.token$
@@ -49,6 +50,7 @@ export class GuserDetailComponent  {
     this.guserService.getGuserQuests(this.mode)
       .then(gquest => this.gquest = gquest);
 
+    this.photoUrl = "https://localhost:7000/api/photo?token="+this.token+"&id="+this.mode;
   }
   getBadges(){
     this.guserService.getBadges(this.guser.login)

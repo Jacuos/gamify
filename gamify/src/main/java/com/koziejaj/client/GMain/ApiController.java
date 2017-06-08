@@ -72,15 +72,11 @@ public class ApiController extends HttpServlet {
 
     @RequestMapping("/api/guserexists")
     public boolean guserlogin(@RequestParam(value="id", defaultValue="") String login, @RequestParam(value="token") String token) {
-        if(gLoginRep.findByToken(token) != null) {
             GUser model = repository.findByLogin(login);
             if (model == null)
                 return true;
             else
                 return false;
-        }
-        else
-            return false;
     }
 
     @RequestMapping("/api/guserquests")

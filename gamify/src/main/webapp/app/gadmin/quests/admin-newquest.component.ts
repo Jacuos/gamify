@@ -44,7 +44,7 @@ export class AdminNewQuestComponent  {
   }
 
   postResponse(){
-    this.responseAddress = location.host + "/goquest;qid=" + this.response;
+    this.responseAddress = "https://"+location.host + "/goquest;qid=" + this.response;
     this.name = this.model.description;
     this.model = {};
   }
