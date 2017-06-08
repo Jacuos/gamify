@@ -20,7 +20,9 @@
 \usepackage{indentfirst}
 \usepackage[pdftex]{hyperref}
 \usepackage{listings}
+\lstset{aboveskip=20pt,belowskip=20pt}
 \usepackage{ucs}
+\usepackage[figuresright]{rotating}
 \lstset{frame=tb,
 		language=Java,
 		breaklines=true,
@@ -129,10 +131,11 @@
 % Wstęp
 %-----------------
 \chapter{Wstęp}
+Celem pracy było stworzenie aplikacji internetowej, motywującej grupy ludzi do wspólnej pracy poprzez system wyzwań i nagród. Należy jednak pamiętać że o ile aplikacja pomaga zarządzać zadaniami, prowadzić ranking i kontrolować rozwój użytkowników, o tyle weryfikacja wykonanych zadań czy przyznawanie fizycznych nagród pozostaje obowiązkiem administratora. Stworzone rozwiązanie było także pretekstem do zbadania współczesnych technologii wytwarzania aplikacji internetowych, opisanych w dalszej części pracy.
 \section{Grywalizacja}
-	Grywalizacja, gryfikacja lub gamifikacja, to zgodnie z definicją \cite{Wikipedia} "Wykorzystanie mechaniki znanej np. z gier fabularnych i komputerowych, do modyfikowania zachowań ludzi w sytuacjach niebędących grami, w celu zwiększenia zaangażowania ludzi." Ta szeroka definicja obejmuje rozwiązania stosowane w marketingu, zarządzaniu projektami jak i edukacji. Założeniem stworzonej aplikacji jest motywowanie grup ludzi do wspólnej pracy poprzez system wyzwań i nagród. Należy jednak pamiętać że o ile aplikacja pomaga zarządzać zadaniami, prowadzić ranking i kontrolować rozwój użytkowników, o tyle weryfikacja wykonanych zadań czy przyznawanie fizycznych nagród pozostaje obowiązkiem administratora. Stworzone rozwiązanie było także pretekstem do zbadania współczesnych technologii wytwarzania aplikacji internetowych, opisanych w dalszej części pracy. 
+	Grywalizacja, gryfikacja lub gamifikacja, to zgodnie z definicją \cite{Wikipedia} "Wykorzystanie mechaniki znanej np. z gier fabularnych i komputerowych, do modyfikowania zachowań ludzi w sytuacjach życia codziennego, w celu zwiększenia zaangażowania ludzi." Ta szeroka definicja obejmuje rozwiązania stosowane w marketingu, zarządzaniu projektami jak i edukacji.
 	\section{Projekt}
-	Ideę działania aplikacji ,,Gamify'' przybliżyć mogą poniższe przykładowe Przypadki Użycia:\\
+	Plany stworzenia aplikacji ,,Gamify'' przybliżyć mogą poniższe przykładowe Przypadki Użycia:\\
 	UC Użytkownika:\\
 	Wykonanie Zadania
 	\begin{enumerate}
@@ -175,25 +178,23 @@
 		\item Administrator wybiera Użytkowników.
 		\item System przyznaje odznakę wybranym Użytkownikom.
 	\end{enumerate}
-	Poniższe diagramy klas przedstawiają strukturę modułu GLogin - oddzielnie dla wnętrza (,,back-end'') i fasady (,,front-end''). Są one reprezentatywne dla całości projektu, zaś stworzenie pełnej dokumentacji uważam za odpowiedni temat dla oddzielnej pracy dyplomowej. Prywatne zmienne posiadające publiczne metody dostępowe zostały przedstawione jako zmienne publiczne. Redukuje to liczbę metod i zwiększa czytelność diagramów.
-	\begin{figure}[!htbp]
-		\begin{center}
-			\centering
-			\includegraphics[width=\textwidth]{\ImgPath/rys/UML-Java.png}
-		\end{center}
+	Diagramy klas na Rysunkach 1.1 i 1.2 opisują strukturę modułu GLogin - oddzielnie dla wnętrza (,,back-end'') i fasady (,,front-end''). Są one reprezentatywne dla całości projektu, zaś stworzenie pełnej dokumentacji uważam za odpowiedni temat dla oddzielnej pracy dyplomowej. Prywatne zmienne posiadające publiczne metody dostępowe zostały przedstawione jako zmienne publiczne. Redukuje to liczbę metod i zwiększa czytelność diagramów.
+	\begin{sidewaysfigure}[!htbp]
+
+			\includegraphics[scale=0.7]{\ImgPath/rys/UML-Java.png}
+
 		\caption{Diagram klas w języku Java.}
 		\label{UMLJava}
-	\end{figure}
-		\begin{figure}[!htbp]
-			\begin{center}
-				\centering
-				\includegraphics[width=\textwidth]{\ImgPath/rys/UML-TS.png}
-			\end{center}
+	\end{sidewaysfigure}
+		\begin{sidewaysfigure}[!htbp]
+
+				\includegraphics[scale=0.7]{\ImgPath/rys/UML-TS2.png}
+
 			\caption{Diagram klas w języku TypeScript.}
 			\label{UMLTS}
-		\end{figure}
+		\end{sidewaysfigure}
 \section{Użyte technologie}
-Do wykonania aplikacji użyto poniższych technologii: 
+Do wykonania aplikacji użyto technologii, przedstawionych na Rysunku 1.3.
 	\begin{figure}[!htbp]
 		\begin{center}
 			\centering
@@ -201,15 +202,16 @@ Do wykonania aplikacji użyto poniższych technologii:
 		\end{center}
 		\caption{Języki, szkielety i systemy bedące częścią projektu.}
 		\label{technologies}
-	\end{figure}	
+	\end{figure}
+Jak widać, aplikacja została wykonana w architekturze Klient-Serwer, opisanej w [LITERATURA]. Fasada oznacza kod wykonywany przez przeglądarkę internetową po stronie Klienta. Warstwa Klienta obsługuje żądania Użytkownika, wysyła zapytania do Serwera i prezentuje odpowiedzi Użytkownikowi. Wnętrze oznacza kod wykonywany po stronie Serwera. Serwer nasłuchuje żądań Klienta, wykonuje logikę biznesową związaną z danym żadaniem i wysyła odpowiedź do Klienta. Z usług jednego Serwera może korzystać wiele instancji Klientów. Obydwie składowe wykorzystują inne technologie, opisane szerzej w kolejnych rozdziałach.
 \section{Wzorzec MVC}
-MVC to wzorzec architektoniczny służący do organizowania struktury systemów interaktywnych. Składa się on z trzech części:
+Złożoność współczesnych aplikacji (w tym internetowych), wymusza wykorzystanie odpowiednich wzorców (projektowych, architektonicznych). Narzucają one sprawdzoną formę, która pozwala zapanować nad rozbudowanym kodem. W tworzonej aplikacji, zdecydowano się na wykorzystanie wzorca MVC. Jest on szeroko opisywany w literaturze, chociażby w [LITERATURA], oraz jest wykorzystywany przez wybrane szkielety aplikacji. MVC to wzorzec architektoniczny służący do organizowania struktury systemów interaktywnych. Składa się on z trzech części:
 	\begin{enumerate}
 		\item Model - reprezentuje dane i wykonuje logikę biznesową.
 		\item Widok - wyświetla dane pobrane z Modelu.
 		\item Kontroler - reaguje na dane wejściowe użytkownika. Przesyła żądania wykonania logiki biznesowej do Modelu i zmian Widoku. 
 	\end{enumerate}
-Zarówno Angular jak i Spring samodzielnie realizują wzorzec MVC. Jednak gdy połączymy te dwie technologie, sytuacja zmienia się. Warstwa kontrolera przeniesiona jest do Angulara i jest wykonywana przez przeglądarkę. To samo samo dzieje się z warstwą widoku. Po stronie serwerowej Springa pozostaje warstwa modelu. Ten rozdział powoduje że potrzebny jest odpowiedni sposób komunikacji klient-serwer. Nazywa się on REST API. Skróty te oznaczają Representational State Transfer i Application Programming Interface. Pierwszy skrót oznacza bezstanową wymianę tekstowych zasobów sieciowych. Przykładem są tu zapytania HTTP GET, POST, PUT, DELETE. Drugi skrót oznacza jednoznacznie zdefiniowany sposób komunikacji między komponentami. W wypadku aplikacji internetowej oznacza to że strona serwerowa odbierając zapytanie HTTP pod danym adresem, powinna zwrócić odpowiedź w postaci XML lub JSON.
+Zarówno Angular jak i Spring samodzielnie realizują wzorzec MVC. Jednak gdy połączymy te dwie technologie, sytuacja zmienia się. Warstwa kontrolera przeniesiona jest do Angulara i jest wykonywana przez przeglądarkę. To samo samo dzieje się z warstwą widoku. Po stronie serwerowej Springa pozostaje warstwa modelu. Ten rozdział powoduje że potrzebny jest odpowiedni sposób komunikacji Klient-Serwer. Nazywa się on REST API. Skróty te oznaczają Representational State Transfer i Application Programming Interface. Pierwszy skrót oznacza bezstanową wymianę tekstowych zasobów sieciowych. Przykładem są tu zapytania HTTP GET, POST, PUT, DELETE. Drugi skrót oznacza jednoznacznie zdefiniowany sposób komunikacji między komponentami. W wypadku aplikacji internetowej oznacza to że strona serwerowa odbierając zapytanie HTTP pod danym adresem, powinna zwrócić odpowiedź w postaci XML lub JSON. Przykład zapytania do takiego API i odpowiedzi, znajduje się na Rysunku 1.4.
 		\begin{figure}[!htbp]
 			\begin{center}
 				\centering
@@ -218,7 +220,7 @@ Zarówno Angular jak i Spring samodzielnie realizują wzorzec MVC. Jednak gdy po
 			\caption{Zapytanie do API i odpowiedź. Taka komunikacja pozwala wykorzystać tą samą warstwę modelu w kilku różnych aplikacjach.}
 			\label{UMLTS}
 		\end{figure}
-Modułowa struktura projektu przedstawia się następująco: wewnątrz projektu Springa rezydują obok siebie 3 foldery - z plikami źródłowymi Javy, plikami statycznymi (grafiką) i projektem Angulara. Obydwa języki posiadają moduły główne - tam przechowywane są konfiguracje i najczęściej używane klasy. Każda większa funkcjonalność posiada oddzielny folder. To samo tyczy się aplikacji admina która jest traktowana jako oddzielny moduł. Przedrostek g występujący w nazwach klas i modułów podyktowany jest zbieżnoscią nazw takich jak login czy user z natywnymi elementami użytych platform.
+Modułowa struktura projektu jest przedstawiona na Rysunku 1.5. Przedstawia się ona następująco: wewnątrz projektu Springa rezydują obok siebie 3 foldery - z plikami źródłowymi Javy, plikami statycznymi (grafiką) i projektem Angulara. Obydwa języki posiadają moduły główne - tam przechowywane są konfiguracje i najczęściej używane klasy. Każda większa funkcjonalność posiada oddzielny folder. To samo tyczy się aplikacji admina która jest traktowana jako oddzielny moduł. Przedrostek \textit{,,g''} występujący w nazwach klas i modułów podyktowany jest zbieżnoscią nazw takich jak login czy user z natywnymi elementami użytych platform.
 		\begin{figure}[!htbp]
 			\begin{center}
 				\centering
@@ -227,9 +229,12 @@ Modułowa struktura projektu przedstawia się następująco: wewnątrz projektu 
 			\caption{Modułowy podział projektu.}
 			\label{UMLTS}
 		\end{figure}
-
+\chapter{Angular}
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Język Typescript został wykorzystany do stworzenia aplikacji klienta - kodu wykonywanego przez przeglądarkę internetową. Język ten jest nadzbiorem języka JavaScript i jest do niego kompilowany. logiki 
 \chapter{Spring}
-Spring to szkielet tworzenia aplikacji (ang. framework) przeznaczony dla Javy Enterprise Edition, czyli serwerowej odmiany tego języka. Powstał jako alternatywa dla oficjalnych standardów serwerowych Javy takich jak Enterprise JavaBeans. Spring nie narzuca jednego modelu programowania. Posiada wiele modułów które są przydatne przy pisaniu aplikacji, jednocześnie będąc całkowicie opcjonalnymi. Znaną cechą Springa jest \textbf{,,odwrócenie sterowania''} (ang. Inversion of Control), czyli wzorzec w którym wykonywaniem programu steruje szkielet a nie kod programisty. To Spring decyduje kiedy wykonać dane akcje. Przykładem odwróconego sterowania jest chociażby \textbf{"wstrzykiwnie zależności"} (ang. Dependency Injection), kiedy to utworzone, zainicjowane obiekty przekazywane są obiektom które ich potrzebują. Obiekty nie tworzą wtedy samodzielnie instancji innych obiektów. Kolejną ważną cechą Springa jest \textbf{,,programowanie aspektowe''} czyli wzorzec w którym rozdziela się fizycznie funkcjonalności i definiuje punkty komunikacji między nimi, dostępne wszędzie tam gdzie są potrzebne.
+Podjęto decyzję by warstwę serwerową napisać z pomocą szkieletu Spring. Wybrano go między innymi ze względu na bogatą dokumentację, mnogość przydatnych modułów i dostępność szybkich sposobów na konfigurację sprawnej aplikacji serwerowej.
+Spring to szkielet tworzenia aplikacji (ang. framework) przeznaczony dla Javy Enterprise Edition, czyli serwerowej odmiany tego języka. Powstał jako alternatywa dla oficjalnych standardów serwerowych Javy takich jak Enterprise JavaBeans. Spring nie narzuca jednego modelu programowania. Posiada wiele modułów które są przydatne przy pisaniu aplikacji, jednocześnie będąc całkowicie opcjonalnymi. Znaną cechą Springa LITERATURA jest \textbf{,,odwrócenie sterowania''} (ang. Inversion of Control), czyli wzorzec w którym wykonywaniem programu steruje szkielet a nie kod programisty. To Spring decyduje kiedy wykonać dane akcje. Przykładem odwróconego sterowania jest chociażby \textbf{"wstrzykiwnie zależności"} (ang. Dependency Injection), kiedy to utworzone, zainicjowane obiekty przekazywane są obiektom które ich potrzebują. Obiekty nie tworzą wtedy samodzielnie instancji innych obiektów. Kolejną ważną cechą Springa jest \textbf{,,programowanie aspektowe''} czyli wzorzec w którym rozdziela się fizycznie funkcjonalności i definiuje punkty komunikacji między nimi, dostępne wszędzie tam gdzie są potrzebne.
 \section{Metody konfiguracji}
 Konfiguracja projektu w Springu może odbywać się na dwa sposoby - przy pomocy plików XML lub adnotacji.Obydwa te podejścia przedstawiono w kursie \cite{Spring2}  Poniższy przykład prezentuje te same ustawienia w obydwu reprezentacjach:\\
 \begin{tabular}{|l|l|}
@@ -249,8 +254,8 @@ Konfiguracja projektu w Springu może odbywać się na dwa sposoby - przy pomocy
 	\}
 	\}\\
 	\hline 
-\end{tabular}\\
-Konfiguracja XML odbywa się w oddzielnych plikach, zaś adnotacjami - bezpośrednio w kodzie którego dotyczy. Warto wiedzieć że konfiguracja adnotacjami wykonuje się przed XML. W projekcie użyto adnotacji. Wydają się one czytelniejsze, są też kierunkiem w którym zmierza rozwój Springa. Nie bez powodu był on kiedyś określany kolokwialnie jako "XML hell". Wyjątkiem są pliki z rozszerzeniem .properties. Przechowują one stałe wartości, takie jak numer portu serwera, dane uwierzytelniające bazy danych.
+\end{tabular}\\\\\\
+Konfiguracja XML odbywa się w oddzielnych plikach, zaś przy pomocy adnotacji - bezpośrednio w kodzie którego dotyczy. Warto wiedzieć że konfiguracja adnotacjami wykonuje się przed XML. W projekcie użyto adnotacji. Wydają się one czytelniejsze, są też kierunkiem w którym zmierza rozwój Springa. Wyjątkiem są pliki z rozszerzeniem \textit{,,.properties''}. Przechowują one stałe wartości, takie jak numer portu serwera, dane uwierzytelniające bazy danych.
 \section{Spring Boot}
 Brak narzuconych standardów szkieletu aplikacji ma także i swoje wady. Spring wymaga dużej ilości konfiguracji, a także dobrania modułów i bibliotek które będą nam potrzebne. Moduł Spring Boot zawiera wstępną konfigurację i najpotrzebniejsze biblioteki. Jednocześnie umożliwia dostosowanie projektu do specyficznych wymagań. Podczas uruchomienia sprawdza których elementów konfiguracji brakuje i dodaje je zgodnie z posiadaną wiedzą na temat projektu. Moduł ten można uznać za fundament stworzonej aplikacji. Ilość kodu wymaganą do napisania aplikacji serwerowej w ramach Spring Boot przedstawiają poniższe listingi, zgodne z podejściem przedstawionym w \cite{Spring}:
 
@@ -269,7 +274,7 @@ public class HelloController {
 	}
 }
 \end{lstlisting}
-Adnotacja @RestController informuje moduł Spring MVC że klasa będzie przystosowana do ubsługi zapytań sieciowych. Adnotacja @RequestMapping(''/'') oznacza ścieżkę która spowoduje wywołanie metody.
+Adnotacja \textit{,,@RestController''} informuje moduł Spring MVC że klasa będzie przystosowana do ubsługi zapytań sieciowych. Adnotacja \textit{,,@RequestMapping(''/'')''} oznacza ścieżkę która spowoduje wywołanie metody.
 
 \begin{lstlisting}
 package hello;
@@ -306,13 +311,13 @@ public class Application {
 
 }
 \end{lstlisting}
-Adnotacja @SpringBootApplication jest wygodnym połączeniem kilku innych adnotacji: 
+Adnotacja \textit{,,@SpringBootApplication''} jest wygodnym połączeniem kilku innych adnotacji: 
 \begin{itemize}
-	\item @Configuration - oznacza klasę jako źródło metod z adnotacją @Bean, które powinne być dostępne w kontekście aplikacji.
-	\item @EnableAutoConfiguration - nakazuje Spring Boot dodać do kontekstu aplikacji wszystkie metody @Bean na podstawie ścieżki projektu, innych metod @Bean i dostępnych konfiguracji.
-	\item @ComponentScan - skanuje pakiet (w tym przypadku ,,hello'') w poszukiwaniu komponentów, konfiguracji i serwisów.
+	\item \textit{,,@Configuration''} - oznacza klasę jako źródło metod z adnotacją @Bean, które powinne być dostępne w kontekście aplikacji.
+	\item \textit{,,@EnableAutoConfiguration''} - nakazuje Spring Boot dodać do kontekstu aplikacji wszystkie metody \textit{,,@Bean''} na podstawie ścieżki projektu, innych metod \textit{,,@Bean''} i dostępnych konfiguracji.
+	\item \textit{,,@ComponentScan''} - skanuje pakiet (w tym przypadku ,,hello'') w poszukiwaniu komponentów, konfiguracji i serwisów.
 \end{itemize}
-Metoda SpringApplication.run(); uruchamia aplikację, zaś metoda zwracająca CommandLineRunner jest uruchamiana podczas startu.
+Metoda \textit{,,SpringApplication.run();''} uruchamia aplikację, zaś metoda zwracająca \textit{,,CommandLineRunner''} jest uruchamiana podczas startu. Rysunek 2.1 przedstawia uruchomioną aplikację, zaś Rysunek 2.2 - obsłużenie zapytania.
 		\begin{figure}[!htbp]
 			\begin{center}
 				\centering
@@ -398,7 +403,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 \section{Przydatne moduły}
 Oto lista najważniejszych modułów użytych w projekcie:
 \begin{itemize}
-	\item Spring MVC - przy pomocy klasy DispatcherServlet przekazuje zapytania do odpowiednich kontrolerów, tak jak na listingu \ref{MVCController}. W przypadku wykonanego projektu, jest częścią modułu spring-boot-starter-web.
+	\item Spring MVC - przy pomocy klasy \textit{,,DispatcherServlet''} przekazuje zapytania do odpowiednich kontrolerów, tak jak na pierwszym fragmencie kodu z Podrozdziału \ref{MVCController} Spring Boot. W przypadku wykonanego projektu, jest częścią modułu spring-boot-starter-web.
 	\item Spring Data - rozbudowana, wielomodułowa biblioteka, wspierająca warstwę dostępu do danych. Wypiera popularną niegdyś bibliotekę Hibernate. W przypadku Gamify, użyto dwóch modułów:
 	\begin{itemize}
 		\item JPA - służy do mapowania obiektowo-relacyjnego zgodnie ze standardem JPA. Pobrany jako moduł spring-boot-starter-data-jpa.
@@ -411,7 +416,7 @@ Oto lista najważniejszych modułów użytych w projekcie:
 	\item Spring Security - biblioteka zapewniająca bezpieczeństwo aplikacji, szerzej opisana w rozdziale Bezpieczeństwo \ref{Safety}.
 \end{itemize}
 \section{Implementacja REST API}
-Implementacja serwerowej części aplikacji zostanie omówiona na przykładzie modułu panelu Administratora. Ograniczy to analizę do sześciu klas, zorganizowanych podobnie do wcześniejszego diagramu panelu logowania \ref{UMLJava}.
+Implementacja serwerowej części aplikacji zostanie omówiona na przykładzie modułu panelu Administratora. Ograniczy to analizę do sześciu klas, zorganizowanych podobnie do wcześniejszego Rysunku \ref{UMLJava}.
 \subsection{Mapowanie obiektowo - relacyjne}
 Klasy omówione w tej sekcji są definicjami tabel bazy danych. Zostały one wytworzone zgodnie z poradnikiem ,,Accessing Data JPA'' \cite{Spring}. Klasa taka odpowiada pojedynczemu rekordowi tabeli i pozwala na jego modyfikację.\\ 
 Jedną z funkcjonalności panelu Administratora jest tworzenie i przyznawanie Odznak. Jest to taki wirtualny medal za specjalne zasługi, który Administrator może nadać Użytkownikowi. Instancja takiego medalu musi zawierać dwie informacje - unikatowy login Użytkownika który go posiada i nazwę Odznaki. Nazwa ta odpowiada plikowi graficznemu Odznaki w plikach statycznych projektu.
@@ -537,7 +542,7 @@ public GLayout() {}
 
 \end{lstlisting}
 \subsection{Repozytoria}
-Zarówno klasa GBadge jak GLayout mają swoje repozytoria. Można traktować je jako instancje tabel bazy danych. To w repozytoriach szuka się rekordów i zapisuje zmiany na stałe. \cite{Spring}
+Zarówno klasa \textit{,,GBadge''} jak \textit{,,GLayout''} mają swoje repozytoria. Można traktować je jako instancje tabel bazy danych. To w repozytoriach szuka się rekordów i zapisuje zmiany na stałe, tak jak zostało to opisane w Literaturze \cite{Spring}. Poniżej znajduje się kod repozytoriów wraz z komentarzami.
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
@@ -568,7 +573,7 @@ public interface GLayoutRepository extends CrudRepository<GLayout, String> {
 
 \end{lstlisting}
 \subsection{Kontroler}
-Kontroler to klasa nasłuchująca  zapytań pod zdefiniowanymi adresami URL i wykonująca logikę biznesową operując na wyżej opisanych klasach mapowań i repozytoriów. Podstawowa budowa została zaprezentowana w \ref{MVCController}
+Kontroler to klasa nasłuchująca  zapytań pod zdefiniowanymi adresami URL i wykonująca logikę biznesową operując na wyżej opisanych klasach mapowań i repozytoriów. Podstawowa budowa została zaprezentowana w Podrozdziale \ref{MVCController}
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
@@ -745,6 +750,7 @@ public class GAdminController {
 
 \end{lstlisting}
 \chapter{Baza danych Oracle}
+Dane zapisywane przez serwer muszą być przechowywane w sposób uporządkowany, umożliwiający łatwy dostęp do żądanych informacji i wydajny nawet przy dużej ilości danych. Wymagania te idealnie spełnia baza danych Oracle. Posiada ona rozległe możliwości optymalizacji, a dane w tabelach mogą być przeglądane w sposób przypominający arkusz kalkulacyjny,  co jest przydatne podczas testów.
 Pierwszy system zarządzania bazą danych Oracle powstał w 1979 roku i do dziś rozwiązania tej firmy pozostają w czołówce najpopularniejszych baz danych na świecie. Jest to oprogramowanie zamknięte, w dużej mierze płatne. Istnieje na szczęście bezpłatna wersja Express, która została wykorzystana w projekcie.
 \section{Integracja z projektem}
 Konfiguracja połączenia z bazą danych Oracle wymaga od nas dwóch kroków. Najpierw dodajemy sterownik do projektu z pomocą Maven i POM.xml:
@@ -765,7 +771,7 @@ spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
 spring.jpa.database-platform=org.hibernate.dialect.Oracle10gDialect
 spring.jpa.hibernate.ddl-auto=update
 \end{lstlisting}
-Informacje takie jak numer portu login, hasło są podawane podczas tworzenia nowej bazy danych w GUI narzędzia Oracle SQL Developer. Alternatywnie można wykorzystać SQL*Plus, czyli program linii komend.
+Informacje takie jak numer portu login, hasło są podawane podczas tworzenia nowej bazy danych w GUI narzędzia Oracle SQL Developer, przedstawionym na Rysunku 4.1. Alternatywnie można wykorzystać SQL*Plus, czyli program linii komend.
 		\begin{figure}[!htbp]
 			\begin{center}
 				\centering
@@ -774,7 +780,7 @@ Informacje takie jak numer portu login, hasło są podawane podczas tworzenia no
 			\caption{SQL Developer pozwala na kompleksowe zarządzanie bazą danych}
 			\label{UMLTS}
 		\end{figure}
-Diagram 3.2 przedstawia schemat bazy danych projektu.
+Rysunek 4.2 przedstawia schemat bazy danych projektu.
 				\begin{figure}[!htbp]
 					\begin{center}
 						\centering
@@ -784,7 +790,7 @@ Diagram 3.2 przedstawia schemat bazy danych projektu.
 					\label{UMLTS}
 				\end{figure}		
 \section{Optymalizacja}
-Mechanizmami optymalizującymi zapytania do bazy danych jest między innymi \textbf{indeksowanie} i \textbf{partycjonowanie}. Indeksowanie tabeli po danej kolumnie/kolumnach powoduje przechowywanie wszystkich rekordów w oddzielnej strukturze w sposób posortowany. Standardowe indeksy Oracle opierają się na B-drzewach, których przykład został pokazany na Rysunku 3.3, zaczerpniętym z oficjalnej dokumentacji \cite{Oracle2}.
+Mechanizmami optymalizującymi zapytania do bazy danych jest między innymi \textbf{indeksowanie} i \textbf{partycjonowanie}. Indeksowanie tabeli po danej kolumnie/kolumnach powoduje przechowywanie wszystkich rekordów w oddzielnej strukturze w sposób posortowany. Standardowe indeksy Oracle opierają się na B-drzewach, których przykład został pokazany na Rysunku 4.3, zaczerpniętym z oficjalnej dokumentacji \cite{Oracle2}.
 				\begin{figure}[!htbp]
 					\begin{center}
 						\centering
@@ -793,11 +799,11 @@ Mechanizmami optymalizującymi zapytania do bazy danych jest między innymi \tex
 					\caption{Liście B-drzewa przechowują rekordy, gałęzie usprawniają przeszukiwanie.}
 					\label{UMLTS}
 				\end{figure}
-Standardowo, indeks tabeli tworzony jest po kluczu głównym. Można dodać je też samodzielnie. Poniższa komenda doda do tabeli GUSER indeksowanie po kolumnie LOGIN, która jest wyszukiwana równie często co klucz główny ID.
+Standardowo, indeks tabeli tworzony jest po kluczu głównym. Można dodać je też samodzielnie. Poniższa komenda doda do tabeli \textit{,,GUSER''} indeksowanie po kolumnie \textit{,,LOGIN''}, która jest wyszukiwana równie często co klucz główny \textit{,,ID'}'.
 \begin{lstlisting}
 CREATE INDEX GUSER_LOGIN ON GUSER (LOGIN);
 \end{lstlisting}
-Partycjonowanie dzieli z kolei tabelę na części na podstawie wartości kolumny. Idealnym przykładem jest tu trzymanie historycznych danych  dzieląc na partycje miesięcy czy lat. Zgodnie z dokumentacją, należy rozważyć partycjonowanie każdej tabeli przekraczającej 2 GB wielkości. Różnicę dobrze obrazuje rysunek 3.4 \cite{Oracle2}:
+Partycjonowanie dzieli z kolei tabelę na części na podstawie wartości kolumny. Idealnym przykładem jest tu trzymanie historycznych danych  dzieląc na partycje miesięcy czy lat. Zgodnie z dokumentacją, należy rozważyć partycjonowanie każdej tabeli przekraczającej 2 GB wielkości. Różnicę dobrze obrazuje rysunek 4.4 \cite{Oracle2}:
 				\begin{figure}[!htbp]
 					\begin{center}
 						\centering
@@ -806,7 +812,8 @@ Partycjonowanie dzieli z kolei tabelę na części na podstawie wartości kolumn
 					\caption{Mechanizmy partycjonowania i indeksowania można ze sobą łaczyć.}
 					\label{UMLTS}
 				\end{figure}
-Chcąc partycjonować tabelę GQUEST po roku zakończenia zadania, należy wykonać poniższą komendę. Niestety po jej wykonaniu okazało się że wersja Oracle Express nie obsługuje funkcji partycjonowania.
+Chcąc partycjonować tabelę \textit{,,GQUEST''} po roku zakończenia zadania, należy wykonać poniższą komendę. Niestety po jej wykonaniu okazało się że wersja Oracle Express nie obsługuje funkcji partycjonowania.
+
 \begin{lstlisting}
 --Tabela tymczasowa - taka sama jak GUSER
 CREATE TABLE TEMP
@@ -827,6 +834,7 @@ exec dbms_redefinition.start_redef_table( user, 'GQUEST', 'TEMP' );
 \end{lstlisting}
 \chapter{Bezpieczeństwo}
 \label{Safety}
+Każda aplikacja operująca w sieci komputerowej, jest narażona na ataki hakerów. Często spotykane wiadomości o udanych atakach na znane systemy informatyczne potwierdzają, że nie jest to zagadnienie trywialne. Dbanie o zabezpieczenia jest obowiązkiem każdego programisty. Na szali leżą tu poufne dane, a w przypadku niektórych aplikacji - mienie i bezpieczeństwo ludzi.
 \section{Ataki CSRF}
 Ataki typu Cross-Site Request Forgery \cite{Owasp} polegają na oszukaniu Użytkownika celem wykonania przez niego niezamierzonych akcji w aplikacji od której jest zalogowany. Oszust może nakłonić Użytkownika do kliknięcia w link prowadzący do innej strony, której budowa spowoduje zmianę lub usunięcie  danych Użytkownika. Oszust wykorzystuje tu cudze uprawnienia w aplikacji. Popularną metodą zabezpieczenia się przed tego typu atakiem jest wysłanie losowego tokena (unikatowego dla Użytkownika i sesji) i zapisanie go w pliku Cookie. Token ten jest wysyłany z każdym zapytaniem z powrotem do serwera i zmieniany po każdym zamknięciu przeglądarki. Uniemożliwia to atak, ponieważ strona oszusta nie ma dostępu do pliku Cookie oryginalnej aplikacji. Ta metoda, wykorzystana w projekcie, nie wymagała żadnych zmian po stronie projektu Angular. Pobiera on i wysyła tokeny pod warunkiem że otrzyma plik Cookie o nazwie "XSRF-TOKEN", wysłany z nagłówkiem "X-XSRF-TOKEN". Po stronie Springa, należało dodać poniższy kod.
 \begin{lstlisting}
@@ -866,7 +874,7 @@ server.ssl.keyAlias: tomcat #Nazwa klucza publicznego wewnątrz pliku
 Bezpieczne logowanie zostało zaimplementowane w następujący sposób:
 \begin{enumerate}
 	\item Użytkownik wysyła login i hasło do serwera
-	\item Serwer sprawdza czy dane są poprawne. Jeśli tak, wysyła w odpowiedzi 128 bitowy, losowy i unikatowy token. Token jest zapisywany w tabeli GLOGIN.
+	\item Serwer sprawdza czy dane są poprawne. Jeśli tak, wysyła w odpowiedzi 128 bitowy, losowy i unikatowy token. Token jest zapisywany w tabeli \textit{,,GLOGIN''}.
 	\item Użytkownik wysyła token razem z każdym zapytaniem do API.
 	\item Serwer obsługuje zapytanie tylko jeśli token się zgadza. W niektórych przypadkach serwer sprawdza czy token jest przypisany do tego Użytkownika który go wysłał lub czy jest przypisany do Administratora. Dzięki temu Użytkownik nie może zmienić danych innego Użytkownika czy korzystać z uprawnień Administratora.
 	\item Jeżeli Użytkownik błędnie poda hasło 20 razy w ciągu jednego dnia, jego adres IP zostaje zablokowany do końca dnia. Jest to zabezpieczenie przed atakami typu brute-force.
@@ -947,7 +955,7 @@ Każde zapytanie do API ma sprawdzany token:
 \section{Reset i zmiana hasła}
 Zalogowany Użytkownik, może zmienić hasło, wysyłając stare hasło, nowe hasło, oraz swój login i token logowania. Jeżeli Użytkownik zapomni hasła, może skorzystać z formularza dostępnego ze strony logowania. Po podaniu swojego adresu email, otrzymuje wiadomość z adresem URL (zawierającym 128 bitowy token) do formularza, pozwalającym na wpisanie nowego hasła. Formularz przekazuje do API adres email, nowe hasło i token. Jeśli dane się zgadzają, hasło zostaje zmienione.
 \section{SQL Injection}
-Atak ten \cite{Owasp} polega na wprowadzeniu dodatkowego kodu wykonywalnego (w języku SQL) do danych przysyłanych przez Użytkownika na serwer. Przykładowo, wysyłając jako imię wyszukiwanego użytkownika:  ,,x'; DROP TABLE GUSER; SELECT '1'', zapytanie wykonywane po stronie serwera mogłoby przyjąć formę:
+Atak ten \cite{Owasp} polega na wprowadzeniu dodatkowego kodu wykonywalnego (w języku SQL) do danych przysyłanych przez Użytkownika na serwer. Przykładowo, wysyłając jako imię wyszukiwanego użytkownika:  \textit{,,x'; DROP TABLE GUSER; SELECT '1''}, zapytanie wykonywane po stronie serwera mogłoby przyjąć formę:
 \begin{lstlisting}
  SELECT * FROM GUSER WHERE LOGIN = 'x'; DROP TABLE GUSER; SELECT '1'
 \end{lstlisting}
@@ -988,7 +996,7 @@ Wymagało to ręcznego odtworzenia wszystkich tabel. Na szczęście przepisanie 
 \end{tabular}\\
 Należało także skonfigurować połączenie w pliku application.properties (analogicznie do wcześniejszego) i usunąć starą konfigurację.
 \section{Migracja aplikacji}
-Próby uruchomienia aplikacji poprzez plik .jar lub .war, korzystając ze zautomatyzowanej usługi Azure App Services zakończyły się niepowodzeniem. Ostatecznie uruchomiono maszynę wirtualną Windows Server 2012, zainstalowano na niej pakiet Java i otworzono port 80, będący standardowym portem protokołu HTTP. Maszyna jest dostępna poprzez protokół RDP. Na tak przygotowanym środowisku, uruchomienie pliku .jar aplikacji odbyło się bez przeszkód. Plik ten poza skompilowanym kodem, zawiera także kontener Apache Tomcat, który pełni tu funkcję serwera aplikacji.
+Próby uruchomienia aplikacji poprzez plik .jar lub .war, korzystając ze zautomatyzowanej usługi Azure App Services zakończyły się niepowodzeniem. Ostatecznie uruchomiono maszynę wirtualną Windows Server 2012, zainstalowano na niej pakiet Java i otworzono port 80, będący standardowym portem protokołu HTTP. Maszyna jest dostępna poprzez protokół RDP. Na tak przygotowanym środowisku, uruchomienie pliku .jar aplikacji odbyło się bez przeszkód. Plik ten poza skompilowanym kodem, zawiera także kontener Apache Tomcat, który pełni tu funkcję serwera aplikacji. Jego działanie przedstawiono na Rysunku 6.2.
 				\begin{figure}[!htbp]
 					\begin{center}
 						\centering
@@ -997,8 +1005,17 @@ Próby uruchomienia aplikacji poprzez plik .jar lub .war, korzystając ze zautom
 					\caption{Postawienie własnej maszyny wirtualnej okazało się być najłatwiejszym rozwiązaniem w przypadku opisywanego projektu.}
 					\label{UMLTS}
 				\end{figure}
+\chapter{Działanie aplikacji}
+
 \chapter{Wnioski}
-Poniższy wykres przedstawia medianę czasów ładowania aplikacji w porównaniu z popularnymi portalami. 
+Zakres pracy został zrealizowany w zdecydowanej większości. Jedyne braki dotyczą elementów które zostały uznane za zbędne lub niespójne z resztą projektu. Są to:
+\begin{itemize}
+ \item Administrator nie ma możliwości zakładania nowych kont Użytkowników. Służy do tego formularz rejestracyjny. 
+ \item Zrezygnowano z efektów dźwiękowych, ponieważ mogłyby być irytujące dla Użytkownika podczas codziennej pracy.
+ \item Pominięto możliwość zapisywania się na konkretne zadania przed ich wykonaniem, by później odebrać za nie nagrody. Pomimo że jest to ciekawa funkcjonalność, zaspokaja tą samą potrzebę co odbieranie nagród przy pomocy kodu.
+ \end{itemize}
+ Wytworzona aplikacja stanowi dobry materiał wyjściowy dla aplikacji internetowych w języku Java. Modułowa architektura sprawia że może zostać łatwo rozbudowana o kolejne funkcjonalności. Budowa oparta na REST API umożliwia dopisanie kolejnych aplikacji klienckich - przykładowo na platformę Android z wykorzystaniem tej samej warstwy serwerowej.
+Wykres na Rysunku 8.1 przedstawia medianę czasów ładowania aplikacji w porównaniu z popularnymi portalami. 
 				\begin{figure}[!htbp]
 					\begin{center}
 						\centering
@@ -1009,7 +1026,7 @@ Poniższy wykres przedstawia medianę czasów ładowania aplikacji w porównaniu
 				\end{figure}
 Aplikacja teoretycznie powinna dążyć do prędkości uzyskiwanej przez stronę startową facebooka - obydwie witają użytkownika ekranem logowania. Czas ten jest jednak dużo gorszy. Wynika to z (między wieloma innymi czynnikami) filozofii aplikacji klienckiej napisanej w szkielecie Angular. Jako tak zwane ,,single-page app'', wczytuje ona cały kod aplikacji przy pojedynczym wczytaniu strony  - pliki HTML i JS wszystkich podstron. Przy przejściu na kolejne podstrony następują jedynie odpowiednie zapytania do API. Takie podejście daje dużo lepsze wyniki w aplikacjach z których korzysta się dłużej, przemieszczając po wielu zakładkach. Aplikacji Angular nie warto często odświeżać, powinna sama dbać o aktualność przedstawionych danych. Dłuższy czas pierwszego ładowania jest tu kompromisem, wynagradzanym przez późniejsze szybsze działanie aplikacji.\\
 
-Podczas projektu natknięto się na wiele błędów, których przyczyny okazały się trudne do odnalezienia. Szkielet Angular potrafił zwrócić błąd wewnątrz własnej, wewnętrznej biblioteki, nie dając żadnej wskazówki dotyczącej faktycznego błędu w kodzie. Przykład jest widoczny na poniższym obrazku.
+Podczas projektu natknięto się na wiele błędów, których przyczyny okazały się trudne do odnalezienia. Szkielet Angular potrafił zwrócić błąd wewnątrz własnej, wewnętrznej biblioteki, nie dając żadnej wskazówki dotyczącej faktycznego błędu w kodzie. Przykład jest widoczny na Rysunku 8.2.
 				\begin{figure}[!htbp]
 					\begin{center}
 						\centering
