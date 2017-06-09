@@ -37,6 +37,16 @@ public class GSettingsController {
             HashMap<String, String> result = new ObjectMapper().readValue(postData, HashMap.class);
             String iid = result.get("guserId");
             String imageData = result.get("photo");
+
+        if(iid.contains("badge"))
+        {
+            imageData = imageData.substring(imageData.indexOf(",") + 1);
+            byte[] decoded = Base64.getDecoder().decode(imageData);
+
+            FileUtils.writeByteArrayToFile(new File("target/classes/static/images/" + iid + ".jpg"), decoded);
+            return true;
+        }
+
         if(gLoginRep.findByTokenAndLogin(token, gUserRep.findOne(Long.parseLong(iid)).getLogin()) != null) {
 
             imageData = imageData.substring(imageData.indexOf(",") + 1);

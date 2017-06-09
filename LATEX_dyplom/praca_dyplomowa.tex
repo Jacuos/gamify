@@ -230,8 +230,8 @@ Modułowa struktura projektu jest przedstawiona na Rysunku 1.5. Przedstawia się
 			\label{UMLTS}
 		\end{figure}
 \chapter{Angular}
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-Język Typescript został wykorzystany do stworzenia aplikacji klienta - kodu wykonywanego przez przeglądarkę internetową. Język ten jest nadzbiorem języka JavaScript i jest do niego kompilowany. logiki 
+Do wytworzenia warstwy klienckiej użyto szkieletu Angular w wersji drugiej. Wybrano go ze względu na ciekawy, rzadko spotykany w aplikacjach internetowych sposób działania. Cały kod jest wczytywany przez przeglądarkę internetową na samym początku korzystania z aplikacji. Skutki takiego rozwiązania są pokazane w Rozdziale \ref{Ending} Wnioski. Szkielet ten jest rozwijany przez firmę Google, która wyznacza trendy współczesnych usług sieciowych. Bez względu na specjalizację i miejsce programisty w stosie technologicznym, warto sie z nim zapoznać. Kto wie kiedy przyjdzie nam pisać logikę biznesową, współpracującą z tym szkieletem.
+Szkielet ten wykorzystuje język Typescript. Jest to nadzbiór języka JavaScript i jest do niego kompilowany. Przykłady definicji klas były prezentowane wcześniej, na Rysunku 1.2. Rozwiązania używane w fasadzie aplikacji internetowych są bez wątpienia najszybciej rozwijającym sie elementem stosu technologicznego. Już w momencie pisania pracy moda na Angulara ustępuje modzie na bibliotekę React, rozwijaną przez firmę Facebook. Jako że wnętrze aplikacji działa niezależnie od fasady, nie będzie ona opisywana szerzej w tej pracy. Zainteresowani, mogą zgłębić wiedzę na ten temat, czytając oficjalną dokumentację \cite{Angular}. W przystępny sposób przeprowadza ona użytkownika przez proces tworzenia funkcjonalnej aplikacji i pozwala zaznajomić się z konceptami stojącymi za tym szkieletem.
 \chapter{Spring}
 Podjęto decyzję by warstwę serwerową napisać z pomocą szkieletu Spring. Wybrano go między innymi ze względu na bogatą dokumentację, mnogość przydatnych modułów i dostępność szybkich sposobów na konfigurację sprawnej aplikacji serwerowej.
 Spring to szkielet tworzenia aplikacji (ang. framework) przeznaczony dla Javy Enterprise Edition, czyli serwerowej odmiany tego języka. Powstał jako alternatywa dla oficjalnych standardów serwerowych Javy takich jak Enterprise JavaBeans. Spring nie narzuca jednego modelu programowania. Posiada wiele modułów które są przydatne przy pisaniu aplikacji, jednocześnie będąc całkowicie opcjonalnymi. Znaną cechą Springa LITERATURA jest \textbf{,,odwrócenie sterowania''} (ang. Inversion of Control), czyli wzorzec w którym wykonywaniem programu steruje szkielet a nie kod programisty. To Spring decyduje kiedy wykonać dane akcje. Przykładem odwróconego sterowania jest chociażby \textbf{"wstrzykiwnie zależności"} (ang. Dependency Injection), kiedy to utworzone, zainicjowane obiekty przekazywane są obiektom które ich potrzebują. Obiekty nie tworzą wtedy samodzielnie instancji innych obiektów. Kolejną ważną cechą Springa jest \textbf{,,programowanie aspektowe''} czyli wzorzec w którym rozdziela się fizycznie funkcjonalności i definiuje punkty komunikacji między nimi, dostępne wszędzie tam gdzie są potrzebne.
@@ -317,7 +317,7 @@ Adnotacja \textit{,,@SpringBootApplication''} jest wygodnym połączeniem kilku 
 	\item \textit{,,@EnableAutoConfiguration''} - nakazuje Spring Boot dodać do kontekstu aplikacji wszystkie metody \textit{,,@Bean''} na podstawie ścieżki projektu, innych metod \textit{,,@Bean''} i dostępnych konfiguracji.
 	\item \textit{,,@ComponentScan''} - skanuje pakiet (w tym przypadku ,,hello'') w poszukiwaniu komponentów, konfiguracji i serwisów.
 \end{itemize}
-Metoda \textit{,,SpringApplication.run();''} uruchamia aplikację, zaś metoda zwracająca \textit{,,CommandLineRunner''} jest uruchamiana podczas startu. Rysunek 2.1 przedstawia uruchomioną aplikację, zaś Rysunek 2.2 - obsłużenie zapytania.
+Metoda \textit{,,SpringApplication.run();''} uruchamia aplikację, zaś metoda zwracająca \textit{,,CommandLineRunner''} jest uruchamiana podczas startu. Rysunek 3.1 przedstawia uruchomioną aplikację, zaś Rysunek 3.2 - obsłużenie zapytania.
 		\begin{figure}[!htbp]
 			\begin{center}
 				\centering
@@ -411,7 +411,7 @@ Oto lista najważniejszych modułów użytych w projekcie:
 		\begin{lstlisting}
 		GLogin findByLoginAndPassword(String login, String password);
 		\end{lstlisting}
-		wyszuka użytkowników o określonym loginie i haśle bez potrzeby pisania jakiejkolwiek logiki biznesowej. REST umożliwia wysyłanie zapytań do repozytoriów w sposób analogiczny do kontrolerów \ref{MVCController}, jednak ta funkcjonalność nie została wykorzystana w projekcie. Moduł pobrany jako: spring-boot-starter-data-rest.
+		wyszuka użytkowników o określonym loginie i haśle bez potrzeby pisania jakiejkolwiek logiki biznesowej. REST umożliwia wysyłanie zapytań do repozytoriów w sposób analogiczny do kontrolerów (Podrozdział \ref{MVCController}), jednak ta funkcjonalność nie została wykorzystana w projekcie. Moduł pobrany jako: spring-boot-starter-data-rest.
 	\end{itemize}
 	\item Spring Security - biblioteka zapewniająca bezpieczeństwo aplikacji, szerzej opisana w rozdziale Bezpieczeństwo \ref{Safety}.
 \end{itemize}
@@ -994,7 +994,7 @@ Wymagało to ręcznego odtworzenia wszystkich tabel. Na szczęście przepisanie 
 	)\\
 	\hline 
 \end{tabular}\\
-Należało także skonfigurować połączenie w pliku application.properties (analogicznie do wcześniejszego) i usunąć starą konfigurację.
+Należało także skonfigurować połączenie w pliku \textit{,,application.properties''} (analogicznie do wcześniejszego) i usunąć starą konfigurację.
 \section{Migracja aplikacji}
 Próby uruchomienia aplikacji poprzez plik .jar lub .war, korzystając ze zautomatyzowanej usługi Azure App Services zakończyły się niepowodzeniem. Ostatecznie uruchomiono maszynę wirtualną Windows Server 2012, zainstalowano na niej pakiet Java i otworzono port 80, będący standardowym portem protokołu HTTP. Maszyna jest dostępna poprzez protokół RDP. Na tak przygotowanym środowisku, uruchomienie pliku .jar aplikacji odbyło się bez przeszkód. Plik ten poza skompilowanym kodem, zawiera także kontener Apache Tomcat, który pełni tu funkcję serwera aplikacji. Jego działanie przedstawiono na Rysunku 6.2.
 				\begin{figure}[!htbp]
@@ -1006,8 +1006,155 @@ Próby uruchomienia aplikacji poprzez plik .jar lub .war, korzystając ze zautom
 					\label{UMLTS}
 				\end{figure}
 \chapter{Działanie aplikacji}
+Rozdział ten jest swoistym ,,podręcznikiem użytkownika'', przedstawia działanie aplikacji zgodnie z zakresem pracy, który został zdefiniowany w dokumencie,,Plan pracy inżynierskiej''.
+\section{Rejestracja i Reset hasła}
+Na stronie głównej znajdują się odnośniki, pozwalające na rejestrację jak i ustanowienie nowego hasła gdy Użytkownik go zapomni. Rysunek 7.1 przedstawia formularz rejestracji. Podczas wypełniania sprawdzana jest unikalność loginu, poprawność hasła, zgodność adresu email ze wzorcem. Wszystkie pola poza ,,Opis'' są wymagane. Rysunek 7.2 przedstawia działanie walidatorów poszczególnych pól.
+				\begin{figure}[!htbp]
+					\begin{center}
+						\centering
+						\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide1.png}
+					\end{center}
+					\caption{}
+					\label{UMLTS}
+				\end{figure}
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide2.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+W wypadku gdy Użytkownik zapomni hasła, może podać swój e-mail i otrzymać wiadomość z odnośnikiem. Po kliknięciu w odnośnik, Użytkownik jest przenoszony do panelu zmiany hasła na nowe. Rysunek 7.3 przedstawia ten proces.
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide3.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+\section{Autoryzacja Użytkownika}
+Logowanie do aplikacji jest przedstawione na Rysunku 7.4. Próby przejścia do innych podstron bez zalogowania kończy się przekierowaniem do panelu logowania.
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide4.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+Rysunek 7.5 to strona główna aplikacji, widoczna po zalogowaniu. Na górnym pasku znajdują sie odnośniki do kolejnych podstron. W dolnym lewym rogu widneją informacje na temat zalogowanego Użytkownika, włącznie z awatarem (obrazkiem reprezentującym Użytkownika) i odnośnikiem do ustawień konta (ikona zębatki).
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide5.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
 
+\section{Konfiguracja konta}
+Panel ustawień konta, umożliwia ustawienie nowego awatara, zmianę hasła i opisu. Rysunek 7.6 przedstawia ten panel podczas próby zmiany awatara. Po kliknięciu w stary awatar, otwiera się okno wyboru nowego pliku graficznego.
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide6.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+\section{Ranking}
+Panel \textit{,,Ranking''} zawiera listę wszystkich Użytkowników. Okno wyszukiwania pozwala na filtrowanie listy po imieniu, nazwisku lub loginie. Małe guziki widoczne przy każdej kolumnie służą do sortowania listy. Rysunek 7.7 przedstawia panel \textit{,,Ranking''} posortowany malejąco według punktów.
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide7.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+\section{Wykonanie zadania}
+Panel \textit{,,Wykonanie zadania''} pozwala wpisać kod zadania w celu otrzymania za nie Punktów. Kod jest otrzymywany od Administratora. Punkty mogą również zostać przekazane w formie kodu QR, który działa tak samo jak wpisanie kodu zadania. Rysunek 7.8 przedstawia proces wykonania Zadania.
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide8.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+\section{Wyświetlenie własnych osiągnięć}
+W panelu \textit{,,Dziennik zadań''} widoczne są Zadania wykonane przez Użytkownika a także przyznane mu Odznaki. Przykład widoczny jest na Rysunku 7.9.
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide9.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+\section{Autoryzacja Administratora}
+Pod ścieżką \textit{,,/gadmin''} znajduje się część aplikacji przeznaczona dla Administratora. Proces logowania wygląda identycznie co dla zwykłego Użytkownika, jednak przepuszczani są dalej tylko ci z odpowiednimi uprawnieniami. Rysunek 7.10 to widok okna logowania Administratora. 
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide10.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+\section{Usuwanie kont}
+W panelu \textit{,,Użytkownicy''}, widok jest analogiczny do tego z panelu \textit{,,Ranking''}. Tutaj jednak istnieje możliwość usunięcia kont. Próbę wykorzystania tej funkcjonalności przedstawia Rysunek 7.11.
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide11.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+\section{Edycja aplikacji}
+Panel \textit{,,Motyw''} skrywa opcje, pozwalająca na dostosowanie aplikacji w ograniczonym stopniu. Można tu zmienić nazwy kilku pojęć używanych w aplikacji, zmienić nagłówek widoczny na pasku nawigacyjnym. Można także zmienić zawartość strony startowej (obsługuje tagi html) i zawartość pliku css. Na końcu bardzo ciekawa opcja - wzór na progi punktowe, używany przy wyliczaniu awansów Użytkowników na kolejne poziomy. Rysunek 7.12 to widok panelu \textit{,,Motyw''} z aktualnie dobranymi wartościami.
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide12.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+\section{Zarządzanie Zadaniami}
+Panel \textit{,,Zadania''} pozwala dodać nowe Zadanie i przeglądać te już istniejące. Na Rysunku 7.13 widoczny jest wygenerowany link a także kod QR.
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide13.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+\section{Zarządzanie Odznakami}
+Pod panelem \textit{,,Odznaki''} można stworzyć nową Odznakę. Taka Odznaka moze być nagrodą za specjalne zasługi lub oznaczeniem ważnej funkcji Użytkownika. Rysunek 7.14 przedstawia proces dodawania nowej Odznaki.
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide14.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
+Przyznawanie Odznak odbywa sie poprzez wybranie Odznaki a następnie zaznaczenie Uzytkowników z listy. Po kliknięciu przycisku potwierdzającego, Odznaki zostaną przyznane. Proces ten został uwieczniony na rysunku 7.15.
+								\begin{figure}[!htbp]
+									\begin{center}
+										\centering
+										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide15.png}
+									\end{center}
+									\caption{}
+									\label{UMLTS}
+								\end{figure}
 \chapter{Wnioski}
+\label{Ending}
 Zakres pracy został zrealizowany w zdecydowanej większości. Jedyne braki dotyczą elementów które zostały uznane za zbędne lub niespójne z resztą projektu. Są to:
 \begin{itemize}
  \item Administrator nie ma możliwości zakładania nowych kont Użytkowników. Służy do tego formularz rejestracyjny. 
@@ -1040,6 +1187,9 @@ Tylko pisząc kod linijka po linijce i testując co chwilę, możliwe było odna
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
+
+\bibitem{Angular}{Google, ,,TUTORIAL: TOUR OF HEROES''}
+\newline \url{https://angular.io/docs/ts/latest/tutorial/}
 
 \bibitem{Spring}{Pivotal Software, ,,Guides''}
 \newline \url{https://spring.io/guides}

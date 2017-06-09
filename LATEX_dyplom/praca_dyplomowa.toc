@@ -27,5 +27,16 @@
 \contentsline {section}{\numberline {6.1}Migracja bazy danych}{40}{section.6.1}
 \contentsline {section}{\numberline {6.2}Migracja aplikacji}{41}{section.6.2}
 \contentsline {chapter}{\numberline {7}Dzia\IeC {\l }anie aplikacji}{43}{chapter.7}
-\contentsline {chapter}{\numberline {8}Wnioski}{44}{chapter.8}
-\contentsline {chapter}{Bibliografia}{47}{chapter*.4}
+\contentsline {section}{\numberline {7.1}Rejestracja i Reset has\IeC {\l }a}{43}{section.7.1}
+\contentsline {section}{\numberline {7.2}Autoryzacja U\IeC {\.z}ytkownika}{43}{section.7.2}
+\contentsline {section}{\numberline {7.3}Konfiguracja konta}{47}{section.7.3}
+\contentsline {section}{\numberline {7.4}Ranking}{47}{section.7.4}
+\contentsline {section}{\numberline {7.5}Wykonanie zadania}{47}{section.7.5}
+\contentsline {section}{\numberline {7.6}Wy\IeC {\'s}wietlenie w\IeC {\l }asnych osi\IeC {\k a}gni\IeC {\k e}\IeC {\'c}}{49}{section.7.6}
+\contentsline {section}{\numberline {7.7}Autoryzacja Administratora}{49}{section.7.7}
+\contentsline {section}{\numberline {7.8}Usuwanie kont}{49}{section.7.8}
+\contentsline {section}{\numberline {7.9}Edycja aplikacji}{51}{section.7.9}
+\contentsline {section}{\numberline {7.10}Zarz\IeC {\k a}dzanie Zadaniami}{51}{section.7.10}
+\contentsline {section}{\numberline {7.11}Zarz\IeC {\k a}dzanie Odznakami}{51}{section.7.11}
+\contentsline {chapter}{\numberline {8}Wnioski}{55}{chapter.8}
+\contentsline {chapter}{Bibliografia}{58}{chapter*.4}
