@@ -135,7 +135,7 @@ Celem pracy było stworzenie aplikacji internetowej, motywującej grupy ludzi do
 \section{Grywalizacja}
 	Grywalizacja, gryfikacja lub gamifikacja, to zgodnie z definicją \cite{Wikipedia} "Wykorzystanie mechaniki znanej np. z gier fabularnych i komputerowych, do modyfikowania zachowań ludzi w sytuacjach życia codziennego, w celu zwiększenia zaangażowania ludzi." Ta szeroka definicja obejmuje rozwiązania stosowane w marketingu, zarządzaniu projektami jak i edukacji.
 	\section{Projekt}
-	Plany stworzenia aplikacji ,,Gamify'' przybliżyć mogą poniższe przykładowe Przypadki Użycia:\\
+	Plany stworzenia aplikacji ,,Gamify'' przybliżyć mogą poniższe przykładowe Przypadki Użycia, wykonane zgodnie z rozdziałem 6 podręcznika \cite{Smialek}:\\
 	UC Użytkownika:\\
 	Wykonanie Zadania
 	\begin{enumerate}
@@ -178,7 +178,7 @@ Celem pracy było stworzenie aplikacji internetowej, motywującej grupy ludzi do
 		\item Administrator wybiera Użytkowników.
 		\item System przyznaje odznakę wybranym Użytkownikom.
 	\end{enumerate}
-	Diagramy klas na Rysunkach 1.1 i 1.2 opisują strukturę modułu GLogin - oddzielnie dla wnętrza (,,back-end'') i fasady (,,front-end''). Są one reprezentatywne dla całości projektu, zaś stworzenie pełnej dokumentacji uważam za odpowiedni temat dla oddzielnej pracy dyplomowej. Prywatne zmienne posiadające publiczne metody dostępowe zostały przedstawione jako zmienne publiczne. Redukuje to liczbę metod i zwiększa czytelność diagramów.
+	Diagramy klas na Rysunkach 1.1 i 1.2 opisują strukturę modułu GLogin - oddzielnie dla wnętrza (,,back-end'') i fasady (,,front-end''). Wykonane zostały zgodnie z podręcznikiem \cite{Smialek}, rozdział 3. Stworzone diagramy są reprezentatywne dla całości projektu, zaś stworzenie pełnej dokumentacji uważam za odpowiedni temat dla oddzielnej pracy dyplomowej. Prywatne zmienne posiadające publiczne metody dostępowe zostały przedstawione jako zmienne publiczne. Redukuje to liczbę metod i zwiększa czytelność diagramów.
 	\begin{sidewaysfigure}[!htbp]
 
 			\includegraphics[scale=0.7]{\ImgPath/rys/UML-Java.png}
@@ -203,15 +203,15 @@ Do wykonania aplikacji użyto technologii, przedstawionych na Rysunku 1.3.
 		\caption{Języki, szkielety i systemy bedące częścią projektu.}
 		\label{technologies}
 	\end{figure}
-Jak widać, aplikacja została wykonana w architekturze Klient-Serwer, opisanej w [LITERATURA]. Fasada oznacza kod wykonywany przez przeglądarkę internetową po stronie Klienta. Warstwa Klienta obsługuje żądania Użytkownika, wysyła zapytania do Serwera i prezentuje odpowiedzi Użytkownikowi. Wnętrze oznacza kod wykonywany po stronie Serwera. Serwer nasłuchuje żądań Klienta, wykonuje logikę biznesową związaną z danym żadaniem i wysyła odpowiedź do Klienta. Z usług jednego Serwera może korzystać wiele instancji Klientów. Obydwie składowe wykorzystują inne technologie, opisane szerzej w kolejnych rozdziałach.
+Jak widać, aplikacja została wykonana w architekturze Klient-Serwer, opisanej  przez Stevensa \cite{Stevens}. Fasada oznacza kod wykonywany przez przeglądarkę internetową po stronie Klienta. Warstwa Klienta obsługuje żądania Użytkownika, wysyła zapytania do Serwera i prezentuje odpowiedzi Użytkownikowi. Wnętrze oznacza kod wykonywany po stronie Serwera. Serwer nasłuchuje żądań Klienta, wykonuje logikę biznesową związaną z danym żadaniem i wysyła odpowiedź do Klienta. Z usług jednego Serwera może korzystać wiele instancji Klientów. Obydwie składowe wykorzystują inne technologie, opisane szerzej w kolejnych rozdziałach.
 \section{Wzorzec MVC}
-Złożoność współczesnych aplikacji (w tym internetowych), wymusza wykorzystanie odpowiednich wzorców (projektowych, architektonicznych). Narzucają one sprawdzoną formę, która pozwala zapanować nad rozbudowanym kodem. W tworzonej aplikacji, zdecydowano się na wykorzystanie wzorca MVC. Jest on szeroko opisywany w literaturze, chociażby w [LITERATURA], oraz jest wykorzystywany przez wybrane szkielety aplikacji. MVC to wzorzec architektoniczny służący do organizowania struktury systemów interaktywnych. Składa się on z trzech części:
+Złożoność współczesnych aplikacji (w tym internetowych), wymusza wykorzystanie odpowiednich wzorców (projektowych, architektonicznych). Narzucają one sprawdzoną formę, która pozwala zapanować nad rozbudowanym kodem. W tworzonej aplikacji, zdecydowano się na wykorzystanie wzorca MVC. Jest on szeroko opisywany w literaturze, chociażby w \cite{MVC}, oraz jest wykorzystywany przez wybrane szkielety aplikacji. MVC to wzorzec architektoniczny służący do organizowania struktury systemów interaktywnych. Składa się on z trzech części:
 	\begin{enumerate}
 		\item Model - reprezentuje dane i wykonuje logikę biznesową.
 		\item Widok - wyświetla dane pobrane z Modelu.
 		\item Kontroler - reaguje na dane wejściowe użytkownika. Przesyła żądania wykonania logiki biznesowej do Modelu i zmian Widoku. 
 	\end{enumerate}
-Zarówno Angular jak i Spring samodzielnie realizują wzorzec MVC. Jednak gdy połączymy te dwie technologie, sytuacja zmienia się. Warstwa kontrolera przeniesiona jest do Angulara i jest wykonywana przez przeglądarkę. To samo samo dzieje się z warstwą widoku. Po stronie serwerowej Springa pozostaje warstwa modelu. Ten rozdział powoduje że potrzebny jest odpowiedni sposób komunikacji Klient-Serwer. Nazywa się on REST API. Skróty te oznaczają Representational State Transfer i Application Programming Interface. Pierwszy skrót oznacza bezstanową wymianę tekstowych zasobów sieciowych. Przykładem są tu zapytania HTTP GET, POST, PUT, DELETE. Drugi skrót oznacza jednoznacznie zdefiniowany sposób komunikacji między komponentami. W wypadku aplikacji internetowej oznacza to że strona serwerowa odbierając zapytanie HTTP pod danym adresem, powinna zwrócić odpowiedź w postaci XML lub JSON. Przykład zapytania do takiego API i odpowiedzi, znajduje się na Rysunku 1.4.
+Zarówno Angular jak i Spring samodzielnie realizują wzorzec MVC. Jednak gdy połączymy te dwie technologie, sytuacja zmienia się. Warstwa kontrolera przeniesiona jest do Angulara i jest wykonywana przez przeglądarkę. To samo samo dzieje się z warstwą widoku. Po stronie serwerowej Springa pozostaje warstwa modelu. Ten rozdział powoduje że potrzebny jest odpowiedni sposób komunikacji Klient-Serwer. Nazywa się on REST API. Skróty te oznaczają Representational State Transfer i Application Programming Interface. Pierwszy skrót oznacza bezstanową wymianę tekstowych zasobów sieciowych. Przykładem są tu zapytania HTTP GET, POST, PUT, DELETE. Drugi skrót oznacza jednoznacznie zdefiniowany sposób komunikacji między komponentami. W wypadku aplikacji internetowej oznacza to że strona serwerowa odbierając zapytanie HTTP pod danym adresem, powinna zwrócić odpowiedź w postaci XML lub JSON. Przykład zapytania do takiego API i odpowiedzi, znajduje się na Rysunku 1.4. Chcąc dowiedzieć się więcej na temat protokołu HTTP, warto sięgnąć do źródeł, czyli oficjalnej dokumentacji: \cite{HTTP}
 		\begin{figure}[!htbp]
 			\begin{center}
 				\centering
@@ -234,7 +234,7 @@ Do wytworzenia warstwy klienckiej użyto szkieletu Angular w wersji drugiej. Wyb
 Szkielet ten wykorzystuje język Typescript. Jest to nadzbiór języka JavaScript i jest do niego kompilowany. Przykłady definicji klas były prezentowane wcześniej, na Rysunku 1.2. Rozwiązania używane w fasadzie aplikacji internetowych są bez wątpienia najszybciej rozwijającym sie elementem stosu technologicznego. Już w momencie pisania pracy moda na Angulara ustępuje modzie na bibliotekę React, rozwijaną przez firmę Facebook. Jako że wnętrze aplikacji działa niezależnie od fasady, nie będzie ona opisywana szerzej w tej pracy. Zainteresowani, mogą zgłębić wiedzę na ten temat, czytając oficjalną dokumentację \cite{Angular}. W przystępny sposób przeprowadza ona użytkownika przez proces tworzenia funkcjonalnej aplikacji i pozwala zaznajomić się z konceptami stojącymi za tym szkieletem.
 \chapter{Spring}
 Podjęto decyzję by warstwę serwerową napisać z pomocą szkieletu Spring. Wybrano go między innymi ze względu na bogatą dokumentację, mnogość przydatnych modułów i dostępność szybkich sposobów na konfigurację sprawnej aplikacji serwerowej.
-Spring to szkielet tworzenia aplikacji (ang. framework) przeznaczony dla Javy Enterprise Edition, czyli serwerowej odmiany tego języka. Powstał jako alternatywa dla oficjalnych standardów serwerowych Javy takich jak Enterprise JavaBeans. Spring nie narzuca jednego modelu programowania. Posiada wiele modułów które są przydatne przy pisaniu aplikacji, jednocześnie będąc całkowicie opcjonalnymi. Znaną cechą Springa LITERATURA jest \textbf{,,odwrócenie sterowania''} (ang. Inversion of Control), czyli wzorzec w którym wykonywaniem programu steruje szkielet a nie kod programisty. To Spring decyduje kiedy wykonać dane akcje. Przykładem odwróconego sterowania jest chociażby \textbf{"wstrzykiwnie zależności"} (ang. Dependency Injection), kiedy to utworzone, zainicjowane obiekty przekazywane są obiektom które ich potrzebują. Obiekty nie tworzą wtedy samodzielnie instancji innych obiektów. Kolejną ważną cechą Springa jest \textbf{,,programowanie aspektowe''} czyli wzorzec w którym rozdziela się fizycznie funkcjonalności i definiuje punkty komunikacji między nimi, dostępne wszędzie tam gdzie są potrzebne.
+Spring to szkielet tworzenia aplikacji (ang. framework) przeznaczony dla Javy Enterprise Edition, czyli serwerowej odmiany tego języka. Powstał jako alternatywa dla oficjalnych standardów serwerowych Javy takich jak Enterprise JavaBeans. Spring nie narzuca jednego modelu programowania. Posiada wiele modułów które są przydatne przy pisaniu aplikacji, jednocześnie będąc całkowicie opcjonalnymi. Jego cechy są opsane w dokumentacji \cite{Spring3} Znaną cechą Springa jest \textbf{,,odwrócenie sterowania''} (ang. Inversion of Control), czyli wzorzec w którym wykonywaniem programu steruje szkielet a nie kod programisty. To Spring decyduje kiedy wykonać dane akcje. Przykładem odwróconego sterowania jest chociażby \textbf{"wstrzykiwnie zależności"} (ang. Dependency Injection), kiedy to utworzone, zainicjowane obiekty przekazywane są obiektom które ich potrzebują. Obiekty nie tworzą wtedy samodzielnie instancji innych obiektów. Kolejną ważną cechą Springa jest \textbf{,,programowanie aspektowe''} czyli wzorzec w którym rozdziela się fizycznie funkcjonalności i definiuje punkty komunikacji między nimi, dostępne wszędzie tam gdzie są potrzebne.
 \section{Metody konfiguracji}
 Konfiguracja projektu w Springu może odbywać się na dwa sposoby - przy pomocy plików XML lub adnotacji.Obydwa te podejścia przedstawiono w kursie \cite{Spring2}  Poniższy przykład prezentuje te same ustawienia w obydwu reprezentacjach:\\
 \begin{tabular}{|l|l|}
@@ -337,7 +337,7 @@ Metoda \textit{,,SpringApplication.run();''} uruchamia aplikację, zaś metoda z
 				
 
 \section{Maven}
-Maven to w narzędzie do zarządzania projektem - jego zależnościami (używanymi bibliotekami) i strukturą (podziałem na moduły). Maven automatyzuje budowę projektu zgodnie z poniższymi krokami \cite{Maven}.
+Maven to w narzędzie do zarządzania projektem - jego zależnościami (używanymi bibliotekami) i strukturą (podziałem na moduły). Maven automatyzuje budowę projektu zgodnie z poniższymi krokami, opisywanumi w pozycji \cite{Maven}. Rysunek 3.3, przedstawiający cykl życia projektu, został zaczerpnięty z kursu \cite{KobietyDoKodu}
 \begin{enumerate}
 	\item Validate - walidacja kodu. Sprawdzana jest poprawność kodu źródłowego, umożliwiająca jego kompilację.
 	\item Compile - kompilacja, czyli przetworzenie kodu źródłowego na kod bajtowy, wykonywany przez maszynę wirtualną Javy.
@@ -573,7 +573,7 @@ public interface GLayoutRepository extends CrudRepository<GLayout, String> {
 
 \end{lstlisting}
 \subsection{Kontroler}
-Kontroler to klasa nasłuchująca  zapytań pod zdefiniowanymi adresami URL i wykonująca logikę biznesową operując na wyżej opisanych klasach mapowań i repozytoriów. Podstawowa budowa została zaprezentowana w Podrozdziale \ref{MVCController}
+Kontroler to klasa nasłuchująca  zapytań pod zdefiniowanymi adresami URL i wykonująca logikę biznesową operując na wyżej opisanych klasach mapowań i repozytoriów. Podstawowa budowa została zaprezentowana w Podrozdziale \ref{MVCController}. Tworząc logikę biznesową, wykorzystano wiele metod i obiektów charakterystycznych dla języka Java. Ich szczegółowe omówienie można znaleźć w należącej do klasyki literatury informatycznej pozycji \cite{Java}.
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
@@ -803,7 +803,7 @@ Standardowo, indeks tabeli tworzony jest po kluczu głównym. Można dodać je t
 \begin{lstlisting}
 CREATE INDEX GUSER_LOGIN ON GUSER (LOGIN);
 \end{lstlisting}
-Partycjonowanie dzieli z kolei tabelę na części na podstawie wartości kolumny. Idealnym przykładem jest tu trzymanie historycznych danych  dzieląc na partycje miesięcy czy lat. Zgodnie z dokumentacją, należy rozważyć partycjonowanie każdej tabeli przekraczającej 2 GB wielkości. Różnicę dobrze obrazuje rysunek 4.4 \cite{Oracle2}:
+Partycjonowanie dzieli z kolei tabelę na części na podstawie wartości kolumny. Idealnym przykładem jest tu trzymanie historycznych danych  dzieląc na partycje miesięcy czy lat. Zgodnie z dokumentacją, należy rozważyć partycjonowanie każdej tabeli przekraczającej 2 GB wielkości. Różnicę dobrze obrazuje rysunek 4.4, również zaczerpnięty z \cite{Oracle2}:
 				\begin{figure}[!htbp]
 					\begin{center}
 						\centering
@@ -812,7 +812,7 @@ Partycjonowanie dzieli z kolei tabelę na części na podstawie wartości kolumn
 					\caption{Mechanizmy partycjonowania i indeksowania można ze sobą łaczyć.}
 					\label{UMLTS}
 				\end{figure}
-Chcąc partycjonować tabelę \textit{,,GQUEST''} po roku zakończenia zadania, należy wykonać poniższą komendę. Niestety po jej wykonaniu okazało się że wersja Oracle Express nie obsługuje funkcji partycjonowania.
+Chcąc partycjonować tabelę \textit{,,GQUEST''} po roku zakończenia zadania, należy wykonać poniższą komendę. Niestety po jej wykonaniu okazało się że wersja Oracle Express nie obsługuje funkcji partycjonowania. Pisząc kod w PL/SQL, będący odmianą języka SQL dla produktów Oracle, posiłkowano się podręcznikiem Urmana i McLaughlina \cite{Oracle}.
 
 \begin{lstlisting}
 --Tabela tymczasowa - taka sama jak GUSER
@@ -879,7 +879,7 @@ Bezpieczne logowanie zostało zaimplementowane w następujący sposób:
 	\item Serwer obsługuje zapytanie tylko jeśli token się zgadza. W niektórych przypadkach serwer sprawdza czy token jest przypisany do tego Użytkownika który go wysłał lub czy jest przypisany do Administratora. Dzięki temu Użytkownik nie może zmienić danych innego Użytkownika czy korzystać z uprawnień Administratora.
 	\item Jeżeli Użytkownik błędnie poda hasło 20 razy w ciągu jednego dnia, jego adres IP zostaje zablokowany do końca dnia. Jest to zabezpieczenie przed atakami typu brute-force.
 \end{enumerate}
-Zgodnie z wymaganiami, hasło musi mieć co najmniej 8 znaków, małe i duże litery oraz cyfry. Daje to 62 znaki w zbiorze i $2*10^{14}$ kombinacji. Dla ataku brute-force dokonywanego z 1 adresu IP, przyjmując że średnio hasło zostanie złamane po sprawdzeniu połowy kombinacji, czas łamania hasła wynosi:  $10^{14}/20=5*10^{12}$ dni, czyli około 14 miliardów lat. Oczywiście atak z wielu adresów IP i z wykorzystaniem tęczowych tablic będzie dużo bardziej skuteczny. Dlatego warto stosować jak najmocniejsze hasła i zapewniać mechanizmy ich odzyskiwania. Czas łamania 128-bitowego tokena na milionie komputerów wykonujących miliard prób na sekundę wynosi $2^{127}*10^{-6}*10^{-9}s$ = około 11 miliardów lat. Co wiecej, tokeny te zmieniają się z każdym logowaniem.
+Zgodnie z wymaganiami, hasło musi mieć co najmniej 8 znaków, małe i duże litery oraz cyfry. Daje to 62 znaki w zbiorze i $2*10^{14}$ kombinacji. Dla ataku brute-force dokonywanego z 1 adresu IP, przyjmując że średnio hasło zostanie złamane po sprawdzeniu połowy kombinacji, czas łamania hasła wynosi:  $10^{14}/20=5*10^{12}$ dni, czyli około 14 miliardów lat. Oczywiście atak z wielu adresów IP i z wykorzystaniem tęczowych tablic będzie dużo bardziej skuteczny. Dlatego warto stosować jak najmocniejsze hasła i zapewniać mechanizmy ich odzyskiwania. Czas łamania 128-bitowego tokena na milionie komputerów wykonujących miliard prób na sekundę wynosi $2^{127}*10^{-6}*10^{-9}s$ = około 11 miliardów lat. Co wiecej, tokeny te zmieniają się z każdym logowaniem. W rozważaniach na temat entropii i siły haseł, przydatne okazały sie być materiały z dziedziny kryptografii, jak chociażby \cite{Kryptografia}.
 Kod odpowiadający za generowanie losowego tokena:
 \begin{lstlisting}
     private String generateToken()
@@ -1036,64 +1036,64 @@ W wypadku gdy Użytkownik zapomni hasła, może podać swój e-mail i otrzymać 
 								\end{figure}
 \section{Autoryzacja Użytkownika}
 Logowanie do aplikacji jest przedstawione na Rysunku 7.4. Próby przejścia do innych podstron bez zalogowania kończy się przekierowaniem do panelu logowania.
-								\begin{figure}[!htbp]
+								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
-										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide4.png}
+										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide4.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{figure}
+								\end{sidewaysfigure}
 Rysunek 7.5 to strona główna aplikacji, widoczna po zalogowaniu. Na górnym pasku znajdują sie odnośniki do kolejnych podstron. W dolnym lewym rogu widneją informacje na temat zalogowanego Użytkownika, włącznie z awatarem (obrazkiem reprezentującym Użytkownika) i odnośnikiem do ustawień konta (ikona zębatki).
-								\begin{figure}[!htbp]
+								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
-										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide5.png}
+										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide5.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{figure}
+								\end{sidewaysfigure}
 
 \section{Konfiguracja konta}
 Panel ustawień konta, umożliwia ustawienie nowego awatara, zmianę hasła i opisu. Rysunek 7.6 przedstawia ten panel podczas próby zmiany awatara. Po kliknięciu w stary awatar, otwiera się okno wyboru nowego pliku graficznego.
-								\begin{figure}[!htbp]
+								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
-										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide6.png}
+										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide6.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{figure}
+								\end{sidewaysfigure}
 \section{Ranking}
 Panel \textit{,,Ranking''} zawiera listę wszystkich Użytkowników. Okno wyszukiwania pozwala na filtrowanie listy po imieniu, nazwisku lub loginie. Małe guziki widoczne przy każdej kolumnie służą do sortowania listy. Rysunek 7.7 przedstawia panel \textit{,,Ranking''} posortowany malejąco według punktów.
-								\begin{figure}[!htbp]
+								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
-										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide7.png}
+										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide7.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{figure}
+								\end{sidewaysfigure}[!htbp]
 \section{Wykonanie zadania}
 Panel \textit{,,Wykonanie zadania''} pozwala wpisać kod zadania w celu otrzymania za nie Punktów. Kod jest otrzymywany od Administratora. Punkty mogą również zostać przekazane w formie kodu QR, który działa tak samo jak wpisanie kodu zadania. Rysunek 7.8 przedstawia proces wykonania Zadania.
-								\begin{figure}[!htbp]
+								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
-										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide8.png}
+										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide8.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{figure}
+								\end{sidewaysfigure}
 \section{Wyświetlenie własnych osiągnięć}
 W panelu \textit{,,Dziennik zadań''} widoczne są Zadania wykonane przez Użytkownika a także przyznane mu Odznaki. Przykład widoczny jest na Rysunku 7.9.
-								\begin{figure}[!htbp]
+								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
-										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide9.png}
+										\includegraphics[scale =0.65]{\ImgPath/rys/guide/guide9.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{figure}
+								\end{sidewaysfigure}
 \section{Autoryzacja Administratora}
 Pod ścieżką \textit{,,/gadmin''} znajduje się część aplikacji przeznaczona dla Administratora. Proces logowania wygląda identycznie co dla zwykłego Użytkownika, jednak przepuszczani są dalej tylko ci z odpowiednimi uprawnieniami. Rysunek 7.10 to widok okna logowania Administratora. 
 								\begin{figure}[!htbp]
@@ -1106,53 +1106,53 @@ Pod ścieżką \textit{,,/gadmin''} znajduje się część aplikacji przeznaczon
 								\end{figure}
 \section{Usuwanie kont}
 W panelu \textit{,,Użytkownicy''}, widok jest analogiczny do tego z panelu \textit{,,Ranking''}. Tutaj jednak istnieje możliwość usunięcia kont. Próbę wykorzystania tej funkcjonalności przedstawia Rysunek 7.11.
-								\begin{figure}[!htbp]
+								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
-										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide11.png}
+										\includegraphics[scale =0.65]{\ImgPath/rys/guide/guide11.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{figure}
+								\end{sidewaysfigure}
 \section{Edycja aplikacji}
 Panel \textit{,,Motyw''} skrywa opcje, pozwalająca na dostosowanie aplikacji w ograniczonym stopniu. Można tu zmienić nazwy kilku pojęć używanych w aplikacji, zmienić nagłówek widoczny na pasku nawigacyjnym. Można także zmienić zawartość strony startowej (obsługuje tagi html) i zawartość pliku css. Na końcu bardzo ciekawa opcja - wzór na progi punktowe, używany przy wyliczaniu awansów Użytkowników na kolejne poziomy. Rysunek 7.12 to widok panelu \textit{,,Motyw''} z aktualnie dobranymi wartościami.
-								\begin{figure}[!htbp]
+								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
-										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide12.png}
+										\includegraphics[scale=0.65]{\ImgPath/rys/guide/guide12.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{figure}
+								\end{sidewaysfigure}
 \section{Zarządzanie Zadaniami}
 Panel \textit{,,Zadania''} pozwala dodać nowe Zadanie i przeglądać te już istniejące. Na Rysunku 7.13 widoczny jest wygenerowany link a także kod QR.
-								\begin{figure}[!htbp]
+								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
-										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide13.png}
+										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide13.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{figure}
+								\end{sidewaysfigure}
 \section{Zarządzanie Odznakami}
 Pod panelem \textit{,,Odznaki''} można stworzyć nową Odznakę. Taka Odznaka moze być nagrodą za specjalne zasługi lub oznaczeniem ważnej funkcji Użytkownika. Rysunek 7.14 przedstawia proces dodawania nowej Odznaki.
-								\begin{figure}[!htbp]
+								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
-										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide14.png}
+										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide14.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{figure}
+								\end{sidewaysfigure}
 Przyznawanie Odznak odbywa sie poprzez wybranie Odznaki a następnie zaznaczenie Uzytkowników z listy. Po kliknięciu przycisku potwierdzającego, Odznaki zostaną przyznane. Proces ten został uwieczniony na rysunku 7.15.
-								\begin{figure}[!htbp]
+								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
-										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide15.png}
+										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide15.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{figure}
+								\end{sidewaysfigure}
 \chapter{Wnioski}
 \label{Ending}
 Zakres pracy został zrealizowany w zdecydowanej większości. Jedyne braki dotyczą elementów które zostały uznane za zbędne lub niespójne z resztą projektu. Są to:
@@ -1161,7 +1161,7 @@ Zakres pracy został zrealizowany w zdecydowanej większości. Jedyne braki doty
  \item Zrezygnowano z efektów dźwiękowych, ponieważ mogłyby być irytujące dla Użytkownika podczas codziennej pracy.
  \item Pominięto możliwość zapisywania się na konkretne zadania przed ich wykonaniem, by później odebrać za nie nagrody. Pomimo że jest to ciekawa funkcjonalność, zaspokaja tą samą potrzebę co odbieranie nagród przy pomocy kodu.
  \end{itemize}
- Wytworzona aplikacja stanowi dobry materiał wyjściowy dla aplikacji internetowych w języku Java. Modułowa architektura sprawia że może zostać łatwo rozbudowana o kolejne funkcjonalności. Budowa oparta na REST API umożliwia dopisanie kolejnych aplikacji klienckich - przykładowo na platformę Android z wykorzystaniem tej samej warstwy serwerowej.
+ Wytworzona aplikacja stanowi dobry materiał wyjściowy dla aplikacji internetowych w języku Java. Modułowa architektura sprawia że może zostać łatwo rozbudowana o kolejne funkcjonalności. Takie podejście opisane jest w rozdziale poświęconym budowie komponentowej w literaturze \cite{Inzynieria1}. Budowa oparta na REST API umożliwia dopisanie kolejnych aplikacji klienckich - przykładowo na platformę Android z wykorzystaniem tej samej warstwy serwerowej.
 Wykres na Rysunku 8.1 przedstawia medianę czasów ładowania aplikacji w porównaniu z popularnymi portalami. 
 				\begin{figure}[!htbp]
 					\begin{center}
@@ -1174,14 +1174,14 @@ Wykres na Rysunku 8.1 przedstawia medianę czasów ładowania aplikacji w porów
 Aplikacja teoretycznie powinna dążyć do prędkości uzyskiwanej przez stronę startową facebooka - obydwie witają użytkownika ekranem logowania. Czas ten jest jednak dużo gorszy. Wynika to z (między wieloma innymi czynnikami) filozofii aplikacji klienckiej napisanej w szkielecie Angular. Jako tak zwane ,,single-page app'', wczytuje ona cały kod aplikacji przy pojedynczym wczytaniu strony  - pliki HTML i JS wszystkich podstron. Przy przejściu na kolejne podstrony następują jedynie odpowiednie zapytania do API. Takie podejście daje dużo lepsze wyniki w aplikacjach z których korzysta się dłużej, przemieszczając po wielu zakładkach. Aplikacji Angular nie warto często odświeżać, powinna sama dbać o aktualność przedstawionych danych. Dłuższy czas pierwszego ładowania jest tu kompromisem, wynagradzanym przez późniejsze szybsze działanie aplikacji.\\
 
 Podczas projektu natknięto się na wiele błędów, których przyczyny okazały się trudne do odnalezienia. Szkielet Angular potrafił zwrócić błąd wewnątrz własnej, wewnętrznej biblioteki, nie dając żadnej wskazówki dotyczącej faktycznego błędu w kodzie. Przykład jest widoczny na Rysunku 8.2.
-				\begin{figure}[!htbp]
+				\begin{sidewaysfigure}[!htbp]
 					\begin{center}
 						\centering
-						\includegraphics[width=\textwidth]{\ImgPath/rys/angularError.png}
+						\includegraphics[scale = 1]{\ImgPath/rys/angularError.png}
 					\end{center}
 					\caption{Błąd biblioteki SystemJS tak naprawdę oznaczał problem z definicją ścieżki do biblioteki, której chciano użyć w projekcie.}
 					\label{UMLTS}
-				\end{figure}
+				\end{sidewaysfigure}
 Tylko pisząc kod linijka po linijce i testując co chwilę, możliwe było odnajdowanie źródeł problemów. W połączeniu z długim czasem rekompilacji i restartu serwera (około 30 sekund na wydajnej maszynie), proces wytwórczy można ocenić jako dosyć żmudny. Sposób połączenia aplikacji klienckiej i serwerowej we wspólnym projekcie, korzystając z dwóch szkieletów, także z początku nie był zagadnieniem trywialnym. Rodzi sie pytanie - czy tyle warstw aplikacji jest faktycznie potrzebne? Na pewno szkielety i biblioteki usprawniają pracę programisty. Warto jednak stosować się do zasad YAGNI i KISS - nie dodawać do projektu elementów niepotrzebnych i unikać przesadnej złożoności.
 
 
@@ -1201,6 +1201,7 @@ Tylko pisząc kod linijka po linijce i testując co chwilę, możliwe było odna
 \newline \url{https://maven.apache.org/guides/}
 
 \bibitem{Oracle}{Scott Urman, Ron Hardman, Michael McLaughlin, ,,Oracle Database 10g : programowanie w języku PL/SQL'', Helion,2008}
+
 \bibitem{Oracle2}{Oracle, ,,Indexes and Index-Organized Tables'', ,,Partitions, Views, and Other Schema Objects''}
 \newline \url{https://docs.oracle.com/cd/E11882_01/server.112/e40540/toc.htm}
 
@@ -1212,6 +1213,27 @@ Tylko pisząc kod linijka po linijce i testując co chwilę, możliwe było odna
 \newline \url{https://www.owasp.org}
 
 \bibitem{Java}{Bruce Eckel, ,,Thinking in Java : edycja polska'', Helion, 2006}
+
+\bibitem{Stevens}{W. R. Stevens, G. R. Wright, ,,Biblia TCP/IP tom 1'', RM, 
+1998.}
+
+\bibitem{Smialek}{Michał Śmiałek, ,,Zozumieć UML 2.0. Metody modelowania obiektowego'', Helion, 2005.}
+
+\bibitem{MVC}{Frank Buschmann, Kevlin Henney, Douglas C. Schmidt, ,,Pattern-oriented software architecture: On patterns and pattern languages Volume 5'', Wiley, 2007.}
+
+\bibitem{KobietyDoKodu}{Kobiety do kodu, ,,Poznaj Javę
+dzięki naszym praktycznym lekcjom'' }
+\newline \url{http://kobietydokodu.pl/kurs-javy/}
+
+\bibitem{Kryptografia}{Kutyłowski Mirosław, Strothmann Willy-B, ,,Kryptografia. Teoria i praktyka zabezpieczania systemów komputerowych'', ReadMe, 2000.}
+
+\bibitem{Inzynieria1}{Ian Sommerville, ,, Inżynieria oprogramowania'', WNT, 2011.}
+
+\bibitem{Spring3}{Rod Johnson , Juergen Hoeller i inni, ,,Introduction to the Spring Framework'', Wiley, 2004}
+\newline \url{http://docs.spring.io/spring-framework/docs/current/spring-framework-reference/html/overview.html}
+
+\bibitem{HTTP}{Roy Fielding i inni, ,,Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content'' }
+\newline \url{http://httpwg.org/specs/rfc7231.html}
 
 \end{thebibliography}
 

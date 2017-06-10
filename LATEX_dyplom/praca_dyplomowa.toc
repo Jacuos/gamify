@@ -2,8 +2,8 @@
 \contentsline {chapter}{\numberline {1}Wst\IeC {\k e}p}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Grywalizacja}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Projekt}{1}{section.1.2}
-\contentsline {section}{\numberline {1.3}U\IeC {\.z}yte technologie}{5}{section.1.3}
-\contentsline {section}{\numberline {1.4}Wzorzec MVC}{5}{section.1.4}
+\contentsline {section}{\numberline {1.3}U\IeC {\.z}yte technologie}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}Wzorzec MVC}{3}{section.1.4}
 \contentsline {chapter}{\numberline {2}Angular}{8}{chapter.2}
 \contentsline {chapter}{\numberline {3}Spring}{9}{chapter.3}
 \contentsline {section}{\numberline {3.1}Metody konfiguracji}{9}{section.3.1}
@@ -21,7 +21,7 @@
 \contentsline {section}{\numberline {5.1}Ataki CSRF}{34}{section.5.1}
 \contentsline {section}{\numberline {5.2}Protok\IeC {\'o}\IeC {\l } HTTPS}{35}{section.5.2}
 \contentsline {section}{\numberline {5.3}Logowanie}{36}{section.5.3}
-\contentsline {section}{\numberline {5.4}Reset i zmiana has\IeC {\l }a}{38}{section.5.4}
+\contentsline {section}{\numberline {5.4}Reset i zmiana has\IeC {\l }a}{39}{section.5.4}
 \contentsline {section}{\numberline {5.5}SQL Injection}{39}{section.5.5}
 \contentsline {chapter}{\numberline {6}Wdro\IeC {\.z}enie systemu}{40}{chapter.6}
 \contentsline {section}{\numberline {6.1}Migracja bazy danych}{40}{section.6.1}
@@ -29,14 +29,14 @@
 \contentsline {chapter}{\numberline {7}Dzia\IeC {\l }anie aplikacji}{43}{chapter.7}
 \contentsline {section}{\numberline {7.1}Rejestracja i Reset has\IeC {\l }a}{43}{section.7.1}
 \contentsline {section}{\numberline {7.2}Autoryzacja U\IeC {\.z}ytkownika}{43}{section.7.2}
-\contentsline {section}{\numberline {7.3}Konfiguracja konta}{47}{section.7.3}
-\contentsline {section}{\numberline {7.4}Ranking}{47}{section.7.4}
-\contentsline {section}{\numberline {7.5}Wykonanie zadania}{47}{section.7.5}
+\contentsline {section}{\numberline {7.3}Konfiguracja konta}{49}{section.7.3}
+\contentsline {section}{\numberline {7.4}Ranking}{49}{section.7.4}
+\contentsline {section}{\numberline {7.5}Wykonanie zadania}{49}{section.7.5}
 \contentsline {section}{\numberline {7.6}Wy\IeC {\'s}wietlenie w\IeC {\l }asnych osi\IeC {\k a}gni\IeC {\k e}\IeC {\'c}}{49}{section.7.6}
 \contentsline {section}{\numberline {7.7}Autoryzacja Administratora}{49}{section.7.7}
-\contentsline {section}{\numberline {7.8}Usuwanie kont}{49}{section.7.8}
-\contentsline {section}{\numberline {7.9}Edycja aplikacji}{51}{section.7.9}
-\contentsline {section}{\numberline {7.10}Zarz\IeC {\k a}dzanie Zadaniami}{51}{section.7.10}
-\contentsline {section}{\numberline {7.11}Zarz\IeC {\k a}dzanie Odznakami}{51}{section.7.11}
-\contentsline {chapter}{\numberline {8}Wnioski}{55}{chapter.8}
-\contentsline {chapter}{Bibliografia}{58}{chapter*.4}
+\contentsline {section}{\numberline {7.8}Usuwanie kont}{54}{section.7.8}
+\contentsline {section}{\numberline {7.9}Edycja aplikacji}{54}{section.7.9}
+\contentsline {section}{\numberline {7.10}Zarz\IeC {\k a}dzanie Zadaniami}{54}{section.7.10}
+\contentsline {section}{\numberline {7.11}Zarz\IeC {\k a}dzanie Odznakami}{54}{section.7.11}
+\contentsline {chapter}{\numberline {8}Wnioski}{61}{chapter.8}
+\contentsline {chapter}{Bibliografia}{65}{chapter*.4}
