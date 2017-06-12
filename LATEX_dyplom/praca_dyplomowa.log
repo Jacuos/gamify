@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.1.13)  12 JUN 2017 11:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.1.13)  12 JUN 2017 16:05
 entering extended mode
 **praca_dyplomowa.tex
 (praca_dyplomowa.tex
@@ -948,10 +948,10 @@ File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 ) [21]
 (C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
-)
+) [22]
 (C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
-) [22]
+)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23]
@@ -972,17 +972,17 @@ Rozdzia\l  4.
 (C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 )
-Underfull \hbox (badness 10000) in paragraph at lines 765--766
+Underfull \hbox (badness 10000) in paragraph at lines 766--767
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 765--766
+Underfull \hbox (badness 10000) in paragraph at lines 766--767
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 765--766
+Underfull \hbox (badness 10000) in paragraph at lines 766--767
 
  []
 
@@ -995,19 +995,19 @@ File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 File: ./rys/sqldeveloper.png Graphic file (type png)
 
 <use ./rys/sqldeveloper.png>
-Package pdftex.def Info: ./rys/sqldeveloper.png used on input line 779.
+Package pdftex.def Info: ./rys/sqldeveloper.png used on input line 780.
 (pdftex.def)             Requested size: 390.0pt x 161.40916pt.
 
 <./rys/DBModel.png, id=870, 909.3975pt x 590.205pt>
 File: ./rys/DBModel.png Graphic file (type png)
  <use ./rys/DBModel.png>
-Package pdftex.def Info: ./rys/DBModel.png used on input line 788.
+Package pdftex.def Info: ./rys/DBModel.png used on input line 789.
 (pdftex.def)             Requested size: 390.0pt x 253.11678pt.
 
 <./rys/btree.png, id=872, 664.4825pt x 475.7775pt>
 File: ./rys/btree.png Graphic file (type png)
  <use ./rys/btree.png>
-Package pdftex.def Info: ./rys/btree.png used on input line 798.
+Package pdftex.def Info: ./rys/btree.png used on input line 799.
 (pdftex.def)             Requested size: 390.0pt x 279.24707pt.
 
 [30 <./rys/sqldeveloper.png>] [31 <./rys/DBModel.png>] [32 <./rys/btree.png>]
@@ -1018,15 +1018,15 @@ File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 File: ./rys/partitions.png Graphic file (type png)
 
 <use ./rys/partitions.png>
-Package pdftex.def Info: ./rys/partitions.png used on input line 811.
+Package pdftex.def Info: ./rys/partitions.png used on input line 812.
 (pdftex.def)             Requested size: 390.0pt x 288.40343pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 807--817
+Underfull \hbox (badness 10000) in paragraph at lines 808--818
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 807--817
+Underfull \hbox (badness 10000) in paragraph at lines 808--818
 
  []
 
@@ -1036,22 +1036,22 @@ File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 ) [34]
 Rozdzia\l  5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--841
+Underfull \hbox (badness 10000) in paragraph at lines 841--842
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--841
+Underfull \hbox (badness 10000) in paragraph at lines 841--842
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--841
+Underfull \hbox (badness 10000) in paragraph at lines 841--842
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 840--841
+Underfull \hbox (badness 10000) in paragraph at lines 841--842
 
  []
 
@@ -1060,14 +1060,14 @@ File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 ) [35
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 866--867
+Underfull \hbox (badness 10000) in paragraph at lines 867--868
 
  []
 
 [36] (C:\Users\Jacek\AppData\Roaming\MiKTeX\2.9\tex\latex\ucs\utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
 )
-Underfull \hbox (badness 10000) in paragraph at lines 883--885
+Underfull \hbox (badness 10000) in paragraph at lines 884--886
 
  []
 
@@ -1090,88 +1090,102 @@ Rozdzia\l  6.
 <./rys/azure3.png, id=1066, 1010.27437pt x 481.8pt>
 File: ./rys/azure3.png Graphic file (type png)
  <use ./rys/azure3.png>
-Package pdftex.def Info: ./rys/azure3.png used on input line 972.
+Package pdftex.def Info: ./rys/azure3.png used on input line 973.
 (pdftex.def)             Requested size: 390.0pt x 185.9898pt.
 
-Underfull \hbox (badness 3240) in paragraph at lines 982--983
+Underfull \hbox (badness 3240) in paragraph at lines 983--984
 []|\T1/cmr/m/n/12 ''BADGE'' VAR-CHAR2(255 CHAR)
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 983--984
+Underfull \hbox (badness 10000) in paragraph at lines 984--985
 []|\T1/cmr/m/n/12 ''LOGIN'' VAR-CHAR2(255 CHAR)
  []
 
 
-Underfull \hbox (badness 4765) in paragraph at lines 984--985
+Underfull \hbox (badness 4765) in paragraph at lines 985--986
 []|\T1/cmr/m/n/12 PRIMARY KEY (''BADGE'', ''LO-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 992--993
-[]|\T1/cmr/m/n/12 ''BADGE'' VAR-CHAR(255) NOT
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 993--994
+[]|\T1/cmr/m/n/12 ''BADGE'' VAR-CHAR(255) NOT
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 994--995
 []|\T1/cmr/m/n/12 ''LOGIN'' VAR-CHAR(255) NOT
  []
 
 
-Underfull \hbox (badness 4765) in paragraph at lines 994--995
+Underfull \hbox (badness 4765) in paragraph at lines 995--996
 []|\T1/cmr/m/n/12 PRIMARY KEY (''BADGE'', ''LO-
  []
 
 
-Overfull \hbox (36.54903pt too wide) in paragraph at lines 968--999
+Overfull \hbox (36.54903pt too wide) in paragraph at lines 969--1000
 [] [] 
  []
 
 
-Overfull \hbox (3.04982pt too wide) in paragraph at lines 968--999
+Underfull \hbox (badness 10000) in paragraph at lines 969--1000
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 969--1000
+
+ []
+
+
+Overfull \hbox (3.04982pt too wide) in paragraph at lines 969--1000
 \T1/cmr/m/n/12 Nale»aªo tak»e skon-fi-gu-ro-wa¢ po-ª¡-cze-nie w pliku \T1/cmr/m
 /it/12 ,,ap-pli-ca-tion.properties'' \T1/cmr/m/n/12 (ana-
  []
 
-[41
 
-] <./rys/azure4.png, id=1072, 770.12718pt x 461.47406pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [41
+
+]
+<./rys/azure4.png, id=1072, 770.12718pt x 461.47406pt>
 File: ./rys/azure4.png Graphic file (type png)
-
-<use ./rys/azure4.png>
-Package pdftex.def Info: ./rys/azure4.png used on input line 1004.
+ <use ./rys/azure4.png>
+Package pdftex.def Info: ./rys/azure4.png used on input line 1005.
 (pdftex.def)             Requested size: 390.0pt x 233.6939pt.
- [42 <./rys/azure3.png>] [43 <./rys/azure4.png>]
+
+[42 <./rys/azure3.png>] [43 <./rys/azure4.png>]
 Rozdzia\l  7.
 <./rys/guide/guide1.png, id=1083, 540.51938pt x 548.0475pt>
 File: ./rys/guide/guide1.png Graphic file (type png)
 
 <use ./rys/guide/guide1.png>
-Package pdftex.def Info: ./rys/guide/guide1.png used on input line 1016.
+Package pdftex.def Info: ./rys/guide/guide1.png used on input line 1017.
 (pdftex.def)             Requested size: 390.0pt x 395.4385pt.
 
 <./rys/guide/guide2.png, id=1084, 531.48563pt x 548.0475pt>
 File: ./rys/guide/guide2.png Graphic file (type png)
 
 <use ./rys/guide/guide2.png>
-Package pdftex.def Info: ./rys/guide/guide2.png used on input line 1024.
+Package pdftex.def Info: ./rys/guide/guide2.png used on input line 1025.
 (pdftex.def)             Requested size: 390.0pt x 402.16197pt.
 
 <./rys/guide/guide3.png, id=1085, 547.2947pt x 536.0025pt>
 File: ./rys/guide/guide3.png Graphic file (type png)
 
 <use ./rys/guide/guide3.png>
-Package pdftex.def Info: ./rys/guide/guide3.png used on input line 1033.
+Package pdftex.def Info: ./rys/guide/guide3.png used on input line 1034.
 (pdftex.def)             Requested size: 390.0pt x 381.95482pt.
 
 <./rys/guide/guide4.png, id=1086, 1028.34187pt x 520.94624pt>
 File: ./rys/guide/guide4.png Graphic file (type png)
 
 <use ./rys/guide/guide4.png>
-Package pdftex.def Info: ./rys/guide/guide4.png used on input line 1043.
+Package pdftex.def Info: ./rys/guide/guide4.png used on input line 1044.
 (pdftex.def)             Requested size: 668.4143pt x 338.61105pt.
 
-Overfull \hbox (76.4143pt too wide) in paragraph at lines 1043--1044
+Overfull \hbox (76.4143pt too wide) in paragraph at lines 1044--1045
  [] 
  []
 
@@ -1179,10 +1193,10 @@ Overfull \hbox (76.4143pt too wide) in paragraph at lines 1043--1044
 File: ./rys/guide/guide5.png Graphic file (type png)
 
 <use ./rys/guide/guide5.png>
-Package pdftex.def Info: ./rys/guide/guide5.png used on input line 1052.
+Package pdftex.def Info: ./rys/guide/guide5.png used on input line 1053.
 (pdftex.def)             Requested size: 668.4143pt x 356.22665pt.
 
-Overfull \hbox (76.4143pt too wide) in paragraph at lines 1052--1053
+Overfull \hbox (76.4143pt too wide) in paragraph at lines 1053--1054
  [] 
  []
 
@@ -1190,10 +1204,10 @@ Overfull \hbox (76.4143pt too wide) in paragraph at lines 1052--1053
 File: ./rys/guide/guide6.png Graphic file (type png)
 
 <use ./rys/guide/guide6.png>
-Package pdftex.def Info: ./rys/guide/guide6.png used on input line 1063.
+Package pdftex.def Info: ./rys/guide/guide6.png used on input line 1064.
 (pdftex.def)             Requested size: 668.4143pt x 356.22665pt.
 
-Overfull \hbox (76.4143pt too wide) in paragraph at lines 1063--1064
+Overfull \hbox (76.4143pt too wide) in paragraph at lines 1064--1065
  [] 
  []
 
@@ -1205,10 +1219,10 @@ guide3.png>] [48 <./rys/guide/guide4.png>] [49 <./rys/guide/guide5.png>]
 File: ./rys/guide/guide7.png Graphic file (type png)
 
 <use ./rys/guide/guide7.png>
-Package pdftex.def Info: ./rys/guide/guide7.png used on input line 1073.
+Package pdftex.def Info: ./rys/guide/guide7.png used on input line 1074.
 (pdftex.def)             Requested size: 668.4143pt x 356.22665pt.
 
-Overfull \hbox (76.4143pt too wide) in paragraph at lines 1073--1074
+Overfull \hbox (76.4143pt too wide) in paragraph at lines 1074--1075
  [] 
  []
 
@@ -1216,10 +1230,10 @@ Overfull \hbox (76.4143pt too wide) in paragraph at lines 1073--1074
 File: ./rys/guide/guide8.png Graphic file (type png)
 
 <use ./rys/guide/guide8.png>
-Package pdftex.def Info: ./rys/guide/guide8.png used on input line 1083.
+Package pdftex.def Info: ./rys/guide/guide8.png used on input line 1084.
 (pdftex.def)             Requested size: 668.4143pt x 357.2053pt.
 
-Overfull \hbox (76.4143pt too wide) in paragraph at lines 1083--1084
+Overfull \hbox (76.4143pt too wide) in paragraph at lines 1084--1085
  [] 
  []
 
@@ -1227,10 +1241,10 @@ Overfull \hbox (76.4143pt too wide) in paragraph at lines 1083--1084
 File: ./rys/guide/guide9.png Graphic file (type png)
 
 <use ./rys/guide/guide9.png>
-Package pdftex.def Info: ./rys/guide/guide9.png used on input line 1093.
+Package pdftex.def Info: ./rys/guide/guide9.png used on input line 1094.
 (pdftex.def)             Requested size: 668.4143pt x 355.248pt.
 
-Overfull \hbox (76.4143pt too wide) in paragraph at lines 1093--1094
+Overfull \hbox (76.4143pt too wide) in paragraph at lines 1094--1095
  [] 
  []
 
@@ -1238,17 +1252,17 @@ Overfull \hbox (76.4143pt too wide) in paragraph at lines 1093--1094
 File: ./rys/guide/guide10.png Graphic file (type png)
 
 <use ./rys/guide/guide10.png>
-Package pdftex.def Info: ./rys/guide/guide10.png used on input line 1103.
+Package pdftex.def Info: ./rys/guide/guide10.png used on input line 1104.
 (pdftex.def)             Requested size: 390.0pt x 75.94534pt.
 
 <./rys/guide/guide11.png, id=1125, 1028.34187pt x 546.54187pt>
 File: ./rys/guide/guide11.png Graphic file (type png)
 
 <use ./rys/guide/guide11.png>
-Package pdftex.def Info: ./rys/guide/guide11.png used on input line 1113.
+Package pdftex.def Info: ./rys/guide/guide11.png used on input line 1114.
 (pdftex.def)             Requested size: 668.4143pt x 355.248pt.
 
-Overfull \hbox (76.4143pt too wide) in paragraph at lines 1113--1114
+Overfull \hbox (76.4143pt too wide) in paragraph at lines 1114--1115
  [] 
  []
 
@@ -1258,10 +1272,10 @@ de/guide8.png>] [54 <./rys/guide/guide9.png>]
 File: ./rys/guide/guide12.png Graphic file (type png)
 
 <use ./rys/guide/guide12.png>
-Package pdftex.def Info: ./rys/guide/guide12.png used on input line 1123.
+Package pdftex.def Info: ./rys/guide/guide12.png used on input line 1124.
 (pdftex.def)             Requested size: 668.4143pt x 356.22665pt.
 
-Overfull \hbox (76.4143pt too wide) in paragraph at lines 1123--1124
+Overfull \hbox (76.4143pt too wide) in paragraph at lines 1124--1125
  [] 
  []
 
@@ -1269,10 +1283,10 @@ Overfull \hbox (76.4143pt too wide) in paragraph at lines 1123--1124
 File: ./rys/guide/guide13.png Graphic file (type png)
 
 <use ./rys/guide/guide13.png>
-Package pdftex.def Info: ./rys/guide/guide13.png used on input line 1133.
+Package pdftex.def Info: ./rys/guide/guide13.png used on input line 1134.
 (pdftex.def)             Requested size: 668.4143pt x 356.22665pt.
 
-Overfull \hbox (76.4143pt too wide) in paragraph at lines 1133--1134
+Overfull \hbox (76.4143pt too wide) in paragraph at lines 1134--1135
  [] 
  []
 
@@ -1280,10 +1294,10 @@ Overfull \hbox (76.4143pt too wide) in paragraph at lines 1133--1134
 File: ./rys/guide/guide14.png Graphic file (type png)
 
 <use ./rys/guide/guide14.png>
-Package pdftex.def Info: ./rys/guide/guide14.png used on input line 1143.
+Package pdftex.def Info: ./rys/guide/guide14.png used on input line 1144.
 (pdftex.def)             Requested size: 668.4143pt x 355.248pt.
 
-Overfull \hbox (76.4143pt too wide) in paragraph at lines 1143--1144
+Overfull \hbox (76.4143pt too wide) in paragraph at lines 1144--1145
  [] 
  []
 
@@ -1291,15 +1305,15 @@ Overfull \hbox (76.4143pt too wide) in paragraph at lines 1143--1144
 File: ./rys/guide/guide15.png Graphic file (type png)
 
 <use ./rys/guide/guide15.png>
-Package pdftex.def Info: ./rys/guide/guide15.png used on input line 1152.
+Package pdftex.def Info: ./rys/guide/guide15.png used on input line 1153.
 (pdftex.def)             Requested size: 668.4143pt x 467.79214pt.
 
-Overfull \hbox (76.4143pt too wide) in paragraph at lines 1152--1153
+Overfull \hbox (76.4143pt too wide) in paragraph at lines 1153--1154
  [] 
  []
 
 
-Overfull \hbox (32.76183pt too wide) in paragraph at lines 1139--1157
+Overfull \hbox (32.76183pt too wide) in paragraph at lines 1140--1158
 \T1/cmr/m/n/12 kow-nika. Ry-su-nek 7.14 przed-sta-wia pro-ces do-da-wa-nia no-w
 ej Od-znaki. Przyznawanie
  []
@@ -1309,7 +1323,7 @@ guide12.png>] [58 <./rys/guide/guide13.png>] [59 <./rys/guide/guide14.png>]
 [60 <./rys/guide/guide15.png>]
 Rozdzia\l  8.
 
-Overfull \hbox (1.05083pt too wide) in paragraph at lines 1159--1161
+Overfull \hbox (1.05083pt too wide) in paragraph at lines 1160--1162
 []\T1/cmr/m/n/12 Zakres pracy zo-staª zre-ali-zo-wany w zde-cy-do-wa-nej wi¦k-s
 zo-±ci. Je-dyne braki
  []
@@ -1318,10 +1332,10 @@ zo-±ci. Je-dyne braki
 File: ./rys/speedChart.png Graphic file (type png)
 
 <use ./rys/speedChart.png>
-Package pdftex.def Info: ./rys/speedChart.png used on input line 1170.
+Package pdftex.def Info: ./rys/speedChart.png used on input line 1171.
 (pdftex.def)             Requested size: 390.0pt x 256.20206pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1165--1176
+Underfull \hbox (badness 10000) in paragraph at lines 1166--1177
 
  []
 
@@ -1332,16 +1346,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 1165--1176
 File: ./rys/angularError.png Graphic file (type png)
 
 <use ./rys/angularError.png>
-Package pdftex.def Info: ./rys/angularError.png used on input line 1181.
+Package pdftex.def Info: ./rys/angularError.png used on input line 1182.
 (pdftex.def)             Requested size: 529.97868pt x 179.92174pt.
  [63] [64 <./rys/angularError.png>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 1193
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 1194
 .
 
 (D:\NAUKA\LATEX\mojMikTex\tex\latex\base\t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 1206--1208
+Underfull \hbox (badness 10000) in paragraph at lines 1207--1209
 []$\T1/cmtt/m/n/12 https : / / docs . oracle . com / cd / E11882 _ 01 / server 
 . 112 / e40540 / toc .$
  []
@@ -1349,7 +1363,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1206--1208
 [65
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1233--1235
+Underfull \hbox (badness 10000) in paragraph at lines 1234--1236
 []$\T1/cmtt/m/n/12 http : / / docs . spring . io / spring-[]framework / docs / 
 current /$
  []
@@ -1357,12 +1371,12 @@ current /$
 [66] (opiniaopiekuna.tex) [67
 
 ] (recenzja.tex [68])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1243.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1244.
  [69]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1243.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1244.
  (praca_dyplomowa.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1243.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1243.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1244.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1244.
 
 Package rerunfilecheck Info: File `praca_dyplomowa.out' has not changed.
 (rerunfilecheck)             Checksum: 3ACBDA336172F5B903CE1B193C2A2A85;2538.
@@ -1370,12 +1384,12 @@ Package rerunfilecheck Info: File `praca_dyplomowa.out' has not changed.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1243.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1244.
  ) 
 Here is how much of TeX's memory you used:
  10029 strings out of 493698
  146353 string characters out of 3145647
- 356444 words of memory out of 3000000
+ 346444 words of memory out of 3000000
  12368 multiletter control sequences out of 15000+200000
  24960 words of font info for 48 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
@@ -1399,7 +1413,7 @@ ublic/pl/plr12.pfb><C:/Users/Jacek/AppData/Roaming/MiKTeX/2.9/fonts/type1/publi
 c/pl/plr8.pfb><C:/Users/Jacek/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/
 plsy10.pfb><C:/Users/Jacek/AppData/Roaming/MiKTeX/2.9/fonts/type1/public/pl/pls
 y8.pfb><D:/NAUKA/LATEX/mojMikTex/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on praca_dyplomowa.pdf (77 pages, 5813610 bytes).
+Output written on praca_dyplomowa.pdf (77 pages, 5821436 bytes).
 PDF statistics:
  1898 PDF objects out of 2073 (max. 8388607)
  733 named destinations out of 1000 (max. 500000)

@@ -575,6 +575,7 @@ public interface GLayoutRepository extends CrudRepository<GLayout, String> {
 \end{lstlisting}
 \subsection{Kontroler}
 Kontroler to klasa nasłuchująca  zapytań pod zdefiniowanymi adresami URL i wykonująca logikę biznesową operując na wyżej opisanych klasach mapowań i repozytoriów. Podstawowa budowa została zaprezentowana w Podrozdziale \ref{MVCController}. Tworząc logikę biznesową, wykorzystano wiele metod i obiektów charakterystycznych dla języka Java. Ich szczegółowe omówienie można znaleźć w należącej do klasyki literatury informatycznej pozycji \cite{Java}.
+\newpage
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
@@ -813,7 +814,7 @@ Partycjonowanie dzieli z kolei tabelę na części na podstawie wartości kolumn
 					\caption{Mechanizmy partycjonowania i indeksowania można ze sobą łaczyć.}
 					\label{UMLTS}
 				\end{figure}
-Chcąc partycjonować tabelę \textit{,,GQUEST''} po roku zakończenia zadania, należy wykonać poniższą komendę. Niestety po jej wykonaniu okazało się że wersja Oracle Express nie obsługuje funkcji partycjonowania. Pisząc kod w PL/SQL, będący odmianą języka SQL dla produktów Oracle, posiłkowano się podręcznikiem Urmana i McLaughlina \cite{Oracle}.\\\\
+Chcąc partycjonować tabelę \textit{,,GQUEST''} po roku zakończenia zadania, należy wykonać poniższą komendę. Niestety po jej wykonaniu okazało się że wersja Oracle Express nie obsługuje funkcji partycjonowania. Pisząc kod w PL/SQL, będący odmianą języka SQL dla produktów Oracle, posiłkowano się podręcznikiem Urmana i innych \cite{Oracle}.\\\\
 
 \begin{lstlisting}
 --Tabela tymczasowa - taka sama jak GUSER
@@ -965,7 +966,7 @@ Zgodnie z testami, aplikacja wydaje się być odporna na tego typu ataki. Warstw
 \chapter{Wdrożenie systemu}
 Aby udostępnić aplikację szerszemu gronu użytkowników, zdecydowano się na wdrożenie jej w chmurze obliczeniowej. To rozwiązanie pozwala na upublicznienie aplikacji bez inwestycji w infrastukturę serwerową. Co więcej, wiele firm realizujących tego typu usługi posiada w swojej ofercie darmowe pakiety i wersje próbne. W tym wypadku, zdecydowano sie na platformę Azure od Microsoftu. Posiada ona darmowy pakiet, dostępny w ramach programu Imagine dla studentów Wydziału Elektrycznego. Sam proces można było podzielić na dwie części - wdrożenie bazy danych i wdrożenie aplikacji.
 \section{Migracja bazy danych}
-Serwer bazy danych Oracle jest dostępny na platformie Microsoftu tylko dla posiadaczy licencji Oracle w wersji Standard i Enterprise. Nieudane próby założenia darmowej wersji bazy, tylko to potwierdziły. Założono bazę danych opartą o serwer MSSQL.
+Serwer bazy danych Oracle jest dostępny na platformie Microsoftu tylko dla posiadaczy licencji Oracle w wersji Standard i Enterprise. Nieudane próby założenia darmowej wersji bazy, tylko to potwierdziły. Założono bazę danych opartą o serwer MSSQL. Rysunek 6.1 przedstawia okno tworzenia nowej bazy danych - jak wszystkich usługach platformy Azure, służy do tego przystępne GUI.
 				\begin{figure}[!htbp]
 					\begin{center}
 						\centering
@@ -974,7 +975,7 @@ Serwer bazy danych Oracle jest dostępny na platformie Microsoftu tylko dla posi
 					\caption{Ekran tworzenia nowej bazy danych SQL na Azure.}
 					\label{UMLTS}
 				\end{figure}
-Wymagało to ręcznego odtworzenia wszystkich tabel. Na szczęście przepisanie kodu PL/SQL (Oracle) na Transact-SQL (Microsoft) nie sprawia większego problemu:\\
+Wymagało to ręcznego odtworzenia wszystkich tabel. Na szczęście przepisanie kodu PL/SQL (Oracle) na Transact-SQL (Microsoft) nie sprawia większego problemu, co widać na tabelce porównawczej.\\
 \begin{tabular}{|p{7cm}|p{7cm}|}
 	\hline PL/SQL\\ 
 	\hline   CREATE TABLE ''GBADGE''  \\
@@ -994,7 +995,7 @@ Wymagało to ręcznego odtworzenia wszystkich tabel. Na szczęście przepisanie 
 	PRIMARY KEY (''BADGE'', ''LOGIN'')\\
 	)\\
 	\hline 
-\end{tabular}\\
+\end{tabular}\\\\\\
 Należało także skonfigurować połączenie w pliku \textit{,,application.properties''} (analogicznie do wcześniejszego) i usunąć starą konfigurację.
 \section{Migracja aplikacji}
 Próby uruchomienia aplikacji poprzez plik .jar lub .war, korzystając ze zautomatyzowanej usługi Azure App Services zakończyły się niepowodzeniem. Ostatecznie uruchomiono maszynę wirtualną Windows Server 2012, zainstalowano na niej pakiet Java i otworzono port 80, będący standardowym portem protokołu HTTP. Maszyna jest dostępna poprzez protokół RDP. Na tak przygotowanym środowisku, uruchomienie pliku .jar aplikacji odbyło się bez przeszkód. Plik ten poza skompilowanym kodem, zawiera także kontener Apache Tomcat, który pełni tu funkcję serwera aplikacji. Jego działanie przedstawiono na Rysunku 6.2.
