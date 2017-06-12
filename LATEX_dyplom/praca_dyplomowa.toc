@@ -4,39 +4,39 @@
 \contentsline {section}{\numberline {1.2}Projekt}{1}{section.1.2}
 \contentsline {section}{\numberline {1.3}U\IeC {\.z}yte technologie}{3}{section.1.3}
 \contentsline {section}{\numberline {1.4}Wzorzec MVC}{3}{section.1.4}
-\contentsline {chapter}{\numberline {2}Angular}{8}{chapter.2}
-\contentsline {chapter}{\numberline {3}Spring}{9}{chapter.3}
-\contentsline {section}{\numberline {3.1}Metody konfiguracji}{9}{section.3.1}
-\contentsline {section}{\numberline {3.2}Spring Boot}{10}{section.3.2}
-\contentsline {section}{\numberline {3.3}Maven}{13}{section.3.3}
-\contentsline {section}{\numberline {3.4}Przydatne modu\IeC {\l }y}{15}{section.3.4}
-\contentsline {section}{\numberline {3.5}Implementacja REST API}{16}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Mapowanie obiektowo - relacyjne}{16}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Repozytoria}{20}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Kontroler}{21}{subsection.3.5.3}
-\contentsline {chapter}{\numberline {4}Baza danych Oracle}{28}{chapter.4}
-\contentsline {section}{\numberline {4.1}Integracja z projektem}{28}{section.4.1}
-\contentsline {section}{\numberline {4.2}Optymalizacja}{29}{section.4.2}
-\contentsline {chapter}{\numberline {5}Bezpiecze\IeC {\'n}stwo}{34}{chapter.5}
-\contentsline {section}{\numberline {5.1}Ataki CSRF}{34}{section.5.1}
-\contentsline {section}{\numberline {5.2}Protok\IeC {\'o}\IeC {\l } HTTPS}{35}{section.5.2}
-\contentsline {section}{\numberline {5.3}Logowanie}{36}{section.5.3}
-\contentsline {section}{\numberline {5.4}Reset i zmiana has\IeC {\l }a}{39}{section.5.4}
-\contentsline {section}{\numberline {5.5}SQL Injection}{39}{section.5.5}
-\contentsline {chapter}{\numberline {6}Wdro\IeC {\.z}enie systemu}{40}{chapter.6}
-\contentsline {section}{\numberline {6.1}Migracja bazy danych}{40}{section.6.1}
-\contentsline {section}{\numberline {6.2}Migracja aplikacji}{41}{section.6.2}
-\contentsline {chapter}{\numberline {7}Dzia\IeC {\l }anie aplikacji}{43}{chapter.7}
-\contentsline {section}{\numberline {7.1}Rejestracja i Reset has\IeC {\l }a}{43}{section.7.1}
-\contentsline {section}{\numberline {7.2}Autoryzacja U\IeC {\.z}ytkownika}{43}{section.7.2}
-\contentsline {section}{\numberline {7.3}Konfiguracja konta}{49}{section.7.3}
-\contentsline {section}{\numberline {7.4}Ranking}{49}{section.7.4}
-\contentsline {section}{\numberline {7.5}Wykonanie zadania}{49}{section.7.5}
-\contentsline {section}{\numberline {7.6}Wy\IeC {\'s}wietlenie w\IeC {\l }asnych osi\IeC {\k a}gni\IeC {\k e}\IeC {\'c}}{49}{section.7.6}
-\contentsline {section}{\numberline {7.7}Autoryzacja Administratora}{49}{section.7.7}
-\contentsline {section}{\numberline {7.8}Usuwanie kont}{54}{section.7.8}
-\contentsline {section}{\numberline {7.9}Edycja aplikacji}{54}{section.7.9}
-\contentsline {section}{\numberline {7.10}Zarz\IeC {\k a}dzanie Zadaniami}{54}{section.7.10}
-\contentsline {section}{\numberline {7.11}Zarz\IeC {\k a}dzanie Odznakami}{54}{section.7.11}
+\contentsline {chapter}{\numberline {2}Angular}{9}{chapter.2}
+\contentsline {chapter}{\numberline {3}Spring}{10}{chapter.3}
+\contentsline {section}{\numberline {3.1}Metody konfiguracji}{10}{section.3.1}
+\contentsline {section}{\numberline {3.2}Spring Boot}{11}{section.3.2}
+\contentsline {section}{\numberline {3.3}Maven}{14}{section.3.3}
+\contentsline {section}{\numberline {3.4}Przydatne modu\IeC {\l }y}{16}{section.3.4}
+\contentsline {section}{\numberline {3.5}Implementacja REST API}{17}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Mapowanie obiektowo - relacyjne}{17}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Repozytoria}{21}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Kontroler}{22}{subsection.3.5.3}
+\contentsline {chapter}{\numberline {4}Baza danych Oracle}{29}{chapter.4}
+\contentsline {section}{\numberline {4.1}Integracja z projektem}{29}{section.4.1}
+\contentsline {section}{\numberline {4.2}Optymalizacja}{30}{section.4.2}
+\contentsline {chapter}{\numberline {5}Bezpiecze\IeC {\'n}stwo}{35}{chapter.5}
+\contentsline {section}{\numberline {5.1}Ataki CSRF}{35}{section.5.1}
+\contentsline {section}{\numberline {5.2}Protok\IeC {\'o}\IeC {\l } HTTPS}{36}{section.5.2}
+\contentsline {section}{\numberline {5.3}Logowanie}{37}{section.5.3}
+\contentsline {section}{\numberline {5.4}Reset i zmiana has\IeC {\l }a}{40}{section.5.4}
+\contentsline {section}{\numberline {5.5}SQL Injection}{40}{section.5.5}
+\contentsline {chapter}{\numberline {6}Wdro\IeC {\.z}enie systemu}{41}{chapter.6}
+\contentsline {section}{\numberline {6.1}Migracja bazy danych}{41}{section.6.1}
+\contentsline {section}{\numberline {6.2}Migracja aplikacji}{42}{section.6.2}
+\contentsline {chapter}{\numberline {7}Dzia\IeC {\l }anie aplikacji}{44}{chapter.7}
+\contentsline {section}{\numberline {7.1}Rejestracja i Reset has\IeC {\l }a}{44}{section.7.1}
+\contentsline {section}{\numberline {7.2}Autoryzacja U\IeC {\.z}ytkownika}{44}{section.7.2}
+\contentsline {section}{\numberline {7.3}Konfiguracja konta}{50}{section.7.3}
+\contentsline {section}{\numberline {7.4}Ranking}{50}{section.7.4}
+\contentsline {section}{\numberline {7.5}Wykonanie zadania}{50}{section.7.5}
+\contentsline {section}{\numberline {7.6}Wy\IeC {\'s}wietlenie w\IeC {\l }asnych osi\IeC {\k a}gni\IeC {\k e}\IeC {\'c}}{50}{section.7.6}
+\contentsline {section}{\numberline {7.7}Autoryzacja Administratora}{50}{section.7.7}
+\contentsline {section}{\numberline {7.8}Usuwanie kont}{55}{section.7.8}
+\contentsline {section}{\numberline {7.9}Edycja aplikacji}{55}{section.7.9}
+\contentsline {section}{\numberline {7.10}Zarz\IeC {\k a}dzanie Zadaniami}{55}{section.7.10}
+\contentsline {section}{\numberline {7.11}Zarz\IeC {\k a}dzanie Odznakami}{55}{section.7.11}
 \contentsline {chapter}{\numberline {8}Wnioski}{61}{chapter.8}
 \contentsline {chapter}{Bibliografia}{65}{chapter*.4}

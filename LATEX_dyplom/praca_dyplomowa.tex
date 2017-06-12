@@ -203,7 +203,7 @@ Do wykonania aplikacji użyto technologii, przedstawionych na Rysunku 1.3.
 		\caption{Języki, szkielety i systemy bedące częścią projektu.}
 		\label{technologies}
 	\end{figure}
-Jak widać, aplikacja została wykonana w architekturze Klient-Serwer, opisanej  przez Stevensa \cite{Stevens}. Fasada oznacza kod wykonywany przez przeglądarkę internetową po stronie Klienta. Warstwa Klienta obsługuje żądania Użytkownika, wysyła zapytania do Serwera i prezentuje odpowiedzi Użytkownikowi. Wnętrze oznacza kod wykonywany po stronie Serwera. Serwer nasłuchuje żądań Klienta, wykonuje logikę biznesową związaną z danym żadaniem i wysyła odpowiedź do Klienta. Z usług jednego Serwera może korzystać wiele instancji Klientów. Obydwie składowe wykorzystują inne technologie, opisane szerzej w kolejnych rozdziałach.
+Jak widać, aplikacja została wykonana w architekturze Klient-Serwer, opisanej  przez Stevensa \cite{Stevens}. Fasada oznacza kod wykonywany przez przeglądarkę internetową po stronie Klienta. Warstwa Klienta obsługuje żądania Użytkownika, wysyła zapytania do Serwera i prezentuje odpowiedzi Użytkownikowi. Wnętrze oznacza kod wykonywany po stronie Serwera. Serwer nasłuchuje żądań Klienta, wykonuje logikę biznesową związaną z danym zadaniem i wysyła odpowiedź do Klienta. Z usług jednego Serwera może korzystać wiele instancji Klientów. Obydwie składowe wykorzystują inne technologie, opisane szerzej w kolejnych rozdziałach.
 \section{Wzorzec MVC}
 Złożoność współczesnych aplikacji (w tym internetowych), wymusza wykorzystanie odpowiednich wzorców (projektowych, architektonicznych). Narzucają one sprawdzoną formę, która pozwala zapanować nad rozbudowanym kodem. W tworzonej aplikacji, zdecydowano się na wykorzystanie wzorca MVC. Jest on szeroko opisywany w literaturze, chociażby w \cite{MVC}, oraz jest wykorzystywany przez wybrane szkielety aplikacji. MVC to wzorzec architektoniczny służący do organizowania struktury systemów interaktywnych. Składa się on z trzech części:
 	\begin{enumerate}
@@ -234,7 +234,7 @@ Do wytworzenia warstwy klienckiej użyto szkieletu Angular w wersji drugiej. Wyb
 Szkielet ten wykorzystuje język Typescript. Jest to nadzbiór języka JavaScript i jest do niego kompilowany. Przykłady definicji klas były prezentowane wcześniej, na Rysunku 1.2. Rozwiązania używane w fasadzie aplikacji internetowych są bez wątpienia najszybciej rozwijającym sie elementem stosu technologicznego. Już w momencie pisania pracy moda na Angulara ustępuje modzie na bibliotekę React, rozwijaną przez firmę Facebook. Jako że wnętrze aplikacji działa niezależnie od fasady, nie będzie ona opisywana szerzej w tej pracy. Zainteresowani, mogą zgłębić wiedzę na ten temat, czytając oficjalną dokumentację \cite{Angular}. W przystępny sposób przeprowadza ona użytkownika przez proces tworzenia funkcjonalnej aplikacji i pozwala zaznajomić się z konceptami stojącymi za tym szkieletem.
 \chapter{Spring}
 Podjęto decyzję by warstwę serwerową napisać z pomocą szkieletu Spring. Wybrano go między innymi ze względu na bogatą dokumentację, mnogość przydatnych modułów i dostępność szybkich sposobów na konfigurację sprawnej aplikacji serwerowej.
-Spring to szkielet tworzenia aplikacji (ang. framework) przeznaczony dla Javy Enterprise Edition, czyli serwerowej odmiany tego języka. Powstał jako alternatywa dla oficjalnych standardów serwerowych Javy takich jak Enterprise JavaBeans. Spring nie narzuca jednego modelu programowania. Posiada wiele modułów które są przydatne przy pisaniu aplikacji, jednocześnie będąc całkowicie opcjonalnymi. Jego cechy są opsane w dokumentacji \cite{Spring3} Znaną cechą Springa jest \textbf{,,odwrócenie sterowania''} (ang. Inversion of Control), czyli wzorzec w którym wykonywaniem programu steruje szkielet a nie kod programisty. To Spring decyduje kiedy wykonać dane akcje. Przykładem odwróconego sterowania jest chociażby \textbf{"wstrzykiwnie zależności"} (ang. Dependency Injection), kiedy to utworzone, zainicjowane obiekty przekazywane są obiektom które ich potrzebują. Obiekty nie tworzą wtedy samodzielnie instancji innych obiektów. Kolejną ważną cechą Springa jest \textbf{,,programowanie aspektowe''} czyli wzorzec w którym rozdziela się fizycznie funkcjonalności i definiuje punkty komunikacji między nimi, dostępne wszędzie tam gdzie są potrzebne.
+Spring to szkielet tworzenia aplikacji (ang. framework) przeznaczony dla Javy Enterprise Edition, czyli serwerowej odmiany tego języka. Powstał jako alternatywa dla oficjalnych standardów serwerowych Javy takich jak Enterprise JavaBeans. Spring nie narzuca jednego modelu programowania. Posiada wiele modułów które są przydatne przy pisaniu aplikacji, jednocześnie będąc całkowicie opcjonalnymi. Jego cechy są opisane w dokumentacji \cite{Spring3} Znaną cechą Springa jest \textbf{,,odwrócenie sterowania''} (ang. Inversion of Control), czyli wzorzec w którym wykonywaniem programu steruje szkielet a nie kod programisty. To Spring decyduje kiedy wykonać dane akcje. Przykładem odwróconego sterowania jest chociażby \textbf{"wstrzykiwnie zależności"} (ang. Dependency Injection), kiedy to utworzone, zainicjowane obiekty przekazywane są obiektom które ich potrzebują. Obiekty nie tworzą wtedy samodzielnie instancji innych obiektów. Kolejną ważną cechą Springa jest \textbf{,,programowanie aspektowe''} czyli wzorzec w którym rozdziela się fizycznie funkcjonalności i definiuje punkty komunikacji między nimi, dostępne wszędzie tam gdzie są potrzebne.
 \section{Metody konfiguracji}
 Konfiguracja projektu w Springu może odbywać się na dwa sposoby - przy pomocy plików XML lub adnotacji.Obydwa te podejścia przedstawiono w kursie \cite{Spring2}  Poniższy przykład prezentuje te same ustawienia w obydwu reprezentacjach:\\
 \begin{tabular}{|l|l|}
@@ -420,6 +420,7 @@ Implementacja serwerowej części aplikacji zostanie omówiona na przykładzie m
 \subsection{Mapowanie obiektowo - relacyjne}
 Klasy omówione w tej sekcji są definicjami tabel bazy danych. Zostały one wytworzone zgodnie z poradnikiem ,,Accessing Data JPA'' \cite{Spring}. Klasa taka odpowiada pojedynczemu rekordowi tabeli i pozwala na jego modyfikację.\\ 
 Jedną z funkcjonalności panelu Administratora jest tworzenie i przyznawanie Odznak. Jest to taki wirtualny medal za specjalne zasługi, który Administrator może nadać Użytkownikowi. Instancja takiego medalu musi zawierać dwie informacje - unikatowy login Użytkownika który go posiada i nazwę Odznaki. Nazwa ta odpowiada plikowi graficznemu Odznaki w plikach statycznych projektu.
+\\
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
@@ -761,7 +762,7 @@ Konfiguracja połączenia z bazą danych Oracle wymaga od nas dwóch kroków. Na
         <version>12.1.0.1</version>
       </dependency>
 \end{lstlisting}
-Następnie w pliku application.properties dodajemy poniższe linijki.
+Następnie w pliku application.properties dodajemy poniższe linijki.\\\\\\
 \begin{lstlisting}
 spring.datasource.url= jdbc:oracle:thin:@//localhost:1521/xe
 spring.datasource.username=admin
@@ -812,7 +813,7 @@ Partycjonowanie dzieli z kolei tabelę na części na podstawie wartości kolumn
 					\caption{Mechanizmy partycjonowania i indeksowania można ze sobą łaczyć.}
 					\label{UMLTS}
 				\end{figure}
-Chcąc partycjonować tabelę \textit{,,GQUEST''} po roku zakończenia zadania, należy wykonać poniższą komendę. Niestety po jej wykonaniu okazało się że wersja Oracle Express nie obsługuje funkcji partycjonowania. Pisząc kod w PL/SQL, będący odmianą języka SQL dla produktów Oracle, posiłkowano się podręcznikiem Urmana i McLaughlina \cite{Oracle}.
+Chcąc partycjonować tabelę \textit{,,GQUEST''} po roku zakończenia zadania, należy wykonać poniższą komendę. Niestety po jej wykonaniu okazało się że wersja Oracle Express nie obsługuje funkcji partycjonowania. Pisząc kod w PL/SQL, będący odmianą języka SQL dla produktów Oracle, posiłkowano się podręcznikiem Urmana i McLaughlina \cite{Oracle}.\\\\
 
 \begin{lstlisting}
 --Tabela tymczasowa - taka sama jak GUSER
@@ -836,7 +837,7 @@ exec dbms_redefinition.start_redef_table( user, 'GQUEST', 'TEMP' );
 \label{Safety}
 Każda aplikacja operująca w sieci komputerowej, jest narażona na ataki hakerów. Często spotykane wiadomości o udanych atakach na znane systemy informatyczne potwierdzają, że nie jest to zagadnienie trywialne. Dbanie o zabezpieczenia jest obowiązkiem każdego programisty. Na szali leżą tu poufne dane, a w przypadku niektórych aplikacji - mienie i bezpieczeństwo ludzi.
 \section{Ataki CSRF}
-Ataki typu Cross-Site Request Forgery \cite{Owasp} polegają na oszukaniu Użytkownika celem wykonania przez niego niezamierzonych akcji w aplikacji od której jest zalogowany. Oszust może nakłonić Użytkownika do kliknięcia w link prowadzący do innej strony, której budowa spowoduje zmianę lub usunięcie  danych Użytkownika. Oszust wykorzystuje tu cudze uprawnienia w aplikacji. Popularną metodą zabezpieczenia się przed tego typu atakiem jest wysłanie losowego tokena (unikatowego dla Użytkownika i sesji) i zapisanie go w pliku Cookie. Token ten jest wysyłany z każdym zapytaniem z powrotem do serwera i zmieniany po każdym zamknięciu przeglądarki. Uniemożliwia to atak, ponieważ strona oszusta nie ma dostępu do pliku Cookie oryginalnej aplikacji. Ta metoda, wykorzystana w projekcie, nie wymagała żadnych zmian po stronie projektu Angular. Pobiera on i wysyła tokeny pod warunkiem że otrzyma plik Cookie o nazwie "XSRF-TOKEN", wysłany z nagłówkiem "X-XSRF-TOKEN". Po stronie Springa, należało dodać poniższy kod.
+Ataki typu Cross-Site Request Forgery \cite{Owasp} polegają na oszukaniu Użytkownika celem wykonania przez niego niezamierzonych akcji w aplikacji od której jest zalogowany. Oszust może nakłonić Użytkownika do kliknięcia w link prowadzący do innej strony, której budowa spowoduje zmianę lub usunięcie  danych Użytkownika. Oszust wykorzystuje tu cudze uprawnienia w aplikacji. Popularną metodą zabezpieczenia się przed tego typu atakiem jest wysłanie losowego tokena (unikatowego dla Użytkownika i sesji) i zapisanie go w pliku Cookie. Token ten jest wysyłany z każdym zapytaniem z powrotem do serwera i zmieniany po każdym zamknięciu przeglądarki. Uniemożliwia to atak, ponieważ strona oszusta nie ma dostępu do pliku Cookie oryginalnej aplikacji. Ta metoda, wykorzystana w projekcie, nie wymagała żadnych zmian po stronie projektu Angular. Pobiera on i wysyła tokeny pod warunkiem że otrzyma plik Cookie o nazwie "XSRF-TOKEN", wysłany z nagłówkiem "X-XSRF-TOKEN". Po stronie Springa, należało dodać poniższy kod.\\\\\\\\
 \begin{lstlisting}
 package com.koziejaj.client.GSecurity;
 
@@ -862,7 +863,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 \end{lstlisting}
 
 \section{Protokół HTTPS}
-Protokół HTTPS to szyfrowana wersja protokołu HTTP. Jego wykorzystanie utrudnia wykradnięcie wrażliwych danych jak na przykład hasło użytkownika wysyłane przy logowaniu. Wykorzystanie HTTPS wymaga wygenerowania certyfikatu SSL \cite{Owasp} który zawiera klucz publiczny i różne informacje o serwerze. Na potrzeby projektu certyfikat został wygenerowany i podpisany samodzielnie, co w przeglądarkach powoduje wyświetlenie ostrzeżenia. W środowisku produkcyjnym, certyfikat powinien być podpisany przez Urząd Certyfikacyjny. Posiadając certyfikat, należało w pliku application.properties dodać poniższe linie:
+Protokół HTTPS to szyfrowana wersja protokołu HTTP. Jego wykorzystanie utrudnia wykradnięcie wrażliwych danych jak na przykład hasło użytkownika wysyłane przy logowaniu. Wykorzystanie HTTPS wymaga wygenerowania certyfikatu SSL \cite{Owasp} który zawiera klucz publiczny i różne informacje o serwerze. Na potrzeby projektu certyfikat został wygenerowany i podpisany samodzielnie, co w przeglądarkach powoduje wyświetlenie ostrzeżenia. W środowisku produkcyjnym, certyfikat powinien być podpisany przez Urząd Certyfikacyjny. Posiadając certyfikat, należało w pliku application.properties dodać poniższe linie:\\
 \begin{lstlisting}
 server.ssl.key-store: keystore.koziejaj #Nazwa pliku
 server.ssl.key-store-password: Qazsedc #Hasło
@@ -880,7 +881,7 @@ Bezpieczne logowanie zostało zaimplementowane w następujący sposób:
 	\item Jeżeli Użytkownik błędnie poda hasło 20 razy w ciągu jednego dnia, jego adres IP zostaje zablokowany do końca dnia. Jest to zabezpieczenie przed atakami typu brute-force.
 \end{enumerate}
 Zgodnie z wymaganiami, hasło musi mieć co najmniej 8 znaków, małe i duże litery oraz cyfry. Daje to 62 znaki w zbiorze i $2*10^{14}$ kombinacji. Dla ataku brute-force dokonywanego z 1 adresu IP, przyjmując że średnio hasło zostanie złamane po sprawdzeniu połowy kombinacji, czas łamania hasła wynosi:  $10^{14}/20=5*10^{12}$ dni, czyli około 14 miliardów lat. Oczywiście atak z wielu adresów IP i z wykorzystaniem tęczowych tablic będzie dużo bardziej skuteczny. Dlatego warto stosować jak najmocniejsze hasła i zapewniać mechanizmy ich odzyskiwania. Czas łamania 128-bitowego tokena na milionie komputerów wykonujących miliard prób na sekundę wynosi $2^{127}*10^{-6}*10^{-9}s$ = około 11 miliardów lat. Co wiecej, tokeny te zmieniają się z każdym logowaniem. W rozważaniach na temat entropii i siły haseł, przydatne okazały sie być materiały z dziedziny kryptografii, jak chociażby \cite{Kryptografia}.
-Kod odpowiadający za generowanie losowego tokena:
+Kod odpowiadający za generowanie losowego tokena:\\
 \begin{lstlisting}
     private String generateToken()
     {
