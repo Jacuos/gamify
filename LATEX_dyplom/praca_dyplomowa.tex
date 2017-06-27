@@ -131,23 +131,39 @@
 % Wstęp
 %-----------------
 \chapter{Wstęp}
-Celem pracy było stworzenie aplikacji internetowej, motywującej grupy ludzi do wspólnej pracy poprzez system wyzwań i nagród. Należy jednak pamiętać że o ile aplikacja pomaga zarządzać zadaniami, prowadzić ranking i kontrolować rozwój użytkowników, o tyle weryfikacja wykonanych zadań czy przyznawanie fizycznych nagród pozostaje obowiązkiem administratora. Stworzone rozwiązanie było także pretekstem do zbadania współczesnych technologii wytwarzania aplikacji internetowych, opisanych w dalszej części pracy.
+Celem pracy było stworzenie aplikacji internetowej, motywującej grupy ludzi do wspólnej pracy poprzez system wyzwań i nagród. Należy jednak pamiętać, że o ile aplikacja pomaga zarządzać zadaniami, prowadzić ranking i kontrolować rozwój użytkowników, o tyle weryfikacja wykonanych zadań, czy przyznawanie fizycznych nagród pozostaje obowiązkiem administratora. Stworzone rozwiązanie było także pretekstem do zbadania współczesnych technologii wytwarzania aplikacji internetowych, opisanych w dalszej części pracy.
 \section{Grywalizacja}
-	Grywalizacja, gryfikacja lub gamifikacja, to zgodnie z definicją \cite{Wikipedia} "Wykorzystanie mechaniki znanej np. z gier fabularnych i komputerowych, do modyfikowania zachowań ludzi w sytuacjach życia codziennego, w celu zwiększenia zaangażowania ludzi." Ta szeroka definicja obejmuje rozwiązania stosowane w marketingu, zarządzaniu projektami jak i edukacji.
+	Grywalizacja, gryfikacja lub gamifikacja, to zgodnie z definicją \cite{Wikipedia} ,,Wykorzystanie mechaniki znanej np. z gier fabularnych i komputerowych, do modyfikowania zachowań ludzi w sytuacjach życia codziennego, w celu zwiększenia zaangażowania ludzi.'' Ta szeroka definicja obejmuje rozwiązania stosowane w marketingu, zarządzaniu projektami jak i edukacji.
 	\section{Projekt}
-	Plany stworzenia aplikacji ,,Gamify'' przybliżyć mogą poniższe przykładowe Przypadki Użycia, wykonane zgodnie z rozdziałem 6 podręcznika \cite{Smialek}:\\
+	Wymagania, dotyczące funkcjonalności aplikacji ,,Gamify'' zostały przedstawione na poniższej liście:
+	\begin{enumerate}
+	\item Proces autoryzacji Użytkownika.
+	\item Proces rejestracji Użytkownika.
+	\item Proces zmiany zapomnianego hasła Użytkownika.
+	\item Konfiguracja konta Użytkownika - edycja publicznie dostępnych informacji, zmiana hasła.
+	\item Wyświetlanie listy Rankingowej Użytkowników.
+	\item Odebranie nagrody za wykonane Zadanie.
+	\item Wyświetlanie osiągnięć Użytkownika  - wykonanych Zadań i zdobytych Odznak.
+	\item Proces autoryzacji Administratora.
+	\item Usuwanie kont Użytkowników.
+	\item Edycja aplikacji Użytkownika - definiowanie zasad i elementów grywalizacji w pewnym ograniczonym stopniu. Administrator może zmienić zawartość strony powitalnej. Administrator może zmienić niektóre pojęcia, wyświetlane w aplikacji Użytkownika. Administrator może edytować plik CSS, wykorzystywany w aplikacji. Administrator może edytować liczbę punktów potrzebnych do uzyskania kolejnych Poziomów.
+	\item Dodawanie nowych Zadań do wykonania.
+	\item Dodawanie i przyznawanie Odznak.
+	\end{enumerate}
+	Jeśli chodzi o wymagania jakościowe, wczytywanie aplikacji nie powinno średnio trwać dłużej niż 5 sekund. Aplikacja powinna gwarantować odpowiedni poziom bezpieczeństwa - tożsamość Użytkowników powinna być weryfikowana podczas wykonywania wszystkich istotnych akcji, a wykradnięcie krytycznych danych powinno być utrudnione.
+	Plany stworzenia aplikacji przybliżyć mogą poniższe przykładowe Przypadki Użycia, wykonane zgodnie z rozdziałem 6 podręcznika \cite{Smialek}:\\
 	UC Użytkownika:\\
 	Wykonanie Zadania
 	\begin{enumerate}
 		\item Użytkownik loguje się do Systemu.
 		\item Użytkownik wybiera opcję ,,Wykonaj Zadanie'' (Ścieżka alternatywna):
 		\begin{enumerate}
-		\item Użytkownik skanuje kod QR
-		\item System dodaje zadanie i punkty Użytkownikowi
+		\item Użytkownik skanuje kod QR.
+		\item System dodaje zadanie i punkty Użytkownikowi.
 		\end{enumerate}
 		\item System wyświetla formularz wykonania Zadania.
 		\item Użytkownik wpisuje numer Zadania.
-		\item System dodaje zadanie i punkty Użytkownikowi
+		\item System dodaje zadanie i punkty Użytkownikowi.
 	\end{enumerate}
 	Przejrzenie tabeli Rankingu
 	\begin{enumerate}
@@ -160,8 +176,8 @@ Celem pracy było stworzenie aplikacji internetowej, motywującej grupy ludzi do
 	UC Administratora:\\
 	Dodanie nowego Zadania
 	\begin{enumerate}
-		\item Administrator loguje się do systemu
-		\item Administrator wybiera opcję ,,Dodaj Zadanie''
+		\item Administrator loguje się do systemu.
+		\item Administrator wybiera opcję ,,Dodaj Zadanie''.
 		\item System wyświetla formularz dodania Zadania.
 		\item Administrator podaje opis, datę końcową i punkty Zadania.
 		\item System generuje numer Zadania i zapisuje je.
@@ -171,7 +187,7 @@ Celem pracy było stworzenie aplikacji internetowej, motywującej grupy ludzi do
 		\item Administrator loguje się do Systemu.
 		\item Administrator wybiera opcję ,,Odznaki''.
 		\item System wyświetla okno edycji Odznak.
-		\item Administrator wybiera opcję ,,Przyznaj odznakę''
+		\item Administrator wybiera opcję ,,Przyznaj odznakę''.
 		\item System wybiera okno wyboru Odznaki.
 		\item Administrator wybiera Odznakę.
 		\item System wyświetla okno wyboru Użytkowników.
@@ -466,6 +482,7 @@ public class GBadge{
 }
 \end{lstlisting}
 Chcąc wykorzystywać klucz główny złożony z kilku kolumn, należy zdefiniować specjalną klasę. Taki klucz gwarantuje że dany Użytkownik posiada co najwyżej jedną instancję danej odznaki.
+\\
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
@@ -543,7 +560,7 @@ public GLayout() {}
 
 \end{lstlisting}
 \subsection{Repozytoria}
-Zarówno klasa \textit{,,GBadge''} jak \textit{,,GLayout''} mają swoje repozytoria. Można traktować je jako instancje tabel bazy danych. To w repozytoriach szuka się rekordów i zapisuje zmiany na stałe, tak jak zostało to opisane w Literaturze \cite{Spring}. Poniżej znajduje się kod repozytoriów wraz z komentarzami.
+Zarówno klasa \textit{,,GBadge''} jak \textit{,,GLayout''} mają swoje repozytoria. Można traktować je jako instancje tabel bazy danych. To w repozytoriach szuka się rekordów i zapisuje zmiany na stałe, tak jak zostało to opisane w literaturze \cite{Spring}. Poniżej znajduje się kod repozytoriów wraz z komentarzami.
 \begin{lstlisting}
 package com.koziejaj.client.GAdmin;
 
@@ -1008,7 +1025,7 @@ Próby uruchomienia aplikacji poprzez plik .jar lub .war, korzystając ze zautom
 					\label{UMLTS}
 				\end{figure}
 \chapter{Działanie aplikacji}
-Rozdział ten jest swoistym ,,podręcznikiem użytkownika'', przedstawia działanie aplikacji zgodnie z zakresem pracy, który został zdefiniowany w dokumencie,,Plan pracy inżynierskiej''.
+Rozdział ten jest swoistym ,,podręcznikiem użytkownika'', przedstawia działanie aplikacji zgodnie z zakresem pracy, który został zdefiniowany w dokumencie ,,Plan pracy inżynierskiej''.
 \section{Rejestracja i Reset hasła}
 Na stronie głównej znajdują się odnośniki, pozwalające na rejestrację jak i ustanowienie nowego hasła gdy Użytkownik go zapomni. Rysunek 7.1 przedstawia formularz rejestracji. Podczas wypełniania sprawdzana jest unikalność loginu, poprawność hasła, zgodność adresu email ze wzorcem. Wszystkie pola poza ,,Opis'' są wymagane. Rysunek 7.2 przedstawia działanie walidatorów poszczególnych pól.
 				\begin{figure}[!htbp]
@@ -1068,14 +1085,14 @@ Panel ustawień konta, umożliwia ustawienie nowego awatara, zmianę hasła i op
 								\end{sidewaysfigure}
 \section{Ranking}
 Panel \textit{,,Ranking''} zawiera listę wszystkich Użytkowników. Okno wyszukiwania pozwala na filtrowanie listy po imieniu, nazwisku lub loginie. Małe guziki widoczne przy każdej kolumnie służą do sortowania listy. Rysunek 7.7 przedstawia panel \textit{,,Ranking''} posortowany malejąco według punktów.
-								\begin{sidewaysfigure}[!htbp]
+								\begin{sidewaysfigure}
 									\begin{center}
 										\centering
 										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide7.png}
 									\end{center}
 									\caption{}
 									\label{UMLTS}
-								\end{sidewaysfigure}[!htbp]
+								\end{sidewaysfigure}
 \section{Wykonanie zadania}
 Panel \textit{,,Wykonanie zadania''} pozwala wpisać kod zadania w celu otrzymania za nie Punktów. Kod jest otrzymywany od Administratora. Punkty mogą również zostać przekazane w formie kodu QR, który działa tak samo jak wpisanie kodu zadania. Rysunek 7.8 przedstawia proces wykonania Zadania.
 								\begin{sidewaysfigure}[!htbp]
@@ -1157,7 +1174,7 @@ Przyznawanie Odznak odbywa sie poprzez wybranie Odznaki a następnie zaznaczenie
 								\end{sidewaysfigure}
 \chapter{Wnioski}
 \label{Ending}
-Zakres pracy został zrealizowany w zdecydowanej większości. Jedyne braki dotyczą elementów które zostały uznane za zbędne lub niespójne z resztą projektu. Są to:
+Zakres pracy został zrealizowany w zdecydowanej większości. Jedyne różnice względem początkowej wizji dotyczą elementów które zostały uznane za zbędne lub niespójne z resztą projektu. Są to:
 \begin{itemize}
  \item Administrator nie ma możliwości zakładania nowych kont Użytkowników. Służy do tego formularz rejestracyjny. 
  \item Zrezygnowano z efektów dźwiękowych, ponieważ mogłyby być irytujące dla Użytkownika podczas codziennej pracy.
@@ -1184,7 +1201,8 @@ Podczas projektu natknięto się na wiele błędów, których przyczyny okazały
 					\caption{Błąd biblioteki SystemJS tak naprawdę oznaczał problem z definicją ścieżki do biblioteki, której chciano użyć w projekcie.}
 					\label{UMLTS}
 				\end{sidewaysfigure}
-Tylko pisząc kod linijka po linijce i testując co chwilę, możliwe było odnajdowanie źródeł problemów. W połączeniu z długim czasem rekompilacji i restartu serwera (około 30 sekund na wydajnej maszynie), proces wytwórczy można ocenić jako dosyć żmudny. Sposób połączenia aplikacji klienckiej i serwerowej we wspólnym projekcie, korzystając z dwóch szkieletów, także z początku nie był zagadnieniem trywialnym. Rodzi sie pytanie - czy tyle warstw aplikacji jest faktycznie potrzebne? Na pewno szkielety i biblioteki usprawniają pracę programisty. Warto jednak stosować się do zasad YAGNI i KISS - nie dodawać do projektu elementów niepotrzebnych i unikać przesadnej złożoności.
+Tylko pisząc kod linijka po linijce i testując co chwilę, możliwe było odnajdowanie źródeł problemów. W połączeniu z długim czasem rekompilacji i restartu serwera (około 30 sekund na wydajnej maszynie), proces wytwórczy można ocenić jako dosyć żmudny. Sposób połączenia aplikacji klienckiej i serwerowej we wspólnym projekcie, korzystając z dwóch szkieletów, także z początku nie był zagadnieniem trywialnym. Rodzi sie pytanie - czy tyle warstw aplikacji jest faktycznie potrzebne? Na pewno szkielety i biblioteki usprawniają pracę programisty. Warto jednak stosować się do zasad YAGNI (ang. ,,You aren't gonna need it'') i KISS (ang. ,,Keep It Simple, Stupid'') - nie dodawać do projektu elementów niepotrzebnych i unikać przesadnej złożoności. \\
+Podsumowując, można uznać, że cel pracy został osiągnięty. Spełnione zostały założenia dotyczące funkcjonalności, oraz architektury wielowarstwowej, narzuconej przez użyte technologie. Aplikacja działa szybko, zaś dzięki wykorzystaniu szkieletu Angular, reakcje na działania Użytkowników następują błyskawicznie. Dalszy rozwój aplikacji jest możliwy i łatwy do przeprowadzenia.
 
 
 \begin{thebibliography}{99}
