@@ -40,3 +40,4 @@
 \contentsline {section}{\numberline {7.11}Zarz\IeC {\k a}dzanie Odznakami}{55}{section.7.11}
 \contentsline {chapter}{\numberline {8}Wnioski}{61}{chapter.8}
 \contentsline {chapter}{Bibliografia}{65}{chapter*.4}
+\contentsline {chapter}{Spis rysunk\'ow}{67}{chapter*.4}

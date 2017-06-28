@@ -115,11 +115,12 @@
 %\pracamagisterska
 %%% koniec od P.W
 
-\opinie{%
-  \input{opiniaopiekuna.tex}
-  \newpage
-  \input{recenzja.tex}
-}
+%To zakomentowałem ja - Jacek Kozieja, przed zamieszczeniem pracy w ISOD.
+%\opinie{%
+%  \input{opiniaopiekuna.tex}
+%  \newpage
+%  \input{recenzja.tex}
+%}
 
 \streszczenia{
   \input{streszczenia.tex}
@@ -1033,7 +1034,7 @@ Na stronie głównej znajdują się odnośniki, pozwalające na rejestrację jak
 						\centering
 						\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide1.png}
 					\end{center}
-					\caption{}
+					\caption{Wypełniony formularz rejestracji}
 					\label{UMLTS}
 				\end{figure}
 								\begin{figure}[!htbp]
@@ -1041,7 +1042,7 @@ Na stronie głównej znajdują się odnośniki, pozwalające na rejestrację jak
 										\centering
 										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide2.png}
 									\end{center}
-									\caption{}
+									\caption{Błędnie wypełniony formularz rejestracji}
 									\label{UMLTS}
 								\end{figure}
 W wypadku gdy Użytkownik zapomni hasła, może podać swój e-mail i otrzymać wiadomość z odnośnikiem. Po kliknięciu w odnośnik, Użytkownik jest przenoszony do panelu zmiany hasła na nowe. Rysunek 7.3 przedstawia ten proces.
@@ -1050,7 +1051,7 @@ W wypadku gdy Użytkownik zapomni hasła, może podać swój e-mail i otrzymać 
 										\centering
 										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide3.png}
 									\end{center}
-									\caption{}
+									\caption{Proces zmiany hasła}
 									\label{UMLTS}
 								\end{figure}
 \section{Autoryzacja Użytkownika}
@@ -1060,7 +1061,7 @@ Logowanie do aplikacji jest przedstawione na Rysunku 7.4. Próby przejścia do i
 										\centering
 										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide4.png}
 									\end{center}
-									\caption{}
+									\caption{Ekran logowania}
 									\label{UMLTS}
 								\end{sidewaysfigure}
 Rysunek 7.5 to strona główna aplikacji, widoczna po zalogowaniu. Na górnym pasku znajdują sie odnośniki do kolejnych podstron. W dolnym lewym rogu widneją informacje na temat zalogowanego Użytkownika, włącznie z awatarem (obrazkiem reprezentującym Użytkownika) i odnośnikiem do ustawień konta (ikona zębatki).
@@ -1069,7 +1070,7 @@ Rysunek 7.5 to strona główna aplikacji, widoczna po zalogowaniu. Na górnym pa
 										\centering
 										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide5.png}
 									\end{center}
-									\caption{}
+									\caption{Strona główna aplikacji}
 									\label{UMLTS}
 								\end{sidewaysfigure}
 
@@ -1080,7 +1081,7 @@ Panel ustawień konta, umożliwia ustawienie nowego awatara, zmianę hasła i op
 										\centering
 										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide6.png}
 									\end{center}
-									\caption{}
+									\caption{Panel ustawień konta}
 									\label{UMLTS}
 								\end{sidewaysfigure}
 \section{Ranking}
@@ -1090,17 +1091,17 @@ Panel \textit{,,Ranking''} zawiera listę wszystkich Użytkowników. Okno wyszuk
 										\centering
 										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide7.png}
 									\end{center}
-									\caption{}
+									\caption{Panel z listą Użytkowników}
 									\label{UMLTS}
 								\end{sidewaysfigure}
 \section{Wykonanie zadania}
-Panel \textit{,,Wykonanie zadania''} pozwala wpisać kod zadania w celu otrzymania za nie Punktów. Kod jest otrzymywany od Administratora. Punkty mogą również zostać przekazane w formie kodu QR, który działa tak samo jak wpisanie kodu zadania. Rysunek 7.8 przedstawia proces wykonania Zadania.
+Panel \textit{,,Wykonanie zadania''} pozwala wpisać kod Zadania w celu otrzymania za nie Punktów. Kod jest otrzymywany od Administratora. Punkty mogą również zostać przekazane w formie kodu QR, który działa tak samo jak wpisanie kodu zadania. Rysunek 7.8 przedstawia proces wykonania Zadania.
 								\begin{sidewaysfigure}[!htbp]
 									\begin{center}
 										\centering
 										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide8.png}
 									\end{center}
-									\caption{}
+									\caption{Panel wykonania Zadania}
 									\label{UMLTS}
 								\end{sidewaysfigure}
 \section{Wyświetlenie własnych osiągnięć}
@@ -1110,7 +1111,7 @@ W panelu \textit{,,Dziennik zadań''} widoczne są Zadania wykonane przez Użytk
 										\centering
 										\includegraphics[scale =0.65]{\ImgPath/rys/guide/guide9.png}
 									\end{center}
-									\caption{}
+									\caption{Panel osiągnięć Użytkownika}
 									\label{UMLTS}
 								\end{sidewaysfigure}
 \section{Autoryzacja Administratora}
@@ -1120,7 +1121,7 @@ Pod ścieżką \textit{,,/gadmin''} znajduje się część aplikacji przeznaczon
 										\centering
 										\includegraphics[width=\textwidth]{\ImgPath/rys/guide/guide10.png}
 									\end{center}
-									\caption{}
+									\caption{Ekran logowania Administratora}
 									\label{UMLTS}
 								\end{figure}
 \section{Usuwanie kont}
@@ -1130,7 +1131,7 @@ W panelu \textit{,,Użytkownicy''}, widok jest analogiczny do tego z panelu \tex
 										\centering
 										\includegraphics[scale =0.65]{\ImgPath/rys/guide/guide11.png}
 									\end{center}
-									\caption{}
+									\caption{Panel zarządzania Użytkownikami}
 									\label{UMLTS}
 								\end{sidewaysfigure}
 \section{Edycja aplikacji}
@@ -1140,7 +1141,7 @@ Panel \textit{,,Motyw''} skrywa opcje, pozwalająca na dostosowanie aplikacji w 
 										\centering
 										\includegraphics[scale=0.65]{\ImgPath/rys/guide/guide12.png}
 									\end{center}
-									\caption{}
+									\caption{Panel edycji aplikacji}
 									\label{UMLTS}
 								\end{sidewaysfigure}
 \section{Zarządzanie Zadaniami}
@@ -1150,7 +1151,7 @@ Panel \textit{,,Zadania''} pozwala dodać nowe Zadanie i przeglądać te już is
 										\centering
 										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide13.png}
 									\end{center}
-									\caption{}
+									\caption{Panel zarządzania Zadaniami}
 									\label{UMLTS}
 								\end{sidewaysfigure}
 \section{Zarządzanie Odznakami}
@@ -1160,7 +1161,7 @@ Pod panelem \textit{,,Odznaki''} można stworzyć nową Odznakę. Taka Odznaka m
 										\centering
 										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide14.png}
 									\end{center}
-									\caption{}
+									\caption{Panel zarządzania Odznakami}
 									\label{UMLTS}
 								\end{sidewaysfigure}
 Przyznawanie Odznak odbywa sie poprzez wybranie Odznaki a następnie zaznaczenie Uzytkowników z listy. Po kliknięciu przycisku potwierdzającego, Odznaki zostaną przyznane. Proces ten został uwieczniony na rysunku 7.15.
@@ -1169,7 +1170,7 @@ Przyznawanie Odznak odbywa sie poprzez wybranie Odznaki a następnie zaznaczenie
 										\centering
 										\includegraphics[scale = 0.65]{\ImgPath/rys/guide/guide15.png}
 									\end{center}
-									\caption{}
+									\caption{Panel dodawania Odznak}
 									\label{UMLTS}
 								\end{sidewaysfigure}
 \chapter{Wnioski}
@@ -1257,6 +1258,11 @@ dzięki naszym praktycznym lekcjom'' }
 \newline \url{http://httpwg.org/specs/rfc7231.html}
 
 \end{thebibliography}
+
+\cleardoublepage
+% \phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
 
 \zakonczenie  % wklejenie recenzji i opinii
 
